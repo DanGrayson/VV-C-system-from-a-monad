@@ -167,25 +167,25 @@ The first few steps in all approaches to the semantics of dependent type theorie
 
 An approach that follows this general philosophy was outlined in \cite{CMUtalk}. In this approach the connection between the type theories, which belong to the concrete world of logic and programming, and abstract mathematical concepts such as sets or homotopy types is constructed through the intermediary of C-systems. 
 
-C-systems were introduced in \cite{Cartmell0} (see also \cite{Cartmell1}) under the name ``contextual categories''. A modified axiomatics of C-systems and the construction of new C-systems as sub-objects and regular quotients of the existing ones in a way convenient for use in type-theoretic applications are considered in \cite{Csubsystems}.
+C-systems were introduced in \cite{Cartmell0} (see also \cite{Cartmell1}) under the name ``contextual categories''. A modified axiomatics of C-systems and the construction of new C-systems as sub-objects and regular quotients of the existing ones in a way convenient for use in type-theoretic applications are considered in \cite{Csubsystems}. A C-system equipped with additional operations corresponding to the inference rules of a type theory is called a model or a C-system model of these rules or of this type theory. There are other classes of objects on which one can define operations corresponding to inference rules of type theories most importantly categories with families or CwFs. They lead to other classes of models.  
 
-In the approach of \cite{CMUtalk}, in order to provide a mathematical representation (semantics) for a type theory one constructs two C-systems. One C-system is constructed from the formulas of the type theory using as an initial step the construction of the present paper.  The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the ``inference rules'' of the type theory. 
+In the approach of \cite{CMUtalk}, in order to provide a mathematical representation (semantics) for a type theory one constructs two C-systems. One C-system, which we will call the proximate C-system of a type theory, is constructed from formulas of the type theory using constructions of the present paper.  The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the inference rules of the type theory making them into models of type theory.  The model whose underlying C-system is the proximate C-system is called the term model. 
 
-The main component of this approach is the expected result that for a particular class of the inference rules the concrete C-systems built using the constructions of the present paper and equipped with operations corresponding to these inference rules are initial objects in the category of C-systems with the corresponding operations. This is known as the Initiality Conjecture. In the case of the pure Calculus of Constructions this conjecture was proved in 1988 by Thomas Streicher \cite{Streicher}. The problem of finding an appropriate formulation of the general version of the conjecture and of proving this general version will be the subject of the future work. 
+A crucial component of this approach is the expected result that for a particular class of the inference rules the term model is an initial object in the category of models. This is known as the Initiality Conjecture. In the case of the pure Calculus of Constructions with a ``decorated''  application operation this conjecture was proved in 1988 by Thomas Streicher \cite{Streicher}. The problem of finding an appropriate formulation of the general version of the conjecture and of proving this general version will be the subject of future work. 
 
-For such inference rules, then, there are unique homomorphisms from the concrete C-systems to the abstract C-systems that are compatible with the corresponding systems of operations. Since objects and morphisms of concrete C-systems are built from formulas of the type theory and objects and morphisms of abstract C-systems are built from mathematical objects such as sets or homotopy types and the corresponding functions, these homomorphisms provide a mathematical meaning to formulas of type theory. 
+For such inference rules, then, there are unique homomorphisms from the proximate C-systems to the abstract C-systems that are compatible with the corresponding systems of operations. Such homomorphisms are called representations of the type theory. More generally, any functor from the category underlying the proximate C-system of the type theory to another category may be called a representation of the type theory in that category. Since objects and morphisms of term models are built from formulas of the type theory and objects and morphisms of abstract C-systems are built from mathematical objects such as sets or homotopy types and the corresponding functions, such representations provide a mathematical meaning to formulas of type theory. 
 
-The existence of such homomorphisms in the particular case of the ``standard univalent models'' of  Martin-L\"{o}f type theories and of the Calculus of Inductive Constructions (CIC) provides the only known justification for the use of the proof assistants such as Coq for the formalization of mathematics in the univalent style (see \cite{UniMath}, \cite{UniMath2015}). 
+The existence of these homomorphisms in the particular case of the ``standard univalent models'' of  Martin-L\"{o}f type theories and of the Calculus of Inductive Constructions (CIC) provides the only known justification for the use of the proof assistants such as Coq for the formalization of mathematics in the univalent style (see \cite{UniMath}, \cite{UniMath2015}). 
 
-It is important to distinguish the concepts of a model of a type theory and the concept of a representation of the same type theory. A {\em model} of type theory can be defined as a C-system that is equipped with the systems of operations corresponding to the inference rules of the type theory. A (categorical) {\em representation} of a type theory with values in a given category $\cal C$ is a functor from the category underlying the syntactic C-system of the type theory to $\cal C$. 
+Only if we know that the initiality result holds for a given type theory can we claim that a model defines a representation. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. The term models for a class of type theories can be obtained by considering slices of the term model of the type theory called Logical Framework (LF), but unfortunately it is unclear how to extend this approach to type theories that have more substitutional equalities than LF itself.
 
-Only if we know that the initiality result holds for a given type theory can we claim that any its model defines a representation by taking the composition of the canonical homomorphism of the C-systems with the functor such as the functor $int$ of \cite{Cfromauniverse}. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. 
-
-A construction of a {\em model} for the version of the Martin-L\"{o}f type theory that is used in the UniMath library (\cite{UniMath},\cite{UniMath2015})  was sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiality result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in both the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiality theorem and providing a proof of such a theorem is lacking and needs to be developed. 
+A construction of a model for the version of the Martin-L\"{o}f type theory that is used in the UniMath library (\cite{UniMath},\cite{UniMath2015}) is sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiality result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in both the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiality theorem and providing a proof of such a theorem is lacking and needs to be developed. 
 
 As the criteria for what constitutes an acceptable proof were becoming more clear as a result of continuing work on formalization, it also became clear that more detailed and general proofs need to be given to many of the theorems of \cite{KLV1} that are related to the model itself. For the two of the several main groups of inference rules of current type theories it is done in \cite{fromunivwithPi} and \cite{fromunivwithpaths}. Other groups of inference rules will be considered in further papers of the series. 
 
-This paper may be considered to be an analog of \cite{Cfromauniverse} for the concrete side of the theory in the sense that it provides a very general construction the particular cases of which lead to the concrete (syntactic) C-systems of type theories. 
+
+
+%### The above checked Nov.20.2015 
 
 The details how to obtain these particular cases of the constructions of this paper are not addressed here. The reason for this is that the proper way of describing the construction of the C-system of a type theory requires a mathematical approach to the notion of a system of inference rules. This is a highly non-trivial problem that will be addressed in one of the forthcoming papers of this series after which a complete path from raw syntax, through the inference rules and then through the four kinds of derivable sentences to a C-system with a system of operations corresponding to the inference rules will be presented in a mathematically acceptable form. 
 
@@ -304,15 +304,9 @@ This is one the papers extending the material which I started to work on in \cit
 \subsection{Monads and strict algebraic theories}
 %
 
-Let $U$ be a Grothendieck universe. Let ${\bf R}=(R,\eta,\mu)$ be a monad on the category of sets (cf. \cite{MacLane}[p. 133]) in $U$. We will be interested not in ${\bf R}$ itself but in what we call a strict algebraic theory defined by ${\bf R}$. A category-minded mathematician would say that strict algebraic theories are ``the same as'' finitary monads (monads that preserve filtered colimits). The precise statement is that if one equips the sets of strict algebraic theories in $U$ and monads on sets in $U$ with the ``natural'' structures of categories then there exists a functor from the  category of monads to the category of strict algebraic theories that is an equivalence between the full subcategory of finitary monads in the former category and the latter category\footnote{One can make this statement independent from the choice of the category structures by saying that there exists an equivalence between the natural (now without quotes) groupoids of finitary monads and strict algebraic theories and their respective isomorphisms. }. 
+Let $U$ be a Grothendieck universe. Let ${\bf R}=(R,\eta,\mu)$ be a monad on the category of sets (cf. \cite{MacLane}[p. 133]) in $U$. We will be interested not in ${\bf R}$ itself but in what we call a strict algebraic theory defined by ${\bf R}$. 
 
-We do not provide detailed constructions of category structures on the set of strict algebraic theories in $U$ and the set of monads in $U$ or of an equivalence structure on the function between the sets of objects that we construct since they are not required for the main results of the paper. 
-
-The strict algebraic theories are also ``the same as'' the Lawvere theories with the natural numbers as the set of objects of the underlying category. In this case the ``sameness'' is created by a function from the set of strict algebraic theories over $U$ to the set of Lawvere algebraic theories over $U$ that is an injection of sets and an equivalence of the corresponding categories. Since it is an injection whose image consists of objects for which a certain bijection is the identity we call our objects ``strict'' algebraic theories. We again provide a construction of the function but do not prove that it has an equivalence structure. 
-
-Finally, strict algebraic theories are the ``same as'' clones of \cite[Section 3]{FPT}. This time the sameness is created by a function that is actually a bijection for any $U$. The equivalence of clones with Lawvere theories and finitary monads is explicitly stated in \cite[Section 3]{FPT} which is making the statements of this section less than truly new. The reason why this section had to be written and included into the paper is that all of these statements were stated by the previous authors without any proofs. 
-
-For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from $X$ to $Y$. For $n\in\nat$ we let $stn(n)$ denote the ``standard'' set of $n$ elements $\{0,\dots,n-1\}$.
+For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from $X$ to $Y$. For $n\in\nat$ we let $stn(n)$ denote the ``standard'' set with $n$ elements $\{0,\dots,n-1\}$.
 % 
 \begin{definition}
 \llabel{2015.08.17.def1}
@@ -334,12 +328,18 @@ such that the following conditions hold:
 %
 \end{definition}
 %
+\begin{remark}\rm
+\llabel{2015.11.20.rem2}
+Strict algebraic theories are ``the same as'' the Lawvere theories where the category ${\mathcal S}_0$ (in the notations of \cite{Lawvere}) is the category $F$ defined at the end of the Appendix with its obvious initial object and binary coproducts structure. The ``sameness'' is created by a function from the set of strict algebraic theories over $U$ to the set of Lawvere algebraic theories over $U$ that is an injection of sets and an equivalence of the corresponding categories. Since it is an injection whose image consists of objects for which a certain bijection is the identity we call our objects ``strict'' algebraic theories. 
+\end{remark}
+%
 \begin{problem}
 \llabel{2015.10.14}
 To construct a function $Mtoalg$ from monads on sets to strict algebraic theories.
 \end{problem}
 %
 \begin{construction}\rm 
+\llabel{2015.11.20.constr1.fromold}
 For a monad $(R,\eta,\mu)$ we define the corresponding strict algebraic theory $(R,\eta,\bind)$ as follows:
 %
 \begin{enumerate}
@@ -351,36 +351,18 @@ For a monad $(R,\eta,\mu)$ we define the corresponding strict algebraic theory $
 We leave the verification of the axioms of a strict algebraic theory to the reader.
 \end{construction}
 %
+%
 \begin{remark}\rm
-\llabel{2015.11.18.rem1}
-A reader who is only interested in the construction of a C-system from a pair $({\bf R},\lm)$ may skip the rest of this section.
+\llabel{2015.11.20.rem1}
+A category-minded mathematician would say that strict algebraic theories are ``the same as'' finitary monads (monads that preserve filtered colimits). The precise statement is that if one equips the sets of strict algebraic theories in $U$ and monads on sets in $U$ with the ``natural'' structures of categories then the function of Construction \ref{2015.11.20.constr1.fromold} extends to a functor from the  category of monads to the category of strict algebraic theories that is an equivalence between the full subcategory of finitary monads in the former category and the latter category\footnote{One can make this statement independent from the choice of the category structures by saying that the restriction of the function of Construction \ref{2015.11.20.constr1.fromold} to the subset of finitary monads extends to an equivalence between the natural (now without quotes) groupoids of finitary monads and strict algebraic theories and their respective isomorphisms. }. 
 \end{remark}
 %
 \begin{remark}\rm
-In classical mathematics the function that we have constructed defines an equivalence between the type of finitary monads and the type of strict algebraic theories. A monad $(R,\eta,\mu)$ is called finitary if for any set $X$ the function
-%
-$$colim_{A\in Fin(X)}R(A)\sr R(X)$$
-%
-where $Fin(X)$ is the category (partially ordered set) of finite subsets of $X$, is a bijection. It seems to be constructively provable that a function similar to the one that we have constructed that maps finitary monads to the collections of data of the form
-%
-\begin{enumerate}
-\item for any finite set $A$, a set $R(A)$, 
-\item for any $A$ a function $\eta_{A}\in Fun(A,R(A))$,
-\item for any $f\in Fun(A,R(B))$ a function $\bind(f)\in Fun(R(A),R(B))$,
-\end{enumerate}
-%
-such that the following conditions hold:
-%
-\begin{enumerate}
-\item for all $A$, $\bind(\eta_A)=Id_{R(A)}$,
-\item for all $f\in Fun(A,B)$, $\eta_A\circ \bind(f)=f$,
-\item for all $f\in Fun(A,B)$, $g\in Fun(B,R(C))$, $\bind(f\circ \bind(g))=\bind(f)\circ \bind(g)$.
-\end{enumerate}
-%
-is an equivalence. In UniMath it should also be provable that the obvious function from the type of pre-theories to the type of structures that are based on functions from all finite sets to sets are is an equivalence. This requires the univalence axiom and should be a corollary of the fact that the category of functor from a pre-category to a category is equivalent to the category of functors from its Rezk completion to the same category (see \cite{RezkCompletion}. For us this is not important since we only need the function $Mtoalg$ that is described above. 
+\llabel{2015.11.20.rem3}
+Strict algebraic theories are also the ``same as'' clones of \cite[Section 3]{FPT}. This time the sameness is created by a function that is most probably a bijection for any $U$. The equivalence of clones with Lawvere theories and finitary monads is explicitly stated in \cite[Section 3]{FPT}. 
 \end{remark}
 %
-In this paper we will consistently use the concept of a strict algebraic theory instead of the concept of a finitary monad.  
+In this paper we will consistently use the concept of a strict algebraic theory instead of the concept of a finitary monad. 
 
 Let us introduce the following notation:
 %
@@ -454,12 +436,27 @@ $$\phi_{\bf R}(f)\hc \phi_{\bf R}(g)=f\circ \phi_{\bf R}(g)=f\circ g\circ \eta_n
 
 We are going to use the functions $\phi_{\rr}$ as coercions in the terminology of the proof assistant Coq, i.e. when an element $f$ of $F(m,n)$ occurs in a position where an element of $R(m,n)$ should be it is assumed that $f$ has to be replaced by $\phi_{\rr}(f)$ before the computation can occur. We will also use $\bind$ as a coercion so that when an element $g$ of $R(m,n)$ occurs in a position where a function from $R(m)$ to $R(n)$ is expected it has to be replaced by $\bind(g)$ before the computation can occur. In practice, since many of our lemmas assert equalities between expressions where these coercions are not inserted, we will be using expressions without coercions inserted or with coercions only partially inserted in our computations but all the computations and proofs would remain valid if the coercions were fully inserted. 
 %
+\begin{comment}
 %
-\begin{remark}
+%\begin{remark}
 \rm\llabel{2015.08.22.rem2}
 We could also use the functions $\eta_n$ as coercions. This however would lead to an ambiguity of the following form. For $f\in R(m,n)$ and $i\in stn(m)$ we could read $f(i)$ both directly as the result of application of $f\in Fun(stn(m),R(n))$ to $i$ and as $\bind(f)(\eta_m(i))$. While the corresponding elements in $R(n)$ are equal they are equal because of the equality $\eta_m\circ \bind(f)=f$ from Definition \ref{2015.08.17.def1}. In the UniMath and other similar formalizations this equality is not a substitutional equality but only a transportational one and having the same expression to denote two objects that are not substitutionally equal is an ambiguity. See also Remark \ref{2015.08.30.rem3} below. 
-\end{remark}
+%\end{remark}
 %
+\end{comment}
+%
+\begin{remark}\rm
+\llabel{2015.11.20.rem4}
+As noted at the end of the Appendix the sets $F(m,n)$ are disjoint and therefore there is a category $F$ whose set of objects is $\nn$ and set of morphism $\cap_{m,n}F(m,n)$. For this category $Mor(m,n)=F(m,n)$. 
+
+However, for a general $R$ there is no category such that $Mor(m,n)=R(m,n)$. For example, if $R(m)=pt$ where $pt$ is a fixed one element set then $R$ has a (unique) structure of a strict algebraic theory but there is no category with  $Mor(m,n)=R(m,n)$. Indeed, for any category $Mor(X,Y)\cap Mor(X,Y')=\emptyset$ if $Y\ne Y'$ but for this $R$ we have $R(m,n)=R(m,n')$ for all $m$ and $n,n'$. 
+
+In the next section when we need to build a category associated with $\rr$ we will have to define its sets of morphisms as the sets of (iterated) pairs $((n,m),f)$ where $f\in R(m,n)$. 
+\end{remark}
+
+
+
+
 Since we will have to deal with elements of the sets of functions $R(m,n)=R(stn(n))^{stn(m)}$ and of similar sets such as the sets $Ob_n(CC(\rr,\lm))$ introduced later we need to choose some way to represent them. For the purpose of the present paper we will write such elements as sequences, i.e., to denote the function, which in the notation of $\lambda$-calculus is written as $\lambda\,i:stn(n), f_i$, we will write $(f_0,\dots,f_{n-1})$.
 %
 \begin{lemma}
@@ -508,11 +505,9 @@ which follows by application of Lemma \ref{2015.08.18.l1}(3).
 \llabel{2015.08.30.rem3}
 In the UniMath, or any similar, formalization there is a difference between the equalities of Lemmas \ref{2015.08.26.l3} and \ref{2015.08.30.l1}. The equality of the first lemma is obtained by unfolding the definitions of $\hc$ and of $\circ$. As such it is a substitutional equality which can be used to directly substitute the left hand side of (\ref{2015.08.26.eq7}) for the right hand side and vice versa. The equality of the second lemma is obtained by unfolding definitions and then applying the equality of Definition \ref{2015.08.17.def1}. As a declared equality it is only a transportational one which makes it impossible to use it to directly substitute one hand side of the equality for another. Instead a special ``transport'' function has to be used. 
 
-In this paper we will not distinguish between the two types of equality in part because this distinction is non-existent in either the Zermelo-Fraenkel theory or HOL. Nevertheless, some of our choices, such as the one explained in Remark \ref{2015.08.22.rem2}, have been affected by the existence of this distinction. 
+In this paper we will not distinguish between the two types of equality because this distinction is non-existent the Zermelo-Fraenkel theory. Nevertheless, some of our choices, such as why we have not made $\eta_n$ coercions as well, have been based on the existence of this distinction. 
 \end{remark}
 %
-
-
 
 For $n\in\nat$ and $i=0,\dots,n-1$ let
 %
@@ -680,7 +675,7 @@ with the obvious domain and codomain functions. To distinguish the positions in 
 
 The composition of morphisms is defined by the formula
 %
-$$((\wh{k},\wh{m}),f)\circ ((\wh{m},\wh{n}),g)=((\wh{k},\wh{n}),f\hc g)$$
+$$((\wh{k},\wh{m}),f)\circ ((\wh{m},\wh{n}),g)=((\wh{k},\wh{n}),g\hc f)$$
 %
 and the identity morphisms by the formula
 %
@@ -694,15 +689,15 @@ The axioms of a category follow from Lemma \ref{2015.08.18.l1}(1,2).
 
 We also consider the precategory $F$ with the set of objects $Ob(F)=\nn$ and the set of morphisms given by
 %
-$$Mor(F)=\amalg_{n,m}F(n,m)$$
+$$Mor(F)=\cup_{n,m}F(n,m)$$
 %
-The domain and codomain functions are obvious and the identity morphisms and compositions are defined by identity functions and compositions of functions between the standard finite sets. 
+The domain, codomain and composition functions are well defined for the reason explained in the Appendix. 
 
 The identity function on $\nn$ together with the mapping
 %
-$$(\Phi_{\rr})_{Mor}:((n,m),f)\mapsto ((\wh{m},\wh{n}),\phi_{\rr}(f))$$
+$$(\Phi_{\rr})_{Mor}:f\mapsto ((\wh{m},\wh{n}),\phi_{\rr}(f))$$
 %
-defines, in view of the obvious equality $\phi_{\rr}(Id_{\wh{n}})=\eta_{n}$ and Lemma \ref{2015.08.18.l1}(3), a functor
+where $f:n\sr m$, defines, in view of the obvious equality $\phi_{\rr}(Id_{\wh{n}})=\eta_{n}$ and Lemma \ref{2015.08.18.l1}(3), a functor
 %
 $$\Phi_{\rr}:F^{op}\sr C(\rr)$$
 %
@@ -710,7 +705,7 @@ $$\Phi_{\rr}:F^{op}\sr C(\rr)$$
 %
 \begin{remark}\rm
 \llabel{2015.08.19.rem1}
-The pair $(C(\rr)^{op},\Phi^{op}_{\rr})$ is an algebraic theory in the sense of Lawvere (cf. \cite[Definition on p.62]{Lawvere}). It should be possible to prove, as noted in \cite[after Theorem 3.3]{FPT}, that the function $\rr\mapsto (C(\rr)^{op},\Phi^{op}_{\rr})$ is an equivalence between strict algebraic theories and algebraic theories. 
+The pair $(F,(\Phi^{op}_{\rr}:F\sr C(\rr)^{op}))$ is an algebraic theory in the sense of Lawvere (cf. \cite[Definition on p.62]{Lawvere}). It should be possible to prove that the function $\rr\mapsto (F,(\Phi^{op}_{\rr}:F\sr C(\rr)^{op}))$ is an equivalence between strict algebraic theories and Lawvere theories. 
 \end{remark}
 %
 
@@ -772,7 +767,11 @@ Since $\wh{0}$ is a final object, we need to check that for any $m$ the function
 %
 $$Hom_{C(\rr)}(\wh{m},\wh{n+1})\sr Hom_{C(\rr)}(\wh{m},\wh{n})\times Hom_{C(\rr)}(\wh{m},\wh{1})$$
 %
-given by $((\wh{m},\wh{n+1},f)\mapsto (((\wh{m},(\wh{n+1},f))\circ p_{\wh{n+1}}),((\wh{m},(\wh{n+1},f))\circ (x_n^{n+1}))$, is a bijection. This function is isomorphic to the function
+given by 
+%
+$$((\wh{m},\wh{n+1}),f)\mapsto (((\wh{m},\wh{n+1}),f)\circ p_{\wh{n+1}}),((\wh{m},\wh{n+1}),f)\circ (x_n^{n+1}))),$$
+%
+is a bijection. This function is isomorphic to the function
 %
 $$f\mapsto ((\iota_n^1\hc f),(x_n^{n+1}\hc f))$$
 %
@@ -839,7 +838,7 @@ $$
 %
 We have
 %
-\begin{eq}\label{2015.08.20.eq4}
+\begin{eq}\llabel{2015.08.20.eq4}
 q(f)\circ ((\wh{n+1},\wh{1}),(x_n^{n+1}))=((\wh{m+1},\wh{1}),(x_n^{n+1})\hc qq(ff))=((\wh{m+1},\wh{1}),(x_m^{m+1}))
 \end{eq}
 %
@@ -1495,13 +1494,13 @@ The fact that the full structure of a strict algebraic theory can be reconstruct
 %
 Let $\rr$ be a strict algebraic theory and let $\lm=(LM,LM_{Mor})$ be a presheaf of sets on the category $C(\rr)$, i.e., a functor $C(\rr)^{op}\sr Sets$. 
 
-If the strict algebraic theory was obtain from a monad on sets then any left module over this monad, by defining a covariant functor from the Kleisli category of the monad to sets (see \cite[Prop. 5]{HM2010}), defines a presheaf  on $C(\rr)$, that, as a category, is a subcategory in the opposite category to the Kleisli category of the monad. We again use the coercion mechanism to write $LM$ both for the left $R$-module and for the presheaf of sets on $C(\rr)$ that it defines. 
+If the strict algebraic theory was obtained from a monad on sets then any left module over this monad, by defining a covariant functor from the Kleisli category of the monad to sets (see \cite[Prop. 5]{HM2010}), defines a presheaf  on $C(\rr)$, that, as a category, is a subcategory in the opposite category to the Kleisli category of the monad. We again use the coercion mechanism to write $\lm$ both for the left $R$-module and for the presheaf of sets on $C(\rr)$ that it defines. 
 
 The morphism component $LM_{Mor}$ of $\lm$ is a function that sends a morphism $f=((\wh{m},\wh{n}),ff)$ from $\wh{m}$ to $\wh{n}$ in $C(\rr)$ to a function $LM_{Mor}(f)\in Fun(LM(\wh{n}),LM(\wh{m}))$. In particular we have for each $m,n\in\nat$ a function
 %
 $$R(n,m)\sr Fun(LM(\wh{n}),LM(\wh{m}))$$
 %
-given by $ff\mapsto LM_{Mor}((\wh{m},\wh{n}),ff))$. We will use this function as a coercion so that, for $ff\in R(n,m)$ and $E\in LM(\wh{n})$ the expression $ff(E)$ needs to be expanded into $LM_{Mor}(((\wh{m},\wh{n}),ff))(E)$ before the computation can occur (see the explanation after Lemma \ref{2015.08.18.l1} for more details). 
+given by $ff\mapsto LM_{Mor}((\wh{m},\wh{n}),ff))$. We will use this function as a coercion so that, for $ff\in R(n,m)$ and $E\in LM(\wh{n})$ the expression $ff(E)$ needs to be expanded into $LM_{Mor}(((\wh{m},\wh{n}),ff))(E)$ before the computation can occur (see the explanation after Lemma \ref{2015.08.18.l1} for more detail). 
 %???not sure that this expression "before the computation can occur should be used
 \begin{remark}\rm
 \llabel{2015.08.18.rem1}
@@ -1526,7 +1525,7 @@ An important example of $\lm$ is given by the functor $\Phi$ given on objects by
 %
 $$\Phi_{Mor}((\wh{m},\wh{n}),r)(s)=r(s)$$
 %
-We will denote this functor by the same symbol $\rr$ as the underlying strict algebraic theory.
+We will denote this functor by the same symbol $\rr$ as the underlying strict algebraic theory. 
 
 This functor is isomorphic to the (contravariant) functor represented by the object $\wh{1}$ but it is not equal to this functor since the set of elements of the form  $((\wh{n},\wh{1}),r')$ where $r'\in R(1,n)$ is isomorphic but not equal to the set $R(n)$.
 \end{example}
@@ -1550,7 +1549,7 @@ $$\sigma_{\rr}:\{m\in\nat,r\in R(m),n\in\nat,s\in R(n)\,|\,n>m\}\sr R(n-1)$$
 which is a {\em dependent} function, i.e., a function whose codomain depends on the argument. 
 %??? lift up to where we explain what is Ob_n
 
-For $LM$ as above define a dependent function $\sigma_{\lm}$ with the domain of definitions 
+For $\lm$ as above define a dependent function $\sigma_{\lm}$ with the domain of definitions 
 %
 $$dom(\sigma_{\lm})=\{m\in\nat,r\in R(m),n\in nat, E\in LM(\wh{n})\,|\,n>m\},$$
 %
@@ -1577,11 +1576,7 @@ where
 %
 $$Ob_n(\rr,\lm)=LM(\wh{0})\times\dots\times LM(\wh{n-1})$$
 %
-\begin{remark}\rm
-\llabel{2015.08.14.rem1}
-In a univalent formalization based on UniMath one can define $Ob_n(\rr,\lm)$ as the type $forall(i:stn\,n),LM\, (i)$. Based on this formalization elements of $Ob_n(\rr,\lm)$ are dependent functions with the domain $stn(n)$ and the codomain function $i\mapsto LM(\wh{i})$. Therefore, for $X\in Ob_n$ and $i\in stn(n)$ it makes sense to write $X(i)$ for the $i$-th component of $X$. However, for typographical reasons, we will sometimes write $X_i$ instead of $X(i)$. 
-\end{remark}
-%
+
 
 Define a function $l_f$ on $Ob(CC(\rr,\lm))$ setting $l_f(n,A)=n$.
 
@@ -2613,17 +2608,17 @@ In the previous section we described an important class of regular congruence re
 C-systems of the form $CC(\rr,\lm)$ have an important additional structure. This structure is given by two operations:
 %
 \begin{enumerate}
-\item For $(m,\uu{X})$, $(n,\uu{Y})$ where $m\ge n$ we define $\sigma((m,\uu{X}),(n,\uu{Y}))$ as the object given in the sequence notation by 
+\item For $(m,\uu{X})$, $(n,\uu{Y})$ where $m\ge n$ we define $\xi((m,\uu{X}),(n,\uu{Y}))$ as the object given in the sequence notation by 
 %
-$$\sigma((m,\uu{X}),(n,\uu{Y}))=(Y_0,\dots,Y_{n-1},X_n,\dots,X_{m-1})$$
+$$\xi((m,\uu{X}),(n,\uu{Y}))=(Y_0,\dots,Y_{n-1},X_n,\dots,X_{m-1})$$
 %
 This gives us an operation with values in $Ob$ defined on the subset of $Ob\times Ob$ which consists of pairs $(\Gamma,\Gamma')$ such that $l_f(\Gamma)\ge l_f(\Gamma')$. Note that for $m=n$ one has 
 %
-$$\sigma((m,\uu{X}),(n,\uu{Y}))=(n,\uu{Y})$$
+$$\xi((m,\uu{X}),(n,\uu{Y}))=(n,\uu{Y})$$
 %
-\item for $(m,(\uu{X},r))$ in $\wt{Ob}'$ and $(n,\uu{Y})\in Ob$ such that $m+1\ge n$ define $\wt{\sigma}((m,(\uu{X},r)),(n,\uu{Y}))$ as follows:
+\item for $(m,(\uu{X},r))$ in $\wt{Ob}'$ and $(n,\uu{Y})\in Ob$ such that $m+1\ge n$ define $\wt{\xi}((m,(\uu{X},r)),(n,\uu{Y}))$ as follows:
 %
-$$\wt{\sigma}((m,(\uu{X},r)),(n,\uu{Y}))=(m, (\sigma((m+1,\uu{X}),(n,\uu{Y})),r))$$
+$$\wt{\xi}((m,(\uu{X},r)),(n,\uu{Y}))=(m, (\xi((m+1,\uu{X}),(n,\uu{Y})),r))$$
 %
 This gives us an operation with values in $\wt{Ob}'$ defined on the subset of $\wt{Ob}'\times Ob$ which consists of pairs $(r,\Gamma')$ such that $l_f(\partial(r))\le l_f(\Gamma')$.
 \end{enumerate}
@@ -2639,10 +2634,10 @@ Let $B$ be a subset of $Ob(CC(\rr,\lm))$ which is closed under $ft$. Let $\sim$ 
 %
 \begin{enumerate}
 \item $\Gamma\sim \Gamma'$ implies $l_f(\Gamma)=l_f(\Gamma')$,
-\item $\Gamma\in B$ and $ft(\Gamma)\sim F$ implies $\sigma(\Gamma,F)\in B$ and $\Gamma\sim \sigma(\Gamma,F)$.
+\item $\Gamma\in B$ and $ft(\Gamma)\sim F$ implies $\xi(\Gamma,F)\in B$ and $\Gamma\sim \xi(\Gamma,F)$.
 \end{enumerate}
 %
-Then $\Gamma\in B$ and $ft^i(\Gamma)\sim F$ for some $i\ge 1$, implies that $\sigma(\Gamma,F)\in B$ and $\Gamma\sim \sigma(\Gamma,F)$. 
+Then $\Gamma\in B$ and $ft^i(\Gamma)\sim F$ for some $i\ge 1$, implies that $\xi(\Gamma,F)\in B$ and $\Gamma\sim \xi(\Gamma,F)$. 
 \end{lemma}
 %
 \begin{proof}
@@ -2662,11 +2657,11 @@ Let $B$ and $\sim$ be as in Lemma \ref{2014.07.12.l1}. Then one has:
 \begin{proof}
 The first assertion follows from
 %
-$$(\Gamma,T)\sim (\Gamma,T')\sim \sigma((\Gamma,T'),\Gamma')=(\Gamma',T')$$
+$$(\Gamma,T)\sim (\Gamma,T')\sim \xi((\Gamma,T'),\Gamma')=(\Gamma',T')$$
 %
 The second assertion  follows from
 %
-$$(\Gamma,T)\sim (\Gamma',T')\sim \sigma((\Gamma',T'),\Gamma)=(\Gamma,T')$$
+$$(\Gamma,T)\sim (\Gamma',T')\sim \xi((\Gamma',T'),\Gamma)=(\Gamma,T')$$
 %
 where the second $\sim$ requires $\Gamma'\sim \Gamma$ which follows from $ft$-monotonicity and symmetry.
 \end{proof}
@@ -2677,10 +2672,10 @@ Let $B,\sim$ be as in Lemma \ref{2014.07.12.l1}, let $\wt{B}$ be a subset of $\w
 %
 \begin{enumerate}
 \item ${\cal J}\simeq' {\cal J}'$ implies $\partial({\cal J})\sim\partial({\cal J}')$,
-\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies $\wt{\sigma}({\cal J},F)\in \wt{B}$ and ${\cal J}\simeq' \wt{\sigma}({\cal J},F)$.
+\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies $\wt{\xi}({\cal J},F)\in \wt{B}$ and ${\cal J}\simeq' \wt{\xi}({\cal J},F)$.
 \end{enumerate}
 %
-Then ${\cal J}\in \wt{B}$ and $ft^i(\partial({\cal J}))\sim F$ for some $i\in\nat$ implies ${\cal J}\sim \wt{\sigma}({\cal J},F)$. 
+Then ${\cal J}\in \wt{B}$ and $ft^i(\partial({\cal J}))\sim F$ for some $i\in\nat$ implies ${\cal J}\sim \wt{\xi}({\cal J},F)$. 
 \end{lemma}
 %
 \begin{proof}
@@ -2700,11 +2695,11 @@ Let $B,\sim$ and $\wt{B},\simeq'$ be as in Lemma \ref{2014.07.12.l3}. Then one h
 \begin{proof}
 The first assertion follows from
 %
-$$(\Gamma\rhd o:T)\simeq'  (\Gamma\rhd o':T)\simeq' \wt{\sigma}((\Gamma\rhd o':T) ,(\Gamma',T'))=(\Gamma'\rhd o':T')$$
+$$(\Gamma\rhd o:T)\simeq'  (\Gamma\rhd o':T)\simeq' \wt{\xi}((\Gamma\rhd o':T) ,(\Gamma',T'))=(\Gamma'\rhd o':T')$$
 %
 The second assertion follows from
 %
-$$(\Gamma\rhd o:T)\simeq' (\Gamma'\rhd o':T')\simeq' \sigma((\Gamma'\rhd o':T'),(\Gamma,T))=(\Gamma\rhd o':T)$$
+$$(\Gamma\rhd o:T)\simeq' (\Gamma'\rhd o':T')\simeq' \xi((\Gamma'\rhd o':T'),(\Gamma,T))=(\Gamma\rhd o':T)$$
 %
 where the second $\sim$ requires $\Gamma'\sim \Gamma$ which follows from $\partial$-monotonicity of $\simeq'$ and symmetry of $\sim$.
 \end{proof}
@@ -2719,9 +2714,9 @@ Let $(B,\wt{B})$ be subsets in $Ob(CC(\rr,\lm))$ and $\wt{Ob}(CC(\rr,\lm))$ resp
 \begin{enumerate}
 \item $(\sim,\simeq')$ corresponds to a regular congruence relation on $CC$ (i.e., satisfies the conditions of \cite[Proposition 5.4]{Csubsystems}),
 %
-\item $\Gamma\in B$ and $ft(\Gamma)\sim F$ implies $\Gamma\sim \sigma(\Gamma,F)$,
+\item $\Gamma\in B$ and $ft(\Gamma)\sim F$ implies $\Gamma\sim \xi(\Gamma,F)$,
 %
-\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies ${\cal J}\simeq' \wt{\sigma}({\cal J},F)$.
+\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies ${\cal J}\simeq' \wt{\xi}({\cal J},F)$.
 \end{enumerate}
 \end{proposition}
 %
@@ -2744,8 +2739,28 @@ Conditions (6a),(6b),(7a),(7b) follow from the compatibility of $(\sim,\simeq')$
 
 
 
+\subsection{Appendix: the categories of sets}
+%
+For two sets $X$ and $Y$ let $Fun(X,Y)$ be the set of functions from $X$ to $Y$. We use the definition of a function between two sets from \cite[p.81]{Bourbaki} which is such that if for $X$, $Y$ and $X'$, $Y'$ one has $X\ne X'$ or $Y\ne Y'$ then  
+%
+$$Fun(X,Y)\cap Fun(X',Y')=\emptyset$$
+%
+As a corollary for any set $U$ the union 
+%
+$$Mor(Set(U))=\cap_{X,Y\in U}Fun(X,Y)$$
+%
+is disjoint and there are unique functions
+%
+$$s,t:Mor(Set(U))\sr U$$
+%
+such that for $f\in Fun(X,Y)$ one has $s(f)=X$ and $t(f)=Y$. There is also a unique function 
+%
+$$comp:Mor(Set(U))\times_{t,s}Mor(Set(U))\sr Mor(Set(U))$$
+%
+such that for $f,g\in Mor(Set(U))$ satisfying $t(f)=s(g)$ the function $comp(f,g)$ is the composition of $f$ and $g$. For any $U$ these three functions make the pair of sets $(U,Mor(Set(U)))$ into a category. If $U$ is a Grothendieck universe this category is called the category of sets in $U$.
 
-
+Similarly, the category $F$ whose set of objects is the set $\nn$ of natural numbers and the set of morphisms is the set $\cup_{n,m}Fun(stn(n),stn(m))$ is well defined. 
+%
 
 
 
