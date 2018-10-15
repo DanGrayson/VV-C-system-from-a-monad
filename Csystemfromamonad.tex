@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{graphicx}
+\usepackage{eufrak}
 \usepackage{amscd, amssymb}
 \usepackage{enumerate}
 \usepackage{hyperref}
@@ -38,11 +39,18 @@
 \newtheorem{ex}[proposition]{Exercise}
 \newtheorem{cond}[proposition]{Conditions}
 \newtheorem{cons}[proposition]{Construction}
+
+
+\newtheorem{problem}[proposition]{Problem}
+\newtheorem{construction}[proposition]{Construction}
+%
+
+
 %
 %
 %\newcommand{\C}[4]{\left[\begin{array}{rcl}&#1\\#3&\dw\dw&#4\\&#2\end{array}\right]}
-%\newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
-\newcommand{\llabel}[1]{\label{#1}}
+\newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
+%\newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
 \newcommand{\sr}{\rightarrow}
 \newcommand{\lr}{\longrightarrow}
@@ -79,6 +87,10 @@
 \newcommand{\eqg}{\stackrel{\Gamma}{\approx}}
 \newcommand{\alphaeq}{\stackrel{\alpha}{\sim}}
 \newcommand{\rtr}{\triangleright}
+\newcommand{\wh}{\widehat}
+\newcommand{\bind}{bind}
+\newcommand{\mbind}{\rho}
+\newcommand{\hc}{\wh{\circ}}
 %
 \newcommand{\piece}{\vskip 3mm\noindent\refstepcounter{proposition}{\bf
 \theproposition}\hspace{2mm}}
@@ -101,7 +113,11 @@
 %
 \parskip = 2mm
 \begin{center}
-{\bf\Large C-system of a module over a monad on sets\footnote{\em 2000 Mathematical Subject Classification: 18D99, 08C99, 03B15}}
+{\bf\Large C-system of a module over a monad on sets\footnote{\em 2000 Mathematical Subject Classification: 
+18D99, % category theory and homological algebra, categories with structures, none of the above, but in this section
+08C99, % general algebraic systems, other classes of algebras, none of the above but in this section
+03B15 % mathematical logic and foundations, general logic, higher-order logic and type theory
+}}
 
 \vspace{3mm}
 
@@ -113,178 +129,388 @@ Princeton NJ, USA. e-mail: vladimir@ias.edu}$^,$\footnote{Work on this paper was
 \end{center}
 
 \begin{abstract}
-This is the second paper in a series started in \cite{Csubsystems} which aims to provide mathematical descriptions of objects and constructions related to the first few steps of the semantical theory of dependent type systems. 
+This is the second paper in a series started in \cite{Csubsystems} which aims to provide mathematical descriptions of objects and constructions related to the semantical theory of dependent type systems. 
 
-We construct for any pair $(R,LM)$, where $R$ is a monad on sets and $LM$ is a left module over $R$, a C-system (``contextual category'') $CC(R,LM)$ and describe, using the results of \cite{Csubsystems} a class of sub-quotients of $CC(R,LM)$ in terms of objects directly constructed from $R$ and $LM$. In the special case of the monads of expressions associated with  nominal signatures this construction gives the C-systems of general dependent type theories when they are specified by collections of judgements of the four standard kinds.
+We construct for any pair $(R,LM)$, where $R$ is a monad on sets and $LM$ is a left module over $R$, a C-system (``contextual category'') $CC(R,LM)$ and describe, using the results of \cite{Csubsystems} a class of sub-quotients of $CC(R,LM)$ in terms of objects directly constructed from $R$ and $LM$. In the special case of the monads of expressions associated with  binding signatures this construction gives, for the first time, a mathematically rigorous way of constructing a C-system from a general collection of judgements of the four Martin-Lof kinds that satisfies a well specified set of conditions. 
 \end{abstract}
 
 %(2014.09.27) Make a note about the functoriality of CC(R,LM) on the "large module category" %of Hirschowitz-Maggesi. 
 %Change the name of the monad from M to R. Also \mu, \eta for the monad structure and 
 %\rho for the module structure.
 
+%$$\mathfrak{S}$$
+
 \subsection{Introduction}
 
-The first few steps in all approaches to the semantics of dependent type theories remain insufficiently understood. The constructions which have been worked out in detail in the case of a few particular type systems by dedicated authors are being extended to the wide variety of type systems under consideration today by analogy. This is not acceptable in mathematics. Instead we should be able to obtain the required results for new type systems by {\em specialization} of general theorems formulated and proved for abstract objects the instances of which combine together to produce a given type system. 
+The first few steps in all approaches to the semantics of dependent type theories remain insufficiently understood. The constructions which have been worked out in detail in the case of a few particular type systems by dedicated authors are being extended to the wide variety of type systems under consideration today by analogy. This is not acceptable in mathematics. Instead we should be able to obtain the required results for new type systems by {\em specialization} of general theorems formulated and proved for abstract objects the instances of which combine together to produce the objects associated with a given type system. 
 
-One such class of objects is the class of C-systems introduced in \cite{Cartmell0} (see also \cite{Cartmell1}) under the name ``contextual categories''. A modified axiomatics of C-systems and the construction of new C-systems as sub-objects and regular quotients of the existing ones in a way convenient for use in type-theoretic applications are considered in \cite{Csubsystems}.
+%???!!## Explain through reference to Martin Hofmann Section 2.3 about pre-syntax. The word "associative" does not even appear in that paper. Sections 2.3, 2.4 The "construction" of term model (which is what the present paper is about) in 3.1 lacks proofs and even precise statements entirely. 
 
-Modules over monads were introduced in \cite{HM2007} in the context of syntax with binding and substitution. 
+%The Ty/Tm definition of CwF appears already in Hofmann (3.1). 
 
-In the present paper, after some general comments about monads on $Sets$ and their modules, we construct for any such monad $R$ and a left module $LM$ over $R$ a C-system (contextual category) $CC(R,LM)$.   We describe, using the results of \cite{Csubsystems}, all the C-subsystems of $CC(R,LM)$ in terms of objects directly associated with $R$ and $LM$. 
+An approach that follows this general philosophy was outlined in \cite{CMUtalk}. In this approach the connection between the type theories, which belong to the concrete world of logic and programming, and abstract mathematical concepts such as sets or homotopy types is constructed through the intermediary of C-systems. 
+
+C-systems were introduced in \cite{Cartmell0} (see also \cite{Cartmell1}) under the name ``contextual categories''. A modified axiomatics of C-systems and the construction of new C-systems as sub-objects and regular quotients of the existing ones in a way convenient for use in type-theoretic applications are considered in \cite{Csubsystems}.
+
+In the approach of \cite{CMUtalk}, in order to provide a mathematical interpretation (semantics) for a type theory one constructs two C-systems. One C-system is constructed from the formulas of the type theory using as an initial step the construction of the present paper. The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the ``inference rules'' of the type theory. 
+
+The main component of this approach is the expected result that for a particular class of the inference rules the concrete C-systems built from the syntactic monads and equipped with operations corresponding to these inference rules are initial objects in the category of C-systems with the corresponding operations. 
+
+For such inference rules, then, there are unique homomorphisms from the concrete C-systems to the abstract C-systems that are compatible with the corresponding systems of operations. Since objects and morphisms of concrete C-systems are built from formulas and objects and morphisms of abstract C-systems are built from mathematical objects such as sets or homotopy types and functions, these homomorphisms provide a mathematical meaning to formulas of type theory. 
+
+In the particular case of the ``standard univalent models'' of  Martin-Lof type theories and of the Calculus of Inductive Constructions (CIC) the existence of such homomorphisms is the only known approach to formal justifications for the use of the proof assistants such as Coq for the formalization of mathematics in the univalent style (see \cite{UniMath}, \cite{UniMath2015}). 
+
+It is important to distinguish the concepts of a model of a type theory and the concept of an interpretation of the same type theory. A {\em model} of type theory can be defined as a C-system that is equipped with the systems of operations corresponding to the inference rules of the type theory. A (categorical) {\em interpretation} of a type theory with values in a given category is a functor from the category underlying the syntactic C-system of the type theory to that category. 
+
+Only if we know that the initiality result holds for a given type theory can we claim that any its model defines an interpretation by taking the composition of the canonical homomorphism of the C-systems with the functor such as the functor $int$ of \cite{Cfromauniverse}. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. 
+
+When one speaks about the univalent model of a Martin-Lof type theory or of the CIC one often fails to distinguish these two concepts.  A construction of a {\em model} for the version of the Martin-Lof type theory that is used in the UniMath library (\cite{UniMath},\cite{UniMath2015})  was sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiality result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in both the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiality theorem and providing a proof of such a theorem is lacking and needs to be developed. 
+
+As the criteria for what constitutes an acceptable proof were becoming more clear as a result of continuing work on formalization, it also became clear that more detailed and general proofs need to be given to many of the theorems of \cite{KLV1} that are related to the model itself. For the two of the several main groups of inference rules of current type theories it is done in \cite{fromunivwithPi} and \cite{fromunivwithpaths}. Other groups of inference rules will be considered in further papers of the series. 
+
+This paper may be considered to be an analog of \cite{Cfromauniverse} for the concrete side of the theory in the sense that it provides a very general construction the particular cases of which lead to the concrete (syntactic) C-systems of type theories. 
+
+If $R=(R,\eta,\mu)$ is a monad on a category $\cal C$ (see Definition \ref{}) then there is defined the Kleisli category ${\cal C}_R$ of $R$ whose objects are the same as objects of $\cal C$ and morphisms from $X$ to $Y$ are defined as morphisms from $X$ to $R(Y)$ in $\cal C$. The identity morphisms in ${\cal C}_R$ are given by the $\eta$ operation of $R$ and the composition by the composition in $\cal C$ and the $\mu$ operation of $R$.
+
+A left $R$-module $LM$  over $R$ with values in a category $\cal D$ (see Definition \ref{}) defines a functor $LM_R:{\cal C}_R\sr {\cal D}$ and this function from left $R$-modules to functors from the Kleisli category is an equivalence (see \ref{}). 
+
+An important case is the left $R$-module corresponding to $R$ itself which we will also denote by $R$.   
+
+Monads on the category of sets and left modules over such monads have a number of special ????
+
+
+Of a particular interest is the case of ``syntactic'' pairs $(R,LM)$ where for $X=\{x_1,\dots,x_n\}$, $R(X)$ and $LM(X)$ are the sets of expressions of some kind with free variables from $\{x_1,\dots,x_n\}$ modulo an equivalence relation such as $\alpha$-equivalence. The difference between $R$ and $LM$ is in this case expressed by the fact that one can substitute elements from $R(X)$ for variables both in $R(Y)$ and $LM(Y)$ but elements of $LM(X)$ can not be substituted for variables in either. 
+
+The simplest class of syntactic pairs, where $LM=R$, arises from binding signatures (see \cite[p.228]{HM2007}). To any such signature $\Sigma$ one associates a class of expressions with bindings and $R(\{x_1,\dots,x_n\})$ is the set of such expressions with free variables from the set $\{x_1,\dots,x_n\}$ modulo $\alpha$-equivalence.  
+
+The more general case when $LM$ is not equal to $R$ arises when one starts to distinguish ``type expressions'' from ``object expressions''. The rules of type theories require the possibility to substitute an object expression instead of a variable both in a type expression and in an object expression but do not require to substitute a type expression instead of a variable either in a type or in an object expression. In type theories of proof assistants such as Coq the user may be under the impression that the substitution of type expressions instead of variables occurs (as in substituting $unit$ for $T$ in $iscontr(T)$ in the UniMath to obtain $iscont(unit)$, cf. \cite{UniMath2015}) this is however due to a ``silent'' map from object expressions to type expressions that is used in these theories. What actually happens in these substitutions is that an object expression whose type is a universe is substituted instead of a variable in some situations and the same object expression is mapped to the set of type expressions and used as a type expression in others. In our constructions this corresponds to $LM=R$ - an object expression that is an element of $R(X)$ for some set of variables $X$ is considered as an element of the set of type expressions $LM(X)$ using the identity map defined by this equality (more generally one may observe the same illusion when $LM\subset R$). 
+
+The question of whether to keep this map silent or to give it a name (usually $El$) is know in type theory as the difference between the type theories with ``Russell universes'' (silent map) and ``Tarski universes'' (explicit map) which is at the center of some of the current controversies about the universe management in proof assistants. It is also the subject of a discussion in the last, unfinished, chapter in \cite{Bibliopolis}. 
+
+For the purposes of the present paper we fortunately don't need to make a choice between the two approaches since the formalism that we develop is applicable to both. It is however clear from the constructions that the separation between $R$ and $LM$ is a very natural possibility that directly generalizes the case of $LM\subset R$ and creates new examples (e.g. Example \ref{}). 
+
+As was shown in \cite{HM2007} the monad that one associates to a binding signature can be characterized as being an initial object in the category of monads equipped with ``left-linear'' operations corresponding to the operations of the signature.  This provides an abstract mathematical characterization of the concrete objects - expressions modulo $\alpha$-equivalence or, equivalently, expressions with De Brujin indexes. 
+
+An important remark needs to be made here. While monads provide a very convenient way of expressing syntax with bindings in terms familiar to mathematicians the approach based on monads is equivalent to an earlier one pioneered in \cite{FPT}. For two sets $X$ and $Y$ let $Fun(X,Y)$ be the set of functions from $X$ to $Y$.  In that earlier approach one considers the category $F$ such that $Ob(F)=\nn$ and
+%
+$$Mor(F)=\amalg_{m,n}Fun(stn(m),stn(n))$$
+%
+where $stn(i)=\{0,\dots,i-1\}$ is the ``standard" set with $i$ elements, and functors $Funct(F,Sets)$ from $F$ to $Sets$ (the authors call these functors ``presheaves'' considering them as presheaves on $F^{op}$) . This category of functors is equivalent\footnote{In the set-theoretic mathematics this equivalence can not be defined without axiom of choice. The problem lies in the fact that the obvious functor from $F$ to the category of finite sets, while it is  fully faithful and essentially surjective, does not have a constructive inverse. In the univalent foundations, while one still can not construct an inverse to the functor from $F$ to finite sets, one can construct an inverse to the corresponding functor from $Funct(FSets,Sets)$ to $Funct(F,Sets)$ using the fact that $Sets$ is a (univalent) category. Cf. \cite{RezkCompletion} and \cite[RezkCompletion library]{UniMath}.} to the category of finitary (co-continuous) functors from $Sets$ to $Sets$. In particular, there is a monoidal structure $(\bullet,V)$ on $Funct(F,Sets)$ corresponding to the composition of functors under this equivalence (cf. \cite[Sec. 3]{FPT}) and finitary monads can be considered as monoids in $Funct(F,Sets)$ with respect to this monoidal structure. 
+
+Using this equivalence of concepts (detailed in \cite{}) the constructions and results of \cite{HM2007} and \cite{FPT} can be viewed together as describing different aspects of a fundamental connection between the concrete world of syntax and the abstract world of categorical mathematics. 
+
+After this long detour let me clarify that the results and constructions of the present paper do not depend on either \cite{HM2007} or \cite{FPT}, except for the definition of a left module over a monad in \cite{HM2007} and examples. The connection to \cite{HM2007} and \cite{FPT} will become important only in future papers where we will consider the abstract concept of a system of inference rules and where binding signatures and the corresponding syntactic monads will become essential. 
+
+In the present paper, after some general comments about monads on $Sets$ and their modules, we construct for any such monad $R$ and a left module $LM$ over $R$ a C-system (contextual category) $CC(R,LM)$.  We start with a construction of a category ${C(R)}$ such that $Ob({C(R)})=\nn$ is the set of natural numbers whose elements we will denote as $\wh{m}$, $\wh{n}$ etc. and
+%
+$$Mor({C(R)})=\amalg_{\wh{m},\wh{n}}Hom_{Sets_R}(stn(n),stn(m))$$
+%
+and the identity and composition is defined such as to make the mapping $\wh{n}\mapsto stn(n)$ to extend to a fully faithful functor $cr_1$ from ${C(R)}^{op}$ to the Kleisli category $Sets_R$ of $R$.  We may sometimes  use this functor as a ``coercion'', in the terminology of proof assistant Coq, i.e., to write $\wh{n}$ instead of $stn(n)$ and $f$ instead of $\Phi(f)$. We will also use the function $LM\mapsto LM_R$ from left modules to functors on the Kleisli category as a coercion. In agreement with this convention we may write $LM$ for the presheaf of sets on ${C(R)}$ given by $\wh{n}\mapsto LM(stn(n))$.  
+
+We describe, using the results of \cite{Csubsystems}, all the C-subsystems of $CC(R,LM)$ in terms of objects directly associated with $R$ and $LM$. 
 
 We then define two additional operations $\sigma$ and $\wt{\sigma}$ on $CC(R,LM)$ and describe the regular congruence relations (see \cite{Csubsystems}) on C-subsystems of $CC(R,LM)$ which are compatible in a certain sense with $\sigma$ and $\wt{\sigma}$.
 
-Of a particular interest is the case of ``syntactic'' pairs where $R(\{x_1,\dots,x_n\})$ and $LM(\{x_1,\dots,x_n\})$ are the sets of expressions of some kind with free variables from $\{x_1,\dots,x_n\}$ modulo an equivalence relation such as $\alpha$-equivalence. 
+Such regular congruence relations correspond, in the particular cases of syntactic monads and C-subsystems of $CC(R,LM)$ generated by systems of inference rules, to the relations that can be described by the two kinds of equality judgements. 
 
-The simplest class of syntactic pairs where $LM=R$ arises from signatures considered in \cite[p.228]{HM2007}. To any such signature $\Sigma$ one associates a class of expressions with bindings and $R(\{x_1,\dots,x_n\})$ is the set of such expressions with free variables from the set $\{x_1,\dots,x_n\}$ modulo the $\alpha$-equivalence.  
+More precisely, suppose that we are given a type theory that is formulated in terms of the four kinds of judgements originally introduced by Per Martin-Lof in \cite[p.161]{MLTT79}\footnote{We are not using the notation based on $\vdash$ that became widespread in the modern literature on type theory since it conflicts with other uses of the turnstile symbol in logic.}:
+%
+$$(x_0:T_0,\dots,x_{n-1}:T_{n-1})\,T\,\,type$$
+$$(x_0:T_0,\dots,x_{n-1}:T_{n-1})\,t:T$$
+$$(x_0:T_0,\dots,x_{n-1}:T_{n-1})\,T=T'$$
+$$(x_0:T_0,\dots,x_{n-1}:T_{n-1})\,t=t':T$$
+%
+to which one adds the judgement
+%
+$$(x_0:T_0,\dots,x_{n-1}:T_{n-1})\,ok$$
+%
+asserting that $(x_0:T_0,\dots,x_{n-1}:T_{n-1})$ is a valid context of variable declarations.
 
-Suppose now that we are given a type theory based on the syntax of expressions specified by $\Sigma$ that is formulated in terms of the four kinds of basic judgements originally introduced by Per Martin-Lof in \cite[p.161]{ML78}.  
+Since we are only interested in the $\alpha$-equivalence classes of judgements we may assume that the variables declared in the context are taken from the set of natural numbers such that the first declared variable is $0$, the second is $1$ etc.  Then, the set of judgements of the form 
+%
+$$(0:T_0,\dots,{n-1}:T_{n-1})\,T\,\,type$$
+%
+can be identified with the set of judgements of the form 
+%
+$$(0:T_0,\dots,{n-1}:T_{n-1}, n:T)\,ok$$
+%
+With this identification the derivable judgements of the type theory whose raw syntax for object expressions is given by a monad $R$ and raw syntax for type expressions by a left $R$-module $LM$, can be described as four subsets ${\wt{B}},{B},{Beq}$ and ${\wt{Beq}}$ where 
+%
+$${\wt{B}} \subset \coprod_{n\ge 0} LM({stn(0)})\times\dots\times LM({stn(n-1)})$$
+$${B}\subset  \coprod_{n\ge 0} LM({stn(0)})\times\dots\times LM({stn(n-1)})\times R({stn(n)})\times LM({stn(n)})$$
+$${Beq} \subset \coprod_{n\ge 0} LM({stn(0)})\times\dots\times LM({stn(n-1)})\times LM({stn(n)})^2$$
+$${\wt{Beq}} \subset \coprod_{n\ge 0} LM({stn(0)})\times\dots\times LM({stn(n-1)})\times R({stn(n)})^2\times LM({stn(n)})$$ 
+%
 
-Since we are only interested in the $\alpha$-equivalence classes of judgements we may assume that the variables declared in the context are taken from the set of natural numbers such that the first declared variable is $1$, the second is $2$ etc.  Then, the set of judgements of the form 
-%
-$$(1:A_1,\dots,n:A_n\vdash A\, type)$$
-%
-(in the notation of Martin-Lof ``$A\,type\,(1\in A_1,\dots,n\in A_n)$'') can be identified with the set of judgements of the form 
-%
-$$(1:A_1,\dots,n:A_n, n+1:A\rhd)$$
-%
-stating that the context $(1:A_1,\dots,n:A_n, n+1:A)$ is well-formed. 
+The sets on the right hand side of the first two of these inclusions are in the bijective correspondences with the sets $Ob(CC(R,LM))$ and $\wt{Ob}(CC(R,LM))$. It was shown in \cite[Proposition 4.3]{Csubsystems} that for any C-system $CC$, pairs $(B,\wt{B})$ where $B\subset Ob(CC)$ and $\wt{B}\subset \wt{Ob}(CC)$ that satisfy certain conditions are in a bijective correspondence with C-subsystems of $CC$. In Proposition \ref{2009.10.16.prop3} we give a direct reformulation of these conditions in the case of C-systems of the form $CC(R,LM)$ in terms of subsets ${\wt{B}}$ and ${B}$ and in Remark \ref{2010.08.07.rem1} we show how these conditions look like in the notation of type theory. 
 
-With this identification the type theory is specified by four sets $C,\wt{C},Ceq$ and $\wt{Ceq}$ where 
-%
-$$C \subset \coprod_{n\ge 0} LM(\emptyset)\times\dots\times LM(\{1,\dots,n-1\})$$
-$$\wt{C}\subset  \coprod_{n\ge 0} LM(\emptyset)\times\dots\times LM(\{1,\dots,n-1\})\times R(\{1,\dots,n\})\times LM(\{1,\dots,n\})$$
-$$Ceq \subset \coprod_{n\ge 0} LM(\emptyset)\times\dots\times LM(\{1,\dots,n-1\})\times LM(\{1,\dots,n\})^2$$
-$$\wt{Ceq} \subset \coprod_{n\ge 0} LM(\emptyset)\times\dots\times LM(\{1,\dots,n-1\})\times R(\{1,\dots,n\})^2\times LM(\{1,\dots,n\})$$ 
-%
-On the other hand we show that any pair $(CC,\sim)$, where $CC$ is a sub-C-system of $CC(R,LM)$ and $\sim$ is a regular congruence relation on $CC$, defines four subsets of such form. Proposition \ref{2014.07.10.prop1} spells out the necessary and sufficient conditions that the sets $C,\wt{C},Ceq,\wt{Ceq}$ should satisfy in order to correspond to a pair $(CC,\sim)$. 
+We then continue our analysis to provide a mathematical meaning to the subsets ${Beq}$ and ${\wt{Beq}}$ as well. In order to obtain a bijection of Proposition \ref{2014.07.10.prop2} between pairs of such subsets that satisfy certain properties and objects that have meaning for general C-systems we introduce operations $\sigma$ and $\wt{\sigma}$. 
 
-A wider class of syntactic pairs $(R,LM)$ that arises from nominal signatures is considered in Section \ref{2014.07.22.sec}.  
+Proposition \ref{2014.07.10.prop1} and subsequent lemmas culminating in Proposition \ref{2014.07.10.prop2} form what is probably the most important part of the paper. They provide, for the first time, a rigorous mathematical analysis of the conditions that the derivable definitional equality judgements of a type system have to satisfy in order to define well-behaved equivalence relation on the sets such as the sets of morphisms (context substitutions) of a type theory. 
+
+While proving conditions of Proposition \ref{2014.07.10.prop1} in the case when ${\wt{B}}$, ${B}$, ${Beq}$ and ${\wt{Beq}}$ are the sets of derivable judgements of a particular type system is something that must be done in order to apply the results of the present paper to this type system, proving these conditions is much less difficult than giving a direct construction of a C-system starting from the syntax and the inference rules.
+
+Providing this explicit set of conditions and proving that they are necessary and sufficient in order to associate a C-system and, therefore, any of the other semantic objects such as a category with families, to a particular type system may be considered to be the main result of this paper. 
+
+\vspace{5mm}
+
+For morphisms $f:X\sr Y$ and $g:Y\sr Z$ we denote their composition as $f\circ g$. For functors $F:{\cal C}\sr {\cal C}'$, $G:{\cal C}'\sr {\cal C}''$ we use the standard notation $G\circ F$ for their composition. 
+
+We often write $y$ instead of $(x,y)$ for an element of the set $\amalg_{x\in X} Y(x)$ corresponding to $x\in X$ and $y\in Y(x)$. For example, we may write $f$ for the element $(m,(n,f))$ of $Mor(F)$ corresponding to a function $f:\{1,\dots,m\}\sr\{1,\dots,n\}$. 
+
+Following the notation of the proof assistant Coq we let $unit$ denote the distinguished one point set or type and $tt$ the only point of $unit$. 
 
 This is one the papers extending the material which I started to work on in \cite{NTS}. I would like to thank the Institute Henri Poincare in Paris and the organizers of the ``Proofs'' trimester for their hospitality during the preparation of this paper. The work on this paper was facilitated by discussions with Richard Garner and Egbert Rijke. 
 
-Notation: For morphisms $f:X\sr Y$ and $g:Y\sr Z$ we denote their composition as $f\circ g$. For functors $F:{\cal C}\sr {\cal C}'$, $G:{\cal C}'\sr {\cal C}''$ we use the standard notation $G\circ F$ for their composition. 
+
 
 
 
 \subsection{Left modules over monads}
 %
-Recall (cf. \cite{HM2007}) that a monad on a category $\cal C$ is a functor $M:{\cal C}\sr {\cal C}$ together with two families of morphisms:
+Definition \ref{2015.07.30.def1} below is, according to Manes \cite[p.30]{Manes}, due to Godement \cite{Godement}. See also \cite[Ch. VI]{MacLane}.
+%
+\begin{definition}
+\llabel{2015.07.30.def1}
+A monad on a category $\cal C$ is a collection of data of the form:
 %
 \begin{enumerate}
-\item for any $X\in {\cal C}$, a morphism $\eta_X:X \sr R(X)$,
+\item a functor $R:{\cal C}\sr {\cal C}$,
+\item for any $X\in {\cal C}$, a morphism $\eta_X:X\sr R(X)$,
 \item for any $X\in {\cal C}$, a morphism $\mu_X:R(R(X))\sr R(X)$
 \end{enumerate}
 %
-which satisfy certain conditions. For objects $X$, $X'$ and a morphism $f:X'\sr R(X)$, the composition $R(X') \stackrel{R(f)}{\sr} R(R(X))\stackrel{\mu_X}{\sr} R(X)$ is a morphism  $bind(f):R(X')\sr R(X)$. This allows one to describe monads as follows:
-%
-\begin{lemma}
-\llabel{2014.06.30.l1}
-The construction outline above defines an equivalence between (the type of)  monads  on $\cal C$ and (the type of) collections of data of the form:
+such that:
 %
 \begin{enumerate}
-\item for every object $X$ an object $R(X)$,
-\item for every object $X$ a morphism $\eta_X: X \sr R(X)$,
-\item for every two objects $X$, $X'$ and a morphism $f:X\sr R(X')$, a morphism $ bind(f):R(X)\sr R(X')$
+\item for any $f:X\sr Y$ one has 
+%
+\begin{enumerate}
+\item $\eta_X\circ R(f)=f\circ \eta_Y$,
+\item $\mu_X\circ R(f)=R(R(f))\circ \mu_Y$,
 \end{enumerate}
 %
+\item for any $X$ one has 
 %
-which satisfy the following conditions:
+$$R(\mu_X)\circ \mu_X=\mu_{R(X)}\circ \mu_X$$
 %
-\begin{enumerate}
-\item for an object $X$, $ bind(\eta_X)=id_{R(X)}$,
-\item for a morphism $f:X\sr X'$, $\eta_X\circ bind(f)=f$,
-\item for two morphisms $f:X\sr R(X')$, $g:X'\sr R(X'')$, $ bind(f \circ bind(g))= bind(f)\circ bind(g)$.
-\end{enumerate}
+\item for any $X$ one has
 %
-\end{lemma}
+$$R(\eta_X)\circ \mu_X=Id_{R(X)}$$
 %
-\begin{proof}
-Straightforward. Cf. \cite{Moggi91}, \cite[Prop. 1]{HM2010}.
-\end{proof}
+and
 %
-\begin{lemma}
-\llabel{2014.07.28.l2}
-Let $R$ be a monad on the product category ${\cal C}\times {\cal D}$. Let $A\in {\cal D}$. Then the functor $R_{A,1}:X\mapsto pr_{\cal C}(R(X,A))$ has a natural structure of a monad on $\cal C$.
-\end{lemma}
+$$\eta_{R(X)}\circ \mu_X=Id_{R(X)}$$
 %
-\begin{proof}
-One defines the morphisms $\eta_X:X\sr R_{A,1}(X)$ by
-%
-$$\eta_X := pr_{\cal C}(\eta_{(X,A)})$$
-%
-and morphisms $ bind(f):R_{A,1}(X)\sr R_{A,1}(X')$ for $f:X\sr R_{A,1}(X')$ by
-%
-$$ bind(f) := pr_{\cal C}( bind(f,pr_{\cal D}(\eta_{(X,A)})))$$
-%
-The verification of the conditions of Lemma \ref{2014.06.30.l1} is straightforward. 
-\end{proof}
-% 
-The concept of a module over a monad was first explicitly introduced in \cite{HM2007}.
-%
-\begin{definition}
-\llabel{2014.07.26.d1} Let $R$ be a monad on a category ${\cal C}$. A left module over $R$ with values in a category $\cal D$ is a functor $LM:{\cal C}\sr {\cal D}$ together with, for all $X, X'\in {\cal C}$ and $f:X\sr R(X')$, a morphism $\rho(f):LM(X)\sr LM(X')$ such that
-%
-\begin{enumerate}
-\item $\rho(\eta_X)=Id_{LM(X)}$,
-\item for $f:X\sr R(X')$, $g:X'\sr R(X'')$, $\rho(f) \rho(g)=\rho(f\, bind(g))$.
 \end{enumerate}
 \end{definition}
 %
-One verifies easily (cf. \cite[Def. 9]{HM2010}) that a left $R$-module structure on $LM$ is the same as a natural transformation $LM\circ R\sr LM$ which satisfies the expected compatibility conditions with respect to $Id\sr R$ and $R\circ R\sr R$. 
+\begin{remark}\rm
+\llabel{2015.07.30.rem1}
+It is very easy to construct an equivalence between the type of monads on a given precategory $\cal C$ (resp. a bijection between the set of monads on $\cal C$) and the type (resp. set) of monoids in the category $Funct({\cal C},{\cal C})$ with respect to the monoidal structure given by the composition of functors. This equivalence, in the case of a type theoretic formalization, is actually an isomorphism where by an isomorphism we mean an isomorphism of the corresponding objects of the syntactic category. 
+\end{remark}
 %
-\begin{lemma}
-\llabel{2014.07.28.l1}
-Let $R$ be a monad on a category $\cal C$. Then one has:
+\begin{remark}\rm
+\llabel{2015.08.12.rem1}
+There are at least two other definitions that specify, over any universe, types of objects that are equivalent to the type of monads. Objects specified by one of these definition are called by Manes ``algebraic theories in clone form in $\cal C$''. See \cite[Def. 3.2, p.24]{Manes}. The objects specified by another one, which appears in \cite[Exercise 12, p.32]{Manes} and then more explicitly in \cite{Moggi91} are called by Moggi  ``Kleisli triples''. Kleisli triples are more popular than monads in papers related to computer science while monads are more popular in mathematical papers. Formally proving the equivalence between these three definitions as well as constructing examples that show that these equivalences are not isomorphisms in the syntactic category may be the topic for a small project in univalent formalization.
+
+An analogous project in the set-theoretic formalization should be able to construct bijections between the corresponding sets because the underlying function $R_{Ob}:Ob({\cal C})\sr Ob({\cal C})$ remains unchanged by the corresponding equivalences and therefore they can be seen as bijections between the sets of monad, algebraic theory in clone form, and Kleisli triple structures on a given function $R_{Ob}$.
+\end{remark} 
+%
+\begin{problem}
+\llabel{2015.07.30.prob3}
+Given a monad $(R,\eta,\mu)$ on a precategory $\cal C$ to construct a new precategory ${\cal C}_R$ and a functor $G_R:{\cal C}\sr {\cal C}_R$.
+\end{problem}
+%
+The following construction first appeared in \cite{Kleisli} who worked with the dual concept that we today would call a co-monad. To obtain the correct correspondence between his construction and Construction \ref{2015.07.30.constr3} one needs to replace his $\cal L$ by our ${\cal C}^{op}$, his $\cal K$ by our $({\cal C}_R)^{op}$ and his $G$ by our $(G_R)^{op}$. 
+%
+\begin{construction}\rm
+\llabel{2015.07.30.constr3}
+We set $Ob({\cal C}_R)=Ob({\cal C})$ and
+%
+$$Mor({\cal C}_R)=\amalg_{X,Y\in Ob({\cal C})}Hom_{\cal C}(X, R(Y))$$
+%
+For $X\in Ob({\cal C})$ define $Id_X$ in $Mor({\cal C}_R)$ by the formula
+%
+$$Id_{X, {\cal C}_R}=(X,(X,\eta_X))$$
+%
+For $f=(X,(X',f_0:X\sr R(X')))$ and $g=(X',(X'',g_0:X'\sr R(X'')))$  in $Mor({\cal C}_R)$  define their composition $f\circ g$ by the formula
+%
+$$f\circ g=(X,(X'', f_0\circ R(g_0)\circ \mu_{X''}))$$
+%
+Define the object component $(G_R)_{Ob}$ of the functor $G_R$ to be the identity function of $Ob({\cal C})$ the morphism component by the formula
+%
+$$(G_R)_{Mor}(f:X\sr X')=(X,(X',f\circ \eta_{X'}))$$
+%
+For the verification of the axioms needed for the proof that these data defines a category and a functor we refer to  \cite{Kleisli}. 
+\end{construction}
+%
+The category ${\cal C}_R$ specified by Construction \ref{2015.07.30.constr3} is called the Kleisli category of $R$. 
+%
+\begin{definition}
+\llabel{2015.07.30.def4}
+Let $\cal C$ be a category and $(R,\eta,\mu)$ a monad on $\cal C$. A left module over $R$ with values in a category $\cal D$ is a collection of data of the following form
 %
 \begin{enumerate}
-\item If $LM_1$, $LM_2$ are left $R$-modules with values in ${\cal D}_1$ and ${\cal D}_2$ respectively then the functor $X\mapsto (LM_1(X),LM_2(X))$ has a natural structure of a left $R$-module with values in ${\cal D}_1\times {\cal D}_2$.
-\item If $LM$ is a left $R$-module with values in $\cal D$ and $F:{\cal D}\sr {\cal D'}$ is a functor then $F\circ LM$ has a natural structure of a left $R$-module with values in $\cal D'$.
+\item a functor $LM:{\cal C}\sr {\cal D}$,
+\item for any $X\in {\cal C}$ a morphism $\rho_X:LM(R(X))\sr LM(X)$
 \end{enumerate}
-\end{lemma}
 %
-\begin{proof}
-Straightforward.
-\end{proof}
+such that:
+%
+\begin{enumerate}
+%
+\item for any $f:X\sr Y$ one has 
+%
+$$\rho_X\circ LM(f)=LM(R(f))\circ \rho_Y$$
+%
+\item for any $X$ one has:
+%
+$$LM(\eta_X)\circ \rho_X=Id_{LM(X)}$$
+%
+and
+\item for any $X$ one has:
+%
+$$LM(\mu_X)\circ \rho_X=\rho_{R(X)}\circ \rho_X$$
+%
+\end{enumerate}
+\end{definition}
+%
+\begin{example}\rm
+\llabel{2015.07.30.ex1}
+Taking ${\cal D}={\cal C}$, $LM=R$ and $\rho=\mu$ one obtains a left module over $R$ whose underlying functor is $R$ itself. 
+\end{example}
+%
+\begin{remark}\rm
+\llabel{2015.07.30.rem1}
+It is very easy to construct an equivalence between the type of left modules over a given monad (resp. a bijection between the set of left modules over a given monad) with values in the same category $\cal C$ and the type (resp. set) of left modules over the corresponding monoid in the monoidal category $(Funct({\cal C},{\cal C}),\circ)$. In the type theoretic case this equivalence is an isomorphism of the corresponding objects of the syntactic category. 
+\end{remark}
+%
+The following construction was, to the best of our knowledge, first described in \cite[Def. 10, p.550]{HM2010} under the name of a Kleisli extension. 
+%
+\begin{problem}
+\llabel{2015.07.30.prob5}
+For a monad $R$ and a left module $LM$ over $R$ to construct a functor $LM_R:{\cal C}_R\sr {\cal D}$.
+\end{problem}
+%
+\begin{construction}\rm
+\llabel{2015.07.30.constr4}
+We define the object component of $LM_R$ to be the object component of $LM$. For $f=(X,(X',f_0))$ in $Mor({\cal C}_R)$ we define 
+%
+$$(LM_R)_{Mor}(f)=LM(f_0)\circ \rho_{X'}$$
+%
+For the identity morphism axiom we have
+%
+$$LM_R(Id_X)=LM_R((X,(X,\eta_X)))=LM(\eta_X)\circ \rho_X=Id_{LM(X)}$$
+%
+For the composition axiom we have
+%
+$$LM_R((X,(X',f_0))\circ (X',(X'',g_0)))=LM_R((X,(X'',f_0\circ R(g_0)\circ \mu_{X''})))=$$$$LM(f_0\circ R(g_0)\circ \mu_{X''})\circ \rho_{X''}=LM(f_0)\circ LM(R(g_0))\circ LM(\mu_{X''})\circ \rho_{X''}=$$$$LM(f_0)\circ LM(R(g_0))\circ \rho_{R(X'')}\circ \rho_{X''}=LM(f_0)\circ \rho_{X'}\circ LM(g_0)\circ \rho_{X''}$$
+%
+and
+%
+$$LM_R((X,(X',f_0)))\circ LM_R((X',(X'',g_0)))=LM(f_0)\circ \rho_{X'}\circ LM(g_0)\circ \rho_{X''}$$
+%
+This completes Construction \ref{2015.07.30.constr4}.
+\end{construction}
 %
 \begin{lemma}
-\llabel{2014.07.28.l3}
-Under the assumptions and in the notation of Lemma \ref{2014.07.28.l2} the morphisms
+\llabel{2015.07.30.l1}
+For a monad $R$ on $\cal C$, a left module $LM$ and $f:X\sr X'$ in $\cal C$ one has
 %
-$$\rho(f:X\sr R_{A,1}(X'))= bind(f, pr_{\cal D}(\eta_{(X',A)})) : R(X,A)\sr R(X',A)$$
-%
-define a structure of a left $R_{A,1}$-module with values in ${\cal C}\times {\cal D}$ on the functor 
-%
-$$M_{A,1}:X\mapsto R(X,A)$$
+$$LM_R(G_R(f))=LM(f)$$
 %
 \end{lemma}
 %
 \begin{proof}
-Direct verification of the conditions of Definition \ref{2014.07.26.d1}.
+One has
+%
+$$LM_R(G_R(f))=LM_R((X,(X',f\circ \eta_{X'})))=LM(f\circ \eta_{X'})\circ \rho_{X'}=LM(f)\circ LM(\eta_{X'})\circ \rho_{X'}=$$$$LM(f)\circ Id_{LM(X')}=LM(f)$$
+%
 \end{proof}
 %
-
-In the case of a monad $R$ on $Sets$ and a left $R$-module $LM$ with values in $Sets$, for $E\in LM(\{x_1,\dots,x_n\})$ or $E\in R(\{1,\dots,m\})$  and $f:\{x_1,\dots,x_n\}\sr R(X')$ such that $f(x_i)=f_i$ we write $\rho(f)(E)$ as $E(f_1/x_1,\dots,f_n/x_n)$. 
-
-For $E\in LM(\{1,\dots,m\})$ and $n\ge 1$ we set:
+The discussion from this point until the end of the present section is not required for the understanding of the main results of the paper.
+%???
 %
-$$t_n(E)=E[n+1/n,n+2/n+1,\dots,m+1/m]$$
-$$s_n(E)=E[n/n+1,n+1/n+2,\dots,m-1/m]$$
+\begin{remark}\rm
+A construction of a left $R$-module from a functor ${\cal C}_R\sr {\cal D}$ is outlined in \cite[Prop. 3]{HM2010} and in the same paper there is an outline of a proof that these two constructions are inverse to each other providing a bijection between left $R$-modules with values in a category $\cal D$ and functors ${\cal C}_R\sr {\cal D}$. This bijection is identity on the underlying functions from the type (resp. set) of objects of ${\cal C}$ to the type (resp. set) of objects of $\cal D$ so that one can talk about the bijection between the sets of a left $R$-module structures on a function $Ob({\cal C})\sr Ob({\cal D})$ and the set of functor structures on the same function considered as a function from $Ob({\cal C}_R)$. In type theoretic formalization this equivalence is not an isomorphism in the syntactic category.
+\end{remark}
 %
-If we were numbering elements of a set with $n$ elements from $0$ then we would have $t_n=LM(\partial_{n-1})$ and $s_n=LM(\sigma_{n-1})$ where $\partial_i$ and $\sigma_i$ are the usual generators of the simplicial category. 
 
+\comment{
+
+\subsection{Monads on sets and their left modules} 
+
+
+
+
+
+
+In the case of a monad $R$ on $Sets$ and a left $R$-module $LM$ with values in $Sets$, for $X=\{x_1,\dots,x_n\}$, $E\in LM(X)$ and $f:X\sr R(Y)$ such that $f(x_i)=f_i$ we often write $\mbind(f)(E)$ as $E(f/x)$ or $E(f_1/x_1,\dots,f_n/x_n)$. We also often write $x_i$ for $\eta_{X}(x_i)$. 
+
+In this notation the first condition of Definition \ref{2014.07.26.d1} is that $E(x/x)=E$ and the second condition is that if $f:\{x_1,\dots,x_n\}\sr R(\{y_1,\dots,y_o\})$ and $g:\{y_1,\dots,y_o\}\sr R(Z)$ then $E(f/x)(g/y)=E(f_1(g/y)/x_1,\dots,f_n(g/y)/x_n)$\footnote{Note that this rule refers to the case when one substitutes {\em all} free variables of an expression so that the usual condition that $y_1,\dots,y_o$ don't occur in $E$ is not required.}.
+
+For $E\in LM({stn(m)})$ and $n\ge 1$ we set:
 %
+$$t_n(E)=E(1/1,\dots,n-1/n-1,n+1/n,n+2/n+1,\dots,m+1/m)\in LM(\wh{m+1})$$
+$$s_n(E)=E(1/1,\dots,n/n,n/n+1,n+1/n+2,\dots,m-1/m) \in LM(\wh{m-1})$$
+%
+If we were numbering elements of a set with $n$ elements from $0$ then in views of Definition \ref{2014.07.26.d1}(3) we would have $t_n=LM(\partial_{n-1})$ and $s_n=LM(\sigma_{n-1})$ where $\partial_i$ and $\sigma_i$ are the usual generators of the simplicial category. 
+
+In particular $t_{m+1}=LM(i_m)$ where $i_m:\wh{m+1}\sr \wh{m}$ is the morphism corresponding to the function given by $j\mapsto j$ for $j=1,\dots,m$. For $E\in LM({stn(m)})$ we will often write $E$ instead of $t_{m+1}(E)$.
+
 For a monad $R$ on $Sets$ we let $R-cor$ (``R-correspondences'') to be the full subcategory of the Kleisli category of $R$ whose objects are finite sets. Recall, that the set of morphisms from $X$ to $Y$ in $R-cor$ is the set of maps from $X$ to $R(Y)$ i.e. $R(Y)^X$ (in other words, $R-cor$ is the 
 category of free, finitely generated $R$-algebras).   
 
-We further let $C(R)$ denote the pre-category\footnote{See the introduction to \cite{Csubsystems}.}  with 
+We further let ${C(R)}$ denote the pre-category\footnote{See the introduction to \cite{Csubsystems}.}  with 
 %
 %
-$$Ob(C(R))=\nn$$
-$$Mor(C(R))=\coprod_{m,n\in\nn} R(\{1,\dots,m\})^n$$
+$$Ob({C(R)})=\nn$$
+$$Mor({C(R)})=\coprod_{m,n\in\nn} Fun({stn(n)},R({stn(m)}))$$
 %
-which is equivalent, as a category, to $(R-cor)^{op}$.
 %
+where $Fun(A,B)$ is the set of functions from the set $A$ to the set $B$. The identity morphism of $n$ is given by $\eta_{{stn(n)}}$. The composition of morphisms is given by 
+%
+$$f\circ g=f\circ_{Sets} \bind(g)$$
+%
+Let $F$ be the category such that
+%
+$$Ob(F)=\nn$$
+$$Mor(F)=\amalg_{m,n\in\nn}Fun({stn(m)},{stn(n)})$$
+%
+Then there is a functor $Crc_2:F^{op}\sr {C(R)}$ that is identity on objects and sends a morphism $f=(m,n,f_0)$ where $f_0\in Fun({stn(n)},{stn(m)})$ to $(m,n,f_0\circ \eta_{m})$. We will often use this functor as a ``coercion'', using the terminology of proof assistant Coq, i.e., we will write simply $f$ instead of $\Phi(f)$. 
+
+A left $R$-module $LM$ defines as outlined in \cite[Def. 10]{HM2010} a covariant functor on the Kleisli category of $R$ and correspondingly a contravariant functor (a presheaf) $LM_{PreShv}$ on ${C(R)}$. This presheaf is given by:
+%
+\begin{enumerate}
+\item for $n\in Ob({C(R)})$ one has $LM_{PreShv}(n)=LM({stn(n)})$,
+\item for $f:m\sr n$ in ${C(R)}$ and $E\in LM_{PreShv}(n)$ one has
+%
+$$LM_{PreShv}(f)(E)=\mbind(f)(E)$$
+%
+\end{enumerate}
+%
+In what follows we will write $LM$ instead of $LM_{PreShv}$.  
+
+\comment{
+For two morphisms 
+%
+$$f:\wh{n_1}\sr \wh{n_2}\spc f=(f_1,\dots,f_{n_2})\spc where\spc f_i\in R(\wh{n_1})$$
+$$g:\wh{n_2}\sr \wh{n_3}\spc g=(g_1,\dots,g_{n_3})\spc where\spc g_i\in R(\wh{n_2})$$
+%
+their composition is given by
+%
+\begin{eq}\llabel{2015.07.26.eq1}
+f\circ g:\wh{n_1}\sr \wh{n_3}\spc f\circ g=((f\circ g)_1,\dots,(f\circ g)_{n_3}) \spc where\spc (f\circ g)_i\in R(\wh{n_3})
+\end{eq}
+%
+and 
+%
+\begin{eq}\llabel{2015.07.26.eq2}
+(f\circ g)_i=(f_1,\dots,f_{n_2})\circ g_i=g_i(f_1/1,\dots,f_{n_2}/n_2)
+\end{eq}
+%
+}
 %
 \begin{remark}\rm
 A finitary monad (on sets) is a monad $R:Sets\sr Sets$ that, as a functor, commutes with filtering colimits. Since any set is, canonically, the colimit of the filtering diagram of its finite subsets, a functor $Sets \sr Sets$ that commutes with filtering colimits can be equivalently described as a functor $FSets \sr Sets$ where $FSets$ is the category of finite sets. Furthermore, Lemma \ref{2014.06.30.l1} can be used to show that finitary monads on $Sets$ can be defined as collections of data of the form:
@@ -292,51 +518,304 @@ A finitary monad (on sets) is a monad $R:Sets\sr Sets$ that, as a functor, commu
 \begin{enumerate}
 \item for every finite set $X$ a set $R(X)$,
 \item for every finite set $X$ a function $\eta_X: X \sr R(X)$,
-\item for every finite sets $X$, $X'$ and a function $f:X\sr R(X')$, a function $ bind(f):R(X)\sr R(X')$
+\item for every finite sets $X$, $X'$ and a function $f:X\sr R(X')$, a function $ \bind(f):R(X)\sr R(X')$
 \end{enumerate}
 %
 which satisfy the conditions:
 %
 \begin{enumerate}
-\item for a finite set $X$, $ bind(\eta_X)=id_{R(X)}$,
-\item for a function of finite sets $f:X\sr X'$, $\eta_X\circ bind(f)=f$,
-\item for two functions $f:X\sr R(X')$, $g:X'\sr R(X'')$, $ bind(f\circ bind(g))= bind(f)\circ bind(g)$.
+\item for a finite set $X$, $\bind(\eta_X)=id_{R(X)}$,
+\item for a function of finite sets $f:X\sr X'$, $\eta_X\circ \bind(f)=f$,
+\item for two functions $f:X\sr R(X')$, $g:X'\sr R(X'')$, $ \bind(f\circ \bind(g))= \bind(f)\circ \bind(g)$.
 \end{enumerate}
 %
-This description shows that for any monad $R$ the restriction of $R$ to a functor $R^{fin}:FSets\sr Sets$ is a finitary monad. 
+This description shows how any monad $R$ defines a finitarty monad $R^{fin}$ whose underlying functor is obtained by first taking the restriction of $R$ to a functor $R_{FSets}:FSets\sr Sets$ and then the extension of $R_{FSets}$ to a finitary functor $R^{Fin}:Sets\sr Sets$. 
 
-Similar observations apply to left $R$-modules. The constructions of this paper, while done for a general pair $(R,LM)$, only depend on the corresponding finitary pair $(R^{fin},LM^{fin})$. 
+Similar observation applies to left $R$-modules. The constructions of this paper, while done for a general pair $(R,LM)$, only depend on the corresponding finitary pair $(R^{fin},LM^{fin})$. 
 \end{remark}
 %
 \begin{remark}\rm
-The correspondence $R\mapsto C(R)$ defines an equivalence between the type of the finitary monads on $Sets$ and the type of the pre-category structures on $\nn$ that extend the pre-category structure of finite sets and where the addition remains to be the coproduct. 
+The correspondence $R\mapsto {C(R)}$ defines an equivalence between the type of the finitary monads on $Sets$ and the type of the pre-category structures on $\nn$ that extend the pre-category structure of finite sets and where the addition remains to be the coproduct. 
 \end{remark}
 %
-\begin{remark}\rm A finitary sub-monad of $R$ is the same as a sub-pre-category in $C(R)$ which contains all objects. Intersection of two sub-monads is a sub-monad which allows one to speak of sub-monads generated by a set of elements. 
+\begin{remark}\rm A finitary sub-monad of $R$ is the same as a sub-pre-category in ${C(R)}$ which contains all objects. Intersection of two sub-monads is a sub-monad which allows one to speak of sub-monads generated by a set of elements. 
 \end{remark}
 
-
+}
 
 
 
 \subsection{The C-system $CC(R,LM)$.}
 %
-Let $R$ be a monad on $Sets$ and $LM$ a left module over $R$ with values in $Sets$. Let $CC(R,LM)$ be the pre-category whose set of objects is $Ob(CC(R,LM))=\amalg_{n\ge 0} Ob_n$ where 
+Let $R$ be a monad on $Sets$. Let $C(R)$ be the category whose set of objects is the set of symbols of the form $\wh{n}$ where $n\in \nn$ and the set of morphisms is 
 %
-$$Ob_n=LM(\emptyset)\times\dots\times LM(\{1,\dots,n-1\})$$
+$$Mor(C(R))=\amalg_{\wh{m},\wh{n}}Hom_{Sets_R}(stn(n),stn(m))=\amalg_{\wh{m},\wh{n}} R(stn(m))^{stn(n)}$$
+%
+Since we will have to deal constantly with elements of the sets of functions $R(stn(m))^{stn(n)}$ we need some convenient way to represent them. 
+
+
+
+with the obvious domain and codomain functions such that the mapping $\wh{n}\mapsto stn(n)$ extends to a fully faithful functor $cr_1:C(R)^{op}\sr Sets_R$. The unity and the associativity of composition in $C(R)$ follows immediately from the unity and associativity of composition in $Sets_R$ which is proved in \cite{Kleisli}. 
+
+Given $f\in R(stn(m))^{stn(n)}$ and $g\in R(stn(n))$ we will write $f\hc g$ for the element $\mu_m(R(f)(g))$ of $R(stn(m))$. Then for $f=(\wh{m},(\wh{n},f_0))\in Mor(C(R))$ and $g=(\wh{n},(\wh{o},g_0))\in Mor(C(R))$ we have
+%
+$$f\circ g=(\wh{m},(\wh{o},(\lambda\,i,f_0\hc g_0(i))))$$
+%
+
+
+
+
+
+
+Let $F=C(Id)^{op}$ be the category whose objects are natural numbers and
+%
+$$Mor(F)=\amalg_{m,n}Fun(stn(m),stn(n))$$
+%
+For any $R$, there is an obvious functor $cr_0:F\sr C(R)^{op}$. 
+%
+We will use both functors $cr_0$ and $cr_1$ as coercions which allows us to consider functions $stn(n)\sr stn(m)$ as morphisms $\wh{m}\sr \wh{n}$ in $C(R)$ and morphisms $\wh{m}\sr \wh{n}$ in $C(R)$ as morphisms $stn(n)\sr stn(m)$ in $Sets_R$. 
+
+Given two morphisms $g=(g_0,\dots,g_{n'-1}):\wh{n''}\sr \wh{n'}$ and $f=(f_0,\dots,f_{n-1}):\wh{n'}\sr \wh{n}$ we have:
+%
+\begin{eq}\llabel{2015.08.12.eq1}
+f\circ g=(g\circ f_0,\dots g\circ f_{n-1})
+\end{eq}  
+%
+We have morphisms $pr_i^n:\wh{n}\sr \wh{1}$, $i=0,\dots,n-1$ that are defined as $pr_i^n=cr_0(in_i)$ where $in_i:\{1\}\sr \{0,\dots,n-1\}$ is the function that takes $1$ to $i$.
+
+We further have
+%
+\begin{eq}\llabel{2015.08.12.eq2}
+(f_0,\dots,f_{n-1})\circ pr_i^n=f_i
+\end{eq}
+%
+
+If $LM$ is a left module over $R$ with values in $Sets$ then the functor $cr_1$ composed with the Kleisli extension $LM_R:Sets_R\sr Sets$ of $LM$  gives a presheaf on $C(R)$. We will use both the Kleisli extension construction and the composition with $cr_1$ as ``coercions'' in the terminology of the Coq proof assistant, i.e., we will write $LM$ instead of both $LM_R$ and $cr_1\circ LM_R$. 
+%
+\begin{remark}\rm
+\llabel{2015.08.12.rem2}
+The pair $(C(R)^{op}, cr_0)$ is an algebraic theory in the sense of Lawvere (cf. \cite[Definition on p.62]{Lawvere}). 
+
+The functor $cr_1\circ LM_R:C(R)^{op}\sr Sets$ is, by Lawvere's terminology, a pre-algebra over this theory (cf. \cite[Ch. III, \S 1]{Lawvere}). Since the construction of $CC(R,LM)$ uses only $C(R)$ and $cr_1\circ LM_R$ it could be directly formulated as a construction of a C-system from an algebraic theory and a pre-algebra over this theory. However we find the formulation based on a monad and a module over a monad to be easier to understand for a mathematical reader. 
+\end{remark}
+%
+\begin{remark}\rm
+\llabel{2015.08.12.rem3}
+In the univalent foundations the relationship between the type of finitary functors $Sets\sr Sets$ (where by $Sets$ we mean the category of h-sets in a fixed universe) and the type of functors $FSets\sr Sets$ is not entirely clear at the moment. On the other hand the relationship between the type of functors $FSets\sr Sets$ and the type of functors $F\sr Sets$ is better in the univalent foundations then in the set-theoretic ones since in the univalent foundations these two types are constructively equivalent (cf. \cite[Theorem 8.4]{RezkCompletion}).
+\end{remark}
+%
+
+Let $CC(R,LM)$ be the pre-category whose set of objects is 
+%
+$$Ob(CC(R,LM))=\amalg_{n\ge 0} Ob_n$$
+%
+where 
+%
+$$Ob_n=\left\{
+\begin{array}{ll}
+unit&\mbox{\rm if $n=0$}\\
+LM(stn(0))\times\dots\times LM(stn(n-1))&\mbox{\rm if $n>0$}
+\end{array}
+\right.
+$$
 %
 and the set of morphisms is
 %
-$$Mor(CC(R,LM))=\coprod_{m,n\ge 0} Ob_m\times Ob_n\times R(\{1,\dots,m\})^n$$
+$$Mor(CC(R,LM))=\coprod_{m,n\ge 0} Ob_m\times Ob_n\times Mor_{C(R)}(\wh{m},\wh{n})$$
 %
-with the obvious domain and codomain maps. The composition of morphisms is defined in the same way as in $C(R)$ such that the mapping $Ob(CC(R,LM))\sr \nn$ which sends all elements of $Ob_n$ to $n$, is a functor from $CC(R,LM)$ to $C(R)$. The associativity of compositions follows immediately from the associativity of compositions in $R-cor$. 
+with the obvious domain and codomain maps. 
+%
+\begin{remark}\rm
+\llabel{2015.08.14.rem1}
+In a univalent formalization based on UniMath one can define $Ob_n$ as the type $forall(i:stn\,n),(LM\, (stn\,i))$. 
+\end{remark}
+%
 
-Note that if $LM(\emptyset)=\emptyset$ then $CC(R,LM)=\emptyset$ and otherwise the functor $CC(R,LM)\sr C(R)$ is an equivalence, so that in the second case $C(R)$ and $CC(R,LM)$ are indistinguishable as categories. However, as pre-categories they are quite different unless $LM=(X\mapsto pt)$ in which case the functor $CC(R,LM)\sr C(R)$ is an isomorphism. 
+By abuse of notation we will often not distinguish elements of $Ob_n$ from their images in $Ob(CC(R,LM))$ i.e., for an element $\Gamma\in Ob_n$ we will often write $\Gamma$ instead of $(n,\Gamma)$ for the corresponding element of $Ob(CC(R,LM))$. Similarly, we will often not distinguish elements of $Mor(\Gamma,\Gamma')$ for given $\Gamma\in Ob_m$ and $\Gamma'\in Ob_n$ from the corresponding elements in $Mor_{C(R)}(\wh{m},\wh{n})$, i.e., for $f\in Mor_{C(R)}(\wh{m},\wh{n})$ we will often write $f$ instead of $(\Gamma,(\Gamma',f))$ for the corresponding element in $Mor(\Gamma,\Gamma')$.
 
-The pre-category $CC(R,LM)$ is given the structure of a C-system as follows. The final object is the only element of $Ob_0$, the map $ft$ is defined by the rule
+%(???)
+
+The composition of morphisms in $CC(R,LM)$ is defined in the same way as in $C(R)$ such that the mapping $Ob(CC(R,LM))\sr Ob(C(R))$ which sends all elements of $Ob_n$ to $\wh{n}$, is a functor from $CC(R,LM)$ to $C(R)$. The unity and associativity of compositions follow immediately from the corresponding properties of the composition in $C(R)$. 
+
+\begin{remark}\rm
+\llabel{2015.08.12.rem1}
+If $LM({stn(0)})=\emptyset$ then $CC(R,LM)=\emptyset$. Otherwise, a choice of an element in $LM({stn(0)})$ defines in an easy way a functor from $CC(R,LM)$ to $C(R)$ and a pair of natural transformations that form an equivalence of categories. However this equivalence is not an isomorphism unless $LM(stn(n))\cong unit$ for all $n$. 
+\end{remark}
 %
-$$ft(T_1,\dots,T_n)=(T_1,\dots,T_{n-1}).$$
+
+Let 
 %
+$$\partial^{i}_{n}:stn(n)\sr stn(n+1)$$
+%
+for $0\ge i\le n$ be the increasing inclusion that does not take the value $i$ and
+%
+$$\sigma^{i}_{n}:stn(n+2)\sr stn(n+1)$$
+%
+for $0\le i\le n$ be the increasing surjection that takes the value $i$ twice. Taking into account that $stn(n)=[n-1]$ in the notation of \cite{GabZis} these are the standard generators of the simplicial category $\Delta$ together with $\partial^0_0:stn(0)\sr stn(1)$. 
+%
+Considering $\partial^i_n$  as a morphism $\wh{n+1}\sr \wh{n}$ in $C(R)$ we have
+%
+$$\partial^i_n=(pr^{n+1}_0,\dots,pr^{n}_{i-1},pr^{n+1}_{i+1},\dots,pr^{n+1}_{n-1})$$
+%
+in particular
+%
+\begin{eq}\llabel{2015.07.12.eq5}
+\partial^{n}_n=(pr^{n+1}_0,\dots,pr^{n+1}_{n-1})
+\end{eq}
+%
+and considering $g_n^m$ as a morphism $\wh{m}\sr \wh{m+1}$ in $C(R)$ we have
+%
+$$g^n_m=(pr^m_1,\dots,pr^m_n,pr^m_n,\dots,pr^m_{m})$$
+%
+For $E\in LM({stn(m)})$ and $n\ge 1$ we set:
+%
+$$t^n_{m+1}(E)=LM(f^n_{m+1})(E)\in LM(\wh{m+1})$$
+$$s^n_{m-1}(E)=LM(g^n_{m-1})(E)\in LM(\wh{m-1})$$
+%
+We will often omit the lower index in $t$ and $s$. 
+
+In particular $t^{m+1}_m=LM(i_m)$ where $i_m:\wh{m+1}\sr \wh{m}$ is the morphism corresponding to the function given by $j\mapsto j$ for $j=1,\dots,m$ and we also have
+%
+\begin{eq}\llabel{2015.08.12.eq3}
+t_m^{m+1}=LM(pr^{m+1}_1,\dots,pr^{m+1}_m)
+\end{eq}
+%
+For $E\in LM(\wh{m})$ we will often write $E$ instead of $t^{m+1}(E)$.
+
+When $LM=R$ we have further that $R(\wh{m})=Hom_{C(R)}(\wh{m},\wh{1})$ and for $f\in R(\wh{m})$ we have
+%
+\begin{eq}\llabel{2015.08.12.eq4}
+t_{m+1}^n(f)=R(f^n_{m+1})(f)=f^n_{m+1}\circ f
+\end{eq}
+%
+where on the right $f^n_{m+1}$ is considered as a morphism $\wh{m+1}\sr \wh{m}$ in $C(R)$. 
+
+
+
+The pre-category $CC(R,LM)$ is given the structure of a C0-system as follows (cf. \cite[Definition 2.1]{Csubsystems})
+%
+\begin{enumerate}
+\item the length function maps all elements of $Ob_n$ to $n$,
+\item the object $pt=(0,tt)$ is the only element of length $0$,
+\item the map $ft$ is defined by the rule
+%
+$$ft(pt)=pt$$
+%
+and for $n>0$,
+%
+$$ft(n,T_1,\dots,T_n)=(n-1,T_1,\dots,T_{n-1}).$$
+%
+\item for $\Gamma=(T_1,\dots,T_{n+1})\in Ob_{n+1}$  the $p$-morphism
+%
+$$p_{\Gamma}:\Gamma\sr ft(\Gamma)$$
+%
+is defined as $(pr^{n+1}_1,\dots,pr^{n+1}_n)$,
+% 
+\item given two objects $\Gamma'=(T'_1,\dots,T'_m)$ and $\Delta=(T_1,\dots,T_{n+1})$ and a morphism $f:\Gamma'\sr ft(\Delta)$ one defines $q(f,\Delta)\in Mor(CC(R,LM))$ as follows:
+%
+\begin{enumerate}
+\item one defines the object $f^*(\Delta)$ as $(T'_1,\dots,T'_m,LM(f)(T_{n+1}))$, note that this makes sense since $T_{n+1}\in LM({stn(n)})$ and $f\in Mor_{{C(R)}}(\wh{m},\wh{n})$,
+\item one defines $q(f,\Delta)$ as the morphism with 
+%
+$$dom(q(f,\Delta))=f^*(\Delta)$$
+%
+and 
+%
+$$codom(q(f,\Delta))=\Delta$$
+%
+corresponding to the element 
+%
+\begin{eq}\llabel{2015.07.25.eq1}
+(t_{m+1}(f_1),\dots,t_{m+1}(f_{n}),m+1): \wh{m+1}\sr \wh{n+1}
+\end{eq}
+%
+\end{enumerate}
+\end{enumerate}
+%
+\begin{lemma}
+\llabel{2015.07.24.l1}
+One has:
+%
+\begin{enumerate}
+\item Let $f=(f_1,\dots,f_{n+1}):(T_1',\dots,T_m')\sr (T_1,\dots,T_{n+1})$ be a morphism. Then 
+%
+$$f\circ p_{(T_1,\dots,T_{n+1})}=(f_1,\dots,f_n)$$
+%
+\item Let $f=(f_1,\dots,f_n):(T_1',\dots,T_m')\sr (T_1,\dots,T_{n})$ be a morphism. Then one has
+%
+$$p_{(T_1',\dots,T_{m+1}')}\circ f=(t^{m+1}(f_1),\dots,t^{m+1}(f_n))$$
+%
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+For the first assertion we have 
+%
+$$(f_1,\dots,f_{n+1})\circ p_{(T_1,\dots,T_{n+1})}=(f_1,\dots,f_{n+1})\circ (pr^{n+1}_1,\dots,pr^{n+1}_n)=$$$$((f_1,\dots,f_{n+1})\circ pr^{n+1}_1,\dots, (f_1,\dots,f_{n+1})\circ pr^{n+1}_n)=(f_1,\dots,f_n)$$
+%
+where the second equality holds by (\ref{2015.08.12.eq1}) and the third one by (\ref{2015.08.12.eq2}).
+
+For the second assertion we have
+%
+$$p_{(T_1',\dots,T_{m+1}')}\circ (f_1,\dots,f_{n})=(pr^{m+1}_1,\dots,pr^{m+1}_m)\circ (f_1,\dots,f_{n})=$$
+$$f^{m+1}_m\circ (f_1,\dots,f_{n})=(f^{m+1}_m\circ f_1,\dots, f^{m+1}_m\circ f_n)=(t^{m+1}(f_1),\dots,t^{m+1}(f_n))$$
+%
+where the second equality holds by (\ref{2015.08.12.eq5}), the third by (\ref{2015.08.12.eq1}) and the fourth by (\ref{2015.08.12.eq4}).
+\end{proof}
+%
+\begin{proposition}
+\llabel{2015.07.24.prop1}
+The data specified above defines a C0-system.
+\end{proposition}
+%
+\begin{proof}
+The first four conditions of \cite[Definition 2.1]{Csubsystems} are obvious. The fifth condition states that the ``canonical squares''
+%
+$$
+\begin{CD}
+f^*(\Delta) @>q(f,\Delta)>> \Delta\\
+@VVp_{f^*(\Delta)}V @VVp_{\Delta}V\\
+\Gamma' @>f>> \Gamma
+\end{CD}
+$$
+%
+commute. Let $\Gamma=(T_1,\dots,T_n)$ and $\Gamma'=(T_1',\dots,T_m')$. We have:
+%
+$$q(f,\Delta)\circ p_{\Delta}=(f_1,\dots,f_n)$$
+%
+by (\ref{2015.07.25.eq1}) and Lemma \ref{2015.07.24.l1}(1) and
+%
+$$p_{f^*(\Delta)}\circ f=p_{f^*(\Delta)}\circ (f_1,\dots,f_n)=(f_1,\dots,f_n)$$
+%
+by Lemma \ref{2015.07.25.l1}(2).
+
+The sixth condition asserts that $Id^*(\Delta)=\Delta$ and $q(Id,\Delta)=Id$. This follows immediately from our definition of $f^*$ and $q(f,\Delta)$ since for $\Gamma$ such that $l(\Gamma)=n$ we have $Id_{\Gamma}=(1,\dots,n)$.
+
+The seventh and last condition asserts that for $\Gamma''=(T_1'',\dots,T_{k}'')$, $\Gamma'=(T_1',\dots,T_m')$, $\Delta=(T_1,\dots,T_{n+1})$, $g=(g_1,\dots, g_m):\Gamma''\sr \Gamma'$ and $f=(f_1,\dots,f_n):\Gamma'\sr \Gamma$ one has
+%
+$$g^*(f^*(\Delta))=(g\circ f)^*(\Delta)$$
+%
+and
+%
+$$q(g\circ f, \Delta)=q(g, f^*(\Delta))\circ q(f,\Delta)$$
+%
+%
+For the first equality we have:
+%
+$$g^*(f^*(\Delta))=g^*(T_1',\dots,T_m',T_{n+1}(f_1/1,\dots,f_n/n))=(T_1'',\dots,T_{k}'',T_{n+1}(f_1/1,\dots,f_n/n)(g_1/1,\dots,g_m/m))$$
+%
+and
+%
+$$(g\circ f)^*(\Delta)=(T_1'',\dots,T_{k}'',T_{n+1}((g\circ f)_1/1,\dots,(g\circ f)_n/n))$$
+%
+
+
+\end{proof}
+
+
+
+
+
 The canonical pull-back square defined by an object $(T_1,\dots,T_{n+1})$ and a morphism 
 %
 $$(f_1,\dots,f_{n}):(R_1,\dots,R_m)\sr (T_1,\dots,T_{n})$$
@@ -366,7 +845,7 @@ Straightforward.
 \begin{remark}\rm
 There is another construction of a pre-category from $(R,LM)$ which takes as an additional parameter a set $Var$ which is called the set of variables. Let $F_n(Var)$ be the set of sequences of length $n$ of pair-wise distinct elements of $Var$. Define the pre-category $CC(R,LM,Var)$ as follows. The set of objects of $CC(R,LM,Var)$ is 
 %
-$$Ob(CC(R,LM,Var))= \amalg_{n\ge 0} \amalg_{(x_1,\dots,x_n)\in F_n(Var)} LM(\emptyset)\times\dots\times LM(\{x_1,\dots,x_{n-1}\})$$
+$$Ob(CC(R,LM,Var))= \amalg_{n\ge 0} \amalg_{(x_1,\dots,x_n)\in F_n(Var)} LM({stn(0)})\times\dots\times LM(\{x_1,\dots,x_{n-1}\})$$
 %
 For compatibility with the traditional type theory we will write the elements of $Ob(CC(R,LM,X))$ as sequences of the form $x_1:E_1,\dots,x_n:E_n$. The set of morphisms is given by
 %
@@ -402,16 +881,16 @@ Recall from \cite{Csubsystems} that for a C-system $CC$ one defines $\wt{Ob}(CC)
 \llabel{2014.06.30.l2}
 One has:
 %
-$$\wt{Ob}(CC(R,LM))\cong \coprod_{n\ge 0} LM(\emptyset)\times\dots\times LM(\{1,\dots,n\})\times R(\{1,\dots,n\})$$
+$$\wt{Ob}(CC(R,LM))\cong \coprod_{n\ge 0} LM({stn(0)})\times\dots\times LM({stn(n)})\times R({stn(n)})$$
 \end{lemma}
 %
 \begin{proof}
-An element of $\wt{Ob}(CC(R,LM))$ is a section $s$ of the canonical morphism $p_{\Gamma}:\Gamma\sr ft(\Gamma)$. It follows immediately from the definition of $CC(R,LM)$ that for $\Gamma=(E_1,\dots,E_{n+1})$, a morphism $(f_1,\dots,f_{n+1})\in R(\{1,\dots,n\})^{n+1}$ from $ft(\Gamma)$ to $\Gamma$ is a section of $p_{\Gamma}$ if an only if $f_i=i$ for $i=1,\dots,n$. Therefore, any such section is determined by its last component $f_{n+1}$ and mapping
+An element of $\wt{Ob}(CC(R,LM))$ is a section $s$ of the canonical morphism $p_{\Gamma}:\Gamma\sr ft(\Gamma)$. It follows immediately from the definition of $CC(R,LM)$ that for $\Gamma=(E_1,\dots,E_{n+1})$, a morphism $(f_1,\dots,f_{n+1})\in R({stn(n)})^{n+1}$ from $ft(\Gamma)$ to $\Gamma$ is a section of $p_{\Gamma}$ if an only if $f_i=i$ for $i=1,\dots,n$. Therefore, any such section is determined by its last component $f_{n+1}$ and mapping
 $((E_1,\dots,E_n), (E_1,\dots,E_{n+1}), (f_1,\dots,f_{n+1}))$ to $(E_1,\dots,E_n,E_{n+1},f_{n+1})$ we get a bijection
 %
 \begin{eq}
 \llabel{2009.10.15.eq2}
-\wt{Ob}(CC(R,LM))\cong \coprod_{n\ge 0} LM(\emptyset)\times\dots\times LM(\{1,\dots,n\})\times R(\{1,\dots,n\})
+\wt{Ob}(CC(R,LM))\cong \coprod_{n\ge 0} LM({stn(0)})\times\dots\times LM({stn(n)})\times R({stn(n)})
 \end{eq}
 %
 \end{proof}
@@ -420,11 +899,11 @@ Using the notations of type theory we can write elements of $Ob(CC(R,LM))$ as
 %
 $$\Gamma=(T_1,\dots,T_n\rhd)$$
 %
-where $T_i\in LM(\{1,\dots,i-1\})$ and the elements of $\wt{Ob}(CC(R,LM))$ as 
+where $T_i\in LM(\wh{i-1})$ and the elements of $\wt{Ob}(CC(R,LM))$ as 
 %
 $${\cal J} = (T_1,\dots,T_n\vdash t:T)$$
 %
-where $T_i\in LM(\{1,\dots,i-1\})$, $T\in LM(\{1,\dots,n\})$ and $t\in R(\{1,\dots,n\})$.
+where $T_i\in LM(\wh{i-1})$, $T\in LM({stn(n)})$ and $t\in R({stn(n)})$.
 
 In this notation the operations $T,\wt{T},S,\wt{S}$ and $\delta$ which were introduced in \cite{Csubsystems} take the form:
 %
@@ -455,8 +934,8 @@ The following result is an immediate corollary of \cite[Proposition 4.3]{Csubsys
 \llabel{2009.10.16.prop3}
 Let $(R,LM)$ be a monad on $Sets$ and a left module over it with values in $Sets$.  A pair of subsets 
 %
-$$C\subset \coprod_{n\ge 0} \prod_{i=0}^{n-1} LM(\{1,\dots,i\})$$
-$$\wt{C}\subset \coprod_{n\ge 0}  (\prod_{i=0}^{n} LM(\{1,\dots,i\}))\times R(\{1,\dots,n\})$$
+$$C\subset \coprod_{n\ge 0} \prod_{i=0}^{n-1} LM(\wh{i})$$
+$$\wt{C}\subset \coprod_{n\ge 0}  (\prod_{i=0}^{n} LM(\wh{i}))\times R({stn(n)})$$
 %
 corresponds to a C-subsystem $CC$ of $CC(R,LM)$  if and only if the following conditions hold:
 %
@@ -508,7 +987,7 @@ which are similar (and probably equivalent) to the ``basic rules of DTT'' given 
 
 \begin{lemma}
 \llabel{2009.11.05.l1}
-Let $CC$ be as above and let $(E_1,\dots, E_m), (T_1,\dots,T_n)\in Ob(CC)$ and $(f_1,\dots,f_n)\in R(\{1,\dots,m\})^n$. Then  
+Let $CC$ be as above and let $(E_1,\dots, E_m), (T_1,\dots,T_n)\in Ob(CC)$ and $(f_1,\dots,f_n)\in R(\wh{m})^n$. Then  
 %
 $$(f_1,\dots,f_n)\in Hom_{CC}((E_1,\dots, E_m), (T_1,\dots,T_n))$$
 %
@@ -525,7 +1004,7 @@ Straightforward using the fact that the canonical pull-back squares in $CC(R,LM)
 \begin{example}\rm
 The category $CC(R,R)$ for the identity monad is empty. For the monad of the form $R(X)=pt$ the C-system $CC(R,R)$ has only two subsystems - itself and the trivial one for which $C={pt}$. 
 
-The first non-trivial example is the monad $R(X)=X\amalg \{*\}$. We conjecture that in this case the set of all subsystems of $CC(R,R)$ is {\em uncountable}.
+The first non-trivial example is the monad $R(X)=X\amalg \{*\}$. We conjecture that in this case the set of all C-subsystems of $CC(R,R)$ is {\em uncountable}.
 
 One can probably show this as follows. Let $\epsilon:\nn\sr\{0,1\}$, be a sequence of $0$'s and $1$'s. Consider the C-subsystem of $CC_{\epsilon}$ of $CC(R,R)$ which is generated by the set of elements of the form $(*, 1, 2, \dots, n\rhd)\in Ob(CC(R,R))$ for all $n\ge 0$ and elements $(*,1,\dots,n+1\vdash n+2:*)\in \wt{Ob}(CC(R,R))$ for $n$ such that $\epsilon(n)=1$. 
 
@@ -548,7 +1027,7 @@ This gives us an operation with values in $Ob$ defined on the subset of $Ob\time
 $$\wt{\sigma}({\cal J},\Gamma')=
 \left\{ 
 \begin{array}{ll}
-(T_1',\dots,T_n',T_{n+1},\dots,T_{n+i-1}:t:T_{n+i})&\mbox{\rm for $i>0$}\\
+(T_1',\dots,T_n',T_{n+1},\dots,T_{n+i-1}\vdash t:T_{n+i})&\mbox{\rm for $i>0$}\\
 (T_1',\dots,T_{n-1}'\vdash t:T_n')&\mbox{\rm for $i=0$}
 \end{array}
 \right.
@@ -566,12 +1045,12 @@ This gives us an operation with values in $\wt{Ob}$ defined on the subset of $\w
 
 Let $(R,LM)$ be as above and
 %
-$$Ceq\subset \coprod_{n\ge 0}  (\prod_{i=0}^{n-1} LM(\{1,\dots,i\}))\times LM(\{1,\dots,n\})^2$$
-$$\wt{Ceq}\subset \coprod_{n\ge 0}  (\prod_{i=0}^{n} LM(\{1,\dots,i\}))\times R(\{1,\dots,n\})^2$$
+$$Ceq\subset \coprod_{n\ge 0}  (\prod_{i=0}^{n-1} LM(\wh{i}))\times LM({stn(n)})^2$$
+$$\wt{Ceq}\subset \coprod_{n\ge 0}  (\prod_{i=0}^{n} LM(\wh{i}))\times R({stn(n)})^2$$
 %
 be two subsets.  
 
-For $\Gamma=(T_1,\dots,T_n)\in ob(CC(R,LM))$ and $S_1,S_2\in LM(\{1,\dots,n\})$ we write $(\Gamma\vdash_{Ceq} S_1=S_2)$ to signify that $(T_1,\dots,T_n,S_1,S_2)\in Ceq$. Similarly for $T\in LM(\{1,\dots,n\})$ and $o,o'\in R(\{1,\dots,n\})$ we write $(\Gamma\vdash_{\wt{Ceq}} o=o':S)$ to signify that $(T_1,\dots,T_n,S,o,o')\in \wt{Ceq}$.  When no confusion is possible we will omit the subscripts $Ceq$ and $\wt{Ceq}$ at $\vdash$. 
+For $\Gamma=(T_1,\dots,T_n)\in ob(CC(R,LM))$ and $S_1,S_2\in LM({stn(n)})$ we write $(\Gamma\vdash_{Ceq} S_1=S_2)$ to signify that $(T_1,\dots,T_n,S_1,S_2)\in Ceq$. Similarly for $T\in LM({stn(n)})$ and $o,o'\in R({stn(n)})$ we write $(\Gamma\vdash_{\wt{Ceq}} o=o':S)$ to signify that $(T_1,\dots,T_n,S,o,o')\in \wt{Ceq}$.  When no confusion is possible we will omit the subscripts $Ceq$ and $\wt{Ceq}$ at $\vdash$. 
 
 Similarly we will write $\rhd$ instead of $\rhd_C$ and $\vdash$ instead of $\vdash_{\wt{C}}$ if the subsets $C$ and $\wt{C}$ are unambiguously  determined by the context.  
 
@@ -862,7 +1341,7 @@ Conditions (6a),(6b),(7a),(7b) follow from the compatibility of $(\sim,\simeq)$ 
 \end{proof}
 
 
-
+\comment{
 \subsection{Pairs $(R,LM)$ associated with nominal signatures.}
 %
 \llabel{2014.07.22.sec}
@@ -893,7 +1372,7 @@ For example, the nominal signature of the lambda calculus has one data-sort $Ter
 %
 $$V:Var\sr Term$$
 $$L:Var.Term\sr Term$$
-$$A:Term.Term\sr Term$$
+$$A:(Term,Term)\sr Term$$
 %
 The algebraic signature with one sort $Term$, one operation $S$ in one variable and one constant $O$ will, in this language, have {\em three}  operations:
 %
@@ -901,7 +1380,7 @@ $$V:Var\sr Term$$
 $$S: Term\sr Term$$
 $$O:1\sr Term$$
 %
-More generally, an algebraic signature is a nominal signature where 
+More generally, one associates to an algebraic signature with the set of sorts $D$ and a set of operations $Op_0$ a nominal signature where 
 %
 $$Op=Op_0\coprod\{v_D\}_{D\in {\bf D}}$$
 %
@@ -909,7 +1388,7 @@ with
 %
 $$v_D:Var\sr D$$
 %
-and for $O\in Op_0$
+and for $O\in Op_0$ the nominal arity of $O$ being
 %
 $$O:(D_1,\dots,D_n)\sr D$$
 %
@@ -984,6 +1463,7 @@ The C-systems of generalized algebraic theories (GATs) of \cite{Cartmell0},\cite
 %
 \begin{example}
 \llabel{2014.08.ex}\rm
+###correct! M-L uses only one or two quantifiers the rest are treated using lambda-abstraction
 To define the Martin-Lof Type theory MLTT72 of \cite{ML72}  one needs to consider the case when ${\bf D}=\{Term\}$ and the nominal signature is of the form:
 %
 $$v:Var\sr Term$$
@@ -998,7 +1478,7 @@ Note that in fact $E$, $D$, $R_n$, and $R$ should also have the type family $C$ 
 
 In fact, the original definition from \cite{ML72} allows for additional ``type constants'' (see \cite[2.2.1]{ML72}) of various algebraic arities which are analogous to the predicate constants in the predicate logic. As such it is a definition of a family of type systems. The signatures underlying all type systems in this family are obtained by extending the signature described above by a set of operations of the form $P:(Term,\dots,Term)\sr Term$. 
 
-For the signature of the MLTT78 see \cite[p. 158]{ML78}
+For the signature of the MLTT79 see \cite[p. 158]{MLTT79}
 \end{example}
 %
 \begin{remark}\rm
@@ -1014,7 +1494,7 @@ $$varnames := {\bf A}\amalg X\amalg (\amalg_{D\in {\bf D}-\{Term\}} P_D)$$
 %
 where ${\bf A}$ is a countable set, all occurrences of variables from ${\bf A}$ are bound and all occurrences of variables from $X\coprod (\coprod_{D\in {\bf D}-\{Term\}} P_D)$ are free. Note that $R(X)$ depends, up to a canonical isomorphism, only on $X$ but not on the choice of a countable set ${\bf A}$.  We also describe a left module $LM$ over $R$ such that $LM(X)$ is the disjoint union of $\alpha$-equivalence classes of similar expressions of sorts $D$ for $D\in {\bf Type}$. 
 
-When $\Sigma$ Suppose now that we are given a type theory based on the syntax of expressions with free and bound variables specified by a nominal signature $\Sigma$ with one name-sort $var$ and one data-sort $Term$ that is formulated in terms of four kinds of basic judgements originally introduced by Per Martin-Lof in \cite[p.161]{ML78}.  
+When $\Sigma$ Suppose now that we are given a type theory based on the syntax of expressions with free and bound variables specified by a nominal signature $\Sigma$ with one name-sort $var$ and one data-sort $Term$ that is formulated in terms of four kinds of basic judgements originally introduced by Per Martin-Lof in \cite[p.161]{MLTT79}.  
 
 Choosing $\bf Type$ to be $\{Term\}$ we obtain a pair $(R,LM)$ where $LM$ is isomorphic to $R$ considered as a left module over itself. For a set $X$ the set $R(X)$ is the set of $\alpha$-equivalence classes of $\Sigma$-expressions over the name space ${\bf A}\amalg X$ where all occurrences of names from $\bf A$ are bound and all occurrences of names from $X$ are free.  
 
@@ -1022,10 +1502,10 @@ Since we are only interested in the $\alpha$-equivalence classes of judgements w
 
 With this identification the type theory is specified by four sets $C,\wt{C},Ceq$ and $\wt{Ceq}$ where 
 %
-$$C \subset \coprod_{n\ge 0} R(\emptyset)\times\dots\times R(\{1,\dots,n-1\})$$
-$$\wt{C}\subset  \coprod_{n\ge 0} R(\emptyset)\times\dots\times R(\{1,\dots,n-1\})\times R(\{1,\dots,n\})\times R(\{1,\dots,n\})$$
-$$Ceq \subset \coprod_{n\ge 0} R(\emptyset)\times\dots\times R(\{1,\dots,n-1\})\times R(\{1,\dots,n\})^2$$
-$$\wt{Ceq} \subset \coprod_{n\ge 0} R(\emptyset)\times\dots\times R(\{1,\dots,n-1\})\times R(\{1,\dots,n\})^2\times R(\{1,\dots,n\})$$ 
+$$C \subset \coprod_{n\ge 0} R({stn(0)})\times\dots\times R({stn(n-1)})$$
+$$\wt{C}\subset  \coprod_{n\ge 0} R({stn(0)})\times\dots\times R({stn(n-1)})\times R({stn(n)})\times R({stn(n)})$$
+$$Ceq \subset \coprod_{n\ge 0} R({stn(0)})\times\dots\times R({stn(n-1)})\times R({stn(n)})^2$$
+$$\wt{Ceq} \subset \coprod_{n\ge 0} R({stn(0)})\times\dots\times R({stn(n-1)})\times R({stn(n)})^2\times R({stn(n)})$$ 
 %
 and Proposition \ref{2014.07.10.prop1} spells out the necessary and sufficient conditions that these sets should satisfy in order for it to be possible to construct from them a C-system. 
 
@@ -1037,108 +1517,161 @@ More generally, one may consider the case when $\Sigma$ has more than one data-s
 
 }
 
-
-
-\def\cprime{$'$}
-\begin{thebibliography}{10}
-
-\bibitem{AczelGambino}
-Peter Aczel and Nicola Gambino.
-\newblock Collection principles in dependent type theory.
-\newblock In {\em Types for proofs and programs ({D}urham, 2000)}, volume 2277
-  of {\em Lecture Notes in Comput. Sci.}, pages 1--23. Springer, Berlin, 2002.
-
-\bibitem{Awodey2010}
-Steve Awodey.
-\newblock {\em Category theory}, volume~52 of {\em Oxford Logic Guides}.
-\newblock Oxford University Press, Oxford, second edition, 2010.
-
-\bibitem{Cartmell0}
-John Cartmell.
-\newblock Generalised algebraic theories and contextual categories.
-\newblock {\em Ph.D. Thesis, Oxford University}, 1978.
-\newblock \url{https://uf-ias-2012.wikispaces.com/Semantics+of+type+theory}.
-
-\bibitem{Cartmell1}
-John Cartmell.
-\newblock Generalised algebraic theories and contextual categories.
-\newblock {\em Ann. Pure Appl. Logic}, 32(3):209--243, 1986.
-
-\bibitem{Garner}
-Richard Garner.
-\newblock Combinatorial structure of type dependency.
-\newblock {\em J. Pure Appl. Algebra}, 219(6):1885--1914, 2015.
-
-\bibitem{HM2007}
-Andr{\'e} Hirschowitz and Marco Maggesi.
-\newblock Modules over monads and linearity.
-\newblock In {\em Logic, language, information and computation}, volume 4576 of
-  {\em Lecture Notes in Comput. Sci.}, pages 218--237. Springer, Berlin, 2007.
-
-\bibitem{HM2008}
-Andr{\'e} Hirschowitz and Marco Maggesi.
-\newblock Higher order theories.
-\newblock {\em \url{http://arxiv.org/abs/0704.2900}}, 2010.
-
-\bibitem{HM2010}
-Andr{\'e} Hirschowitz and Marco Maggesi.
-\newblock Modules over monads and initial semantics.
-\newblock {\em Inform. and Comput.}, 208(5):545--564, 2010.
-
-\bibitem{Jacobs1}
-Bart Jacobs.
-\newblock {\em Categorical logic and type theory}, volume 141 of {\em Studies
-  in Logic and the Foundations of Mathematics}.
-\newblock North-Holland Publishing Co., Amsterdam, 1999.
-
-\bibitem{ML72}
-Per Martin-L{\"o}f.
-\newblock An intuitionistic theory of types.
-\newblock {\em
-  \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.131.926&rep=rep1&type=pdf}},
-  1972.
-
-\bibitem{ML78}
-Per Martin-L{\"o}f.
-\newblock Constructive mathematics and computer programming.
-\newblock In {\em Logic, methodology and philosophy of science, {VI}
-  ({H}annover, 1979)}, volume 104 of {\em Stud. Logic Found. Math.}, pages
-  153--175. North-Holland, Amsterdam, 1982.
-
-\bibitem{Moggi91}
-Eugenio Moggi.
-\newblock Notions of computation and monads.
-\newblock {\em Inform. and Comput.}, 93(1):55--92, 1991.
-\newblock Selections from the 1989 IEEE Symposium on Logic in Computer Science.
-
-\bibitem{Pitts}
-Andrew~M. Pitts.
-\newblock {\em Nominal sets}, volume~57 of {\em Cambridge Tracts in Theoretical
-  Computer Science}.
-\newblock Cambridge University Press, Cambridge, 2013.
-\newblock Names and symmetry in computer science.
-
-\bibitem{NTS}
-Vladimir Voevodsky.
-\newblock Notes on type systems.
-\newblock {\em \url{https://github.com/vladimirias/old_notes_on_type_systems}},
-  2009-2012.
-
-\bibitem{Csubsystems}
-Vladimir Voevodsky.
-\newblock Subsystems and regular quotients of {C-systems}.
-\newblock In {\em Conference on Mathematics and its Applications, (Kuwait City,
-  2014)}, number to appear, pages 1--11, 2015.
-
-\end{thebibliography}
+}
 
 
 
+\comment{
+
+\begin{lemma}
+\llabel{2014.07.28.l2}
+Let $R$ be a monad on the product category ${\cal C}\times {\cal D}$. Let $A\in {\cal D}$. Then the functor $R_{A,1}:X\mapsto pr_{\cal C}(R(X,A))$ has a natural structure of a monad on $\cal C$.
+\end{lemma}
+%
+\begin{proof}
+One defines the morphisms $\eta_X:X\sr R_{A,1}(X)$ by
+%
+$$\eta_X := pr_{\cal C}(\eta_{(X,A)})$$
+%
+and morphisms $ \bind(f):R_{A,1}(X)\sr R_{A,1}(X')$ for $f:X\sr R_{A,1}(X')$ by
+%
+$$ \bind(f) := pr_{\cal C}( \bind(f,pr_{\cal D}(\eta_{(X,A)})))$$
+%
+The verification of the conditions of Lemma \ref{2014.06.30.l1} is straightforward. 
+\end{proof}
+% 
+
+}
 
 
 
-%\bibliography{../../../alggeom}
-%\bibliographystyle{plain}
+%
+\comment{
+
+\begin{lemma}
+\llabel{2014.07.28.l1}
+Let $R$ be a monad on a category $\cal C$. Then one has:
+%
+\begin{enumerate}
+\item If $LM_1$, $LM_2$ are left $R$-modules with values in ${\cal D}_1$ and ${\cal D}_2$ respectively then the functor $X\mapsto (LM_1(X),LM_2(X))$ has a natural structure of a left $R$-module with values in ${\cal D}_1\times {\cal D}_2$.
+\item If $LM$ is a left $R$-module with values in $\cal D$ and $F:{\cal D}\sr {\cal D'}$ is a functor then $F\circ LM$ has a natural structure of a left $R$-module with values in $\cal D'$.
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+Straightforward.
+\end{proof}
+%
+\begin{lemma}
+\llabel{2014.07.28.l3}
+Under the assumptions and in the notation of Lemma \ref{2014.07.28.l2} the morphisms
+%
+$$\mbind(f:X\sr R_{A,1}(X'))= \bind(f, pr_{\cal D}(\eta_{(X',A)})) : R(X,A)\sr R(X',A)$$
+%
+define a structure of a left $R_{A,1}$-module with values in ${\cal C}\times {\cal D}$ on the functor 
+%
+$$M_{A,1}:X\mapsto R(X,A)$$
+%
+\end{lemma}
+%
+\begin{proof}
+Direct verification of the conditions of Definition \ref{2014.07.26.d1}.
+\end{proof}
+%
+}
+
+
+\comment{
+%
+\begin{definition}
+\llabel{2015.07.29.def1}
+A Kleisli triple (or simply a triple) on a category $\cal C$ is a collection of data of the form:
+%
+\begin{enumerate}
+\item for every object $X$ an object $R(X)$,
+\item for every object $X$ a morphism $\eta_X:X \sr R(X)$,
+\item for every two objects $X$, $X'$ and a morphism $f:X\sr R(X')$, a morphism 
+%
+$$\bind(f):R(X)\sr R(X')$$
+%
+\end{enumerate}
+%
+such that:
+%
+\begin{enumerate}
+\item for any object $X$ one has
+%
+$$\bind(\eta_X)=id_{R(X)}$$
+%
+\item for any morphism of the form $f:X\sr R(X')$ one has
+%
+$$\eta_X\circ \bind(f)=f$$
+%
+\item for any two morphisms of the form $f:X\sr R(X')$, $g:X'\sr R(X'')$ one has
+%
+$$\bind(f\circ\bind(g))=\bind(f)\circ\bind(g).$$
+%
+\end{enumerate}
+\end{definition}
+%
+\begin{problem}
+\llabel{2015.07.30.prob1}
+For a monad $(R,\eta,\mu)$ on $\cal C$ to construct a triple on $\cal C$.
+\end{problem}
+%
+\begin{construction}\rm
+\llabel{2015.07.30.constr1}
+One defines $R$ of the triple to be the same as $R_{Ob}$ where $R=(R_{Ob},R_{Mor})$ is the functor component of the monad. One defines $\eta$ of the triple to be the same as $\eta$ of the monad. For $f:X\sr R_{Ob}(X')$ one defines $\bind(f)$ by the formula
+%
+$$\bind(f)=R_{Mor}(f)\circ \mu_{X'}$$
+%
+For the for the first two axioms we have
+%
+$$\bind(\eta_X)=R(\eta_X)\circ \mu_X=Id_{R(X)}$$
+$$\eta_X\circ \bind(f)=\eta_X\circ R(f)\circ \mu_{X'}=f\circ \eta_{R(X')}\circ \mu_{X'}=f\circ Id_{R(X')}=f$$
+%
+and for the third one:
+%
+$$\bind(f\circ \bind(g))=R(f\circ \bind(g))\circ \mu_{X''}=R(f)\circ R(R(g)\circ \mu_{X''})\circ \mu_{X''}=R(f)\circ R(R(g))\circ R(\mu_{X''})\circ \mu_{X''}=R(f)\circ R(R(g))\circ \mu_{R(X'')}\circ \mu_{X''}$$
+%
+and
+%
+$$\bind(f)\circ \bind(g)=R(f)\circ \mu_{X'}\circ R(g)\circ \mu_{X''}$$
+%
+and
+%
+$$R(R(g))\circ \mu_{R(X'')}=\mu_{X'}\circ R(g)$$
+%
+This completes Construction \ref{2015.07.30.constr1}.
+\end{construction}
+%
+\begin{problem}
+\llabel{2015.07.30.prob2}
+Given a triple $(R,\eta,\bind)$ on $\cal C$ to construct a monad $(R,\eta,\mu)$ on $\cal C$.
+\end{problem}
+%
+\begin{construction}\rm
+\llabel{2015.07.30.constr2}
+One takes $R_{Ob}$ of the functor component of the monad to be $R$. For $f:X\sr Y$ one defines
+%
+$$R_{Mor}(f)=\bind(f\circ \eta_Y)$$
+%
+One takes $\eta$ component of the monad to be the $\eta$ component of the triple. For an object $X$ one defines $\mu_X$ by the formula
+%
+$$\mu_X=\bind_{Id(R(X))}$$
+%
+We leave the verification of the axioms of the monad to the formalized versions of the paper. 
+\end{construction}
+}
+
+
+
+
+
+
+
+\bibliography{../../../alggeom}
+\bibliographystyle{plain}
 
 
 
