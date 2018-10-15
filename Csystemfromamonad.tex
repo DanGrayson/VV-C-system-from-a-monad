@@ -13,10 +13,12 @@
 %\usepackage{eufrak}
 %\usepackage{amscd, amssymb}
 %\usepackage{enumerate}
+%
 \usepackage{enumitem}
 \setlist[enumerate]{topsep=0pt,itemsep=.5ex,partopsep=1ex,parsep=1ex}
-\setenumerate[1]{label=\arabic*.}
-\setenumerate[0]{label=\theenumi\arabic{enumii}.}
+\setenumerate[1]{label=(\arabic*)}
+\setenumerate[0]{label=(\arabic{enumi}.\arabic{enumii}) }
+%
 %\usepackage{hyperref}
 % lscape.sty Produce landscape pages in a (mainly) portrait document.
 %\usepackage{lscape}
@@ -30,7 +32,7 @@
 %\headsep = 0.0 in
 %\parindent = 0.0in
 
-\renewcommand{\thesubsection}{\arabic{subsection}}
+%\renewcommand{\thesubsection}{\arabic{subsection}}
 %
 %
 \newenvironment{eq}{\begin{equation}}{\end{equation}}
@@ -164,6 +166,8 @@ Princeton NJ, USA. e-mail: vladimir@ias.edu}
 \vspace {3mm}
 %
 
+
+
 {\large\bf September 2015}  
 \end{center}
 }
@@ -175,9 +179,9 @@ Princeton NJ, USA. e-mail: vladimir@ias.edu
 }
 
 \begin{abstract}
-This is the second paper in a series started in \cite{Csubsystems}. Let $\FF$ be the category with the set of objects $\nat$ and morphisms being the functions between the standard finite sets of the corresponding cardinalities. Let $Jf:\FF\sr Sets$ be the obvious functor from this category to the category of sets. In this paper we construct, for any relative monad $\RR$ on $Jf$ and a left module $\LM$ over $\RR$, a C-system $C(\RR,\LM)$ and explicitly compute the action of the four B-system operations on its B-sets. 
-In the following paper it is used to provide a rigorous mathematical approach to the construction of the C-systems underlying the term models of a wide class of dependent type theories. 
-\end{abstract}
+Let $\FF$ be the category with the set of objects $\nat$ and morphisms given by the functions between the standard finite sets of the corresponding cardinalities. Let $Jf:\FF\sr Sets$ be the obvious functor from this category to the category of sets. In this paper we construct, for any $Jf$-relative monad $\RR$ and any left $\RR$-module $\LM$, a C-system $C(\RR,\LM)$ and explicitly compute the action of the four B-system operations on its B-sets. 
+
+In the introduction we explain in detail the relevance of this result to the construction of the term C-systems of type theories.\end{abstract}
 
 %(2014.09.27) Make a note about the functoriality of C(\RR,\LM) on the "large module category" %of Hirschowitz-Maggesi. 
 %Change the name of the monad from M to R. Also \mu, \eta for the monad structure and 
@@ -191,13 +195,15 @@ In the following paper it is used to provide a rigorous mathematical approach to
 
 %###!! What does it mean to add some constants and some definitional equalities to a type theory. Maybe to a type theory in a Martin-Lof presentation???
 
+%###replace [ '] and [' ] with `` and ''?
+
 \maketitle
 
 \tableofcontents
 
 \section{Introduction}
 
-The first few steps in all approaches to the semantics of dependent type theories remain insufficiently understood. The constructions which have been worked out in detail in the case of a few particular type systems by dedicated authors are being extended to the wide variety of type systems under consideration today by analogy. This is not acceptable in mathematics. Instead we should be able to obtain the required results for new type systems by {\em specialization} of general theorems and constructions formulated for abstract objects the instances of which combine together to produce a given type system. 
+The first few steps in all approaches to the set-theoretic semantics of dependent type theories remain insufficiently understood. The constructions which have been worked out in detail in the case of a few particular type systems by dedicated authors are being extended to the wide variety of type systems under consideration today by analogy. This is not acceptable in mathematics. Instead we should be able to obtain the required results for new type systems by {\em specialization} of general theorems and constructions formulated for abstract objects the instances of which combine together to produce a given type system. 
 
 
 %###interpretation instead of representation
@@ -215,17 +221,17 @@ An approach that follows this general philosophy was outlined in \cite{CMUtalk}.
 
 C-systems were introduced in \cite{Cartmell0} (see also \cite{Cartmell1}) under the name ``contextual categories''. A modified axiomatics of C-systems and the construction of new C-systems as sub-objects and regular quotients of the existing ones in a way convenient for use in type-theoretic applications are considered in \cite{Csubsystems}. A C-system equipped with additional operations corresponding to the inference rules of a type theory is called a model or a C-system model of these rules or of this type theory. There are other classes of objects on which one can define operations corresponding to inference rules of type theories most importantly categories with families or CwFs. They lead to other classes of models.  
 
-In the approach of \cite{CMUtalk}, in order to provide a mathematical representation (semantics) for a type theory one constructs two C-systems. One C-system, which we will call the proximate or term C-system of a type theory, is constructed from formulas of the type theory using, in particular, the main  construction of the present paper.  The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the inference rules of the type theory making them into models of type theory.  The model whose underlying C-system is the term C-system is called the term model. 
+In the approach of \cite{CMUtalk}, in order to provide an interpretation for a type theory one first constructs two C-systems. One C-system, which we will call the proximate or term C-system of a type theory, is constructed from formulas of the type theory using the main  construction of the present paper.  The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the inference rules of the type theory making them into models of type theory.  The model whose underlying C-system is the term C-system is called the term model. 
 
-A crucial component of this approach is the expected result that for a particular class of the inference rules the term model is an initial object in the category of models. This is known as the Initiality Conjecture. In the case of the pure Calculus of Constructions with a ``decorated''  application operation this conjecture was proved in 1988 by Thomas Streicher \cite{Streicher}. The problem of finding an appropriate formulation of the general version of the conjecture and of proving this general version will be the subject of future work. 
+A crucial component of this approach is the expected result that for a particular class of inference rules the term model is an initial object in the category of models. This is known as the Initiality Conjecture. In the case of the pure Calculus of Constructions with a ``decorated''  application operation this conjecture was proved in 1988 by Thomas Streicher \cite{Streicher}. The problem of finding an appropriate formulation of the general version of the conjecture and of proving this general version will be the subject of future work. 
 
 For such inference rules, then, there is a unique homomorphism from the term C-system to the abstract C-system that is compatible with the corresponding systems of operations. Such homomorphisms are called representations or interpretations of the type theory. More generally, any functor from the category underlying the term C-system of the type theory to another category may be called a representation of the type theory in that category. Since objects and morphisms of term models are built from formulas of the type theory and objects and morphisms of abstract C-systems are built from mathematical objects such as sets or homotopy types and the corresponding functions, such representations provide a mathematical meaning to formulas of type theory. 
 
-The existence of these homomorphisms in the particular case of the ``standard univalent models'' of  Martin-L\"{o}f type theories and of the Calculus of Inductive Constructions (CIC) provides the only known justification for the use of the proof assistants such as Coq for the formalization of mathematics in the univalent style (see \cite{UniMath}, \cite{UniMath2015}). 
+The existence of these homomorphisms in the particular case of the ``standard univalent models'' of  Martin-L\"{o}f type theories and of the Calculus of Inductive Constructions (CIC) provides the only known justification for the use of the proof assistants such as Coq for the formalization of mathematics in the univalent style \cite{UniMath2015}, \cite{UniMath}. 
 
-Only if we know that the initiality result holds for a given type theory can we claim that a model defines a representation. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. The term models for a class of type theories can be obtained by considering slices of the term model of the type theory called Logical Framework (LF), but unfortunately it is unclear how to extend this approach to type theories that have more substitutional (definitional) equalities than LF itself.
+Only if we know that the initiallity result holds for a given type theory can we claim that a model defines a representation. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. The term models for a class of type theories can be obtained by considering slices of the term model of the type theory called Logical Framework (LF), but unfortunately it is unclear how to extend this approach to type theories that have more substitutional (definitional) equalities than LF itself.
 
-A construction of a model for the version of the Martin-L\"{o}f type theory that is used in the UniMath library (\cite{UniMath},\cite{UniMath2015}) is sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiality result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in both the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiality theorem and providing a proof of such a theorem is lacking and needs to be developed. 
+A construction of a model for the version of the Martin-L\"{o}f type theory that is used in the UniMath library \cite{UniMath}, \cite{UniMath2015} is sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiallity result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in tens of different papers by computer scientists, the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiallity theorem and providing a proof of such a theorem is lacking and needs to be developed. 
 
 As the criteria for what constitutes an acceptable proof were becoming more clear as a result of continuing work on formalization, it also became clear that more detailed and general proofs need to be given to many of the theorems of \cite{KLV1} that are related to the model itself. For the two of the several main groups of inference rules of current type theories it is done in \cite{fromunivwithPiI}, \cite{fromunivwithPiII}  and \cite{fromunivwithpaths}. Other groups of inference rules will be considered in further papers of that series. 
 
@@ -240,8 +246,10 @@ The description of a type theory in a modern paper is usually given in the form 
 \frac{\Gamma,x:A\vdash B\,type}{\Gamma\vdash \prod\,x:A,B\,type}
 \end{eq}
 %
+
 These inference rules are formulated in terms of five kinds of ``sequents'' originally introduced by Per Martin-L\"{o}f in \cite[p.161]{MLTT79}\footnote{This paper is highly recommended. It is a foundational one for many ideas of type theory and for the modern approach to constructive mathematics in general.} . These sequents are sequences of expressions of the form
 %
+
 %
 \begin{flalign}
 \llabel{2017.02.06.eq1}
@@ -317,10 +325,17 @@ It should be immediately clear from the asymmetry of these rules that in order f
 
 To speak about the mathematical meaning of the conditions that the valid sentences should satisfy, we need to find a way to view the structure formed by the five kinds of sentences as a mathematical object and to describe, and analyze, a construction that generates a C-system from such an object.
 
-The first fundamental step in solving this problem is to find a way to view ``expressions'' as mathematical objects. In practice, what are ``expressions'' from which the sentences of a type theory are formed is most likely to be specified in detail when this type theory is used as a basis of a computer proof assistant. Depending on the programming language on which the proof assistant is written and on the personal tastes of the developers ``expressions'' will be represented as elements of different datatypes. They may be represented as actual strings of characters or as trees with additional labels at nodes and edges or as something else entirely. While each of these representations can be given a precise mathematical form it would be clearly wrong to make the mathematical theory of type theories dependent on which of the representations is chosen. Therefore, we need a concept of an abstract expression, or, as we will see below, two concepts one for abstract element expressions and one for abstract type expressions.
+...  that were specified through their raw syntax and typing algorithms or, extensionally speaking, the subsets of well-typed context-judgement pairs. 
+%###
+
+{\em The first step towards it is to find a way to view ``expressions'' as mathematical objects.}
+
+In practice, what are ``expressions'' from which the sentences of a type theory are formed is most likely to be specified in detail when this type theory is used as a basis of a computer proof assistant. Depending on the programming language on which the proof assistant is written and on the personal tastes of the developers ``expressions'' will be represented as elements of different datatypes. They may be represented as actual strings of characters or as trees with additional labels at nodes and edges or as something else entirely. While each of these representations can be given a precise mathematical form it would be clearly wrong to make the mathematical theory of type theories dependent on which of the representations is chosen. Therefore, we need a concept of an abstract expression, or, as we will see below, two concepts one for abstract element expressions and one for abstract type expressions.
 
 This problem has been addressed by many authors, first in the context of algebraic expressions and later in the context of expressions with binders, that is, expressions that may contain bound variables. As far as we know, the first mathematical abstraction in the case of expressions with binders was described by Fiore, Plotkin and Turi in \cite{FPT}. Later a different and more convenient for mathematicians abstraction was described by Hirschowitz and Maggesi in a series of papers including \cite{HM2010}. 
-The two approaches were shown to be equivalent in \cite{ACU}, \cite{ACU2} using the concept of a well behaved functor. The proof of equivalence in \cite{ACU}, \cite{ACU2} was based on the important observation that the monoids of \cite{FPT} are particular cases of {\em relative monads}. 
+The two approaches were shown to be equivalent in \cite{ACU}, \cite{ACU2} using the concept of a well behaved functor. 
+%### Is it true? Ask Fiore to check and find references
+The proof of equivalence in \cite{ACU}, \cite{ACU2} was based on the important observation that the monoids of \cite{FPT} are particular cases of {\em relative monads}. 
 
 These results would have closed the issue and we would have probably used in this paper the Hirschowitz and Maggesi concept of an abstract expression based on the concept of a monad if not for the fact that the proof of the equivalence uses the axiom of choice.  
 
@@ -330,13 +345,15 @@ We intend two meta-theories for the present paper. The first one is the usual ZF
 
 Having UniMath as a secondary meta-theory imposes a number of strong restrictions on the features of the ZFC that we can and can not use. Most notably, we can not use the law of excluded middle and we can not use the axiom of choice. 
 
-Let us go back to the concept of an abstract expression. Let us consider the case of algebraic expressions first. Modern mathematical theory of algebraic expressions has been developed at least as far back as the 1963 Ph.D. thesis of Bill Lawvere. However, our interest in the actual syntactic expressions together with the need to have our approach adapted for a constructive meta-theory bring forward aspects of this theory that are easy to miss otherwise. 
+Let us go back to the concept of an abstract expression. Let us consider the case of algebraic expressions first. Modern mathematical theory of algebraic expressions has been developed at least as far back as the 1963 Ph.D. thesis of Bill Lawvere \cite{Lawvere}. However, our interest in having the theory extended later to operations that bound variables, such as the $\forall$ quantifier, together with the need to have our approach adapted for a constructive meta-theory bring forward aspects of this theory that are easy to miss otherwise. 
 
-Systems of algebraic expressions are specified by algebraic signatures - pairs, consisting of a set $Op$, called the set of operations, and a function $Ar:Op\sr \nat$, called arity. Given a signature $Sig$ and a set $V$ such that $V\cap Op=\emptyset$ one can define, for any $X\subset V$, the set $Exp(X)$ of expressions relative to $Sig$ with (free) variables from $X$. Note that there are many different families of sets $Exp(X)$ whose elements may be called expressions. For example, one can use a subset of sequences of elements of $Op\cup X\cup \{l,r\}$ where  $l$ and $r$ are symbols for the left and the right parenthesis. One has to impose the condition that $l\ne r$ and neither $l$ nor $r$ is an element of $Op\cup V$. Alternatively, one can use some axiomatization of planar trees with labels from $Op\cup V$ on the nodes. Note also that when we write $Exp(X)$ we assume that the signature $Sig$ and the set $V$ have been fixed. 
+Systems of algebraic expressions are specified by algebraic signatures - pairs, consisting of a set $Op$, called the set of operations, and a function $Ar:Op\sr \nat$, called arity. Given a signature $Sig$ and a set $V$ such that $V\cap Op=\emptyset$ one can define, for any $X\subset V$, the set $Exp(X)$ of expressions relative to $Sig$ with (free) variables from $X$. Note that when we write $Exp(X)$ we assume that the signature $Sig$ and the set $V$ have been fixed. 
 
-In the chosen representation of expressions one can construct the substitution operation that, for any $X,Y\subset V$ and $f:X\sr Exp(Y)$ defines a function $\mbind{f}:Exp(X)\sr Exp(Y)$. In addition, for any $X\subset V$ one can define a function $\eta_{X}:X\sr Exp(X)$.  
+There are many different families of sets $Exp(X)$ whose elements may be called expressions. For example, one can use a subset of the set of sequences (lists) of elements of $Op\cup X$. Alternatively, one can use some axiomatization of planar rooted trees with labels from $Op\cup X$ on the nodes. Translating from a representation of the first kind into a representation of the second is done, in the concrete word of computer programs, by programs called parsers and there is a beautiful mathematical theory behind it that many of us are robbed of the joy of learning. 
 
-If $U$ is a Grothendieck universe that contains $Op$, $V$, and $Exp(X)$ for all $X\subset V$ then we may consider $Exp$ as a function $2^V\sr U$. If $Sets(2^V)$ is the category of sets whose set of objects is $2^V$, $Sets(U)$ is the category of sets whose set of objects is $U$, and $J_V:Sets(2^V)\sr Sets(U)$ is the inclusion functor then the structure ${\bf Exp}^V=(Exp,\eta,\mbind{-})$ is an example of a $J_V$-relative monad (\cite{ACU},\cite{ACU2} and Definition \ref{2015.12.22.def1}). 
+Let $U$ be a universe that contains $Op$, $V$, and $Exp(X)$ for all $X\subset V$. Let $Sets(2^V)$ be the category of sets whose set of objects is $2^V$, $Sets(U)$ the category of sets whose set of objects is $U$, and $J_V:Sets(2^V)\sr Sets(U)$ the inclusion functor. 
+
+We may consider $Exp$ as a function $2^V\sr U$. In the chosen representation of expressions one can construct the substitution operation that for any $X,Y\subset V$ and $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)\sr Exp(Y)$. In addition, for any $X\subset V$ one can define a function $\eta_{X}:X\sr Exp(X)$. The triple $(Exp,\eta,\mbind{-})$ satisfies the conditions of Definition \ref{2015.12.22.def1} making it into a $J_V$-relative monad.
 
 {\em This is how relative monads appear in the theory of expressions with variables.}
 
@@ -377,7 +394,9 @@ Let us now explain another very important point. At the very start of our explan
 
 {\em Expressions that contain operations that may bound variables in their arguments are called expressions with binders}.
  
-Expressions with binders are specified by binding signatures - pairs consisting of a set of operations $Op$ and the arity function $Ar:Op\sr Fseq(\nat)$. Here $Fseq(\nat)$ is the set of finite sequences of elements of $\nat$. The set $\nat$ is considered as a subset of $Fseq(\nat)$ through the embedding taking $d$ to the sequence $(0,\dots,0)$ of length $d$. This defines an inclusion of algebraic signatures into binding signatures. The earliest mention of the concept equivalent to the binding arity that we know of is in \cite{Aczel1978}. The meaning of an operation $E$ with the algebraic arity $d$ is that $E$ has $d$ arguments. The meaning of an operation $E$ with the binding arity $(i_1,\dots,i_d)$ is that $E$ has $d$ arguments and binds $i_k$ variables in its $k$-th argument. 
+Expressions with binders are specified by binding signatures 
+%### Fiore's *second-order signatures* is better, ask Marcelo for a reference to one of his papers?
+- pairs consisting of a set of operations $Op$ and the arity function $Ar:Op\sr Fseq(\nat)$. Here $Fseq(\nat)$ is the set of finite sequences of elements of $\nat$. The set $\nat$ is considered as a subset of $Fseq(\nat)$ through the embedding taking $d$ to the sequence $(0,\dots,0)$ of length $d$. This defines an inclusion of algebraic signatures into binding signatures. The earliest mention of the concept equivalent to the binding arity that we know of is in \cite{Aczel1978}. The meaning of an operation $E$ with the algebraic arity $d$ is that $E$ has $d$ arguments. The meaning of an operation $E$ with the binding arity $(i_1,\dots,i_d)$ is that $E$ has $d$ arguments and binds $i_k$ variables in its $k$-th argument. 
 
 To apply an operation $Op$ with arity $(n_0,\dots,n_{d-1})$ to expressions $E_0,\dots,E_{d-1}$ one has to specify, in addition to the expressions themselves, $d$ sequences, of lengths $n_0,\dots,n_{d-1}$ respectively, of names of variables. These sequences will show which of the variables are bound in each argument. 
 
@@ -478,17 +497,17 @@ Next, for a subset $X$ of $V$ let $Exp^{\cdot}_{Sig_2}(X,Y)$ be the subset of $E
 
 Let us fix a set $PrTy\subset Z$ such that $V\cap PrTy=\emptyset$. This set will eventually play the role of the set of primitive types that we  add to the base type theory. Consider $X$ as a variable, writing $RR_V(X)$ and $LM_V(X)$ instead of $ElExp^{\alpha}_{Sig_2}(X,PrTy)$ and $TyExp_{Sig_2}^{\alpha}(X,PrTy)$. 
 
-The structures that we get on the families of sets $RR^V(-)$ and $LM^V(-)$ are slightly different. On $RR^V$ we get the usual $J_V$-relative monad structure - for any $X\subset V$ we have a function $\eta_X:X\sr RR^V(X)$ and for any $X,Y\subset V$ and a function $f:X\sr RR^V(Y)$ we have a function 
+The structures that we get on the families of sets $RR_V(-)$ and $LM_V(-)$ are slightly different. On $RR$ we get the $J_V$-relative monad structure - for any $X\subset V$ we have a function $\eta_X:X\sr RR_V(X)$ and for any $X,Y\subset V$ and a function $f:X\sr RR_V(Y)$ we have a function 
 %
-$$rr^V_{X,Y}(f):RR^V(X)\sr RR^V(Y)$$
+$$rr_{X,Y}(f):RR_V(X)\sr RR_V(Y)$$
 %
-On the other hand, on the $LM^V$ we do not have $\eta_X$ since variables from $X$ are not type expressions and substitution defines for any $X,Y\subset V$ and a function $f:X\sr RR^V(Y)$, a function 
+On the other hand, on the $LM_V$ we do not have $\eta_X$ since variables from $X$ are not type expressions and substitution defines for any $X,Y\subset V$ and a function $f:X\sr RR_V(Y)$, a function 
 %
-$$lm^V_{X,Y}(f):LM^V(X)\sr LM^V(Y)$$
+$$lm_{X,Y}(f):LM_V(X)\sr LM_V(Y)$$
 %
-This operation makes the family of sets $LM^V(X)$ into a left module $\LM^V=(LM^V, lm^V)$ over the $J_V$-monad $\RR^V=(RR^V,\eta,rr^V)$.
+This operation makes the family of sets $LM_V(X)$ into a left module $\LM_V=(LM_V, lm)$ over the $J_V$-monad $\RR_V=(RR_V,\eta,rr)$.
 
-Precomposing $\RR^{\nat}$ and $\LM^{\nat}$ with the obvious functor $\Phi:\FF\sr Sets(2^{\nat})$ using Constructions \ref{2017.02.24.constr1}  and \ref{2017.03.12.constr1} we obtain a pair $(\RR,\LM)$ of a $J_f$-relative monad and a left module over it. 
+Precomposing $\RR_{\nat}$ and $\LM_{\nat}$ with the obvious functor $\Phi:\FF\sr Sets(2^{\nat})$ using Constructions \ref{2017.02.24.constr1}  and \ref{2017.03.12.constr1} we obtain a pair $(\RR,\LM)$ of a $J_f$-relative monad and a left module over it. 
 
 In some type theories all types are elements of universes and moreover element expressions are not syntactically distinguishable from type expressions. For example, it is the case in the very important type theory MLTT79 - the Martin-L\"{o}f type theory from \cite{MLTT79}. The inference rules related to the universes \cite[p.172]{MLTT79} make all type expressions also element expressions and an element expression of any form may be used as a type. In our notation it means that $LM(X)=RR(X)$.
 
@@ -496,13 +515,10 @@ In some type theories all types are elements of universes and moreover element e
 
 To construct the pair $(\RR,\LM)$ by methods of category theory without a reference to expressions one can proceed as follows.
 
-A restricted 2-sorted binding signature defines a monad on the category $Sets(U)\times Sets(U)$. See \cite{Zsido} for a much more general case of multi sorted signatures. This construction is being formalized in the UniMath and will appear in the forthcoming paper \cite{}. 
+A restricted 2-sorted binding signature defines a monad on the category $Sets(U)\times Sets(U)$. See \cite{Zsido} for a much more general case of multi sorted signatures. For the formalization of this construction in UniMath see \cite{AMM2017}. 
+%### Check with B. whether what is being formalized is what is described in \cite{Zsido}.
 
-Choosing an object $PrTy$ of $Sets(U)$ and applying Construction \ref{2017.03.16.constr1}, one obtains from this monad a pair $(\RR^*,\LM^*)$ of a monad on $Sets(U)$ and a module over this monad. 
-
-Constructions \ref{} and \ref{} 
-%###
-associate to this pair a pair of a an $Id$-relative monad and a left module over it.  Precomposing with the functor $Jf:\FF\sr Sets(U)$ using Constructions \ref{2017.02.24.constr1}  and \ref{2017.03.12.constr1} one obtains a pair $(\RR,\LM)$ of a $Jf$-monad and a module over it.
+Choosing an object $PrTy$ of $Sets(U)$ and applying Construction \ref{2017.04.23.constr1} we obtain a monad on $Sets(U)$. Let us denote it by $\RR^*$. Applying Construction \ref{2017.04.23.constr3} we obtain a module $\LM^*$ over this monad with values in $Sets(U)$.  Precomposing with the functor $Jf:\FF\sr Sets(U)$ using Constructions \ref{2017.02.24.constr1}  and \ref{2017.03.12.constr1} one obtains a pair $(\RR,\LM)$ of a $Jf$-monad and a module over it.
 
 {\em This is how the pairs $(\RR,\LM)$ can be obtained from a restricted 2-sorted binding signature by methods of category theory.}
 
@@ -550,7 +566,7 @@ Next, we need to construct from $(\RR,\LM)$, $B$, $\wt{B}$, $Beq$ and $\wt{Beq}$
 
 Hofmann and some other authors suggest to directly construct the set of morphisms and all the required structures using the subsets $\wt{B}$ and $\wt{Beq}$. Already the first step, the definition from $\wt{B}$ of a set that will later have to be factorized by an equivalence relation coming from $\wt{Beq}$ to produce the set of morphisms is non-trivial, c.f \cite[Def. 2.11, p.97]{Hofmann}. Constructing the composition and proving its properties such as the associativity represents additional difficulties.
 
-We proceed in a different manner. Instead of starting with $B/\sim$ and building the C-system structure on it, we will construct a C-system $CC(\RR,\LM)$, which knows nothing about the subsets $B$,$\wt{B}$,$Beq$,$\wt{Beq}$, and then use the results of \cite{Csubsystems} to show how any quadruple of subsets $B$,$\wt{B}$,$Beq$,$\wt{Beq}$, satisfying certain properties, defines a sub-quotient C-system of $CC(\RR,\LM)$. This sub-quotient will be the term model C-system of our type theory. 
+We proceed in a different manner. Instead of starting with $B/\sim$ and building the C-system structure on it, we will construct a C-system $C(\RR,\LM)$, which knows nothing about the subsets $B$,$\wt{B}$,$Beq$,$\wt{Beq}$, and then use the results of \cite{Csubsystems} to show how any quadruple of subsets $B$,$\wt{B}$,$Beq$,$\wt{Beq}$, satisfying certain properties, defines a sub-quotient C-system of $C(\RR,\LM)$. This sub-quotient will be the term model C-system of our type theory. 
 
 The conditions on the $B$-subsets will be seen to be the conditions many of which have been long known as the ``structural properties'' that the valid sentences of all type theories must satisfy. By approaching them from the direction of \cite{Csubsystems} we will see why these particular conditions are necessary and sufficient for a type theory to ``make sense''. 
 
@@ -590,6 +606,55 @@ Then one would prove that for any $\RR$, $\LM$ the pre-B-system structure that w
 
 Such a direct construction would probably be more satisfying than the one that we provide. However, it would require a lot of non-trivial work and, as far as the goal of constructing a C-system from the subsets $B$,$\wt{B}$,$Beq$ and $\wt{Beq}$, will give the same result as our less direct, but more simple approach. Still, defining B-systems and constructing an equivalence between the categories of C-systems and B-systems is important and we plan to address it in future papers. The approach that we take here, using the results of \cite{Csubsystems} instead, gives us a rigorous construction that can be completed today. 
 
+
+{\bf Note: Ignore the rest of the introduction}
+
+
+
+
+
+
+To construct the regular sub-quotient of  $C(\RR,\LM)$ that corresponds to the type system generated by the given system of inference rules one uses the main results, Propositions 4.3 and 5.4, of \cite{Csubsystems}. To use these propositions to obtain a sub-quotient of a C-system $CC$ one should provide a pair of subsets $B\subset Ob(CC)$, $\wt{B}\subset \wt{Ob}(CC)$ that is closed under operations $(pt,ft,\partial,\wt{T},\wt{S},\delta)$ that are defined on the pair of sets $(Ob(CC),\wt{Ob}(CC))$ associated with any C-system \cite[Prop. 4.3]{Csubsystems} and a pair of equivalence relations on $(B,\wt{B})$ that satisfy the conditions of \cite[Prop. 5.4]{Csubsystems}. The most important conditions of \cite[Prop. 5.4]{Csubsystems} are connected to the behavior of the equivalence relations under the restriction of the operations $(pt,ft,\partial,\wt{T},\wt{S},\delta)$ to $(B,\wt{B})$. 
+
+
+
+
+
+
+
+We defer the detailed descriptions both of the step preceding the one described here and of the one following it to future papers. In the remaining part of the introduction we describe the content of the paper without further references to type theory. 
+
+We start the paper with two sections where we introduce some constructions applicable to general C-systems. 
+
+On the sets of objects of any C-system one can consider the partial ordering defined by the condition that $X\le Y$ if and only if $l(X)\le l(Y)$ and $X=ft^{l(Y)-l(X)}(Y)$. In the first section we re-introduce some of the objects and constructions defined in \cite{Csubsystems} using the length function using this partial ordering instead. This allows to avoid the use of natural numbers in some of the arguments that significantly simplifies the proofs. 
+
+In the second section we construct for any C-system $CC$ and a presheaf $F$ on the category underlying $CC$ a new C-system $CC[F]$ that we call the $F$-extension of $CC$. The C-systems of this form remind in some way the affine spaces over schemes in algebraic geometry. While the geometry of affine spaces in itself is not very interesting their sub-spaces encompass all affine algebraic varieties of finite type . Similarly, while the C-systems $CC[F]$ look to be not very different from $CC$ their sub-systems and more generally regular sub-quotients, even in the case of the simplest C-systems $CC=C(\RR)$ corresponding to Lawvere theories (see Section \ref{CRR}), include all of the term C-systems of type theories.  
+
+Regular sub-quotients of any C-system $CC$ are classified by quadruples $(B,\wt{B}, \sim,\simeq)$ of the following form. 
+
+Let $\wt{Ob}(CC)$ be the set of sections of the p-morphisms of $CC$, i.e., the subset in $Mor(CC)$ that consists of morphisms $s$ such that $dom(s)=ft(codom(f))$ and $s\circ p_{codom(f)}=Id_{dom(f)}$.  The sets $Ob(CC)$ and $\wt{Ob}(CC)$ are called the B-sets of a C-system and can also be denoted as $B(CC)$ and $\wt{B}(CC)$. 
+
+The first two components $B$ and $\wt{B}$ of the quadruple are subsets in the sets $Ob(CC)$ and $\wt{Ob}(CC)$ respectively. The next two components are equivalence relations on $B$ and $\wt{B}$. To correspond to a regular sub-quotient the pair $(B,\wt{B})$ should be closed under the eight B-system operations on $(B(CC),\wt{B}(CC))$ and the equivalence relations of the pair $(\sim,\simeq)$ should be compatible with the restrictions of these eight operations to $(B,\wt{B})$ as well as to satisfy three additional simple conditions (see \cite[Proposition 5.4]{Csubsystems}) that involve the length function $l:B\sr\nat$ on $B$. 
+
+Therefore, in order to be able to describe regular sub-quotients of a C-system one needs to know the B-sets of this C-system, the length function and the action of 
+the eight B-system operations on these sets. Such a collection of data is called a pre-B-system (see \cite{Bsystems}). The main result of this paper is a detailed description of the pre-B-systems of the form $(B(CC[F]),\wt{B}(CC[F]))$ for an important particular class of ``coefficient'' C-systems $CC$ (see below). 
+
+In Section \ref{Jfrel} we first remind the notion of a relative monad on a functor $J:C\sr D$ that was introduced in \cite[Def.1, p.299]{ACU} and considered in more detail in \cite{ACU2}. Then we focus our attention on relative monads over the functor $Jf$ that is defined as follows. 
+
+For two sets $X$ and $Y$ let $Fun(X,Y)$ be the set of functions from $X$ to $Y$.  Let $stn(n)$ be the standard set with $n$ elements that we take to be the subset of $\nat$ that consists of numbers $<n$. Consider the category $F$ such that $Ob(F)=\nn$ and
+%
+$$Mor(F)=\cup_{m,n}Fun(stn(m),stn(n))$$
+%
+The functor $Jf$ is the obvious functor from $F$ to the category of sets. 
+
+In \cite{LandJf} we constructed an equivalence between the category of $Jf$-relative monads and the category of Lawvere theories whose component functor from the relative monads to Lawvere theories is denoted $RML$. A key component of this equivalence is the construction of the Kleisli category $K(\RR)$ of a relative monad $\RR$ given in \cite{ACU2}.  Most of Section \ref{Jfrel} is occupied by simple computations in $K(\RR)$ for $Jf$-relative monads $\RR$.
+
+In \cite{LandC} we constructed an isomorphism between the category of Lawvere theories and the category of l-bijective C-systems - the C-systems $CC$ where the length function $Ob(CC)\sr \nat$ is a bijection. In Section \ref{CRR} we consider the C-system $C(\RR)$ corresponding to the Lawvere theory $RML(\RR)$ defined by a $Jf$-relative monad $\RR$. The underlying category of this C-system is $K(\RR)^{op}$. The main result of this section is the description of the B-sets of $C(RR)$ and of the actions of the B-system operations on these sets.
+
+In the final Section \ref{CRRLM} we apply the construction of Section \ref{Fext} to $C(\RR)$ taking into account that the functors $\LM:C(\RR)^{op}\sr Sets$ are the same as the functors $K(\RR)\sr Sets$ that are the same as the relative (left) modules over $Jf$. In (\ref{2016.01.21.eq3}) and Construction \ref{2015.08.22.constr1} we compute the B-sets $B(C(\RR,\LM))$ and $\wt{B}(C(\RR,\LM))$ and in Theorem \ref{2015.08.26.th2} the action of the B-system operations on these sets. 
+
+In the next paper we will connect these computations to the conditions that the valid judgements of a type theory must satisfy in order for the term C-system of this type theory to be defined. 
+
 \vspace{5mm}
 
 We use neither the axiom of excluded middle nor the axiom of choice. The paper is written in the formalization-ready style and should be easily formalizable both in the UniMath and in the ZF. 
@@ -602,9 +667,14 @@ A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$ conne
 %
 $$Mor(X,Y)\cap Mor(X',Y')=\emptyset$$
 %
-if $X\ne X'$ or $Y\ne Y'$. 
+if $X\ne X'$ or $Y\ne Y'$. This property makes it necessary sometimes to perform additional constructions such as ... %@@@
+
 
 Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form of saying ``a family $y$, parametrized by $x$ in $A$, such that  $y(x)$ is in $B(x)$''. For a way to define a family of sets in the ZFC without a universe see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a set. However, families of sets with a given parameter set and such that all the sets of the family are subsets of given set do. A formulation in terms of iterated families can be used for ``for all'' expressions where there are  several parameters such as in Definition  \ref{2015.12.22.def1}(3). Similarly, a ``collection of data'', is understood as an $n$-tuple, which is understood as an iterated pair $(\dots(-,-),-)\dots,-)$.
+
+
+
+
 
 We fix a universe $U$ without making precise what conditions on the set $U$ we require. It is clear that it is sufficient for all constructions of this paper to require $U$ to be a Grothendieck universe. However, it is likely that a much weaker set of conditions on $U$ is sufficient for our purposes. In all that follows we write $Sets$ instead of $Sets(U)$.  
 
@@ -613,34 +683,34 @@ This is one the papers extending the material which I started to work on in \cit
 %###??? Make a note that we do not use dependent types in the paper which is why we can not simply write Hom(\wh{n},\wh{m})=R(stn(n))^{stn(m)}
 
 
+\section{Relative monads and left modules over relative monads}
 
+\subsection{Monads and relative monads} 
 
-\section{Monads and relative monads} 
-
-Let us start by reminding the definition of a monad in the form that became standard after MacLane's textbook \cite[p.133]{Maclane} and that we will call the {\em monoidal} form. For a category $\C$ we often write $X\in\C$ instead of $X\in Ob(C)$. For a functor $F=(F_{Ob},F_{Mor})$ from $\C$ to $\D$ we often write $F(X)$ instead of $F_{Ob}(X)$ for $X\in Ob(\C)$ and $F(f)$ instead of $F_{Mor}(f)$ for $f\in Mor(\C)$.  We emphasize these standard conventions here because below we will sometimes work with the object and morphism components of a functor separately in which case the subscripts $Ob$ and $Mor$ will need to be enforced.  
+Let us start by reminding the definition of a monad in the form that became standard after MacLane's textbook \cite[p.133]{MacLane} and that we will call the {\em monoidal} form. For a category $\C$ we often write $X\in\C$ instead of $X\in Ob(C)$. For a functor $F=(F_{Ob},F_{Mor})$ from $\C$ to $\D$ we often write $F(X)$ instead of $F_{Ob}(X)$ for $X\in Ob(\C)$ and $F(f)$ instead of $F_{Mor}(f)$ for $f\in Mor(\C)$.  We emphasize these standard conventions here because below we will sometimes work with the object and morphism components of a functor separately in which case the subscripts $Ob$ and $Mor$ will need to be enforced.  
 %
 \begin{definition}
 \llabel{2017.04.01.def1}
 A monad in the monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$ where $R:\C\sr \C$ is a functor and  $\eta:Id_{\C}\sr R$, $\mu:R\circ R\sr R$ are natural transformations such that for any $X\in\C$ one has
 %
 \begin{enumerate}
-\item $R(\mu_X)\circ \mu_{X}=\mu_{R(X)}\circ \mu_X$ (``associativity''),
-\item $\eta_{R(X)}\circ \mu_X=Id_{R(X)}$ and $R(\eta_X)\circ \mu_X=Id_{R(X)}$ (two ``unity axioms").
+\item \llabel{2017.04.19.eq7} $R(\mu_X)\circ \mu_{X}=\mu_{R(X)}\circ \mu_X$ (``associativity''),
+\item \llabel{2017.04.19.eq8} $\eta_{R(X)}\circ \mu_X=Id_{R(X)}$ and $R(\eta_X)\circ \mu_X=Id_{R(X)}$ (two ``unity axioms").
 \end{enumerate}
 \end{definition}
 %
 We will omit the qualification ``in the monoidal form'' when it is clear from the context. 
 
-The following definition specifies objects that we, following \cite{Moggi}, will call ``monads in the Kleisli form". 
+The following definition specifies objects that we will call ``monads in the Kleisli form". To the best of my knowledge it explicitly appeared in the first time in the groundbreaking paper by Eugenio Moggi \cite{Moggi}. 
 %
 \begin{definition}
 \llabel{2017.04.13.def1}
 A monad in the Kleisli form on a category $\C$ is a triple $\RR=(RR_{Ob},\eta,rr)$ where 
 %
 \begin{enumerate}
-\item $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
-\item $\eta$ is a family, parametrized by $X\in Ob(\C)$, of morphisms $\eta_X:X\sr RR_{Ob}(X)$,
-\item $rr$ is a family, parametrized by pairs $X,Y\in Ob(\C)$, of functions 
+\item \llabel{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
+\item \llabel{2017.04.19.eq2} $\eta$ is a family, parametrized by $X\in Ob(\C)$, of morphisms $\eta_X:X\sr RR_{Ob}(X)$,
+\item \llabel{2017.04.19.eq3} $rr$ is a family, parametrized by pairs $X,Y\in Ob(\C)$, of functions 
 %
 $$rr_{X,Y}:Mor_{\C}(X,RR_{Ob}(Y))\sr Mor_{\C}(RR_{Ob}(X),RR_{Ob}(Y))$$
 %
@@ -649,9 +719,9 @@ $$rr_{X,Y}:Mor_{\C}(X,RR_{Ob}(Y))\sr Mor_{\C}(RR_{Ob}(X),RR_{Ob}(Y))$$
 such that
 %
 \begin{enumerate}[resume]
-\item for all $X\in\C$, $rr_{X,X}(\eta_X)=Id_{RR_{Ob}(X)}$,
-\item for all $X,Y$, $f:X\sr RR_{Ob}(Y)$, $\eta_X\circ rr_{X,Y}(f)=f$,
-\item for all $X,Y,Z$, $f:X\sr RR_{Ob}(Y)$, $g:Y\sr RR_{Ob}(Z)$, 
+\item \llabel{2017.04.19.eq4} for all $X\in\C$, $rr_{X,X}(\eta_X)=Id_{RR_{Ob}(X)}$,
+\item \llabel{2017.04.19.eq5} for all $X,Y$, $f:X\sr RR_{Ob}(Y)$, $\eta_X\circ rr_{X,Y}(f)=f$,
+\item \llabel{2017.04.19.eq6} for all $X,Y,Z$, $f:X\sr RR_{Ob}(Y)$, $g:Y\sr RR_{Ob}(Z)$, 
 %
 $$rr_{X,Y}(f)\circ rr_{Y,Z}(g)=rr_{X,Z}(f\circ rr_{Y,Z}(g))$$
 %
@@ -680,8 +750,8 @@ such that $((RR_{Ob},RR_{Mor}),\eta,\mu)$ is a monad on $\C$ in the monoidal for
 %
 \begin{enumerate}[resume]
 \item $RR=(RR_{Ob},RR_{Mor})$ is a functor,
-\item $(RR_{Ob},\mu)$ satisfies condition (1) of Definition \ref{2017.04.01.def1},
-\item $(RR_{Ob},\eta,\mu)$ satisfies condition (2) of Definition \ref{2017.04.01.def1},
+\item $(RR_{Ob},\mu)$ satisfies condition \ref{2017.04.19.eq7} of Definition \ref{2017.04.01.def1},
+\item $(RR_{Ob},\eta,\mu)$ satisfies condition \ref{2017.04.19.eq8} of Definition \ref{2017.04.01.def1},
 \item $\eta$ is a natural transformation $Id_{\C}\sr RR$,
 \item $\mu$ is a natural transformation $RR\circ RR\sr RR$,
 \end{enumerate}
@@ -693,9 +763,9 @@ $$rr_{X,Y}:Mor_{\C}(X,RR_{Ob}(Y))\sr Mor_{\C}(RR_{Ob}(X),RR_{Ob}(Y))$$
 such that $(RR_{Ob},\eta,rr)$ is a monad on $\C$ in the Kleisli form, that is, 
 %
 \begin{enumerate}
-\item $(RR_{Ob},\eta,rr)$ satisfies condition (1) of Definition \ref{2017.04.13.def1},
-\item $(RR_{Ob},\eta,rr)$ satisfies condition (2) of Definition \ref{2017.04.13.def1},
-\item $(RR_{Ob},rr)$ satisfies condition (3) of Definition \ref{2017.04.13.def1}.
+\item $(RR_{Ob},\eta,rr)$ satisfies condition \ref{2017.04.19.eq4} of Definition \ref{2017.04.13.def1},
+\item $(RR_{Ob},\eta,rr)$ satisfies condition \ref{2017.04.19.eq5} of Definition \ref{2017.04.13.def1},
+\item $(RR_{Ob},rr)$ satisfies condition \ref{2017.04.19.eq6} of Definition \ref{2017.04.13.def1}.
 \end{enumerate}
 \end{enumerate}
 \end{problem}
@@ -750,11 +820,10 @@ Let $J:\C\sr \D$ be a functor. A relative monad $\RR$ on $J$ or a $J$-relative m
 \begin{enumerate}
 \item $RR_{Ob}:Ob(\C)\sr Ob(\D)$ is a function,
 \item for all $X$ in $\C$, a morphism $\eta_{X}:J(X)\sr RR_{Ob}(X)$ in $\D$,
-\item for all $X,Y$ in $\C$ and $f:J(X)\sr RR_{Ob}(Y)$ in $\D$, a morphism
+\item for all $X,Y$ in $\C$ and $f:J(X)\sr RR_{Ob}(Y)$ in $\D$, a morphism in $\D$
 %
 $$rr_{X,Y}(f):RR_{Ob}(X)\sr RR_{Ob}(Y)$$
 %
-in $\D$,
 \end{enumerate}
 %
 such that the following conditions hold:
@@ -787,7 +856,7 @@ The proofs of the composition and the identity axioms of a functor are straightf
 \ec
 %### details, to M. or J.?
 %
-A relative monad on the identity functor of a category is precisely a monad on the corresponding category given in the Kleisli form. As the explicit form of functions $(-)^K$ and $(-)^M$ defined in Construction \ref{2017.01.04.constr1} shows that for $\R=(R,\eta,\mu)$ we have $\R^K=(R_{Ob},\eta,rr)$ and for $\RR=(RR_{Ob},\eta,rr)$ we have $\RR^M=(\RR^f,\eta,\mu)$. In particular, since $(\R^K)^M=\R$, we have
+An $Id_{\C}$-relative monad will be called an endo-monad. An endo-monad is precisely a monad on the corresponding category given in the Kleisli form. This permits us to call, sometimes, the endo-monads simply monads. As the explicit form of functions $(-)^K$ and $(-)^M$ defined in Construction \ref{2017.01.04.constr1} shows that for $\R=(R,\eta,\mu)$ we have $\R^K=(R_{Ob},\eta,rr)$ and for $\RR=(RR_{Ob},\eta,rr)$ we have $\RR^M=(\RR^f,\eta,\mu)$. In particular, since $(\R^K)^M=\R$, we have
 %
 \begin{eq}\llabel{2017.04.05.eq2}
 (\R^K)^f=R
@@ -1010,12 +1079,187 @@ This completes Construction \ref{2017.03.12.constr2}.
 \ec
 %
 
+The following construction together with Construction \ref{} are used to extract pairs $(\RR,\LM)$ of a relative monad and a left module over it from two-sorted relative monads such as the ones that arise from two-sorted second-order signatures, see \cite{AMM2017}. 
+
+For two functors $F:\C\sr\D$, $F':\C'\sr\D'$ we let $F\boxtimes F'$ denote the corresponding functor from $\C\times\C'$ to $\D\times\D'$. If $\C=\C'$ we let $F\times F'$ denote the composition of $F\boxtimes F'$ with the diagonal $\C\sr \C\times\C$, that is, the functor given on objects by $X\mapsto (F(X),F'(X))$. For a functor $FF:\C\sr \D\times\D'$ we let $FF_{\D}$ and $FF_{\D'}$ denote the compositions of $FF$ with the projections from $\D\times\D'$ to $\D$ and $\D'$ respectively. We will also use the notation $FF_{\D}$ when $FF$ is only a function on objects. 
+%
+\begin{definition}
+\llabel{2017.04.21.def1}
+An object constancy structure on a functor $F:\C\sr\D$ is a family, parametrized by $X,Y\in\C$, of morphisms $\nu_{X,Y}:F(X)\sr F(Y)$ such that:
+%
+\begin{enumerate}
+\item \llabel{2017.04.21.eq3} for all $X$, $\nu_{X,X}=Id_{F(X)}$,
+\item \llabel{2017.04.21.eq4} for all $X,Y,Z$, $\nu_{X,Z}=\nu_{X,Y}\circ\nu_{Y,Z}$.
+\end{enumerate}
+\end{definition}
+%
+Note that for an object constancy structure we have, for all $X,Y\in \C$, 
+%
+$$
+\begin{CD}
+\nu_{X,Y}\circ \nu_{Y,X}=\nu_{X,X}=Id_{F(X)}\\
+\nu_{Y,X}\circ \nu_{X,Y}=\nu_{Y,Y}=Id_{F(Y)}
+\end{CD}
+$$
+%
+that is, $\nu_{X,Y}$ and $\nu_{Y,X}$ are mutually inverse and, in particular, $\nu_{X,Y}$ is an isomorphism. 
+
+For any object $A$ of $\D$ the functor $\uu{A}_{\C}:\C\sr \D$ given on objects by $\uu{A}_{\C}(X)=A$ and on morphisms by $\uu{A}_{\C}(f)=Id_A$ has an obvious object constancy structure with $\nu_{X,Y}=Id_A$ for all $X,Y$. We will call it the identity object constancy structure corresponding to $A$.
+
+Since the object constancy structure does not impose any condition on $\nu$ with respect to morphisms of $\C$ or $\D$, there are many other examples. Indeed, for $A$ as above, the identity object constancy structure is defined for any functor $F$, however non-trivial on morphisms, but such that $F(X)=A$ for all $X\in\C$.  
+%
+\begin{problem}
+\llabel{2017.04.21.prob1}
+Let $\C,\D,\D'$ be categories, $J:\C\sr \D\times\D'$ a functor and $\RR=(RR,\eta,rr)$ a $J$-relative monad. Assume in addition that we are given an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$.
+
+To construct a structure of a $J_{\D}$-monad on $RR_{\D}$. This $J_{\D}$-monad will be denoted $\RR_{\D}$.
+\end{problem}
+%
+\begin{construction}\rm
+\llabel{2017.04.21.constr1}
+We need to construct:
+%
+\begin{enumerate}
+\item a family $\eta^{\D}$, parametrized by $X\in\C$, of morphisms $\eta^{\D}_X:J_{\D}(X)\sr RR_{\D}(X)$,
+\item a family parametrized by $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$, of morphisms $rr^{\D}_{X,Y}(f):RR_{\D}(X)\sr RR_{\D}(Y)$,
+\end{enumerate}
+%
+and to prove that $\RR_{\D}$, defined as $(RR_{\D},\eta^{\D},rr^{\D})$,  satisfies 
+conditions \ref{2017.04.19.eq4}, \ref{2017.04.19.eq5} and \ref{2017.04.19.eq6} of Definition \ref{2017.04.13.def1}. 
+
+Let $X\in\C$. Then $\eta_X$ is a morphism from $J(X)$ to $RR(X)$. We set 
+%
+\begin{eq}
+\llabel{2017.04.21.eq1}
+\eta^{\D}_X=pr_{\D}(\eta_X):J_{\D}(X)\sr RR_{\D}(X)
+\end{eq}
+%
+We will also consider $pr_{\D'}(\eta_X)$ that we will denote by $\eta^{\D'}_X$. 
+
+Let $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$. We need to construct a morphism $RR_{\D}(X)\sr RR_{\D}(Y)$. We have $\nu_{X,Y}:J_{\D'}(X)\sr J_{\D'}(Y)$ and therefore we may consider the morphism 
+%
+$$(f,\nu_{X,Y}\circ \eta^{\D'}_Y):(J_{\D}(X),J_{\D'}(X))=J(X)\sr RR(Y)=(RR_{\D}(Y),RR_{\D'}(Y))$$
+%
+and applying to it $rr_{X,Y}$ we obtain 
+%
+$$rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)):RR(X)\sr RR(Y)$$
+%
+We set
+%
+\begin{eq}
+\llabel{2017.04.21.eq2}
+rr^{\D}_{X,Y}(f)=pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))
+\end{eq}
+%
+
+Let $X\in\C$. Then
+%
+\begin{eq}
+\llabel{2017.04.23.eq1}
+rr_{X,X}((\eta^{\D}_X,\nu_{X,X}\circ \eta^{\D'}_X))=
+rr_{X,X}((\eta^{\D}_X,\eta^{\D'}_X))=
+rr_{X,X}(\eta_X)=
+Id_{RR(X)}
+\end{eq}
+%
+where the first equality holds by Definition \ref{2017.04.21.def1}\ref{2017.04.21.eq3}, the second by definition of $\eta^{\D}$ and $\eta^{\D'}$, and the fourth by the property \ref{2017.04.13.def1}\ref{2017.04.19.eq4} of $\RR$. 
+
+Therefore,
+%
+$$rr^{\D}_{X,X}(\eta^{\D}_X)=
+pr_{\D}(rr_{X,X}((\eta^{\D}_X,\nu_{X,X}\circ \eta^{\D'}_X)))=
+pr_{\D}(Id_{RR(X)})=Id_{RR_{\D}(X)}$$
+%
+where the first equality holds by (\ref{2017.04.21.eq2}), the second by (\ref{2017.04.23.eq1}) and the third by the definition of $pr_{\D}$. This proves the property \ref{2017.04.13.def1}\ref{2017.04.19.eq4} for $\RR_{\D}$. 
+
+Let $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$. Then
+%
+\begin{eq}
+\llabel{2017.04.23.eq2}
+\eta^{\D}_X\circ rr^{\D}_{X,Y}(f)=
+$$$$pr_{\D}(\eta_X)\circ pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
+pr_{\D}(\eta_X\circ rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
+$$$$pr_{\D}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))=
+f
+\end{eq}
+%
+where the first equality holds by (\ref{2017.04.21.eq1}) and (\ref{2017.04.21.eq2}), the second since $pr_{\D}$ commutes with compositions, the third by the property \ref{2017.04.13.def1}\ref{2017.04.19.eq5} of $\RR$, and the fourth by definition of $pr_{\D}$. This proves the property \ref{2017.04.13.def1}\ref{2017.04.19.eq5} for $\RR_{\D}$. 
+
+Let $X,Y,Z\in\C$, $f:J_{\D}(X)\sr RR_{\D}(Y)$, $g:J_{\D}(Y)\sr RR_{\D}(Z)$. Then
+%
+$$rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ 
+rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))=
+%
+$$$$rr_{X,Z}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
+%
+$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ\eta^{\D'}_Y\circ pr_{\D'}(rr_{Y,Z}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z))) )))=
+%
+$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ pr_{\D'}(\eta_Y\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z))) ))=
+%
+$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ pr_{\D'}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z)) ))=
+%
+$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ\nu_{Y,Z}\circ\eta^{\D'}_Z) )=
+%
+$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Z}\circ\eta^{\D'}_Z) ))=$$
+%
+\begin{eq}
+\llabel{2017.04.21.eq5}
+rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z))
+\end{eq}
+%
+where the first equality holds by the property \ref{2017.04.13.def1}\ref{2017.04.19.eq6} of $\RR$, the second by the definition of composition in $\D\times\D'$, the third since $pr_{\D'}$ commutes with compositions, the fourth by the  
+property \ref{2017.04.13.def1}\ref{2017.04.19.eq5} of $\RR$, the fifth by the definition of $pr_{\D'}$, the sixth by Definition \ref{2017.04.21.def1}\ref{2017.04.21.eq4}, and the seventh by (\ref{2017.04.21.eq2}). 
+
+Therefore,
+%
+$$rr^{\D}_{X,Y}(f)\circ rr^{\D}_{Y,Z}(g)=
+%
+pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))\circ 
+pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
+%
+$$$$pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
+%
+$$$$pr_{\D}(rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)))=
+%
+$$$$rr^{\D}_{X,Z}(f\circ rr^{\D}_{Y,Z}(g))$$
+%
+where the first equality holds by (\ref{2017.04.21.eq2}), the second since $pr_{\D}$ commutes with compositions, the third by (\ref{2017.04.21.eq5}), and the fourth again by (\ref{2017.04.21.eq2}). This proves the property \ref{2017.04.13.def1}\ref{2017.04.19.eq6} for $\RR_{\D}$ and completes Construction \ref{2017.04.21.constr1}.
+\ec
+%
+We want to emphasize the following particular case of Construction \ref{2017.04.21.constr1}.
+%
+\begin{problem}
+\llabel{2017.04.23.prob1}
+Let $\C$,$\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. To construct an endo-monad $\RR_{1,A}$ on $\C$.
+\end{problem}
+%
+\begin{construction}
+\llabel{2017.04.23.constr1}\rm
+Let $J:\C\sr\C\times\D$ be the functor given by $X\mapsto (X,A)$ on objects and $f\mapsto (f,Id_A)$ on morphisms. Consider the $J$-monad $J^{\circ}(\RR)$. It satisfies the conditions of Problem \ref{2017.04.21.prob1} with respect to the identity object constancy structure corresponding to $A$. Therefore, Constructions \ref{2017.04.21.constr1} applies and we obtain a $J\circ pr_{\C}$-monad $(J^{\circ}(\RR))^{\D}$. Since $J\circ pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$ that we denote by $\RR_{1,A}$. Explicitly, for $\RR=(RR,\eta,rr)$, we have $\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$ where:
+%
+\begin{enumerate}
+\item for $X\in \C$, $RR_{1,A}(X)=pr_{\C}(RR((X,A)))$,
+\item for $X\in \C$, $\eta^{1,A}_X=pr_{\C}(\eta_{(X,A)})$,
+\item for $X,Y\in \C$, $f:X\sr Y$, $rr^{1,A}_{X,Y}(f)=pr_{\C}(rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A}))))$.
+\end{enumerate}
+\ec
+%
+\begin{remark}\rm
+The notation $\RR_{1,A}$ emphasizes that the monad is on the first projection of the product $\C\times\D$. We can also construct, for $A\in Ob(C)$, an endo-monad $\RR_{2,A}$ on $\D$. 
+\end{remark}
+%
 
 
 
 
 
-\section{Modules over monads and modules over relative monads}
+
+
+
+
+
+
+\subsection{Left modules over monads and relative monads}
 
 %
 A left module in the monoidal form over a monad in the monoidal form is defined as follows (cf. \cite[p.222]{HM2007}). 
@@ -1275,6 +1519,45 @@ where, for $X,Y\in \C$ and $f:J(X)\sr RR_{Ob}(Y)$, one has
 $$F(lm)_{X,Y}(f)=F(lm_{X,Y}(f))$$
 %
 
+There is an analog of Construction \ref{2017.04.21.constr1} for modules.
+%
+\begin{problem}
+\llabel{2017.04.23.prob2}
+Let $\C,\D,\D'$ be categories, $J:\C\sr \D\times\D'$ a functor and $\RR=(RR,\eta,rr)$ a $J$-relative monad. Assume in addition that we are given an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$. Let $\RR_{\D}$ be the $J_{\D}$-monad specified in Construction \ref{2017.04.21.constr1}.  
+
+To construct a structure of a $\RR_{\D}$-module with values in $\D\times\D'$ on $RR$. 
+\end{problem}
+%
+\begin{construction}\rm
+\llabel{2017.04.23.constr2}
+We need to construct a family $lm^{\D}$, parametrized by $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$, of morphisms $lm^{\D}_{X,Y}(f):RR(X)\sr RR(Y)$,
+and to prove that $\LM_{\D}$, defined as $(RR,lm^{\D})$,  satisfies 
+conditions (1) and (2) of Definition \ref{2017.04.15.def1}. 
+
+We set:
+%
+$$lm^{\D}_{X,Y}(f)=rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))$$
+%
+The proof of condition (1) of Definition \ref{2017.04.15.def1} is given by (\ref{2017.04.23.eq1}). The proof of condition (2) is given by (\ref{2017.04.21.eq5}).
+This completes Construction \ref{2017.04.23.constr2}.
+\ec
+%
+We also have an analog of the special case described in Construction \ref{2017.04.23.constr1}. Let $\C$,$\D$ be categories and $A\in Ob(\D)$. Let $J_{1,A}:\C\sr\C\times\D$ be the functor given by $X\mapsto (X,A)$ on objects and $f\mapsto (f,Id_A)$ on morphisms. In Construction \ref{2017.04.23.constr1} we wrote $J$ instead of $J_{1,A}$. 
+%
+\begin{problem}
+\llabel{2017.04.23.prob3}
+Let $\C$,$\D$ be categories. Let $\RR=(RR,\eta,rr)$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. To construct an $\RR_{1,A}$-module structure on $J_{1,A}\circ RR$.
+\end{problem}
+%
+\begin{construction}
+\llabel{2017.04.23.constr3}\rm
+Consider the $J_{1,A}$-monad $J_{1,A}^{\circ}(\RR)$. It satisfies the conditions of Problem \ref{2017.04.23.prob2} with respect to the identity object constancy structure corresponding to $A$. Therefore, Constructions \ref{2017.04.23.constr2} applies and we obtain a $(J_{1,A}^{\circ}(\RR))_{\C}$-module structure on $J_{1,A}\circ RR$. Since, by Construction \ref{2017.04.23.constr1}, we have $\RR_{1,A}=(J_{1,A}^{\circ}(\RR))_{\C}$, this provides a construction for Problem \ref{2017.04.23.prob3}. Explicitly, if we let $(J_{1,A}\circ RR, lm^{1,A})$ denote this module, we have, for $X,Y\in \C$ and $f:X\sr Y$
+%
+$$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A})))$$
+%
+\ec
+
+(partial text)
 
 \bibliography{../../../../alggeom}
 \bibliographystyle{plain}
@@ -1282,6 +1565,166 @@ $$F(lm)_{X,Y}(f)=F(lm_{X,Y}(f))$$
 \end{document}
 
 
+
+
+\comment{
+
+%###
+
+
+%### concept of a type theory in the Martin-Lof presentation - $\RR$+$\LM$+subsets $B_T$, $\wt{B}_T$, $Beq_{T}$, $\wt{Beq}_T$ satisfying the conditions of Theorem \ref{}. 
+
+%### The concept of adding to a type theory of a sequence of constants can be described as a construction on the level of C-systems. Can we show that the concept of adding a sequence of definitional equalities can not?
+
+
+
+In multi sorted predicate logic the quantifiers have two arguments - the sort of the variable being quantified and the expression. Correspondingly, their binding arity is $(0,1)$. The first argument is the sort, where no variables are bound, and second is the expression where one variable is bound. This example is also an example of a two-sorted binding signature since the first argument is of sort ``sort'' and the second is of sort ``formula''. The two sorted binding signatures are very important for this paper and we will come back to them later. 
+%###
+
+
+
+
+
+
+In the assumption of the ZFC with a Grothendieck universe $U$ as the only meta-theory various authors constructed an equivalence of categories between the category of finitary monads on the category of sets $Sets(U)$ and the less well known category of the $Jf$-relative monads with values in $Sets(U)$. There are further equivalences between being finitary relative to the concepts of a directed colimit or filtered colimit as well as convenient criteria of when a diagram is filtered. 
+
+With UniMath as the second intended meta-theory, many of these equivalence proofs need to be rewritten and it is not at all obvious which ones can be preserved. What is clear, is that the concept of a $Jf$-relative monad remains the most general one. The categories of finitary monads, where being finitary is defined relative to either directed colimits or filtered colimits, as well as a number of other, classically equivalent, categories can all be equipped with obvious functors to the category of the $Jf$-relative monads. What is unclear is which of these functors can be proved, in UniMath, to be equivalences.  
+
+In addition, a pair of a $Jf$-relative monad $\RR$ and a left module $\LM$ over it contains {\em exactly} that information which is used in the construction of the C-system $C(\RR,\LM)$. One could describe this construction as starting with a pair of a general monad on $Sets(U)$ and a left module over this monad. However, we do not know at this time whether one can construct, in UniMath, a monad from a $Jf$-relative monad nor what is the correct definition of being finitary that would allow us to prove, in UniMath,  that the functor from finitary monads to the $Jf$-relative monads is fully-faithful. 
+
+
+
+
+
+
+Fortunately, we have a very good mathematical theory of abstract {\em algebraic} expressions %that goes back to Lawvere's thesis \cite{Lawvere}.
+ In its most convenient for us form, one considers the sets $RR(X)$ of algebraic expressions with variables from the set $X$. One constructs, using the possibility to substitute an expression for a variable, first the functor structure and then the monad structure on this family of sets. It turns out that this monad contains, or can be equipped with, all of the structures that are important in the study of algebraic expressions. 
+
+Not any monad arises in this way. The first, most fundamental, restriction on these monads is that they are finitary, that is, that the underlying functor commutes with directed colimits. This property corresponds to the fact that even if we have an infinite set from which variables can be taken any particular expression contains only finitely many variables. 
+
+The second restriction is that, for algebraic expressions, these monads are {\em free} monads in the sense that is made precise for example in  \cite[Prop. 10.14]{Awodey2006}. 
+
+Expressions that one has to deal with in type theory {\em are not} algebraic expressions. The simplest example is the system of expressions underlying the type theory that is called the simply typed $\lambda$-calculus with the set of generating types $G$. The expressions of this type theory are the ones that are necessary to accommodate the following inference rules:
+
+$$
+\frac{}{\rh}\spc\spc\spc\spc\spc
+\frac{x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh}{x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh x_i:T_i}\,\,\,(0\le i<n)
+$$$$\frac{\Gamma\rh o:T\spc\Gamma\rh o':T\spc o\sim^{\alpha}o'}{\Gamma\rh o\equiv o':T}
+$$$$\frac{\Gamma\rh}{\Gamma\rh T\type}\,\,\,(T\in G)\spc
+\frac{\Gamma,x:A\rh B\type}{\Gamma\rh \prod(A,B)\type}
+$$$$\frac{\Gamma,x:A\rh o:B}{\Gamma\rh \lambda(A,x.o):\prod(A,B)}\spc
+\frac{\Gamma\rh o:A\spc \Gamma\rh f:\prod(A,B)}{\Gamma\rh ap(f,o):B}
+$$$$\frac{\Gamma,x:A\rh o_1:B\spc\Gamma\rh o_2:A}{\Gamma\rh ap(\lambda(A,x.o_1),o_2)\equiv o_1[o_2/x]:B}\spc
+\frac{\Gamma\rh f:\prod(A,B)}{\Gamma\rh \lambda(A,x.ap(f,x))\equiv f:\prod(A,B)}$$
+%
+
+A short explanation is required here. For a symbol $S$, expressions $E_1,\dots,E_d$ and names of variables $x_{1}^1,\dots,x_{n_1}^1;\dots;x_{1}^d,\dots,x_{n_d}^d$, the sequence
+%
+$$S(x_{1}^1.\dots.x_{n_1}^1.E_1,\dots,x_{1}^d.\dots.x_{n_d}^d.E_d)$$
+%
+denotes an expression where variables $x_{1}^i,\dots,x_{n_i}^i$ are bound in the sub-expression $E_i$. 
+
+
+
+The expressions that are necessary to accommodate these inference rules are as follows: 
+%
+\begin{enumerate}
+\item the name of a free variable is an expression - this is required by the second rule,
+\item for $T\in G$, $T$ is an expression - this is required by the fourth rule,
+\item if $A$ and $B$ are expressions, then $\prod(A,B)$ is an expression - this is a little stronger than what is required by the fifth rule, but we will keep it like that for now,
+\item if $A,o$ and $B$ are expressions and $x$ is not free in $A$ then $\lambda(A,x.o)$ is an expression and $x$ is bound in the $o$ part of this expression - this is required by the 
+
+\end{enumerate}
+
+
+
+
+Some things need to be explained here. The first three rules are present in the inference rules list of any type theory. The first one asserts that the empty context is a valid one. The second that a variable declared in a valid context is a valid element expression of the corresponding type in this context. 
+
+The third one is of great importance for what will follow. The notation $o\sim o'$ 
+
+
+
+
+
+
+
+
+Moreover, the sets $Expr(X)$ of 
+
+
+
+
+
+
+
+This monad on the category of sets, or its relative version -- a $Jf$-relative monad that one obtains by considering only the sets $RR(X)$ where $X$ is one of the standard finite sets $stn(n)$,  
+
+
+
+it is clearly not what one needs for a mathematical theory of type theories where one wants to minimize the amount of structure used to define the concept of an expression and concentrate on the structures that arise when expressions are used to specify type theories. 
+
+The solution to the problem of expressions that we will use goes back to the foundational works of Aczel \cite{Aczel}, Fiore, Plotkin and Turi \cite{FPT}, Hirschowitz and Maggesi \cite{HM2010} as well as more recent work by Ahrens \cite{Ahrens2016} and Ahrens, Matthes and M\"{o}rtberg.  A good review paper on this surprisingly involved subject is yet to be written. 
+
+For now, we will leave untold the story of the long chain of innovations and modifications that led to the form of the theory of expressions that we use in this paper and restrict ourselves to the description of the result. 
+
+Firstly, we need to choose the set from which we will take the names of free variables. We take this set to be the set $\nat$ of natural numbers. When we refer below to a (name of) free variable $x_i$ it is always assumed that $x_i\in\nat$. Next, we will impose a restriction on the {\em sets} of free variables that we consider. As was seen from the explanation of the meaning of sentences of the forms (\ref{2017.02.06.eq1})-(\ref{2017.02.06.eq5}) the free variables of the component expressions of such sentences are always well ordered. We will use this property to restrict our attention to expressions whose free variables  
+
+
+
+
+
+Given expressions $F_0,\dots,F_{m-1}$ with free variables from $\{y_0,\dots,y_{n-1}\}$ and an expression $E$ with free variables from $\{x_0,\dots,x_{m-1}\}$ we can substitute $F_i$ for $x_i$ obtaining the expression $E[F_0/x_0,\dots,F_{m-1}/x_{m-1}]$ with free variables from $\{y_0,\dots,y_{n-1}\}$. This operation should satisfy 
+
+
+
+
+
+
+
+
+
+
+
+
+As has been suggested by earlier authors, such as \cite{MH1995}\footnote{In \cite{MH1995} the author uses categories with families instead of C-systems as the basic structures on which the inference rules define operations. However, the problems discussed below are common to both approaches.}, the objects of the term category should be the ``well-formed'' or ``valid'' contexts of the type theory modulo an equivalence relation determined by the definitional equalities permitted in this type theory.  Morphisms of the term category should be sequences of ``valid typing judgements'' of the type theory modulo a similarly defined equivalence relation and having a certain structure as a sequence.
+
+While these suggestions allow one to define objects and morphisms the construction of the operations and the verification of the axioms of a category was always ``left to the reader''. Indeed, the whole of the very important and in many ways foundational paper \cite{MH1995} does not contain the word ``associativity'' mentioned even once. Similarly, while it is clear that in order for the suggested definitions of objects and morphisms to work and to extend to a definition of a category and then to a definition of a category with families or a C-system, the sets of valid judgements of the theory must satisfy some conditions. These conditions must be spelled out and provably  connected to the possibility of building the categorical structure under consideration from these sets. 
+
+In this paper we describe one of the main steps of the first rigorous mathematical construction of the term model. This construction is applicable to a very general class of type theories both the ones where the sets of valid judgements are inductively generated by inference rules and the ones where where these sets arise from inference rules in a more complex fashion. 
+
+Our construction follows the usual principle that the sets of valid judgements should be defined as sub-quotients of the sets of ``raw'' judgements. The main innovation, other than the first careful mathematical proofs of all the required assertions, is the observations that one can take {\em all} raw judgements as the source for the construction and build from them a C-system. The term C-system of a type theory with a given raw syntax is then a sub-quotient of the raw syntax C-system. The raw syntax C-system can be both directly defined in a way that allows for a straightforward rigorous verification of all the axioms and understood from the perspective of the abstract mathematical theory of C-systems as a particular case of a much more general construction of the presheaf extensions of C-systems. 
+
+Therefore, one divides the construction of the term C-system of a type theory into several steps. Firstly, one has to mathematically model ``the raw syntax''. Secondly, one has to define ``the raw syntax C-system''. 
+%###
+Thirdly, one has to describe the sets of valid judgements of the five Martin-L\"{o}f kinds in terms of objects associated with the raw syntax C-system.  Fourthly, one has to provide a construction of a sub-quotient of a C-system starting from four objects of the appropriate kind and spell out the conditions that these four objects have to satisfy in order for the construction to work. Fifthly, one has to translate these conditions, in the case of a raw syntax C-system, the back into the language of four ``sets of judgements''.
+
+As an output one then gets a list of conditions on the sets of judgements of four Martin-L\"{o}f kinds and a mathematically rigorous construction of a C-system provided that these conditions are satisfied. 
+
+The first step, finding a good way to mathematically model raw syntax, is discussed in Appendix \ref{}. We base our approach on the ideas of M. Fiore, A. Hirschowitz, M. Maggesi and B. Ahrens. The result of our construction is a function from restricted two-sorted binding signatures, simple combinatorial objects with the two sorts corresponding to the type and element arguments of the constructors of the type theory, to pairs $(\RR,\LM)$ where $\RR$ is a $Jf$-relative monad (see Definition \ref{}) and $\LM$ is a left module over $\RR$ (see Definition \ref{}). The construction is such that for $n\in\nat$, $RR(n)$ is the set of $\alpha$-equivalence classes of element expressions with free variables from the standard set with $n$ elements $stn(n)$ formed using the constructors listed in the binding signature and $\LM(\wh{n})$ is a similar set of $\alpha$-equivalence classes of type expressions. 
+
+The second step is discussed in Sections \ref{},\ref{} and \ref{}. It leads to the construction of the C-system $C(\RR,\LM)$. One could present the construction in a shorter way. We have chosen the approach that shows how this construction can be seen as a special case of more general, but still quite simple, constructions applicable in other areas of the theory of C-systems. 
+
+The third step %###
+
+
+
+
+
+
+
+
+
+
+In this paper we describe a purely algebraic construction that defines a C-system $C(\RR,\LM)$ starting with a pair $(\RR,\LM)$ where $\RR$ is a relative monad on the functor $Jf:F\sr Sets$ (see below) and $\LM$ is a (left) module over this monad.
+
+This construction provides a step in the path from the description of a type theory by a collection of inference rules, as is customary in the type theory papers, to the term model of this type theory as a C-system equipped with a system of operations corresponding to these rules. 
+
+On this path one starts by defining from the inference rules a two-sorted binding signature that describes the raw syntax of type and element constructors of the type theory. Then one defines (see Appendix \ref{}) from this two-sorted binding signature a pair of the form $(\RR,\LM)$ and, applying the construction of this paper, obtains the C-system $C(\RR,\LM)$ of the raw syntax of the theory. 
+
+Such C-systems have not been considered previously probably because from the perspective of logic they are hard to interpret. However they provide a very convenient stepping stone to more complex term C-systems of type theories that are defined as regular sub-quotients of $C(\RR,\LM)$. 
+
+}
 
 
 
