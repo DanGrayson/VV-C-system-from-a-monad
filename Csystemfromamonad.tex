@@ -48,7 +48,7 @@
 
 %
 %
-%\newcommand{\C}[4]{\left[\begin{array}{rcl}&#1\\#3&\dw\dw&#4\\&#2\end{array}\right]}
+%\newcommand{\C}[4]{\preceqft[\begin{array}{rcl}&#1\\#3&\dw\dw&#4\\&#2\end{array}\right]}
 \newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
 %\newcommand{\llabel}[1]{\label{#1}}
 \newcommand{\comment}[1]{}
@@ -125,7 +125,7 @@
 %
 }}
 
-Keywords: Contextual categories, Lawvere theories, monads, modules, HOL, Mizar, Coq, Martin-Lof, derivable judgements. 
+%{\keywords Contextual categories, Lawvere theories, monads, modules, HOL, Mizar, Coq, Martin-Lof, derivable judgements. }
 
 \vspace{3mm}
 
@@ -133,13 +133,14 @@ Keywords: Contextual categories, Lawvere theories, monads, modules, HOL, Mizar, 
 Princeton NJ, USA. e-mail: vladimir@ias.edu}$^,$\footnote{Work on this paper was supported by NSF grant 1100938.}
 \vspace {3mm}
 %add MURI
-{September 2015}  
+
+{\large\bf September 2015}  
 \end{center}
 
 \begin{abstract}
 This is the second paper in a series started in \cite{Csubsystems} which aims to provide mathematical descriptions of objects and constructions related to the semantical theory of dependent type systems. 
 
-We construct for any pair $(\rr,\lm)$, where $R$ is a monad on sets and $LM$ is a left module over $R$, a C-system (``contextual category'') $CC(\rr,\lm)$ and describe, using the results of \cite{Csubsystems} a class of sub-quotients of $CC(\rr,\lm)$ in terms of objects directly constructed from $R$ and $LM$. In the special case of the monads of expressions associated with  binding signatures this construction gives, for the first time, a mathematically rigorous way of constructing a C-system from a general collection of judgements of the four Martin-L\"{o}f kinds that satisfies a well specified set of conditions. 
+We construct for any pair $(\rr,\lm)$, where $R$ is a monad on sets and $LM$ is a left module over $R$, a C-system (``contextual category'') $CC(\rr,\lm)$ and describe, using the results of \cite{Csubsystems} a class of sub-quotients of $CC(\rr,\lm)$ in terms of objects directly constructed from $R$ and $LM$. In the special case of the monads of expressions associated with  binding signatures this construction gives, for the first time, a systematic and mathematically rigorous way of constructing the term C-system of a type theory from the raw syntax of the theory and the set of judgements of the four Martin-L\"{o}f kinds.
 \end{abstract}
 
 %(2014.09.27) Make a note about the functoriality of CC(\rr,\lm) on the "large module category" %of Hirschowitz-Maggesi. 
@@ -154,7 +155,7 @@ We construct for any pair $(\rr,\lm)$, where $R$ is a monad on sets and $LM$ is 
 
 \subsection{Introduction}
 
-The first few steps in all approaches to the semantics of dependent type theories remain insufficiently understood. The constructions which have been worked out in detail in the case of a few particular type systems by dedicated authors are being extended to the wide variety of type systems under consideration today by analogy. This is not acceptable in mathematics. Instead we should be able to obtain the required results for new type systems by {\em specialization} of general theorems formulated and proved for abstract objects the instances of which combine together to produce the objects associated with a given type system. 
+The first few steps in all approaches to the semantics of dependent type theories remain insufficiently understood. The constructions which have been worked out in detail in the case of a few particular type systems by dedicated authors are being extended to the wide variety of type systems under consideration today by analogy. This is not acceptable in mathematics. Instead we should be able to obtain the required results for new type systems by {\em specialization} of general theorems formulated and proved for abstract objects the instances of which combine together to produce a given type system. 
 
 %???!!## Explain through reference to Martin Hofmann Section 2.3 about pre-syntax. The word "associative" does not even appear in that paper. Sections 2.3, 2.4 The "construction" of term model (which is what the present paper is about) in 3.1 lacks proofs and even precise statements entirely. 
 
@@ -168,23 +169,42 @@ An approach that follows this general philosophy was outlined in \cite{CMUtalk}.
 
 C-systems were introduced in \cite{Cartmell0} (see also \cite{Cartmell1}) under the name ``contextual categories''. A modified axiomatics of C-systems and the construction of new C-systems as sub-objects and regular quotients of the existing ones in a way convenient for use in type-theoretic applications are considered in \cite{Csubsystems}.
 
-In the approach of \cite{CMUtalk}, in order to provide a mathematical interpretation (semantics) for a type theory one constructs two C-systems. One C-system is constructed from the formulas of the type theory using as an initial step the construction of the present paper.  The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the ``inference rules'' of the type theory. 
+In the approach of \cite{CMUtalk}, in order to provide a mathematical representation (semantics) for a type theory one constructs two C-systems. One C-system is constructed from the formulas of the type theory using as an initial step the construction of the present paper.  The second C-system is constructed from the category of abstract mathematical objects using the results of \cite{Cfromauniverse}. Both C-systems are then equipped with additional operations corresponding to the ``inference rules'' of the type theory. 
 
-The main component of this approach is the expected result that for a particular class of the inference rules the concrete C-systems built using the constructions of the present paper and equipped with operations corresponding to these inference rules are initial objects in the category of C-systems with the corresponding operations. This is known as the Initiality Conjecture. In the case of the pure Calculus of Constructions this conjecture was proved in 1988 by Thomas Streicher \cite{Streicher}. The problem of finding an appropriate formulation of the general version of the conjecture and of proving this general version will be the subject of future work. 
+The main component of this approach is the expected result that for a particular class of the inference rules the concrete C-systems built using the constructions of the present paper and equipped with operations corresponding to these inference rules are initial objects in the category of C-systems with the corresponding operations. This is known as the Initiality Conjecture. In the case of the pure Calculus of Constructions this conjecture was proved in 1988 by Thomas Streicher \cite{Streicher}. The problem of finding an appropriate formulation of the general version of the conjecture and of proving this general version will be the subject of the future work. 
 
 For such inference rules, then, there are unique homomorphisms from the concrete C-systems to the abstract C-systems that are compatible with the corresponding systems of operations. Since objects and morphisms of concrete C-systems are built from formulas of the type theory and objects and morphisms of abstract C-systems are built from mathematical objects such as sets or homotopy types and the corresponding functions, these homomorphisms provide a mathematical meaning to formulas of type theory. 
 
 The existence of such homomorphisms in the particular case of the ``standard univalent models'' of  Martin-L\"{o}f type theories and of the Calculus of Inductive Constructions (CIC) provides the only known justification for the use of the proof assistants such as Coq for the formalization of mathematics in the univalent style (see \cite{UniMath}, \cite{UniMath2015}). 
 
-It is important to distinguish the concepts of a model of a type theory and the concept of an interpretation of the same type theory. A {\em model} of type theory can be defined as a C-system that is equipped with the systems of operations corresponding to the inference rules of the type theory. A (categorical) {\em interpretation} of a type theory with values in a given category $\cal C$ is a functor from the category underlying the syntactic C-system of the type theory to $\cal C$. 
+It is important to distinguish the concepts of a model of a type theory and the concept of a representation of the same type theory. A {\em model} of type theory can be defined as a C-system that is equipped with the systems of operations corresponding to the inference rules of the type theory. A (categorical) {\em representation} of a type theory with values in a given category $\cal C$ is a functor from the category underlying the syntactic C-system of the type theory to $\cal C$. 
 
-Only if we know that the initiality result holds for a given type theory can we claim that any its model defines an interpretation by taking the composition of the canonical homomorphism of the C-systems with the functor such as the functor $int$ of \cite{Cfromauniverse}. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. 
+Only if we know that the initiality result holds for a given type theory can we claim that any its model defines a representation by taking the composition of the canonical homomorphism of the C-systems with the functor such as the functor $int$ of \cite{Cfromauniverse}. A similar problem also arises in the predicate logic but there, since one considers only one fixed system of syntax and inference rules, it can and had been solved once without the development of a general theory. 
 
-When one speaks about the univalent model of a Martin-L\"{o}f type theory or of the CIC one often fails to distinguish between the model and the interpretation.  A construction of a {\em model} for the version of the Martin-L\"{o}f type theory that is used in the UniMath library (\cite{UniMath},\cite{UniMath2015})  was sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiality result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in both the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiality theorem and providing a proof of such a theorem is lacking and needs to be developed. 
+A construction of a {\em model} for the version of the Martin-L\"{o}f type theory that is used in the UniMath library (\cite{UniMath},\cite{UniMath2015})  was sketched in \cite{KLV1}. At the time when that paper was written it was unfortunately assumed that a proof of the initiality result can be found in the existing body of work on type theory which is reflected  in \cite[Theorem 1.2.9]{KLV1} (cf. also \cite[Example 1.2.3]{KLV1} that claims as obvious everything that is done in both the present paper and in \cite{Csubsystems}).  Since then it became clear that this is not the case and that a mathematical theory leading to the initiality theorem and providing a proof of such a theorem is lacking and needs to be developed. 
 
 As the criteria for what constitutes an acceptable proof were becoming more clear as a result of continuing work on formalization, it also became clear that more detailed and general proofs need to be given to many of the theorems of \cite{KLV1} that are related to the model itself. For the two of the several main groups of inference rules of current type theories it is done in \cite{fromunivwithPi} and \cite{fromunivwithpaths}. Other groups of inference rules will be considered in further papers of the series. 
 
 This paper may be considered to be an analog of \cite{Cfromauniverse} for the concrete side of the theory in the sense that it provides a very general construction the particular cases of which lead to the concrete (syntactic) C-systems of type theories. 
+
+The details how to obtain these particular cases of the constructions of this paper are not addressed here. The reason for this is that the proper way of describing the construction of the C-system of a type theory requires a mathematical approach to the notion of a system of inference rules. This is a highly non-trivial problem that will be addressed in one of the forthcoming papers of this series after which a complete path from raw syntax, through the inference rules and then through the four kinds of derivable sentences to a C-system with a system of operations corresponding to the inference rules will be presented in a mathematically acceptable form. 
+
+Some idea of how the present constructions are used in the case of syntactic C-systems can be obtained from the considerations of \cite{HM2007} and \cite{FPT} that describe how obtain a monad $R_{\Sigma}$ or a clone (equivalent to our strict algebraic theory) from a binding signature $\Sigma$. To any such signature $\Sigma$ one associates a class of expressions with bindings and $R_{\Sigma}(\{x_1,\dots,x_n\})$ is the set of such expressions with free variables from the set $\{x_1,\dots,x_n\}$ modulo $\alpha$-equivalence.  The result of the present paper are then applied to the pair $R=R_{\Sigma}$, $LM=R_{\Sigma}$ where $R_{\Sigma}$ is considered as a left module over itself. 
+
+The more general case when $LM$ is not equal to $R$ arises when one starts to distinguish ``type expressions'' from ``object expressions''. The rules of type theories require the possibility to substitute an object expression instead of a variable both in a type expression and in an object expression but do not require to substitute a type expression instead of a variable either in a type or in an object expression. In type theories of proof assistants such as Coq the user may be under the impression that the substitution of type expressions instead of variables occurs (as in substituting $unit$ for $T$ in $iscontr(T)$ in the UniMath to obtain $iscont(unit)$, cf. \cite{UniMath2015}) this is however due to a ``silent'' map from object expressions to type expressions that is used in these theories. What actually happens in these substitutions is that an object expression whose type is a universe is substituted instead of a variable in some situations and the same object expression is mapped to the set of type expressions and used as a type expression in others. In our constructions this corresponds to $LM=R$ - an object expression that is an element of $R(X)$ for some set of variables $X$ is considered as an element of the set of type expressions $LM(X)$ using the identity map defined by this equality (more generally one may observe the same illusion when $LM\subset R$). 
+
+The question of whether to keep this map silent or to give it a name (usually $El$) is know in type theory as the difference between the type theories with ``Russell universes'' (silent map) and ``Tarski universes'' (explicit map) which is at the center of some of the current controversies about the universe management in proof assistants. It is also the subject of a discussion in the last, unfinished, chapter in \cite{Bibliopolis}. 
+
+For the purposes of the present paper we fortunately don't need to make a choice between the two approaches since the formalism that we develop is applicable to both. It is however clear from the constructions that the separation between $R$ and $LM$ is a very natural possibility that directly generalizes the case of $LM\subset R$ and creates new examples (e.g. Example \ref{}). 
+
+As was shown in \cite{HM2007} the monad that one associates to a binding signature can be characterized as being an initial object in the category of monads equipped with ``left-linear'' operations corresponding to the operations of the signature.  This provides an abstract mathematical characterization of the concrete objects - expressions modulo $\alpha$-equivalence or, equivalently, expressions with De Brujin indexes. 
+
+
+
+
+
+
+
 
 If $R=(R,\eta,\mu)$ is a monad on a category $\cal C$ (see Definition \ref{}) then there is defined the Kleisli category ${\cal C}_R$ of $R$ whose objects are the same as objects of $\cal C$ and morphisms from $X$ to $Y$ are defined as morphisms from $X$ to $R(Y)$ in $\cal C$. The identity morphisms in ${\cal C}_R$ are given by the $\eta$ operation of $R$ and the composition by the composition in $\cal C$ and the $\mu$ operation of $R$.
 
@@ -197,15 +217,8 @@ Monads on the category of sets and left modules over such monads have a number o
 
 Of a particular interest is the case of ``syntactic'' pairs $(\rr,\lm)$ where for $X=\{x_1,\dots,x_n\}$, $R(X)$ and $LM(X)$ are the sets of expressions of some kind with free variables from $\{x_1,\dots,x_n\}$ modulo an equivalence relation such as $\alpha$-equivalence. The difference between $R$ and $LM$ is in this case expressed by the fact that one can substitute elements from $R(X)$ for variables both in $R(Y)$ and $LM(Y)$ but elements of $LM(X)$ can not be substituted for variables in either. 
 
-The simplest class of syntactic pairs, where $LM=R$, arises from binding signatures (see \cite[p.228]{HM2007}). To any such signature $\Sigma$ one associates a class of expressions with bindings and $R(\{x_1,\dots,x_n\})$ is the set of such expressions with free variables from the set $\{x_1,\dots,x_n\}$ modulo $\alpha$-equivalence.  
+The simplest class of syntactic pairs, where $LM=R$, arises from binding signatures (see \cite[p.228]{HM2007}). 
 
-The more general case when $LM$ is not equal to $R$ arises when one starts to distinguish ``type expressions'' from ``object expressions''. The rules of type theories require the possibility to substitute an object expression instead of a variable both in a type expression and in an object expression but do not require to substitute a type expression instead of a variable either in a type or in an object expression. In type theories of proof assistants such as Coq the user may be under the impression that the substitution of type expressions instead of variables occurs (as in substituting $unit$ for $T$ in $iscontr(T)$ in the UniMath to obtain $iscont(unit)$, cf. \cite{UniMath2015}) this is however due to a ``silent'' map from object expressions to type expressions that is used in these theories. What actually happens in these substitutions is that an object expression whose type is a universe is substituted instead of a variable in some situations and the same object expression is mapped to the set of type expressions and used as a type expression in others. In our constructions this corresponds to $LM=R$ - an object expression that is an element of $R(X)$ for some set of variables $X$ is considered as an element of the set of type expressions $LM(X)$ using the identity map defined by this equality (more generally one may observe the same illusion when $LM\subset R$). 
-
-The question of whether to keep this map silent or to give it a name (usually $El$) is know in type theory as the difference between the type theories with ``Russell universes'' (silent map) and ``Tarski universes'' (explicit map) which is at the center of some of the current controversies about the universe management in proof assistants. It is also the subject of a discussion in the last, unfinished, chapter in \cite{Bibliopolis}. 
-
-For the purposes of the present paper we fortunately don't need to make a choice between the two approaches since the formalism that we develop is applicable to both. It is however clear from the constructions that the separation between $R$ and $LM$ is a very natural possibility that directly generalizes the case of $LM\subset R$ and creates new examples (e.g. Example \ref{}). 
-
-As was shown in \cite{HM2007} the monad that one associates to a binding signature can be characterized as being an initial object in the category of monads equipped with ``left-linear'' operations corresponding to the operations of the signature.  This provides an abstract mathematical characterization of the concrete objects - expressions modulo $\alpha$-equivalence or, equivalently, expressions with De Brujin indexes. 
 
 An important remark needs to be made here. While monads provide a very convenient way of expressing syntax with bindings in terms familiar to mathematicians the approach based on monads is equivalent to an earlier one pioneered in \cite{FPT}. For two sets $X$ and $Y$ let $Fun(X,Y)$ be the set of functions from $X$ to $Y$.  In that earlier approach one considers the category $F$ such that $Ob(F)=\nn$ and
 %
@@ -221,7 +234,7 @@ In the present paper, after some general comments about monads on $Sets$ and the
 %
 $$Mor({C(\rr)})=\amalg_{\wh{m},\wh{n}}Hom_{Sets_R}(stn(n),stn(m))$$
 %
-and the identity and composition is defined such as to make the mapping $\wh{n}\mapsto stn(n)$ to extend to a fully faithful functor $cr_1$ from ${C(\rr)}^{op}$ to the Kleisli category $Sets_R$ of $R$.  We may sometimes  use this functor as a ``coercion'', in the terminology of proof assistant Coq, i.e., to write $\wh{n}$ instead of $stn(n)$ and $f$ instead of $\Phi(f)$. We will also use the function $LM\mapsto LM_R$ from left modules to functors on the Kleisli category as a coercion. In agreement with this convention we may write $LM$ for the presheaf of sets on ${C(\rr)}$ given by $\wh{n}\mapsto LM(n)$.  
+and the identity and composition is defined such as to make the mapping $\wh{n}\mapsto stn(n)$ to extend to a fully faithful functor $\Phi$ from ${C(\rr)}^{op}$ to the Kleisli category $Sets_R$ of $R$.  We may sometimes  use this functor as a ``coercion'', in the terminology of proof assistant Coq, i.e., to write $\wh{n}$ instead of $stn(n)$ and $f$ instead of $\Phi(f)$. We will also use the function $LM\mapsto LM_R$ from left modules to functors on the Kleisli category as a coercion. In agreement with this convention we may write $LM$ for the presheaf of sets on ${C(\rr)}$ given by $\wh{n}\mapsto LM(n)$.  
 
 We describe, using the results of \cite{Csubsystems}, all the C-subsystems of $CC(\rr,\lm)$ in terms of objects directly associated with $R$ and $LM$. 
 
@@ -272,7 +285,7 @@ Providing this explicit set of conditions and proving that they are necessary an
 
 The paper is written in the formalization-ready style with the intent to produce a UniMath formalization of its results in the near future. 
 
-We also consider it to be important to formalize the results of this paper in HOL or Zermelo-Fraenkel theory. Indeed, since it forms a part of the theory on which the relative consistency of the UniMath language with respect to the set theory is based, it has to be formally verified in a theory that is weaker than UniMath or, better, that is weaker than both UniMath and the Zermelo-Fraenkel theory. However, the main choices that we had to make were made with the intent to first formalize this paper in the UniMath.
+We also consider it to be important to formalize the results of this paper in Zermelo-Fraenkel theory. Indeed, since it forms a part of the theory on which the relative consistency of the UniMath language with respect to the set theory is based, it has to be formally verified in a theory that is weaker than UniMath or, better, that is weaker than both UniMath and the Zermelo-Fraenkel theory. However, the main choices that we had to make were made with the intent to first formalize this paper in the UniMath.
 
 \vspace{5mm}
 
@@ -288,13 +301,22 @@ This is one the papers extending the material which I started to work on in \cit
 
 
 
-\subsection{Pre-algebraic theories}
+\subsection{Monads and strict algebraic theories}
 %
+
+Let $U$ be a Grothendieck universe. Let ${\bf R}=(R,\eta,\mu)$ be a monad on the category of sets (cf. \cite{MacLane}[p. 133]) in $U$. We will be interested not in ${\bf R}$ itself but in what we call a strict algebraic theory defined by ${\bf R}$. A category-minded mathematician would say that strict algebraic theories are ``the same as'' finitary monads (monads that preserve filtered colimits). The precise statement is that if one equips the sets of strict algebraic theories in $U$ and monads on sets in $U$ with the ``natural'' structures of categories then there exists a functor from the  category of monads to the category of strict algebraic theories that is an equivalence between the full subcategory of finitary monads in the former category and the latter category\footnote{One can make this statement independent from the choice of the category structures by saying that there exists an equivalence between the natural (now without quotes) groupoids of finitary monads and strict algebraic theories and their respective isomorphisms. }. 
+
+We do not provide detailed constructions of category structures on the set of strict algebraic theories in $U$ and the set of monads in $U$ or of an equivalence structure on the function between the sets of objects that we construct since they are not required for the main results of the paper. 
+
+The strict algebraic theories are also ``the same as'' the Lawvere theories with the natural numbers as the set of objects of the underlying category. In this case the ``sameness'' is created by a function from the set of strict algebraic theories over $U$ to the set of Lawvere algebraic theories over $U$ that is an injection of sets and an equivalence of the corresponding categories. Since it is an injection whose image consists of objects for which a certain bijection is the identity we call our objects ``strict'' algebraic theories. We again provide a construction of the function but do not prove that it has an equivalence structure. 
+
+Finally, strict algebraic theories are the ``same as'' clones of \cite[Section 3]{FPT}. This time the sameness is created by a function that is actually a bijection for any $U$. The equivalence of clones with Lawvere theories and finitary monads is explicitly stated in \cite[Section 3]{FPT} which is making the statements of this section less than truly new. The reason why this section had to be written and included into the paper is that all of these statements were stated by the previous authors without any proofs. 
+
 For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from $X$ to $Y$. For $n\in\nat$ we let $stn(n)$ denote the ``standard'' set of $n$ elements $\{0,\dots,n-1\}$.
 % 
 \begin{definition}
 \llabel{2015.08.17.def1}
-A pre-algebraic theory is a collection of data of the following form
+A strict algebraic theory is a collection of data of the following form
 %
 \begin{enumerate}
 \item a function $R:\nn\sr Sets$,
@@ -312,21 +334,63 @@ such that the following conditions hold:
 %
 \end{definition}
 %
-\begin{remark}\rm
-\llabel{2015.08.19.rem2}
-The type of pre-algebraic theories is equivalent to the type of clones as defined in \cite[Section 3]{FPT}. Whether this equivalence is an isomorphism in the syntactic category depends on how one formalizes expressions such as $X^n$ that are used in $\cite{FPT}$ but it is clear that these definitions are very close to each other. 
-\end{remark} 
+\begin{problem}
+\llabel{2015.10.14}
+To construct a function $Mtoalg$ from monads on sets to strict algebraic theories.
+\end{problem}
 %
+\begin{construction}\rm 
+For a monad $(R,\eta,\mu)$ we define the corresponding strict algebraic theory $(R,\eta,\bind)$ as follows:
+%
+\begin{enumerate}
+\item $R(n)=R(stn(n))$,
+\item $\eta_n=\eta_{stn(n)}$,
+\item for $f:stn(m)\sr R(n)$ we set $\bind(f)=R(f)\circ \mu_{stn(n)}$.
+\end{enumerate}
+%
+We leave the verification of the axioms of a strict algebraic theory to the reader.
+\end{construction}
+%
+\begin{remark}\rm
+\llabel{2015.11.18.rem1}
+A reader who is only interested in the construction of a C-system from a pair $({\bf R},\lm)$ may skip the rest of this section.
+\end{remark}
+%
+\begin{remark}\rm
+In classical mathematics the function that we have constructed defines an equivalence between the type of finitary monads and the type of strict algebraic theories. A monad $(R,\eta,\mu)$ is called finitary if for any set $X$ the function
+%
+$$colim_{A\in Fin(X)}R(A)\sr R(X)$$
+%
+where $Fin(X)$ is the category (partially ordered set) of finite subsets of $X$, is a bijection. It seems to be constructively provable that a function similar to the one that we have constructed that maps finitary monads to the collections of data of the form
+%
+\begin{enumerate}
+\item for any finite set $A$, a set $R(A)$, 
+\item for any $A$ a function $\eta_{A}\in Fun(A,R(A))$,
+\item for any $f\in Fun(A,R(B))$ a function $\bind(f)\in Fun(R(A),R(B))$,
+\end{enumerate}
+%
+such that the following conditions hold:
+%
+\begin{enumerate}
+\item for all $A$, $\bind(\eta_A)=Id_{R(A)}$,
+\item for all $f\in Fun(A,B)$, $\eta_A\circ \bind(f)=f$,
+\item for all $f\in Fun(A,B)$, $g\in Fun(B,R(C))$, $\bind(f\circ \bind(g))=\bind(f)\circ \bind(g)$.
+\end{enumerate}
+%
+is an equivalence. In UniMath it should also be provable that the obvious function from the type of pre-theories to the type of structures that are based on functions from all finite sets to sets are is an equivalence. This requires the univalence axiom and should be a corollary of the fact that the category of functor from a pre-category to a category is equivalent to the category of functors from its Rezk completion to the same category (see \cite{RezkCompletion}. For us this is not important since we only need the function $Mtoalg$ that is described above. 
+\end{remark}
+%
+In this paper we will consistently use the concept of a strict algebraic theory instead of the concept of a finitary monad.  
 
 Let us introduce the following notation:
 %
 $$F(m,n)=Fun(stn(m),stn(n))$$
 %
-and, for a pre-algebraic theory $R$,
+and, for a strict algebraic theory $R$,
 %
 $$R(m,n)=Fun(stn(m),R(n))$$
 %
-Let ${\bf R}=(R,\eta,bind)$ be a pre-algebraic theory. For each pair $m,n\in\nn$ define a function
+Let ${\bf R}=(R,\eta,bind)$ be a strict algebraic theory. For each pair $m,n\in\nn$ define a function
 %
 $$\phi_{\bf R}:F(m,n)\sr R(m,n)$$
 %
@@ -342,7 +406,7 @@ f\hc g = f\circ \bind(g)
 %
 \begin{lemma}
 \llabel{2015.08.18.l1}
-Let ${\bf R}=(R,\eta,\bind)$ be a pre-algebraic theory. Then one has:
+Let ${\bf R}=(R,\eta,\bind)$ be a strict algebraic theory. Then one has:
 %
 \begin{enumerate}
 \item for any $k,l,m,n$ and $f\in R(k,l)$, $g\in R(l,m)$, $h\in R(m,n)$ one has
@@ -585,7 +649,7 @@ where the first equality is by Lemma \ref{2015.08.26.l2} and the second one by (
 \end{proof}
 
 
-Define, for any pre-algebraic theory $\rr$, an operation $\sigma_{\rr}$ such that form $m,n\in\nat$, $n>m$ and $r\in R(m)$, $s\in R(n)$ one has
+Define, for any strict algebraic theory $\rr$, an operation $\sigma_{\rr}$ such that form $m,n\in\nat$, $n>m$ and $r\in R(m)$, $s\in R(n)$ one has
 %
 \begin{eq}
 \llabel{2015.09.07.eq1}
@@ -605,22 +669,6 @@ In the language of UniMath and other similar ``dependently typed '' languages th
 
 Of the four arguments $m,r,n$ and $E$ of $\sigma_{\rr}$ we will use $m$ and $n$ as implicit arguments, that is, arguments that are not written explicitly because they often can be inferred from the remaining arguments by a simple algorithmic procedure. In cases when $m$ and $n$ can not be inferred from $r$ and $E$, which we will not encounter in this paper, the syntax of the proof assistant Coq is to write $@\sigma_{\rr}$ instead of $\sigma_{\rr}$ and to supply all four arguments explicitly. 
 
-
-
-\subsection{Free pre-algebraic theories}
-%
-The goal of this section is to show how to assign to any concrete type theory a pre-algebraic theory and how to characterize this pre-algebraic theory by its universal properties.  
-
-The approach that we use is essentially a re-writing of some of the results of \cite{FPT} and \cite{HM2007} in terms of pre-algebraic theories. 
-
-The construction first assigns to a concrete type theory a binding signature. A binding signature, a concept introduced by Peter Aczel in \cite{Aczel},  is a finite set of data - a sequence of sequences of natural numbers. We will show which sequences correspond to the pre-algebraic theories corresponding to such  type theories as the Martin-Lof type theories MLTT72 and MLTT79.
-
-The other is to characterize these pre-algebraic theories by their universal properties. 
-
-???
-
-
-
 \subsection{The C-system $C(\rr)$}
 %
 
@@ -632,13 +680,13 @@ with the obvious domain and codomain functions. To distinguish the positions in 
 
 The composition of morphisms is defined by the formula
 %
-$$(\wh{k},(\wh{m},f))\circ (\wh{m},(\wh{n},g))=(\wh{k},(\wh{n},f\hc g))$$
+$$((\wh{k},\wh{m}),f)\circ ((\wh{m},\wh{n}),g)=((\wh{k},\wh{n}),f\hc g)$$
 %
 and the identity morphisms by the formula
 %
 \begin{eq}
 \llabel{2015.08.22.eq4}
-Id_{\wh{n}}=(\wh{n},(\wh{n},\eta_n))=(\wh{n},(\wh{n},(x_0^n,\dots,x^n_{n-1})))
+Id_{\wh{n}}=((\wh{n},\wh{n}),\eta_n)=((\wh{n},\wh{n}),(x_0^n,\dots,x^n_{n-1})))
 \end{eq}
 %
 %
@@ -652,7 +700,7 @@ The domain and codomain functions are obvious and the identity morphisms and com
 
 The identity function on $\nn$ together with the mapping
 %
-$$(\Phi_{\rr})_{Mor}:(n,(m,f))\mapsto (\wh{m},(\wh{n},\phi_{\rr}(f)))$$
+$$(\Phi_{\rr})_{Mor}:((n,m),f)\mapsto ((\wh{m},\wh{n}),\phi_{\rr}(f))$$
 %
 defines, in view of the obvious equality $\phi_{\rr}(Id_{\wh{n}})=\eta_{n}$ and Lemma \ref{2015.08.18.l1}(3), a functor
 %
@@ -662,17 +710,17 @@ $$\Phi_{\rr}:F^{op}\sr C(\rr)$$
 %
 \begin{remark}\rm
 \llabel{2015.08.19.rem1}
-The pair $(C(\rr)^{op},\Phi^{op}_{\rr})$ is an algebraic theory in the sense of Lawvere (cf. \cite[Definition on p.62]{Lawvere}). It should be possible to prove, as noted in \cite[after Theorem 3.3]{FPT}, that the function $\rr\mapsto (C(\rr)^{op},\Phi^{op}_{\rr})$ is an equivalence between pre-algebraic theories and algebraic theories. 
+The pair $(C(\rr)^{op},\Phi^{op}_{\rr})$ is an algebraic theory in the sense of Lawvere (cf. \cite[Definition on p.62]{Lawvere}). It should be possible to prove, as noted in \cite[after Theorem 3.3]{FPT}, that the function $\rr\mapsto (C(\rr)^{op},\Phi^{op}_{\rr})$ is an equivalence between strict algebraic theories and algebraic theories. 
 \end{remark}
 %
 
 For $n\in\nat$, let $ft(\wh{n+1})=\wh{n}$ and let $ft(\wh{0})=\wh{0}$.
 
-For $n\in\nat$, let $p_{\wh{n+1}}:\wh{n+1}\sr \wh{n}$ be the morphism $(\wh{n+1},(\wh{n},\iota_n^1))$,
+For $n\in\nat$, let $p_{\wh{n+1}}:\wh{n+1}\sr \wh{n}$ be the morphism $((\wh{n+1},\wh{n}),\iota_n^1)$,
 where we have used our coercion convention to write $\iota_n^1$ instead of $\phi_{\rr}(\iota_n^1)$. In the sequence notation we have
 %
 \begin{eq}\llabel{2015.08.24.eq6}
-p_{\wh{n+1}}=(\wh{n},(\wh{n+1},(x_0^{n+1},\dots,x_{n-1}^{n+1})))
+p_{\wh{n+1}}=((\wh{n},\wh{n+1}),(x_0^{n+1},\dots,x_{n-1}^{n+1}))
 \end{eq}
 %
 Let  $p_{\wh{0}}=Id_{\wh{0}}$.
@@ -682,11 +730,11 @@ Let  $p_{\wh{0}}=Id_{\wh{0}}$.
 One has:
 %
 \begin{enumerate}
-\item Let $f=(\wh{m},(\wh{n+1},ff))$, where $ff=(f_0,\dots,f_n)$, be a morphism. Then 
+\item Let $f=((\wh{m},\wh{n+1}),ff)$, where $ff=(f_0,\dots,f_n)$, be a morphism. Then 
 %
-$$f\circ p_{\wh{n+1}}=(\wh{m},(\wh{n},(f_0,\dots,f_{n-1})))$$
+$$f\circ p_{\wh{n+1}}=((\wh{m},\wh{n}),(f_0,\dots,f_{n-1}))$$
 %
-\item Let $f=(\wh{m},(\wh{n},ff))$, where $ff=(f_0,\dots,f_{n-1})$, be a morphism. Then 
+\item Let $f=((\wh{m},\wh{n}),ff)$, where $ff=(f_0,\dots,f_{n-1})$, be a morphism. Then 
 %
 $$p_{\wh{m+1}}\circ f=(\iota_m^1(f_0),\dots,\iota_m^1(f_{n-1}))$$
 %
@@ -710,9 +758,9 @@ For any $n\in\nat$ the square
 %
 \begin{eq}\llabel{2015.08.20.eq3}
 \begin{CD}
-\wh{n+1} @>(\wh{n+1},(\wh{1},(x_n^{n+1})))>> 1\\
+\wh{n+1} @>((\wh{n+1},\wh{1}),(x_n^{n+1}))>> 1\\
 @Vp_{\wh{n+1}}VV @VVp_{\wh{1}}V\\
-\wh{n} @>(\wh{n},(\wh{0},()))>> 0
+\wh{n} @>((\wh{n},\wh{0}),())>> 0
 \end{CD}
 \end{eq}
 %
@@ -724,7 +772,7 @@ Since $\wh{0}$ is a final object, we need to check that for any $m$ the function
 %
 $$Hom_{C(\rr)}(\wh{m},\wh{n+1})\sr Hom_{C(\rr)}(\wh{m},\wh{n})\times Hom_{C(\rr)}(\wh{m},\wh{1})$$
 %
-given by $(\wh{m},(\wh{n+1},f))\mapsto (((\wh{m},(\wh{n+1},f))\circ p_{\wh{n+1}}),((\wh{m},(\wh{n+1},f))\circ (x_n^{n+1})))$, is a bijection. This function is isomorphic to the function
+given by $((\wh{m},\wh{n+1},f)\mapsto (((\wh{m},(\wh{n+1},f))\circ p_{\wh{n+1}}),((\wh{m},(\wh{n+1},f))\circ (x_n^{n+1}))$, is a bijection. This function is isomorphic to the function
 %
 $$f\mapsto ((\iota_n^1\hc f),(x_n^{n+1}\hc f))$$
 %
@@ -735,7 +783,7 @@ $$(f_0,\dots,f_{n})\sr ((f_0,\dots,f_{n-1}), (f_n))$$
 that is clearly a bijection. 
 \end{proof}
 %
-Given a morphism $f=(\wh{m},(\wh{n},ff)):\wh{m}\sr \wh{n}$ in $C(\rr)$ set
+Given a morphism $f=((\wh{m},\wh{n}),ff):\wh{m}\sr \wh{n}$ in $C(\rr)$ set
 %
 \begin{eq}
 \llabel{2015.08.26.eq1}
@@ -746,7 +794,7 @@ and define a morphism $q(f):\wh{m+1}\sr \wh{n+1}$ as
 %
 \begin{eq}
 \llabel{2015.08.22.eq1}
-q(f)=(\wh{m+1},(\wh{n+1},qq(ff)))
+q(f)=((\wh{m+1},\wh{n+1}),qq(ff))
 \end{eq}
 % 
 where $qq(ff)$ is defined in (\ref{2015.08.26.eq9}).
@@ -783,16 +831,16 @@ by (\ref{2015.08.26.eq7}).  To show that the square (\ref{2015.08.20.eq2}) is a 
 %
 $$
 \begin{CD}
-\wh{m+1} @>q(f)>> \wh{n+1} @>(\wh{n+1},(\wh{1},(x_n^{n+1})))>> \wh{1}\\
+\wh{m+1} @>q(f)>> \wh{n+1} @>((\wh{n+1},\wh{1}),x_n^{n+1})>> \wh{1}\\
 @Vp_{\wh{m+1}}VV @Vp_{\wh{n+1}}VV @VVp_{\wh{1}}V\\
-\wh{m} @>f>> \wh{n} @>(\wh{n},(\wh{0},()))>> 0
+\wh{m} @>f>> \wh{n} @>((\wh{n},\wh{0}),())>> 0
 \end{CD}
 $$
 %
 We have
 %
 \begin{eq}\label{2015.08.20.eq4}
-q(f)\circ (\wh{n+1},(\wh{1},(x_n^{n+1})))=(\wh{m+1},(\wh{1},(x_n^{n+1})\hc qq(ff)))=(\wh{m+1},(\wh{1},(x_m^{m+1})))
+q(f)\circ ((\wh{n+1},\wh{1}),(x_n^{n+1}))=((\wh{m+1},\wh{1}),(x_n^{n+1})\hc qq(ff))=((\wh{m+1},\wh{1}),(x_m^{m+1}))
 \end{eq}
 %
 where the second equality is by (\ref{2015.08.24.eq5}). Therefore the outer square of this diagram is of the form (\ref{2015.08.20.eq3}) and therefore is a pull-back square by Lemma \ref{2015.08.20.l1}. The right hand side square of this diagram is of the same form and therefore is a pull-back square as well. The left hand side square commutes. Therefore the left hand side square is a pull-back square by the general properties of pull-back squares.
@@ -825,7 +873,7 @@ The fifth property is the commutativity part of Lemma  \ref{2015.08.18.l4}.
 
 The sixth property is obvious. 
 
-To prove the seventh property consider $g=(\wh{k},(\wh{m},gg))$ and $f=(\wh{m},(\wh{n},ff))$. We need to show that
+To prove the seventh property consider $g=((\wh{k},\wh{m}),gg)$ and $f=((\wh{m},\wh{n}),ff)$. We need to show that
 %
 $$q(g)\circ q(f)=q(g\circ f)$$
 %
@@ -833,9 +881,9 @@ Consider the diagram
 %
 $$
 \begin{CD}
-\wh{k+1} @>q(g)>> \wh{m+1} @>q(f)>> \wh{n+1} @>(\wh{n+1},(\wh{1},(x_n^{n+1})))>> \wh{1}\\
+\wh{k+1} @>q(g)>> \wh{m+1} @>q(f)>> \wh{n+1} @>((\wh{n+1},\wh{1}),(x_n^{n+1}))>> \wh{1}\\
 @Vp_{\wh{k+1}}VV @Vp_{\wh{m+1}}VV @Vp_{\wh{n+1}}VV @VVp_{\wh{1}}V\\
-\wh{k} @>g>> \wh{m} @>f>> \wh{n} @>(\wh{n},(\wh{0},()))>> \wh{0}
+\wh{k} @>g>> \wh{m} @>f>> \wh{n} @>((\wh{n},\wh{0}),())>> \wh{0}
 \end{CD}
 $$
 %
@@ -845,15 +893,15 @@ $$q(g)\circ q(f)\circ p_{\wh{n+1}}=q(g\circ f)\circ p_{\wh{n+1}}$$
 %
 and
 %
-$$q(g)\circ q(f)\circ (\wh{n+1},(\wh{1},(x_n^{n+1})))=q(g\circ f)\circ (\wh{n+1},(\wh{1},(x_n^{n+1})))$$
+$$q(g)\circ q(f)\circ ((\wh{n+1},\wh{1}),(x_n^{n+1}))=q(g\circ f)\circ ((\wh{n+1},\wh{1}),(x_n^{n+1}))$$
 %
 The first equality follows from the commutativity of the left hand side and central squares of the diagram and the commutativity of the square (\ref{2015.08.20.eq2}) for $g\circ f$. For the second equality we have
 %
-$$q(g)\circ q(f)\circ (\wh{n+1},(\wh{1},(x_n^{n+1})))=q(g)\circ (\wh{m+1},(\wh{1},(x_m^{m+1})))=(\wh{k+1},(\wh{1},(x_k^{k+1})))$$
+$$q(g)\circ q(f)\circ ((\wh{n+1},\wh{1}),(x_n^{n+1}))=q(g)\circ ((\wh{m+1},\wh{1}),(x_m^{m+1}))=((\wh{k+1},\wh{1}),(x_k^{k+1}))$$
 %
 and
 %
-$$q(g\circ f)\circ (\wh{n+1},(\wh{1},(x_n^{n+1})))=(\wh{k+1},(\wh{1},(x_k^{k+1})))$$
+$$q(g\circ f)\circ ((\wh{n+1},\wh{1}),(x_n^{n+1}))=((\wh{k+1},\wh{1}),(x_k^{k+1}))$$
 %
 where all three equalities are of the form (\ref{2015.08.20.eq4}). This completes the construction of the structure of a  C0-system on $C(\rr)$. To extend it to the structure of a C-system we can apply \cite[Prop. 2.4]{Csubsystems} and Lemma \ref{2015.08.18.l4}. 
 \end{construction}
@@ -973,17 +1021,17 @@ Let $n,i\in\nat$.
 \item One has
 %
 \begin{enumerate}
-\item $p_{\wh{n+i},i}=(\wh{n+i},(\wh{n},(x_0^n\dots,x_{n-i-1}^n))=(\wh{n+i},(\wh{n},\iota^{n+i}_{n}))$,
-\item for $g=(\wh{n'},(\wh{n+i},(g_0,\dots,g_{n+i-1})))$ one has $g\circ p_{\wh{n+i},i}=(\wh{n'},(\wh{n},(g_0,\dots,g_{n-1})))$,
+\item $p_{\wh{n+i},i}=((\wh{n+i},\wh{n}),(x_0^n,\dots,x_{n-i-1}^n))=((\wh{n+i},\wh{n}),\iota^{n+i}_{n})$,
+\item for $g=((\wh{n'},\wh{n+i}),(g_0,\dots,g_{n+i-1}))$ one has $g\circ p_{\wh{n+i},i}=((\wh{n'},\wh{n}),(g_0,\dots,g_{n-1}))$,
 \end{enumerate}
 %
-\item for $f=(\wh{m},(\wh{n},ff)$ one has
+\item for $f=((\wh{m},\wh{n}),ff)$ one has
 %
 $$f^*(\wh{n+i},i)=m+i$$
 %
 and
 %
-$$q(f,\wh{n+i},i)=q^i(f)=(\wh{m+i},(\wh{n+i},qq^i(ff)))$$
+$$q(f,\wh{n+i},i)=q^i(f)=((\wh{m+i},\wh{n+i}),qq^i(ff))$$
 %
 where $q^i(f)$ is the $i$-th iteration of $q$ applied to $f$.  
 \end{enumerate}
@@ -996,12 +1044,12 @@ All three assertions a proved by induction on $i$. For the first assertion both 
 \item the case $i=0$ is (\ref{2015.08.22.eq4}) and the identity axiom of the category $C(\rr)$,
 \item for the successor of $i$ we have
 %
-$$p_{\wh{n+i+1},i+1}=p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=(\wh{n+i+1},(\wh{n},(x_0^n,\dots,x_{n-1}^n)))$$
+$$p_{\wh{n+i+1},i+1}=p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=((\wh{n+i+1},\wh{n}),(x_0^n,\dots,x_{n-1}^n))$$
 %
 where the second equality is by the second part of the inductive assumption. For the inductive step in the second part we have
 %
-$$(\wh{n'},(\wh{n+i+1},(g_0,\dots,g_{n+i})))\circ p_{\wh{n+i+1},i+1}=(\wh{n'},(\wh{n+i+1},(g_0,\dots,g_{n+i})))\circ p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=$$$$
-(\wh{n'},(\wh{n+i},(g_0,\dots,g_{n+i-1})))\circ p_{\wh{n+i},i}=(\wh{n'},(\wh{n},(g_0,\dots,g_{n-1})))$$
+$$((\wh{n'},\wh{n+i+1}),(g_0,\dots,g_{n+i}))\circ p_{\wh{n+i+1},i+1}=((\wh{n'},\wh{n+i+1}),(g_0,\dots,g_{n+i}))\circ p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=$$$$
+((\wh{n'},\wh{n+i}),(g_0,\dots,g_{n+i-1}))\circ p_{\wh{n+i},i}=((\wh{n'},\wh{n}),(g_0,\dots,g_{n-1}))$$
 %
 \end{enumerate}
 %
@@ -1014,7 +1062,7 @@ The proof of the first part of the second assertion is obvious. For the second p
 $$q(f,\wh{n},i+1)=q(q(f,\wh{n-1},i))=q(q^i(f))$$
 %
 and 
-$$q(q^i(f))=q((\wh{m+i},(\wh{n+i},qq^i(ff)))=(\wh{m+i+1},(\wh{n+i+1},qq^{i+1}(ff)))$$
+$$q(q^i(f))=q(((\wh{m+i},\wh{n+i}),qq^i(ff)))=((\wh{m+i+1},\wh{n+i+1}),qq^{i+1}(ff))$$
 %
 \end{enumerate}
 %
@@ -1024,7 +1072,7 @@ $$q(q^i(f))=q((\wh{m+i},(\wh{n+i},qq^i(ff)))=(\wh{m+i+1},(\wh{n+i+1},qq^{i+1}(ff
 %
 \begin{lemma}
 \llabel{2015.08.22.l7}
-Let $f=(\wh{n},(\wh{n+1},(f_0,\dots,f_n)))$. Then $f\circ p_{\wh{n+1}}=Id_{\wh{n}}$ if and only if $f_i=x_i^{n+1}$ for $i=0,\dots,n-1$.
+Let $f=((\wh{n},\wh{n+1}),(f_0,\dots,f_n))$. Then $f\circ p_{\wh{n+1}}=Id_{\wh{n}}$ if and only if $f_i=x_i^{n+1}$ for $i=0,\dots,n-1$.
 \end{lemma}
 %
 \begin{proof}
@@ -1033,9 +1081,9 @@ It follows immediately from Lemma \ref{2015.08.26.l1}.
 %
 \begin{lemma}
 \llabel{2015.09.09.l1}
-Let $f=(\wh{m},(\wh{n},(f_0,\dots,f_{n-1}))$ where $n>0$. Then one has
+Let $f=((\wh{m},\wh{n}),(f_0,\dots,f_{n-1}))$ where $n>0$. Then one has
 %
-$$s_f=(\wh{m},(\wh{m+1},(x_0^m,\dots,x_{m-1}^m,f_{n-1})))$$
+$$s_f=((\wh{m},\wh{m+1}),(x_0^m,\dots,x_{m-1}^m,f_{n-1}))$$
 %
 \end{lemma}
 %
@@ -1044,9 +1092,9 @@ By \cite[Definition 2.3(2)]{Csubsystems} we have that
 %
 $$s_f\circ p_{\wh{m+1}}=Id_{\wh{m}}$$
 %
-Therefore, by Lemma \ref{2015.08.22.l7}, it is of the form $(\wh{m},(\wh{m+1},(x_0^m,\dots,x_{m-1}^m,sf)))$ for some $sf\in R(m)$. By \cite[Definition 2.3(3)]{Csubsystems} we have $f=s_f\circ q(ft(f))$ where $ft(f)=f\circ p_{\wh{n}}$. By Lemma \ref{2015.07.24.l1}(1) we have $ft(f)=(\wh{m},(\wh{n-1},(f_0,\dots,f_{n-1})))$ and by (\ref{2015.08.22.eq1}) and (\ref{2015.08.26.eq9}) we have that 
+Therefore, by Lemma \ref{2015.08.22.l7}, it is of the form $((\wh{m},\wh{m+1}),(x_0^m,\dots,x_{m-1}^m,sf))$ for some $sf\in R(m)$. By \cite[Definition 2.3(3)]{Csubsystems} we have $f=s_f\circ q(ft(f))$ where $ft(f)=f\circ p_{\wh{n}}$. By Lemma \ref{2015.07.24.l1}(1) we have $ft(f)=((\wh{m},\wh{n-1}),(f_0,\dots,f_{n-1}))$ and by (\ref{2015.08.22.eq1}) and (\ref{2015.08.26.eq9}) we have that 
 %
-$$q(ft(f))=(\wh{m+1},(\wh{n},(\iota_m^1(f_0),\dots,\iota_m^1(f_{n-2}),x_{m}^{m+1})))$$
+$$q(ft(f))=((\wh{m+1},\wh{n}),(\iota_m^1(f_0),\dots,\iota_m^1(f_{n-2}),x_{m}^{m+1}))$$
 %
 Therefore, by (\ref{2015.08.24.eq1}) we should have
 %
@@ -1077,9 +1125,9 @@ Recall from \cite{Csubsystems} that for a C-system $CC$ one defines $\wt{Ob}(CC)
 %
 \begin{lemma}
 \llabel{2015.08.24.l1}
-Let $f=(\wh{m},(\wh{n},ff))$ and let $s=(\wh{n},(\wh{n+1},ss))$ be an element of $\wt{Ob}$. Then one has
+Let $f=((\wh{m},\wh{n}),ff)$ and let $s=((\wh{n},\wh{n+1}),ss)$ be an element of $\wt{Ob}$. Then one has
 %
-$$f^*(s)=(\wh{m},(\wh{m+1},fs))$$
+$$f^*(s)=((\wh{m},\wh{m+1}),fs)$$
 %
 where 
 %
@@ -1094,7 +1142,7 @@ $$fs_m=ff(ss_n)$$
 %
 By (\ref{2015.08.22.eq1}) we have  
 %
-$$q(f,\wh{n+1})=q(f)=(\wh{m+1},(\wh{n+1},qq(ff)))$$
+$$q(f,\wh{n+1})=q(f)=((\wh{m+1},\wh{n+1}),qq(ff))$$
 %
 The morphism $f^*(s)$, as a morphism over $\wh{m}$ is defined by the equation
 %
@@ -1114,10 +1162,10 @@ where the first equality is (\ref{2015.08.24.eq2}).
 %
 \begin{lemma}
 \llabel{2015.08.29.l1}
-Let $f=(\wh{m},(\wh{n},ff))$ and let $s=(\wh{n+i},(\wh{n+i+1},ss))$ be an element of $\wt{Ob}$. Then one has
+Let $f=((\wh{m},\wh{n}),ff)$ and let $s=((\wh{n+i},\wh{n+i+1}),ss)$ be an element of $\wt{Ob}$. Then one has
 %
 \begin{eq}\llabel{2015.08.29.eq1}
-f^*(s)=(\wh{m+i},(\wh{m+i+1},(x_0^{m+i},\dots,x_{m+i-1}^{m+i},(qq^i(ff))(ss_{n+i}))))
+f^*(s)=((\wh{m+i},\wh{m+i+1}),(x_0^{m+i},\dots,x_{m+i-1}^{m+i},(qq^i(ff))(ss_{n+i})))
 \end{eq}
 %
 \end{lemma}
@@ -1139,9 +1187,9 @@ The morphism $s$ is a morphism to $Id_{\wh{n+i}}$ over $\wh{n+i}$. Therefore, we
 %
 $$f^*(s)=(q^i(f))^*(s)$$
 %
-On the other hand by Lemma \ref{2015.08.22.l6}(2) we have $q^i(f)=(\wh{m+i},(\wh{n+i},qq^i(ff)))$ and by Lemma \ref{2015.08.24.l1} we have
+On the other hand by Lemma \ref{2015.08.22.l6}(2) we have $q^i(f)=((\wh{m+i},\wh{n+i}),qq^i(ff))$ and by Lemma \ref{2015.08.24.l1} we have
 %
-$$(\wh{m+i},(\wh{n+i},qq^i(ff)))^*s=(\wh{m+i},(\wh{m+i+1},(x_0^{m+i},\dots,x_{m+i-1}^{m+i},(qq^i(ff))(ss_n)))).$$
+$$((\wh{m+i},\wh{n+i}),qq^i(ff))^*s=((\wh{m+i},\wh{m+i+1}),(x_0^{m+i},\dots,x_{m+i-1}^{m+i},(qq^i(ff))(ss_n))).$$
 %
 \end{proof}
 %
@@ -1152,20 +1200,20 @@ Another operation that we would like to have an explicit form of is operation $\
 \end{eq}
 %
 \begin{lemma}\llabel{2015.08.24.l5}
-Let $n>0$ then 
+In $CC(\rr)$ one has: 
 %
-$$\delta_{\wh{n}}=(n,(n+1,(x_0^{n},\dots,x_{n-1}^{n},x_{n-1}^n)))$$
+$$\delta_{\wh{n}}=((\wh{n},\wh{n+1}),(x_0^{n},\dots,x_{n-1}^{n},x_{n-1}^n))$$
 %
 \end{lemma}
 %
 \begin{proof}
-In view of Lemma \ref{2015.08.22.l7}, we have $\delta_n=(n,(n+1,(x_0^{n},\dots,x_{n-1}^{n},dn)))$ for some $dn\in R(n)$. By Lemma \ref{2015.08.26.l3a} we have
+In view of Lemma \ref{2015.08.22.l7}, we have $\delta_n=((\wh{n},\wh{n+1}),(x_0^{n},\dots,x_{n-1}^{n},dn))$ for some $dn\in R(n)$. By Lemma \ref{2015.08.26.l3a} we have
 %
-$$q(p_{\wh{n}})=(\wh{n+1},(\wh{n},\partial^{n-1}_{n}))=(\wh{n+1},(\wh{n}, (x_0^{n+1},\dots,x_{n-2}^{n+1},x_n^{n+1})))$$
+$$q(p_{\wh{n}})=((\wh{n+1},\wh{n}),\partial^{n-1}_{n})=((\wh{n+1},\wh{n}), (x_0^{n+1},\dots,x_{n-2}^{n+1},x_n^{n+1}))$$
 %
 and the defining equation (\ref{2015.08.24.eq10}) gives us
 %
-$$(n,(n+1,(x_0^{n},\dots,x_{n-1}^{n},dn)))\circ (\wh{n+1},(\wh{n}, (x_0^{n+1},\dots,x_{n-2}^{n+1},x_n^{n+1})))=(n,(n,(x_0^n,\dots,x_{n-1}^n)))$$
+$$((\wh{n},\wh{n+1},(x_0^{n},\dots,x_{n-1}^{n},dn))\circ ((\wh{n+1},\wh{n}), (x_0^{n+1},\dots,x_{n-2}^{n+1},x_n^{n+1}))=((n,n),(x_0^n,\dots,x_{n-1}^n))$$
 %
 i.e.,
 %
@@ -1202,15 +1250,15 @@ mb_{\rr}:\wt{Ob}(C(\rr))\sr \amalg_{n\in\nat} R(n)
 %
 \begin{construction}\rm
 \llabel{2015.08.22.constr3}
-For $s=(n,(n+1,ss))$ define
+For $s=((\wh{n},\wh{n+1}),ss)$ define
 %
 $$mb_{\rr}(s)=(n,ss_n)$$
 %
-To show that this is a bijection let us construct the inverse bijection. For $o\in R(n)$ set
+To show that this is a bijection let us construct the inverse bijection. For $n\in\nn$ and $o\in R(n)$ set
 %
-$$mb_{\rr}^!(n,o)=(n,(n+1,(x_0^n,\dots,x_{n-1}^n,o)))$$
+$$mb_{\rr}^!(n,o)=((\wh{n},\wh{n+1}),(x_0^n,\dots,x_{n-1}^n,o))$$
 %
-The fact that these pas a mutually inverse follows easily from Lemma \ref{2015.08.22.l7}.
+The fact that these functions are mutually inverse follows easily from Lemma \ref{2015.08.22.l7}.
 \end{construction}
 %
 
@@ -1326,7 +1374,7 @@ We have:
 %
 \item Operation $S'$ is defined on the set of pairs $((m,r)\in \wt{Ob}',\wh{n}\in Ob)$ such that $n>\partial(mb_{\rr}^!(m,r))$. Since $\partial(mb_{\rr}^!(m,r))=m+1$ we obtained the required domain of definition. The operation itself is given by
 %
-$$S'((m,r),n)=(mb_{\rr}^!(m,r))^*(\wh{n})=((\wh{m},(\wh{m+1},(x_0^m,\dots,x_{m-1}^m,r)))^*(\wh{n}))=$$
+$$S'((m,r),n)=(mb_{\rr}^!(m,r))^*(\wh{n})=((\wh{m},\wh{m+1}),(x_0^m,\dots,x_{m-1}^m,r))^*(\wh{n}))=$$
 $$\wh{n+m-(m+1)}=\wh{n-1}$$
 %
 \item Operation $\wt{S}'$ is defined on the set of pairs $(m,r),(n,s)\in \wt{Ob}'$ 
@@ -1334,7 +1382,7 @@ such that $\partial(mb_{\rr}^!(n,s))>\partial(mb_{\rr}^!(m,r))$ which is equival
 %
 \item Operation $\delta'$ is defined on the subset $\wh{n}\in Ob$ such that $n>0$ and is given by
 %
-$$\delta'(\wh{n})=mb_{\rr}(\delta(\wh{n}))=mb_{\rr}(\wh{n},(\wh{n+1},(x_0^n,\dots,x_{n-1}^n,x_{n-1}^n)))=(n,x_{n-1}^n)$$
+$$\delta'(\wh{n})=mb_{\rr}(\delta(\wh{n}))=mb_{\rr}((\wh{n},\wh{n+1}),(x_0^n,\dots,x_{n-1}^n,x_{n-1}^n))=(n,x_{n-1}^n)$$
 %
 \end{enumerate}
 \end{proof}
@@ -1365,7 +1413,7 @@ that satisfy some axioms. To avoid working with families of sets or types which 
 \item a function $l:lR\sr\nat$,
 \item a function $\eta:\nat\sr lR$,
 \item a function $\partial:\{r\in lR, i\in\nat\,|\, l(r)\ge i\}\sr lR$,
-\item a function $\eta:\{r,s\in lR,\,|\,l(r)>l(s)\}\sr lR$,
+\item a function $\sigma:\{r,s\in lR,\,|\,l(r)>l(s)\}\sr lR$,
 \end{enumerate}
 %
 such that
@@ -1376,12 +1424,12 @@ such that
 \item for all $r,s\in lR$ such that $l(s)>l(r)$ one has $l(\sigma(r,s))=l(s)-1$.
 \end{enumerate}
 %
-Clearly more axioms need to be added to obtain a full subcategory in the category whose objects are sets $lR$ with operations of the form $l,\eta,\partial,\sigma$ that is equivalent to the category of Lawvere theories or equivalently pre-algebraic theories or equivalently Fiore-Plotkin-Turi substitution algebras. When all the axioms are added one would obtain a definition of an l-algebraic theory that is convenient for formalization both in set theory and in HOL. 
+Clearly more axioms need to be added to obtain a full subcategory in the category whose objects are sets $lR$ with operations of the form $l,\eta,\partial,\sigma$ that is equivalent to the category of Lawvere theories or equivalently strict algebraic theories or equivalently Fiore-Plotkin-Turi substitution algebras. When all the axioms are added one would obtain a definition of an l-algebraic theory that is convenient for formalization both in set theory and in HOL. 
 \end{remark}
 %
 \begin{remark}\rm
 \llabel{2015.08.29.rem1b}
-It would appear that there should be examples of $(\eta,\partial,\sigma)$- structures that do not arise from pre-algebraic theories. Indeed, it seems unclear why it should be possible to realize the action of the symmetric group on $R(n)$ using these operations since  in the case of pre-algebraic theories  they all seem to respect the linear ordering on the sets $stn(n)$ in some sense. 
+It would appear that there should be examples of $(\eta,\partial,\sigma)$- structures that do not arise from strict algebraic theories. Indeed, it seems unclear why it should be possible to realize the action of the symmetric group on $R(n)$ using these operations since  in the case of strict algebraic theories  they all seem to respect the linear ordering on the sets $stn(n)$ in some sense. 
 
 In the substitution notation of Remark \ref{2015.08.18.rem1}, given $r$ in $R(m)$ and $E$ in $R(n)$, 
 %
@@ -1405,7 +1453,7 @@ Define now a function $\psi:R(2)\sr R(2)$ by the formula
 %
 $$\psi=\partial^0_2\circ \partial^0_3\circ \sigma_{3,4}(x_0^3,-)\circ \sigma_{2,3}(x_1^2,-)$$
 %
-One can verify that for any pre-algebraic theory $R$ one has $\psi=\phi_{\rr}(\sigma)$ where $\sigma$ is the permutation of $0$ and $1$ in $stn(2)$.
+One can verify that for any strict algebraic theory $R$ one has $\psi=\phi_{\rr}(\sigma)$ where $\sigma$ is the permutation of $0$ and $1$ in $stn(2)$.
 
 In the substitution notation this can be seen as follows:
 %
@@ -1416,7 +1464,7 @@ $$\sigma_{2,3}(x_1^2,\sigma_{3,4}(x_0^3,E(x^4_2,x^4_3)))=\sigma_{2,3}(x_1^2,E(x^
 %
 \begin{remark}\rm
 \llabel{2015.08.29.rem2}
-The fact that the full structure of a pre-algebraic theory can be reconstructed from operations $\sigma,\partial$ and $\eta$ of the form described above can also be approached via the comparison of such $\sigma\partial\eta$-structures with the substitution algebras of \cite[Definition 3.1]{FPT}. Such a comparison is more straightforward since their operation $\zeta$ of the form $R(n+1)\times R(n)\sr R(n)$ is the same as operation $(s,r)\mapsto \sigma_{n,n+1}(r,s)$.
+The fact that the full structure of a strict algebraic theory can be reconstructed from operations $\sigma,\partial$ and $\eta$ of the form described above can also be approached via the comparison of such $\sigma\partial\eta$-structures with the substitution algebras of \cite[Definition 3.1]{FPT}. Such a comparison is more straightforward since their operation $\zeta$ of the form $R(n+1)\times R(n)\sr R(n)$ is the same as operation $(s,r)\mapsto \sigma_{n,n+1}(r,s)$.
 \end{remark}
 
 
@@ -1445,13 +1493,15 @@ The fact that the full structure of a pre-algebraic theory can be reconstructed 
 
 \subsection{The C-system $CC(\rr,\lm)$.}
 %
-Let $\rr$ be a pre-algebraic theory and let $\lm=(LM,LM_{Mor})$ be a pre-sheaf of sets on the category $C(\rr)$, i.e., a functor $C(\rr)^{op}\sr Sets$. 
+Let $\rr$ be a strict algebraic theory and let $\lm=(LM,LM_{Mor})$ be a presheaf of sets on the category $C(\rr)$, i.e., a functor $C(\rr)^{op}\sr Sets$. 
 
-The morphism component $LM_{Mor}$ of $\lm$ is a function that sends a morphism $f=(\wh{m},(\wh{n},ff))$ from $\wh{m}$ to $\wh{n}$ in $C(\rr)$ to a function $LM_{Mor}(f)\in Fun(LM(\wh{n}),LM(\wh{m}))$. In particular we have for, each $m,n\in\nat$ a function
+If the strict algebraic theory was obtain from a monad on sets then any left module over this monad, by defining a covariant functor from the Kleisli category of the monad to sets (see \cite[Prop. 5]{HM2010}), defines a presheaf  on $C(\rr)$, that, as a category, is a subcategory in the opposite category to the Kleisli category of the monad. We again use the coercion mechanism to write $LM$ both for the left $R$-module and for the presheaf of sets on $C(\rr)$ that it defines. 
+
+The morphism component $LM_{Mor}$ of $\lm$ is a function that sends a morphism $f=((\wh{m},\wh{n}),ff)$ from $\wh{m}$ to $\wh{n}$ in $C(\rr)$ to a function $LM_{Mor}(f)\in Fun(LM(\wh{n}),LM(\wh{m}))$. In particular we have for each $m,n\in\nat$ a function
 %
 $$R(n,m)\sr Fun(LM(\wh{n}),LM(\wh{m}))$$
 %
-given by $ff\mapsto LM_{Mor}((\wh{m},(\wh{n},ff)))$. We will use this function as a coercion so that, for $ff\in R(n,m)$ and $E\in LM(\wh{n})$ the expression $ff(E)$ needs to be expanded into $LM_{Mor}((\wh{m},(\wh{n},ff)))(E)$ before the computation can occur (see the explanation after Lemma \ref{2015.08.18.l1} for more details). 
+given by $ff\mapsto LM_{Mor}((\wh{m},\wh{n}),ff))$. We will use this function as a coercion so that, for $ff\in R(n,m)$ and $E\in LM(\wh{n})$ the expression $ff(E)$ needs to be expanded into $LM_{Mor}(((\wh{m},\wh{n}),ff))(E)$ before the computation can occur (see the explanation after Lemma \ref{2015.08.18.l1} for more details). 
 %???not sure that this expression "before the computation can occur should be used
 \begin{remark}\rm
 \llabel{2015.08.18.rem1}
@@ -1474,11 +1524,11 @@ and $\iota_n^i(E)$ is ``the same expression'' but considered as an expression of
 \llabel{2015.09.07.rem3}
 An important example of $\lm$ is given by the functor $\Phi$ given on objects by $\Phi_{Ob}(\wh{n})=R(n)$ and on morphisms by 
 %
-$$\Phi_{Mor}((\wh{m},(\wh{n},r))(s)=r(s)$$
+$$\Phi_{Mor}((\wh{m},\wh{n}),r)(s)=r(s)$$
 %
-We will denote this functor by the same symbol $\rr$ as the underlying pre-algebraic theory.
+We will denote this functor by the same symbol $\rr$ as the underlying strict algebraic theory.
 
-This functor is isomorphic to the (contravariant) functor represented by the object $\wh{1}$ but it is not equal to this functor since the set of elements of the form  $(\wh{n},(\wh{1},r'))$ where $r'\in R(1,n)$ is isomorphic but not equal to the set $R(n)$.
+This functor is isomorphic to the (contravariant) functor represented by the object $\wh{1}$ but it is not equal to this functor since the set of elements of the form  $((\wh{n},\wh{1}),r')$ where $r'\in R(1,n)$ is isomorphic but not equal to the set $R(n)$.
 \end{example}
 %
 %
@@ -1486,14 +1536,14 @@ This functor is isomorphic to the (contravariant) functor represented by the obj
 \llabel{2015.09.07.rem4}
 Another important example of a presheaf $\lm$ is the constant presheaf corresponding to a set $S$. The C-system $CC(\rr,\lm)$ for $\lm=S$ corresponds to the multi-sorted algebraic theory with a fixed set of sorts $S$. 
 
-Taking $\lm$ to be a sub-presheaf of $\lm_0\times S$ one can add and extra ``sorting dimension'' to a theory. Cf. Remark \ref{}. 
+Taking $\lm$ to be a sub-presheaf of $\lm_0\times S$ one can add and extra ``sorting dimension'' to a theory. Cf. Remark ??? \ref{}. 
 \end{example}
 
 
 
 
 
-Recall that we defined, for any pre-algebraic theory $\rr$, an operation $\sigma$ that we can write in the form
+Recall that we defined, for any strict algebraic theory $\rr$, an operation $\sigma$ that we can write in the form
 %
 $$\sigma_{\rr}:\{m\in\nat,r\in R(m),n\in\nat,s\in R(n)\,|\,n>m\}\sr R(n-1)$$
 %
@@ -1543,12 +1593,12 @@ with the obvious domain and codomain maps.
 
 The composition of morphisms in $CC(\rr,\lm)$ is defined by the formula
 %
-$$(\Gamma,(\Gamma',f))\circ (\Gamma',(\Gamma'',g))=(\Gamma,(\Gamma'', g\hc f))$$
+$$((\Gamma,\Gamma'),f)\circ ((\Gamma',\Gamma''),g)=((\Gamma,\Gamma''), g\hc f)$$
 %
 and the identity morphisms by
 %
 \begin{eq}\llabel{2015.08.22.eq6}
-Id_{\Gamma}=(\Gamma,(\Gamma, \eta_{l_f(\Gamma)}))=(\Gamma,(\Gamma,(x^n_0,\dots,x^n_{n-1})))
+Id_{\Gamma}=((\Gamma,\Gamma), \eta_{l_f(\Gamma)})=((\Gamma,\Gamma),(x^n_0,\dots,x^n_{n-1}))
 \end{eq}
 %
 The axioms of a category follow from Lemma \ref{2015.08.18.l1}(1,2). 
@@ -1561,7 +1611,7 @@ The proof of the following lemma is omitted because of its simplicity.
 The mappings 
 %
 $$\Gamma\mapsto l_f(\Gamma)$$
-$$(\Gamma,(\Gamma',f))\mapsto (l_f(\Gamma),(l_f(\Gamma'),f))$$
+$$((\Gamma,\Gamma'),f)\mapsto ((l_f(\Gamma),l_f(\Gamma')),f)$$
 %
 define a fully faithful functor 
 %
@@ -1573,7 +1623,7 @@ $$Fl:CC(\rr,\lm)\sr C(\rr)$$
 \llabel{2015.09.01.rem1}
 For any two objects $\Gamma,\Gamma'$ of $CC(\rr,\lm)$ such that $l_f(\Gamma)=l_f(\Gamma')=n$, the formula
 %
-$$can_{\Gamma,\Gamma'}=(\Gamma,(\Gamma',(x_0^n,\dots,x_{n-1}^n)))$$
+$$can_{\Gamma,\Gamma'}=((\Gamma,\Gamma'),(x_0^n,\dots,x_{n-1}^n))$$
 %
 defines a morphism which is clearly an isomorphism with $can_{\Gamma',\Gamma}$ being a canonical inverse. Therefore, all objects of the same length in $CC(\rr,\lm)$ are ``canonically isomorphic''. 
 \end{remark}
@@ -1584,15 +1634,15 @@ If $LM(\wh{0})=\emptyset$ then $CC(\rr,\lm)=\emptyset$. On the other hand, the c
 %
 $$y_n=(n,(\iota_0^0(y),\dots,\iota_0^{n-1}(y)))\in Ob(CC(\rr,\lm))$$
 %
-of length $n$ for all $n$. Mapping $\wh{n}$ to $y_n$ defines, as one can immediately prove from the definitions, a functor $lF(y):C(\rr)\sr CC(\rr,\lm)$. 
+of length $n$ for all $n$. Mapping $\wh{n}$ to $y_n$ defines, as one can immediately prove from the definitions, a functor $lF_{y}:C(\rr)\sr CC(\rr,\lm)$. 
 
-This functor clearly satisfies the conditions $lF(y)\circ Fl=Id_{C(\rr})$.
+This functor clearly satisfies the conditions $lF_{y}\circ Fl=Id_{C(\rr)}$.
 
 One verifies easily that the morphisms 
 %
-$$can_{\Gamma,y_{l_f(\Gamma)}}:\Gamma\sr lF(y)(Fl_f(\Gamma))$$
+$$can_{\Gamma,y_{l_f(\Gamma)}}:\Gamma\sr lF_{y}(Fl(\Gamma))$$
 %
-form a natural transformation. We conclude that $Fl$ and $lF(y)$ is a pair of mutually inverse equivalences of categories.
+form a natural transformation. We conclude that $Fl$ and $lF_{y}$ is a pair of mutually inverse equivalences of categories.
 
 However this equivalence is not an isomorphism unless $LM(\wh{n})\cong unit$ for all $n$.
 \end{remark}
@@ -1614,11 +1664,11 @@ The following immediate analog of Lemma \ref{2015.07.24.l1} holds in $CC(\rr,\lm
 One has:
 %
 \begin{enumerate}
-\item Let $f=(\Gamma',(\Gamma,(f_0,\dots,f_n)))$, then 
+\item Let $f=((\Gamma',\Gamma),(f_0,\dots,f_n))$, then 
 %
-$$f\circ p_{\Gamma}=(\Gamma',(ft(\Gamma),(f_0,\dots,f_{n-1})))$$
+$$f\circ p_{\Gamma}=((\Gamma',ft(\Gamma)),(f_0,\dots,f_{n-1}))$$
 %
-\item Let $f=(ft(\Gamma'),(\Gamma,(f_0,\dots,f_n)))$, then 
+\item Let $f=((ft(\Gamma'),\Gamma),(f_0,\dots,f_n))$, then 
 %
 $$p_{\Gamma'}\circ f=(\iota_m^1(f_0),\dots,\iota_m^1(f_{n-1}))$$
 %
@@ -1630,7 +1680,7 @@ Since $Fl$ is a fully faithful functor it is sufficient to verify that the asser
 \end{proof}
 %
 
-Given two objects $\Gamma'=(m,(T'_0,\dots,T'_{m-1}))$ and $\Gamma=(n+1,(T_0,\dots,T_{n}))$ and a morphism $f=(\Gamma',(ft(\Gamma),ff))$
+Given two objects $\Gamma'=(m,(T'_0,\dots,T'_{m-1}))$ and $\Gamma=(n+1,(T_0,\dots,T_{n}))$ and a morphism $f=((\Gamma',ft(\Gamma)),ff)$
 define an object $f^*(\Gamma)$ by the formula:
 %
 \begin{eq}\llabel{2015.09.09.eq3old}
@@ -1639,11 +1689,11 @@ f^*(\Gamma)=(m+1,(T'_0,\dots,T'_{m-1},ff(T_{n})))
 %
 and a morphism $q(f,\Gamma):f^*(\Gamma)\sr \Gamma$ by the formula
 %
-$$q(f,\Gamma)=(f^*(\Gamma),(\Gamma, qq(ff)))$$
+$$q(f,\Gamma)=((f^*(\Gamma),\Gamma), qq(ff))$$
 % 
 \begin{lemma}
 \llabel{2015.08.26.l7}
-Let $\Gamma=(n,(T_0,\dots,T_{n-1}))$ where $n\ge i$, $\Gamma'=(m,(T_0',\dots,T_{m-1}'))$ and let $(\Gamma',(ft^i(\Gamma),ff))$ be a morphism.
+Let $\Gamma=(n,(T_0,\dots,T_{n-1}))$ where $n\ge i$, $\Gamma'=(m,(T_0',\dots,T_{m-1}'))$ and let $((\Gamma',ft^i(\Gamma)),ff)$ be a morphism.
 Then one has
 %
 $$f^*(\Gamma,i)=(m+i,(T_0,',\dots,T_{m-1}',ff(T_{n-i}),qq(ff)(T_{n-i+1}) ,\dots,qq^{i-1}(ff)(T_{n-1})))$$
@@ -1665,7 +1715,7 @@ $$p_{\Gamma'}^*(\Gamma)=(n+1,(T_0,\dots,T_{m-2},T,\partial_{m-1}^{m-1}(T_{m-1}),
 \begin{proof}
 One has
 %
-$$p_{\Gamma'}^*(\Gamma)=(\Gamma',(ft(\Gamma'),\iota_{m-1}^1))^*(\Gamma)=$$$$(n+1,(T_0,\dots,T_{m-2},T,\iota_{m-1}^1(T_{m-1}),\dots,qq^{n-m-2}(\iota_{m-1}^1)(T_{n-1})))=$$
+$$p_{\Gamma'}^*(\Gamma)=((\Gamma',ft(\Gamma')),\iota_{m-1}^1)^*(\Gamma)=$$$$(n+1,(T_0,\dots,T_{m-2},T,\iota_{m-1}^1(T_{m-1}),\dots,qq^{n-m-2}(\iota_{m-1}^1)(T_{n-1})))=$$
 $$(n+1,(T_0,\dots,T_{m-2},T,\partial_{m-1}^{m-1}(T_{m-1}),\dots,\partial^{m-1}_{n-1}(T_{n-1})))$$
 %
 where the second equality is by Lemma \ref{2015.08.26.l7} and the third equality is by Lemma \ref{2015.08.26.l3a}.
@@ -1722,7 +1772,7 @@ The fifth condition is the commutativity of the squares (\ref{2015.08.22.eq2}) w
 
 The the sixth condition has two parts. One is that $Id_{ft(\Gamma)}^*(\Gamma)=\Gamma$ which follows from the identity morphism property of the functor $\lm$. The second part is that $q(Id_{ft(\Gamma)},\Gamma)=Id_{\Gamma}$ which follows from the first part, the fact that $Fl$ is fully faithful and the corresponding property of the C-system $C(\rr)$.
 
-The seventh conditions also has two parts. The first one is that for $g:\Gamma''\sr \Gamma'$ one has $g^*(f^*(\Gamma))=(g\circ f)^*(\Gamma)$. If $\Gamma''=(T''_0,\dots,T_{k-1}'')$ and $g=(\Gamma'',(\Gamma',gg)$ then we have
+The seventh conditions also has two parts. The first one is that for $g:\Gamma''\sr \Gamma'$ one has $g^*(f^*(\Gamma))=(g\circ f)^*(\Gamma)$. If $\Gamma''=(T''_0,\dots,T_{k-1}'')$ and $g=((\Gamma'',\Gamma'),gg)$ then we have
 %
 $$g^*(f^*(\Gamma))=g^*(T_0',\dots,T_{m-1}',ff(T_{n-1}))=(T_0'',\dots,T_{k-1}'',gg(ff(T_n)))$$
 %
@@ -1749,9 +1799,9 @@ The functor $Fl:CC(\rr,\lm)\sr C(R)$ is a homomorphism of C-systems.
 %
 \begin{remark}\rm
 \llabel{2015.08.22.rem1} 
-For $f=(\wh{m},(\wh{n},ff))$ we have
+For $f=((\wh{m},\wh{n}),ff)$ we have
 %
-$$(lF(y)(f))^*(y_{n+1})=(m+1,(\iota_0^0(y),\dots,\iota_0^{m-1}(y),ff(\iota_0^n(y))))$$
+$$(lF_{y}(f))^*(y_{n+1})=(m+1,(\iota_0^0(y),\dots,\iota_0^{m-1}(y),ff(\iota_0^n(y))))$$
 %
 By (\ref{2015.08.26.eq7}) we have 
 %
@@ -1759,13 +1809,13 @@ $$ff(\iota_0^n(y))=(\iota_0^n\hc ff)(y)=\iota_0^m(y)$$
 %
 because both $\iota_0^n\hc ff$ and $\iota_0^m$ are elements of $R(0,m)=R(m)^{stn(0)}$ which is a one element set. Therefore
 %
-$$(lF(y)(f))^*(y_{n+1})=y_{m+1}$$
+$$(lF_{y}(f))^*(y_{n+1})=y_{m+1}$$
 %
 The rest of the conditions that one needs to prove in order to show that $lF$ is a homomorphism of C-systems is immediate from definitions and we obtain that 
 %
-$$lF(y):C(\rr)\sr CC(\rr,\lm)$$
+$$lF_{y}:C(\rr)\sr CC(\rr,\lm)$$
 %
-is a homomorphism of C-systems.  However it is not an isomorphism of C-systems and, as one can see for example from our study of sub-quotients of $CC(\rr,lm)$, the C-systems $C(\rr)$ and $CC(\rr,\lm)$ can be very different. Cf. Remark \ref{}. 
+is a homomorphism of C-systems.  However it is not an isomorphism of C-systems and, as one can see for example from our study of sub-quotients of $CC(\rr,\lm)$, the C-systems $C(\rr)$ and $CC(\rr,\lm)$ can be very different. Cf. Remark \ref{}. 
 \end{remark}
 %
 \begin{remark}\rm
@@ -1818,7 +1868,7 @@ I do not know whether it is possible to construct a function $z$ satisfying thes
 %
 \begin{lemma}
 \llabel{2015.08.22.l5}
-A morphism $f=(\Gamma',(\Gamma,ff))$, where $l_f(\Gamma)=n+1$,  belongs to $\wt{Ob}(CC(\rr,\lm))$ if and only if $\Gamma'=ft(\Gamma)$ and $ff(i)=x^n_i$ for all $i=0,\dots,n-1$. 
+A morphism $f=((\Gamma',\Gamma),ff)$, where $l_f(\Gamma)=n+1$,  belongs to $\wt{Ob}(CC(\rr,\lm))$ if and only if $\Gamma'=ft(\Gamma)$ and $ff(i)=x^n_i$ for all $i=0,\dots,n-1$. 
 \end{lemma}
 %
 \begin{proof}
@@ -1829,10 +1879,10 @@ The following analog of Lemma \ref{2015.09.09.l1} for the C-system $CC(\rr,\lm)$
 %
 \begin{lemma}
 \llabel{2015.09.09.l2}
-Let $f=(\Gamma,(\Gamma',(f_0,\dots,f_{n-1})))$ where $n>0$. Then one has
+Let $f=((\Gamma,\Gamma'),(f_0,\dots,f_{n-1}))$ where $n>0$. Then one has
 %
 \begin{eq}\llabel{2015.09.09.eq1}
-s_f=(\Gamma,((ft(f))^*(\Gamma'),(x_0^m,\dots,x_{m-1}^m,f_{n-1})))
+s_f=((\Gamma,(ft(f))^*(\Gamma')),(x_0^m,\dots,x_{m-1}^m,f_{n-1}))
 \end{eq}
 %
 where $ft(f)=f\circ p_{\Gamma'}$ and $m=l_f(\Gamma)$.
@@ -1848,7 +1898,7 @@ If $\Gamma=(m,(X_0,\dots,X_m))$ and $\Gamma'=(n,(Y_0,\dots,Y_m))$ then
 \begin{proof}
 By definition $s_f$ is a morphism from $\Gamma$ to $(ft(f))^*(\Gamma)$. Therefore it is sufficient to show that the left hand side of (\ref{2015.09.09.eq1}) agrees with the right hand side after application of the homomorphism $Fl$. Since $Fl$ is a homomorphism of C-systems, $Fl(s_f)=s_{Fl(s)}$ and our goal follows from Lemma \ref{2015.09.09.l1}.
 
-Applying Lemma \ref{2015.08.22.l6b} we see that $ft(f)=(\Gamma,(ft(\Gamma'),(f_0,\dots,f_{n-2})))$. Therefore (\ref{2015.09.09.eq2}) follows immediately from (\ref{2015.09.09.eq3old}). 
+Applying Lemma \ref{2015.08.22.l6b} we see that $ft(f)=((\Gamma,ft(\Gamma')),(f_0,\dots,f_{n-2}))$. Therefore (\ref{2015.09.09.eq2}) follows immediately from (\ref{2015.09.09.eq3old}). 
 \end{proof}
 %
 For Lemma \ref{2015.09.03.l1} below we first need some general results about homomorphisms of C-systems.
@@ -1881,15 +1931,15 @@ The proofs are straightforward and we leave them for the formalized version of t
 %
 \begin{lemma}
 \llabel{2015.09.03.l1}
-For $i>0$, $f:\Gamma'\sr ft^i(\Gamma)$ and $s=(ft(\Gamma),(\Gamma,ss))$ in $\wt{Ob}(CC(\rr,\lm))$ one has
+For $i>0$, $f:\Gamma'\sr ft^i(\Gamma)$ and $s=((ft(\Gamma),\Gamma),ss)$ in $\wt{Ob}(CC(\rr,\lm))$ one has
 %
-$$f^*(s)=(f^*(ft(\Gamma)),(f^*(\Gamma),(x_0^{m+i-1},\dots,x_{m+i-2}^{m+i-1},(qq^{i-1}(ff))(ss(n-1)))))$$
+$$f^*(s)=((f^*(ft(\Gamma)),f^*(\Gamma)),(x_0^{m+i-1},\dots,x_{m+i-2}^{m+i-1},(qq^{i-1}(ff))(ss(n-1))))$$
 %
 where $m=l(\Gamma')$ and $n=l(\Gamma)$.
 \end{lemma}
 %
 \begin{proof}
-Since $Fl$ is a full embedding, it is sufficient, in order to verify the equality of two morphisms to verify that their domain and codomain are equal and that their images under $Fl$ are equal. For the domain and codomain it follows from the definition of $f^*$ on morphisms. For the images under $Fl$ it follows from the fact that $Fl$ is a homomorphism of C-systems, Lemma \ref{2015.09.03.l2}(4) and
+Since $Fl$ is fully faithful, it is sufficient, in order to verify the equality of two morphisms to verify that their domain and codomain are equal and that their images under $Fl$ are equal. For the domain and codomain it follows from the definition of $f^*$ on morphisms. For the images under $Fl$ it follows from the fact that $Fl$ is a homomorphism of C-systems, Lemma \ref{2015.09.03.l2}(4) and
 Lemma \ref{2015.08.29.l1}. 
 \end{proof}
 %
@@ -1907,33 +1957,33 @@ mb_{\rr,\lm}:\wt{Ob}(CC(\rr,\lm))\sr \coprod_{n\in\nat} Ob_{n+1}(\rr,\lm)\times 
 \begin{construction}\rm
 \llabel{2015.08.22.constr1}
 \llabel{2014.06.30.l2}
-Let $s\in \wt{Ob}(CC(\rr,\lm))$. Then $s=(ft(\Gamma),(\Gamma,ss))$ for some $ss\in R(n,n+1)$ and $\Gamma=(n+1,X)$. We set:
+Let $s\in \wt{Ob}(CC(\rr,\lm))$. Then $s=((ft(\Gamma),\Gamma),ss))$ for some $ss\in R(n,n+1)$ and $\Gamma=(n+1,\uu{X})$. We set:
 %
-$$mb_{\rr,\lm}(s)=(n, (X, ss(n)))$$
+$$mb_{\rr,\lm}(s)=(n, (\uu{X}, ss(n)))$$
 %
 To show that this is a bijection let us construct an inverse. For $n\in\nat$, $X\in Ob_{n+1}(\rr,\lm)$ and $o\in R(n)$ let
 %
-$$mb_{\rr,\lm}^!(n,(X,o))=(ft((n+1,X)),((n+1,X),(x^{n}_0,\dots,x^{n}_{n-1},o)))$$
+$$mb_{\rr,\lm}^!(n,(\uu{X},o))=((ft((n+1,\uu{X})),(n+1,\uu{X})),(x^{n}_0,\dots,x^{n}_{n-1},o))$$
 %
-This is a morphism from $ft(\Gamma)$ to $\Gamma$ where $\Gamma=(n+1,X)$. The equation $mb_{\rr,\lm}^!(n,(\Gamma,o))\circ p_\Gamma=Id_{ft(\Gamma)}$ follows from Lemma \ref{2015.08.22.l5}. 
+This is a morphism from $ft(\Gamma)$ to $\Gamma$ where $\Gamma=(n+1,\uu{X})$. The equation $mb_{\rr,\lm}^!(n,(\Gamma,o))\circ p_\Gamma=Id_{ft(\Gamma)}$ follows from Lemma \ref{2015.08.22.l5}. 
 
-Let us show now that $mb_{\rr,lm}$ and $mb_{\rr,lm}^!$ are mutually inverse bijections. Let $s\in \wt{Ob}(CC(\rr,\lm))$ be as above, then:
+Let us show now that $mb_{\rr,\lm}$ and $mb_{\rr,\lm}^!$ are mutually inverse bijections. Let $s\in \wt{Ob}(CC(\rr,\lm))$ be as above, then:
 %
-$$mb_{\rr,\lm}^!(mb_{\rr,\lm}(s))=mb_{\rr,\lm}^!(n,(X,ss(n)))=(ft(\Gamma),(\Gamma,(x^{n}_0,\dots,x^{n}_{n-1},ss(n))))=s$$
+$$mb_{\rr,\lm}^!(mb_{\rr,\lm}(s))=mb_{\rr,\lm}^!(n,(\uu{X},ss(n)))=((ft(\Gamma),\Gamma),(x^{n}_0,\dots,x^{n}_{n-1},ss(n)))=s$$
 %
 where the last equality follows from the assumption that $s\in \wt{Ob}$ and Lemma \ref{2015.08.22.l5}.
 
 On the other hand for $X\in Ob_{n+1}(\rr,\lm)$ and $o\in R(n)$ we have
 %
-$$mb_{\rr,\lm}(mb_{\rr,lm}^!(n,(X,o)))=mb_{\rr,\lm}(ft((n+1,X)),((n+1,X),(x^{n}_0,\dots,x^{n}_{n-1},o)))=$$
-$$(n,(X,o))$$
+$$mb_{\rr,\lm}(mb_{\rr,\lm}^!(n,(\uu{X},o)))=mb_{\rr,\lm}(ft((n+1,\uu{X})),((n+1,\uu{X}),(x^{n}_0,\dots,x^{n}_{n-1},o)))=$$
+$$(n,(\uu{X},o))$$
 %
 This completes Construction \ref{2015.08.22.constr1}.
 \end{construction}
 %
 \begin{lemma}
 \llabel{2015.09.09.l3}
-Let $f=(\Gamma,(\Gamma',(f_0,\dots,f_{n-1}))$ where $\Gamma=(m,X)$, $\Gamma'=(n,Y)$ and $ff=(f_0,\dots,f_{n-1})$. Then one has
+Let $f=((\Gamma,\Gamma'),(f_0,\dots,f_{n-1}))$ where $\Gamma=(m,\uu{X})$, $\Gamma'=(n,\uu{Y})$ and $ff=(f_0,\dots,f_{n-1})$. Then one has
 %
 $$mb_{\rr,\lm}(s_f)=(m,((X_0,\dots,X_{m-1},(f_0,\dots,f_{n-2})(Y_{n-1})), f_{n-1}))$$
 %
@@ -1949,31 +1999,31 @@ Consider operations $T'$, $\wt{T}'$, $S'$, $\wt{S}'$ and $\delta'$ obtained by t
 Let $Ob=Ob(CC(\rr,\lm))$ and let $\wt{Ob}'=\wt{Ob}'(\rr,\lm)$ be the right hand side of (\ref{2009.10.15.eq2}). One has:
 %
 \begin{enumerate}
-\item Operation $T'$ is defined on the set $T'_{dom}$ of pairs $(m,X),(n,Y)\in Ob$ such that $m>0$, $n>m-1$ and $X_i=Y_i$ for $i=0,\dots,m-2$. It takes values in $Ob$ and is given by 
+\item Operation $T'$ is defined on the set $T'_{dom}$ of pairs $(m,\uu{X}),(n,\uu{Y})\in Ob$ such that $m>0$, $n>m-1$ and $X_i=Y_i$ for $i=0,\dots,m-2$. It takes values in $Ob$ and is given by 
 %
-$$T((m,X),(n,Y))=$$$$(n+1,(Y_0,\dots,Y_{m-2},X_{m-1},\partial_{m-1}^{m-1}(Y_{m-1}),\dots,\partial_{n-1}^{m-1}(Y_{n-1})))$$
+$$T((m,\uu{X}),(n,\uu{Y}))=$$$$(n+1,(Y_0,\dots,Y_{m-2},X_{m-1},\partial_{m-1}^{m-1}(Y_{m-1}),\dots,\partial_{n-1}^{m-1}(Y_{n-1})))$$
 %
-\item Operation $\wt{T}'$ is defined on the set $\wt{T}'_{dom}$ of pairs $(m,X)\in Ob$, $(n,(Y,s))\in\wt{Ob}'$ such that $m>0$, $n+1>m-1$ and $X_i=Y_i$ for $i=0,\dots,m-2$. It takes values in $\wt{Ob'}$ and is given by
+\item Operation $\wt{T}'$ is defined on the set $\wt{T}'_{dom}$ of pairs $(m,\uu{X})\in Ob$, $(n,(\uu{Y},s))\in\wt{Ob}'$ such that $m>0$, $n+1>m-1$ and $X_i=Y_i$ for $i=0,\dots,m-2$. It takes values in $\wt{Ob'}$ and is given by
 %
-$$\wt{T}'((m,X),(n,(Y,s)))=(n+1,(T((m,X),(n,Y)),\partial_{n}^{m-1}(s)))$$
+$$\wt{T}'((m,\uu{X}),(n,(\uu{Y},s)))=(n+1,(T((m,\uu{X}),(n,\uu{Y})),\partial_{n}^{m-1}(s)))$$
 %
-\item Operation $S'$ is defined on the set of pairs $(m,(X,r))\in \wt{Ob}'$, $(n,Y)\in Ob$ where $n>m+1$ and $X_i=Y_i$ for $i=0,\dots,m$. It takes values in the set $Ob$ and is given by 
+\item Operation $S'$ is defined on the set of pairs $(m,(\uu{X},r))\in \wt{Ob}'$, $(n,\uu{Y})\in Ob$ where $n>m+1$ and $X_i=Y_i$ for $i=0,\dots,m$. It takes values in the set $Ob$ and is given by 
 %
-$$S'((m,(X,r)),(n,Y))=(n-1,(Y_0,\dots,Y_{m-1},\sigma_{\lm}(r,Y_{m+1}),\sigma_{\lm}(r,Y_{m+2}),\dots,\sigma_{\lm}(r,Y_{n-1})))$$
+$$S'((m,(\uu{X},r)),(n,\uu{Y}))=(n-1,(Y_0,\dots,Y_{m-1},\sigma_{\lm}(r,Y_{m+1}),\sigma_{\lm}(r,Y_{m+2}),\dots,\sigma_{\lm}(r,Y_{n-1})))$$
 %
-\item Operation $\wt{S}'$ is defined on the set of pairs $(m,(X,r))\in \wt{Ob}'$, $(n,(Y,s))\in \wt{Ob}'$ such that $n>m$ and $X_i=Y_i$ for $i=0,\dots,m$. It takes values in $\wt{Ob}'$ and is given by 
+\item Operation $\wt{S}'$ is defined on the set of pairs $(m,(\uu{X},r))\in \wt{Ob}'$, $(n,(\uu{Y},s))\in \wt{Ob}'$ such that $n>m$ and $X_i=Y_i$ for $i=0,\dots,m$. It takes values in $\wt{Ob}'$ and is given by 
 %
-$$\wt{S}'((m,(X,r)),(n,(Y,s)))=(n-1,(S'((m,(X,r)),(n+1,Y))),\sigma_{\rr}(r,s))$$
+$$\wt{S}'((m,(\uu{X},r)),(n,(\uu{Y},s)))=(n-1,(S'((m,(\uu{X},r)),(n+1,\uu{Y}))),\sigma_{\rr}(r,s))$$
 %
-\item Operation $\delta'$ is defined on the subset of $(n,X)$ in $Ob$ such that $n>0$. It takes values in $\wt{Ob}'$ and is given by 
+\item Operation $\delta'$ is defined on the subset of $(m,\uu{X})$ in $Ob$ such that $n>0$. It takes values in $\wt{Ob}'$ and is given by 
 %
-$$\delta'((n,X))=(n,(p_{(n,X)}^*(n,X),x_{n-1}^n))$$
+$$\delta'((m,\uu{X}))=(m,(T((m,\uu{X}),(m,\uu{X})),x_{m-1}^m))$$
 %
 \end{enumerate}
 \end{theorem}
 %
 \begin{proof}
-In the proof we will write $mb$ and $mb^!$ instead of $mb_{\rr,\lm}$ and $mb^!_{\rr,lm}$. We have:
+In the proof we will write $mb$ and $mb^!$ instead of $mb_{\rr,\lm}$ and $mb^!_{\rr,\lm}$. We have:
 %
 \begin{enumerate}
 %
@@ -1982,32 +2032,32 @@ using Lemma \ref{2015.08.22.l6b}(1).
 
 The operation itself is given by 
 %
-$$T'((m,X),(n,Y))=p_{(m,X)}^*((n,Y))=$$
+$$T'((m,\uu{X}),(n,\uu{Y}))=p_{(m,\uu{X})}^*((n,\uu{Y}))=$$
 $$(m,(Y_0,\dots,Y_{m-1},\partial_{m-1}^{m-1}(Y_{m-1}),\dots, \partial_{n-1}^{m-1}(Y_{n-1})))$$
 %
 where the first equality is by Definition \ref{2015.08.26.def1}(1) and the second by Lemma \ref{2015.08.26.l8}. 
 %
-\item Operation $\wt{T}'$ is defined on the set of pairs $((m,X)\in Ob, (n,(Y,s))\in \wt{Ob}')$ such that $m>0$ and $\partial(mb^!(n,(Y,s)))>ft(m,X)$. Since $\partial(mb^!(n,(Y,s))=(n+1,Y)$ we obtain the required domain of definition from Lemma \ref{2015.08.22.l6b}(1). 
+\item Operation $\wt{T}'$ is defined on the set of pairs $((m,\uu{X})\in Ob, (n,(\uu{Y},s))\in \wt{Ob}')$ such that $m>0$ and $\partial(mb^!(n,(\uu{Y},s)))>ft(m,\uu{X})$. Since $\partial(mb^!(n,(\uu{Y},s))=(n+1,\uu{Y})$ we obtain the required domain of definition from Lemma \ref{2015.08.22.l6b}(1). 
 
 To verify the formula for the operation itself consider the equalities:
 %
-$$\wt{T}'((m,X),(n,(Y,s)))=mb(p_{(m,X)}^*(mb^!(n,(Y,s))))=$$
-$$mb(p_{(m,X)}^*((ft((n+1,Y)),((n+1,Y),(x^{n}_0,\dots,x^{n}_{n-1},s)))))$$
+$$\wt{T}'((m,\uu{X}),(n,(\uu{Y},s)))=mb(p_{(m,\uu{X})}^*(mb^!(n,(\uu{Y},s))))=$$
+$$mb(p_{(m,\uu{X})}^*((ft((n+1,\uu{Y})),((n+1,\uu{Y}),(x^{n}_0,\dots,x^{n}_{n-1},s)))))$$
 %
 where the first equality is by Definition \ref{2015.08.26.def1}(2). By Lemma \ref{2015.09.03.l1} we can extend these equalities as follows:
 %
-$$mb(p_{(m,X)}^*((ft((n+1,Y)),((n+1,Y),(x^{n}_0,\dots,x^{n}_{n-1},s)))))=$$
+$$mb(p_{(m,\uu{X})}^*((ft((n+1,\uu{Y})),((n+1,\uu{Y}),(x^{n}_0,\dots,x^{n}_{n-1},s)))))=$$
 $$mb(p_{\Gamma'}^*(ft(\Gamma)),(p_{\Gamma'}^*(\Gamma),(x^{n+1}_0,\dots,x^{n+1}_{n},(qq^{n-m+1}(\iota^1_{m-1}))(s))))=$$
-$$(n+1,(p_{\Gamma'}^*(\Gamma),\partial_{n}^{m-1}(s)))=(n+1,(T((m,X),(n+1,Y)),\partial_n^{m-1}(s)))$$
+$$(n+1,(p_{\Gamma'}^*(\Gamma),\partial_{n}^{m-1}(s)))=(n+1,(T((m,\uu{X}),(n+1,\uu{Y})),\partial_n^{m-1}(s)))$$
 %
-where $\Gamma'=(m,X)$, $\Gamma=(n+1,Y)$, the first equality is by Lemma \ref{2015.09.03.l1}, the second by Lemma \ref{2015.08.26.l3a} and the third by Definition \ref{2015.08.26.def1}(1). 
+where $\Gamma'=(m,\uu{X})$, $\Gamma=(n+1,\uu{Y})$, the first equality is by Lemma \ref{2015.09.03.l1}, the second by Lemma \ref{2015.08.26.l3a} and the third by Definition \ref{2015.08.26.def1}(1). 
 %
 %
-\item Operation $S'$ is defined on the set of pairs $((m,(X,r))\in \wt{Ob}',(n,Y)\in Ob)$ such that $(n,Y)>\partial(mb^!(m,(X,r)))$. Since $\partial(mb^!(m,(X,r)))=(m+1,X)$ we obtained the required domain of definition. The operation itself is given by
+\item Operation $S'$ is defined on the set of pairs $((m,(\uu{X},r))\in \wt{Ob}',(n,\uu{Y})\in Ob)$ such that $(n,\uu{Y})>\partial(mb^!(m,(\uu{X},r)))$. Since $\partial(mb^!(m,(\uu{X},r)))=(m+1,\uu{X})$ we obtained the required domain of definition. The operation itself is given by
 %
-$$S'((m,(X,r)),(n,Y))=(mb^!((m,(X,r))))^*((n,Y))=$$
-$$(ft((m+1,X)),((m+1,X),(x^{m}_0,\dots,x^{m}_{m-1},r)))^*((n,Y))=$$
-$$(ft((m+1,X)),((m+1,X),(x^{m}_0,\dots,x^{m}_{m-1},r)))^*((n,Y),i)$$
+$$S'((m,(\uu{X},r)),(n,\uu{Y}))=(mb^!((m,(\uu{X},r))))^*((n,\uu{Y}))=$$
+$$(ft((m+1,\uu{X})),((m+1,\uu{X}),(x^{m}_0,\dots,x^{m}_{m-1},r)))^*((n,\uu{Y}))=$$
+$$(ft((m+1,\uu{X})),((m+1,\uu{X}),(x^{m}_0,\dots,x^{m}_{m-1},r)))^*((n,\uu{Y}),i)$$
 %
 where $i=n-m-1$. By Lemma \ref{2015.08.26.l7} we can extend this equality as follows:
 %
@@ -2018,18 +2068,18 @@ where $rr=(x^{m}_0,\dots,x^{m}_{m-1},r)$ and the second equality holds by our as
 %
 $$qq^j(rr)(Y_{m+j+1})=\sigma_{\lm}(r,Y_{m+j+1})$$
 %
-\item Operation $\wt{S}'$ is defined on the set of pairs $(m,(X,r))\in \wt{Ob}'$, $(n,(Y,s))\in \wt{Ob}'$ such that 
+\item Operation $\wt{S}'$ is defined on the set of pairs $(m,(\uu{X},r))\in \wt{Ob}'$, $(n,(\uu{Y},s))\in \wt{Ob}'$ such that 
 %
-$$\partial(mb^!((n,(Y,s))))>\partial(mb^!(m,(X,r)))$$
+$$\partial(mb^!((n,(\uu{Y},s))))>\partial(mb^!(m,(\uu{X},r)))$$
 %
 which is equivalent to 
 %
-$$(n+1,Y)>(m+1,X)$$
+$$(n+1,\uu{Y})>(m+1,\uu{X})$$
 %
 which is, in turn, equivalent to the conditions in the theorem. The operation itself is given by:
 %
-$$\wt{S}'((m,(X,r)),(n,(Y,s)))=mb((mb^!(m,(X,r)))^*(mb^!((n,(Y,s)))))=$$
-$$mb((ft((m+1,X)),((m+1,X),rr))^*((ft(n+1,Y),((n+1,Y),ss))))$$
+$$\wt{S}'((m,(\uu{X},r)),(n,(\uu{Y},s)))=mb((mb^!(m,(\uu{X},r)))^*(mb^!((n,(\uu{Y},s)))))=$$
+$$mb((ft((m+1,\uu{X})),((m+1,\uu{X}),rr))^*((ft(n+1,\uu{Y}),((n+1,\uu{Y}),ss))))$$
 %
 where
 %
@@ -2038,23 +2088,23 @@ $$ss=(x_0^n,\dots,x_{n-1}^n,s)$$
 %
 By Lemma \ref{2015.09.03.l1} we can extend this equality as follows:
 %
-$$mb((ft((m+1,X)),((m+1,X),rr))^*((ft(n+1,Y),((n+1,Y),ss))))=$$
-$$mb(((mb^!(m,(X,r)))^*(ft(\Gamma)),((mb^!(m,(X,r)))^*(\Gamma),(x_0^{n-1},\dots,x^{n-1}_{n-2},(qq^{n-m-1}(rr))(s)))))=$$
-$$(n-1,((mb^!(m,(X,r)))^*(\Gamma),(qq^{n-m-1}(rr))(s)))=$$
-$$(n-1,(S'((m,(X,r)),(n+1,Y))),\sigma_{\rr}(r,s))$$
+$$mb((ft((m+1,\uu{X})),((m+1,\uu{X}),rr))^*((ft(n+1,\uu{Y}),((n+1,\uu{Y}),ss))))=$$
+$$mb(((mb^!(m,(\uu{X},r)))^*(ft(\Gamma)),((mb^!(m,(\uu{X},r)))^*(\Gamma),(x_0^{n-1},\dots,x^{n-1}_{n-2},(qq^{n-m-1}(rr))(s)))))=$$
+$$(n-1,((mb^!(m,(\uu{X},r)))^*(\Gamma),(qq^{n-m-1}(rr))(s)))=$$
+$$(n-1,(S'((m,(\uu{X},r)),(n+1,\uu{Y}))),\sigma_{\rr}(r,s))$$
 %
-where $\Gamma'=ft(m,X)$, $\Gamma=(n+1,Y)$, the first equality is by Lemma {2015.09.03.l1} and the third equality by Definition Definition \ref{2015.08.26.def1}(3). 
-\item Operation $\delta'$ is defined on the subset $(n,X)\in Ob$ such that $n>0$ and is given by
+where $\Gamma'=ft(m,\uu{X})$, $\Gamma=(n+1,\uu{Y})$, the first equality is by Lemma {2015.09.03.l1} and the third equality by Definition Definition \ref{2015.08.26.def1}(3). 
+\item Operation $\delta'$ is defined on the subset $(m,\uu{X})\in Ob$ such that $n>0$ and is given by
 %
-$$\delta'((n,X))=mb(\delta((n,X)))$$
+$$\delta'((m,\uu{X}))=mb(\delta((m,\uu{X})))$$
 %
 Therefore it is sufficient to show that
 %
-$$\delta((n,X))=((n,X),(p_{(n,X)}^*((n,X)),(x_0^n,\dots,x_{n-1}^n,x_{n-1}^n)))$$
+$$\delta((m,\uu{X}))=(((n,\uu{X}),p_{(m,\uu{X})}^*((m,\uu{X}))),(x_0^m,\dots,x_{m-1}^m,x_{m-1}^m))$$
 %
-By Definition \ref{2015.08.26.def1}(5), $\delta((n,X))$ is a morphism from $(n,X)$ to $p_{(n,X)}^*((n,X))$. Therefore, since $Fl$ is a fully faithful functor it is sufficient to show that 
+By Definition \ref{2015.08.26.def1}(5), $\delta((m,\uu{X}))$ is a morphism from $(m,\uu{X})$ to $p_{(m,\uu{X})}^*((m,\uu{X}))$. Therefore, since $Fl$ is a fully faithful functor it is sufficient to show that 
 %
-$$Fl(\delta((n,X)))=(n,(n+1,(x_0^n,\dots,x_{n-1}^n,x_{n-1}^n)))$$
+$$Fl(\delta((m,\uu{X})))=((\wh{m},\wh{m+1}),(x_0^m,\dots,x_{m-1}^m,x_{m-1}^m))$$
 %
 which follows from Lemma \ref{2015.09.03.l2}(5) and Lemma \ref{2015.08.24.l5}.
 %
@@ -2063,8 +2113,11 @@ which follows from Lemma \ref{2015.09.03.l2}(5) and Lemma \ref{2015.08.24.l5}.
 %
 \begin{remark}\rm
 \llabel{2015.09.07.rem5}
-As we did in Remark \ref{2015.08.29.rem1} for $R$ so we can do for $LM$, representing the category of pairs $(R,LM)$, which is equivalent to the full subcategory of finitary objects in the Hirschowitz-Maggesi category for $Sets$, as follows.
-
+As we did in Remark \ref{2015.08.29.rem1} for $R$ so we can do for $LM$, representing the category of pairs $(R,LM)$, which is equivalent to the full subcategory of finitary objects in the Hirschowitz-Maggesi category for $Sets$, as follows.????????
+\end{remark}
+%
+\begin{remark}\rm
+\llabel{2015.09.13.rem1}
 Given an l-algebraic theory $l\rr=(lR,l,\eta,\partial,\sigma)$ we can define a left l-module $l\lm$ over $\rr$ as a quadruple:
 %
 \begin{enumerate}
@@ -2081,7 +2134,7 @@ where operations $l_{\lm},\partial_{\lm}$ and $\sigma_{\lm}$ satisfy some condit
 
 Once these conditions are properly established the category of such pairs $(l\rr,l\lm)$ should be equivalent to the Hirschowitz-Maggesi category and in particular the systems of expressions associated with binding signatures can be described as universal objects carrying some additional operations in this category. 
 
-Let us emphasize again that the main reason to consider these l-versions of the main constructions of this paper is that they should be easier to formalize in systems without dependent types such as HOL or ZF. 
+Let us emphasize again that the main reason to consider these l-versions of the main constructions of this paper is that they should be easier to formalize in systems without dependent types such as HOL or ZF.  ??????
 \end{remark} 
 %
 
@@ -2095,6 +2148,7 @@ Let us emphasize again that the main reason to consider these l-versions of the 
 
 \subsection{C-subsystems of $CC(\rr,\lm)$.}
 %
+
 Let $CC$ be a C-subsystem of $CC(\rr,\lm)$.  Then, obviously, $Ob(CC)\subset Ob(CC(\rr,\lm))$ and $\wt{Ob}(CC)\subset \wt{Ob}(CC(\rr,\lm))$. It was proved in \cite[Lemma 4.1]{Csubsystems} that the function 
 %
 $$CC\mapsto (Ob(CC)\subset Ob(CC(\rr,\lm)),\wt{Ob}(CC)\subset \wt{Ob}(CC(\rr,\lm))$$
@@ -2105,47 +2159,54 @@ is an injection from the set of C-subsystems of $CC(\rr,\lm)$ to the set of pair
 \item $pt\in B$
 \item if $X\in B$ then $ft(X)$ is in $B$,
 \item if $r\in \wt{B}$ then $\partial(r)\in \wt{B}$,
-\item if $X\in B$, $s\in \wt{B}$ and $(X,s)\in \wt{T}_{dom}$ then $\wt{T}(X,s)\in \wt{B}$,
-\item if $r,s\in \wt{B}$ and $(r,s)\in \wt{S}_{dom}$ then $\wt{S}(s,r)\in \wt{B}$,
+\item if $X\in B$, $s\in \wt{B}$ and $(\uu{X},s)\in \wt{T}_{dom}$ then $\wt{T}(\uu{X},s)\in \wt{B}$,
+\item if $r,s\in \wt{B}$ and $(r,s)\in \wt{S}_{dom}$ then $\wt{S}(r,s)\in \wt{B}$,
 \item if $X\in B$ and $X\in \delta_{dom}$ then $\delta(X)\in \wt{B}$.
 \end{enumerate}
 %
-Clearly the same result holds for subsets $B\subset Ob(CC(\rr,\lm))$ and $\wt{B}'\subset \wt{Ob}'$ if we replace $\partial$ by $\partial'$ (where $\partial'(m,(X,r))=X$),  $T$ by $T'$ and $\wt{S}$ by $\wt{S}'$.
+Clearly the same result holds for subsets $B\subset Ob(CC(\rr,\lm))$ and $\wt{B}'\subset \wt{Ob}'$ if we replace $\partial$ by $\partial'$ (where $\partial'(m,(\uu{X},r))=X$),  $\wt{T}$ by $\wt{T'}$ and $\wt{S}$ by $\wt{S}'$.
 
-Let us combine this result with the explicit description of the operations $T'$ and $\wt{S'}$ obtained in Theorem \ref{2015.08.26.th2} and the following notation:
+Let us combine this result with the explicit description of the operations $\wt{T}'$ and $\wt{S'}$ obtained in Theorem \ref{2015.08.26.th2} and the following notation:
 %
 \begin{enumerate}
-\item for $(m,X)$ in $Ob(CC(\rr,\lm))$ we write $(X\rhd^{B})$ if $(m,X)\in B$, when no confusion is possible we will omit the superscript $\rhd^B$ from $\rhd$,
-\item for $(m,(X,r))$ in $\wt{Ob}'(\rr,\lm)$ we write $(X\rhd^{\wt{B}} r:X_m)$ if $(m,(X,r))$ is in $\wt{B}'$, similarly to what was said above, if no confusion is possible we will omit the superscript $\wt{B}'$ from $\rhd$. 
+\item for $(m,\uu{X})$ in $Ob(CC(\rr,\lm))$ we write $(\uu{X}\rhd^{B})$ if $(m,\uu{X})\in B$, when no confusion is possible we will omit the superscript $\rhd^{B}$ from $\rhd$,
+\item for $(m,(\uu{X},r))$ in $\wt{Ob}'(\rr,\lm)$ we write $(\uu{X}\rhd^{\wt{B}'} r:X_m)$ if $(m,((\uu{X},X_m),r))$ is in $\wt{B}'$, similarly to what was said above, if no confusion is possible we will omit the superscript $\wt{B}'$ from $\rhd$. 
 \end{enumerate}
 %
-Those who are used to the turnstile notations $(X_0,\dots,X_{m-1}\vdash r:X_m)$ for the statement that the ``judgement'' that $r$ is an object of type $X_m$ in the context $(X_0,\dots,X_{m-1})$  is derivable, should only replace $\vdash$ with $\rhd$ and sometimes add the superscript with $B$ or $\wt{B}$ referring to the class of judgements that are derivable relative to the particular systems of inference rules under consideration\footnote{The reason for the replacement of the familiar $\vdash$ with the unfamiliar $\rhd$ is that $\vdash$ carries a meaning in logic that does not always agree with its use in type theory, for example $\Gamma\vdash$ reads as $\Gamma$ implies the empty set set of conclusions which always holds and so $\Gamma\vdash$ always holds, while the type theoretic meaning is that $\Gamma$ is a well-formed context of the type theory under considerations.}. In a subsequent paper we will consider the case when the sets $B$ and $\wt{B}$ are the sets of derivable judgements relative to a set of inference rules with both the concept of an inference rule and that of the derivability being precisely defined in the mathematical terms. So far, $B$ and $\wt{B}$ may refer to any subsets on $Ob$ and $\wt{Ob}$ respectively. 
+\begin{remark}\rm\llabel{2015.09.17.rem1}
+Those who are used to the turnstile notations $(X_0,\dots,X_{m-1}\vdash r:X_m)$ for the statement that ``the judgement that $r$ is an object of type $X_m$ in the context $(X_0,\dots,X_{m-1})$  is valid'', should only replace $\vdash$ with $\rhd$ and sometimes add $B$ or $\wt{B}'$ as a superscript. The reason for the replacement of the familiar $\vdash$ with the unfamiliar $\rhd$ is that $\vdash$ carries a meaning in logic that does not always agree with its use in type theory. For example, in logic, $\Gamma\vdash$ reads as ``$\Gamma$ implies the empty set set of conclusions'' which always holds while the type theoretic meaning is that $\Gamma$ is a well-formed context of the type theory under considerations which is a non-trivial condition on $\Gamma$. In a subsequent paper we will consider the case when the sets $B$ and $\wt{B}'$ are the sets of derivable judgements relative to a set of inference rules with both the concept of an inference rule and that of the derivability being precisely defined in the mathematical terms. So far, $B$ and $\wt{B}'$ may refer to any subsets on $Ob$ and $\wt{Ob}'$ respectively. 
+\end{remark}
 
 Another group of notations that we would like to introduce is as follows. Recall that our use of sequences such as $(X_0,\dots,X_{m-1})$ is a notational convention and that the object underlying this notation is a dependent function with the domain $stn(m)$ and the codomain function $i\mapsto R(i)$. In what follows we will use more such notations explained below:
 %
 \begin{enumerate}
-\item Given a dependent function on $stn(m)$, $\Gamma=(X_0,\dots,X_{m-1})$ where $X_i\in LM(\wh{i})$ and a dependent function on $\{j\in\nat\,|\, j\ge m, j<n\}$, $\Delta=(X_m,\dots,X_{n-1})$ where $X_j\in LM(\wh{j})$ we will write $(\Gamma,\Delta)$ for the dependent function of the obvious form on $stn(n)$,
+\item Given a dependent function on $stn(m)$, $\uu{X}=(X_0,\dots,X_{m-1})$ where $X_i\in LM(\wh{i})$ and a dependent function $\uu{X}'$ on $\{j\in\nat\,|\, j\ge m, j<n\}$, $\uu{X}'=(X'_m,\dots,X'_{n-1})$ where $X'_j\in LM(\wh{j})$ we will write $(\uu{X},\uu{X}')$ for the dependent function of the obvious form on $stn(n)$,
 %
-\item Given $\Delta=(X_m,\dots,X_{m+j})$ where $X_i\in LM(\wh{i})$ and $k\ge i$ we define 
+\item Given $\uu{X}'=(X'_m,\dots,X'_{m+j})$ where $X'_i\in LM(\wh{i})$ and $k\le m$ we define 
 %
-$$\partial^k(\Delta)=(\partial^k_m(X_m),\dots,\partial^k_{m+j}(X_{m+j})).$$  
+$$\partial^k(\uu{X}')=(\partial^k_m(X'_m),\dots,\partial^k_{m+j}(X'_{m+j})).$$  
 %
-\item Given $\Delta=(X_m,\dots,X_{m+j})$ where $X_i\in LM(\wh{i})$ and $r\in R(j)$ where $j<m$ we define
+\item Given $\uu{X}'=(X'_m,\dots,X'_{m+j})$ where $X'_i\in LM(\wh{i})$ and $r\in R(j)$ where $j<m$ we define
 %
-$$\sigma_{\lm}(s,\Delta)=(\sigma_{\lm}(s,X_m),\dots,\sigma_{\lm}(s,X_{m+j})).$$
+$$\sigma_{\lm}(r,\uu{X}')=(\sigma_{\lm}(r,X'_m),\dots,\sigma_{\lm}(r,X'_{m+j})).$$
 %
 \end{enumerate}
 %
 In this notation the description of the operations $T,\wt{T},S,\wt{S}$ and $\delta$  given in Theorem \ref{2015.08.26.th2} takes the form:
 %
 \begin{enumerate}
-\item $T((\Gamma,X_m\rhd),(\Gamma,\Delta\rhd))=(\Gamma,X_m,\partial^m(\Delta)\rhd)$ where $m=l_f(\Gamma)$,
-\item $\wt{T}((\Gamma,X_m\rhd),(\Gamma,\Delta\rhd s:Y_n))=(\Gamma,X_m,\partial^m(\Delta)\rhd \partial^m(s:Y_n))$ where $m=l_f(\Gamma)$,
-\item $S((\Gamma\rhd r:X_m),(\Gamma,X_m,\Delta\rhd))=(\Gamma,\sigma_{\lm}(r,\Delta)\rhd)$,
-\item $\wt{S}((\Gamma\rhd r:X_m),(\Gamma,X_m,\Delta\rhd s:Y_n))=(\Gamma,\sigma_{\lm}(r,\Delta)\rhd \sigma_{\lm}(r,s):\sigma_{\lm}(r,Y_n))$,
-\item $\delta(\Gamma,X_m\rhd)=(\Gamma,X_m\rhd x^{m+1}_m:X_m)$ where $m=l_f(\Gamma)$.
+\item $T((\uu{X},X_m\rhd),(\uu{X},\uu{X}'\rhd))=(\uu{X},X_m,\partial^m(\uu{X}')\rhd)$ where $m=l(\uu{X})$,
+\item $\wt{T}((\uu{X},X_m\rhd),(\uu{X},\uu{X}'\rhd s:Y_n))=(\uu{X},X_m,\partial^m(\uu{X}')\rhd \partial^m(s):\partial^m(Y_n))$ where $m=l(\uu{X})$,
+\item $S((\uu{X}\rhd r:X_m),(\uu{X},X_m,\uu{X}'\rhd))=(\uu{X},\sigma_{\lm}(r,\uu{X}')\rhd)$,
+\item $\wt{S}((\uu{X}\rhd r:X_m),(\uu{X},X_m,\uu{X}'\rhd s:Y_n))=(\uu{X},\sigma_{\lm}(r,\uu{X}')\rhd \sigma_{\lm}(r,s):\sigma_{\lm}(r,Y_n))$,
+\item $\delta(\uu{X},X_m\rhd)=(\uu{X},X_m\rhd x^{m+1}_m:\partial_m^m(X_m))$ where $m=l(\uu{X})$.
 \end{enumerate}
 %
+\begin{remark}\rm
+\llabel{2015.09.17.rem2}
+Note that $\partial_m^m=\iota_m^1$ and therefore $\partial_m^m(X_m)$ is ``the same'' expression $X_m$ but considered as an expression in variables $x_0,\dots,x_m$. 
+\end{remark}
+% 
 
 The following result is an immediate corollary of \cite[Proposition 4.3]{Csubsystems} together with the description of the operations $T,\wt{T},S,\wt{S}$ and $\delta$ for $CC(\rr,\lm)$ which is given above. 
 %
@@ -2154,18 +2215,18 @@ The following result is an immediate corollary of \cite[Proposition 4.3]{Csubsys
 Let $(\rr,\lm)$ be as above. Let $(B,\wt{B}')$ be a pair of subsets in $Ob(CC(\rr,\lm))$ and $\wt{Ob}'(\rr,\lm)$ respectively. Then the following two conditions are equivalent:
 %
 \begin{enumerate}
-\item There exists a C-subsystem $CC$ of $CC(\rr,\lm)$ such that $Ob(CC)=B$ and $mb_{\rr,lm}(\wt{Ob}(CC))=\wt{B}'$ as subsets in $Ob(CC(\rr,\lm))$ and $\wt{Ob}(\rr,\lm)$ respectively.
+\item There exists a C-subsystem $CC$ of $CC(\rr,\lm)$ such that $Ob(CC)=B$ and $mb_{\rr,\lm}(\wt{Ob}(CC))=\wt{B}'$ as subsets in $Ob(CC(\rr,\lm))$ and $\wt{Ob}(CC(\rr,\lm))$ respectively.
 \item The following conditions hold:
 %
 \begin{enumerate}
-\item $(\rhd^{B})$
-\item $(\Gamma, X_m\rhd^{B})\Rightarrow (\Gamma\rhd^{B})$
-\item $(\Gamma\rhd^{\wt{B}} r:X_m)\Rightarrow (\Gamma,X_m\rhd^{B})$
-\item $(\Gamma, X_m\rhd^{B})\wedge(\Gamma,\Delta,\rhd^{\wt{B}} s:Y_n)\Rightarrow  (\Gamma, X_m, \partial^{m}(\Delta)\rhd^{\wt{B}} \partial^{m} (s): \partial^{m}(Y_n))$
-where $m=l_f(\Gamma)$
-\item  $(\Gamma\rhd^{\wt{B}}  r:X_m)\wedge (\Gamma,X_m,\Delta\rhd^{\wt{B}} s:Y_n)\Rightarrow (\Gamma, \sigma_{\lm}(r,\Delta) \rhd^{\wt{B}} \sigma_{\lm}(r,s) : \sigma_{\lm}(r,Y_n))$ ,
+\item $(\rhd)$
+\item $(\uu{X}, X_m\rhd)\Rightarrow (\uu{X}\rhd)$
+\item $(\uu{X}\rhd r:X_m)\Rightarrow (\uu{X},X_m\rhd)$
+\item $(\uu{X}, X_m\rhd)\wedge(\uu{X},\uu{X}',\rhd s:Y_n)\Rightarrow  (\uu{X}, X_m, \partial^{m}(\uu{X}')\rhd \partial^{m} (s): \partial^{m}(Y_n))$
+where $m=l_f(\uu{X})$
+\item  $(\uu{X}\rhd  r:X_m)\wedge (\uu{X},X_m,\uu{X}'\rhd s:Y_n)\Rightarrow (\uu{X}, \sigma_{\lm}(r,\uu{X}') \rhd \sigma_{\lm}(r,s) : \sigma_{\lm}(r,Y_n))$ ,
 %
-\item $(\Gamma,X_m\rhd^{B})\Rightarrow (\Gamma,X_m\rhd^{\wt{B}} x_{m}^{m+1}:X_m)$ where $m=l_f(\Gamma)$.
+\item $(\uu{X},X_m\rhd)\Rightarrow (\uu{X},X_m\rhd x_{m}^{m+1}:\partial_m^m(X_m))$ where $m=l_f(\uu{X})$.
 \end{enumerate}
 \end{enumerate}
 %
@@ -2173,12 +2234,14 @@ In addition if a C-subsystem $CC$ satisfying the conditions of the proposition e
 %
 \end{proposition}
 %
-Note that conditions (4) and (5) together with condition (6) and condition (3) imply the following 
+Note that condition (d) together with condition (f) and condition (c) imply the following 
 %
 \begin{description}
-\item[{\em 4a}] $(\Gamma, X_m\rhd^{B})\wedge (\Gamma,\Delta\rhd^{B})\Rightarrow (\Gamma, X_m, \partial^m(\Delta)\rhd^{B})$ where $m=l_f(\Gamma)$,
+\item[{\em d'}] $(\uu{X}, X_m\rhd)\wedge (\uu{X},\uu{X}'\rhd)\Rightarrow (\uu{X}, X_m, \partial^m(\uu{X}')\rhd)$ where $m=l_f(\uu{X})$,
 %
-\item[{\em 5a}] $(\Gamma\rhd^{\wt{B}}  r:X_m)\wedge (\Gamma,X_m,\Delta\rhd^{B})\Rightarrow (\Gamma, \sigma_{\lm}(r,\Delta)\rhd^{B})$.
+and the condition (e) together with conditions (f) and (c) imply the following 
+%
+\item[{\em e'}] $(\uu{X}\rhd  r:X_m)\wedge (\uu{X},X_m,\uu{X}'\rhd)\Rightarrow (\uu{X}, \sigma_{\lm}(r,\uu{X}')\rhd)$.
 %
 \end{description}
 %
@@ -2186,33 +2249,33 @@ Note that conditions (4) and (5) together with condition (6) and condition (3) i
 %
 \begin{center}
 %
-$$\frac{}{\rhd^{B}}\,\,\,\,\,\,\,\,\,\,
-\frac{x_1:T_1,\dots,x_n:T_n\rhd^{B}}{x_1:T_1,\dots,x_{n-1}:T_{n-1}\rhd^{B}} \,\,\,\,\,\,\,\,\,\, 
-\frac{x_1:T_1,\dots,x_n:T_n\rhd^{\wt{B}'} t:T}{x_1:T_1,\dots,x_n:T_n, y:T\rhd^{B}}$$
+$$\frac{}{\rhd}\,\,\,\,\,\,\,\,\,\,
+\frac{x_1:T_1,\dots,x_n:T_n\rhd}{x_1:T_1,\dots,x_{n-1}:T_{n-1}\rhd} \,\,\,\,\,\,\,\,\,\, 
+\frac{x_1:T_1,\dots,x_n:T_n\rhd t:T}{x_1:T_1,\dots,x_n:T_n, y:T\rhd}$$
 
-$$\frac{x_1:T_1,\dots,x_n:T_n, y:T\rhd^{B}\,\,\,\,\,\,\,x_1:T_1,\dots,x_n:T_n,\dots, x_m:T_m\rhd^{\wt{B}'} r:R}{x_1:T_1,\dots,x_n:T_n, y:T, x_{n+1}:T_{n+1},\dots,x_m:T_m\rhd^{\wt{B}'} r:R}$$
+$$\frac{x_1:T_1,\dots,x_n:T_n, y:T\rhd\,\,\,\,\,\,\,x_1:T_1,\dots,x_n:T_n,\dots, x_m:T_m\rhd r:R}{x_1:T_1,\dots,x_n:T_n, y:T, x_{n+1}:T_{n+1},\dots,x_m:T_m\rhd r:R}$$
 
-$$\frac{x_1:T_1,\dots,x_n:T_n\rhd^{\wt{B}'} s:S\,\,\,\,\,\,\,x_1:T_1,\dots,x_n:T_n,y:S,x_{n+1}:T_{n+1},\dots,x_m:T_m\rhd^{\wt{B}'} r:R}
-{x_1:T_1,\dots,x_n:T_n,x_{n+1}:T_{n+1}[s/y],\dots,x_m:T_m[s/y]\rhd^{\wt{B}'} (r:R)[s/y]}$$
+$$\frac{x_1:T_1,\dots,x_n:T_n\rhd s:S\,\,\,\,\,\,\,x_1:T_1,\dots,x_n:T_n,y:S,x_{n+1}:T_{n+1},\dots,x_m:T_m \rhd r:R}
+{x_1:T_1,\dots,x_n:T_n,x_{n+1}:T_{n+1}[s/y],\dots,x_m:T_m[s/y] \rhd (r:R)[s/y]}$$
 
-$$\frac{x_1:E_1,\dots,x_n:E_n\rhd^{B}}{x_1:E_1,\dots,x_n:E_n\rhd^{\wt{B}'} x_n:E_n}$$
+$$\frac{x_1:E_1,\dots,x_n:E_n\rhd}{x_1:E_1,\dots,x_n:E_n\rhd x_n:E_n}$$
 
 \end{center}
 %
 which are similar (and probably equivalent) to the ``basic rules of DTT'' given in \cite[p.585]{Jacobs1}. The advantage of the rules given here is that they are precisely the ones which are necessary and sufficient for a given collection of contexts and judgements to define a C-subsystem.
 \end{remark}
 %
-The following lemma is needed in order to show that the pre-category that we obtain from $(B,\wt{B})$ using our construction of a sub-C-system from a pair of subsets in $Ob$ and $\wt{Ob}'$ satisfying certain conditions has the same morphisms as the pre-category whose construction from such subsets is outlined  in more traditional texts such as \cite{MH1995}. The fact that one obtains the same composition is more difficult to prove since I do not know of any traditional texts where the composition would be described in sufficient detail. 
+The following lemma is needed in order to show that the pre-category that we obtain from $(B,\wt{B}')$ using our construction of a sub-C-system from a pair of subsets in $Ob$ and $\wt{Ob}'$ satisfying certain conditions has the same morphisms as the pre-category whose construction from such subsets is outlined  in more traditional texts such as \cite{MH1995}. The fact that one obtains the same composition is more difficult to prove since I do not know of any traditional texts where the composition would be described in sufficient detail. 
 %
 \begin{lemma}
 \llabel{2009.11.05.l1}
-Let $(B,\wt{B}')$ be a pair of subsets satisfying the conditions of Proposition \ref{2009.10.16.prop3} and let $CC$ be the corresponding C-subsystem of $CC(\rr,\lm)$. Let $(m,X),(n,Y)\in B$ and 
+Let $(B,\wt{B}')$ be a pair of subsets satisfying the conditions of Proposition \ref{2009.10.16.prop3} and let $CC$ be the corresponding C-subsystem of $CC(\rr,\lm)$. Let $(m,\uu{X}),(n,\uu{Y})\in B$ and 
 %
-$$f=((m,X),((n,Y),(f_0,\dots,f_{n-1}))\in Hom_{CC(\rr,\lm)}((m,X),(n,Y))$$
+$$f=(((m,\uu{X}),(n,\uu{Y})),(f_0,\dots,f_{n-1}))\in Hom_{CC(\rr,\lm)}((m,\uu{X}),(n,\uu{Y}))$$
 %
-Then $f\in Hom_{CC}((m,X), (n,Y))$ if an only if 
+Then $f\in Hom_{CC}((m,\uu{X}), (n,\uu{Y}))$ if an only if 
 %
-$$f\circ p_{(n,Y)}\in Hom_{CC}((m,X), ft((n,Y)))$$
+$$f\circ p_{(n,\uu{Y})}\in Hom_{CC}((m,\uu{X}), ft((n,\uu{Y})))$$
 %
 and 
 %
@@ -2227,15 +2290,312 @@ The expression (\ref{2015.09.09.eq4}) is our notation for the statement that
 %
 $$(m,((X_0,\dots,X_{m-1},(f_0,\dots,f_{n-2})(Y_{n-1})),f_{n-1}))\in \wt{B}'$$
 %
-By Lemma \ref{2015.09.09.l3} this is equivalent to the condition that $s_f\in \wt{B}$ where $\wt{B}=mb^!_{\rr,\lm}(\wt{B}')$. By definition of $CC$ in Proposition \ref{2009.10.16.prop3} we have $\wt{B}=\wt{Ob}(CC)$. 
+By Lemma \ref{2015.09.09.l3} this is equivalent to the condition that $s_f\in \wt{B}$ where $\wt{B}=mb^!_{\rr,\lm}(\wt{B}')$. By definition of $CC$ we have $\wt{B}=\wt{Ob}(CC)$. 
 
 By \cite[Definition 2.3(3)]{Csubsystems} we have 
 %
-$$f=s_f\circ q(f\circ p_{(n,Y)},(n,Y))$$
+$$f=s_f\circ q(f\circ p_{(n,\uu{Y})},(n,\uu{Y}))$$
 %
-therefore if $s_f\in Mor(CC)$ and $f\circ p_{(n,Y)}\in Mor(CC)$ then $f\in Mor(CC)$ since $CC$ is a C-subsystem of $CC(\rr,\lm)$. This proves the "if" part of the Lemma. 
+therefore if $s_f\in Mor(CC)$ and $f\circ p_{(n,\uu{Y})}\in Mor(CC)$ then $f\in Mor(CC)$ since $CC$ is a C-subsystem of $CC(\rr,\lm)$. This proves the "if" part of the Lemma. 
 
-The "only if" part follows similarly from the assumption that $CC$ is a C-subsystem and therefore both $f\circ p_{(n,Y)}$ and $s_f$ belong to $Mor(CC)$.
+The "only if" part follows similarly from the assumption that $CC$ is a C-subsystem and therefore both $f\circ p_{(n,\uu{Y})}$ and $s_f$ belong to $Mor(CC)$.
+\end{proof}
+%
+
+
+
+
+
+
+
+\subsection{Regular sub-quotients of $CC(\rr,\lm)$.} 
+%
+The type systems of Martin-L\"of genus are usually characterized by four rather than by two sets of ``sentences''. 
+
+There is a set of sentences of the form $(X_0,\dots,X_{m-1},X_m)$, where $X_i\in LM(i)$, whose elements are usually written as $X_0,\dots,X_{m-1}\vdash X_m\,type$ and whose meaning is that 
+$X_m$ is a valid type expression in a valid context $X_0,\dots,X_{m-1}$ or, equivalently, that $(X_0,\dots,X_{m-1},X_m)$ is a valid context. This is our set $B$. 
+
+There is a set of sentences of the form $(X_0,\dots,X_{m-1},X_m,r)$ whose elements are usually written as $X_0,\dots,X_{m-1}\vdash r:X_m$ and whose meaning is that 
+$r$ is a valid expression for an element of a valid type $X_m$ in a valid context $X_0,\dots,X_{m-1}$.  This is our set $\wt{B}$.
+
+The other two sets represent ``definitional equality judgements''. 
+
+There is a set of sequences of the form $(X_0,\dots,X_{m-1},X_m,X_m')$ whose elements are usually written as $X_0,\dots,X_{m-1}\vdash X_m=X_m'$ and whose meaning is that $X_m$ and $X_m'$ are valid type expressions in the valid context $(X_0,\dots,X_{m-1})$ and that in this context they are definitionally equal. 
+
+There is also a set of sequences of the form $(X_0,\dots,X_{m-1},X_m,r,r')$ whose elements are usually written $(X_0,\dots,X_{m-1}\vdash r=r':X_m)$ and whose meaning is that $r$ and $r'$ are valid expressions for elements of a valid type $X_m$ in a valid context $(X_0,\dots,X_{m-1})$ that are definitionally equal.  
+
+We have shown how to construct  from any two sets the form $B$ and $\wt{B}'$, which satisfy certain conditions, a C-subsystem $CC(B,\wt{B}')$ of $CC(\rr,\lm)$. We are now going to show how to construct from four sets $B$, $\wt{B}'$, $Beq$ and $\wt{Beq}$ a  quotient of $CC(B,\wt{B}')$.
+
+This completes the mathematically rigorous construction of the ``term model'' of a type theory in the form of  C-system starting from four sets of ``judgements'' of the form introduced by Per Martin-L\"of. 
+
+Consider two subsets
+%
+$$Beq\subset \coprod_{n\in\nat}  Ob_n(\rr,\lm)\times (LM(\wh{n})\times LM(\wh{n}))$$
+$$\wt{Beq}\subset \coprod_{n\in\nat}  Ob_n(\rr,\lm)\times (LM(\wh{n})\times (R(n)\times R(n)))$$
+%
+We are going to describe how such a pair of subsets defines a pair of relations on $B$ and $\wt{B}$ and what conditions the pair of subsets has to satisfy in order for this pair of relations to satisfy the conditions of \cite[Propositions 5.4]{Csubsystems} and, therefore, to correspond to a regular congruence relation on $CC(B,\wt{B}')$. 
+
+Not all regular congruence relations on $CC(B,\wt{B}')$ arise from such pairs of subsets. A partial answer to the question of what are the additional conditions on a congruence relation to be define by a pair of subsets of the form $Beq$, $\wt{Beq}$ will be given in the next section. 
+
+For $\uu{X}\in Ob_n(\rr,\lm)$ and $S_1,S_2\in LM(\wh{n})$ we write $(\uu{X}\rhd^{Beq} S_1=S_2)$ to signify that $(\uu{X},(S_1,S_2))\in Beq$. Similarly for $S\in LM(\wh{n})$ and $o,o'\in R(n)$ we write $(\uu{X}\rhd^{\wt{Beq}} o=o':S)$ to signify that $(\uu{X},(S,(o,o')))\in \wt{Beq}$.  When no confusion is possible we will omit the superscripts $Beq$ and $\wt{Beq}$ at $\rhd$. 
+%
+\begin{definition}
+\llabel{simandsimeq}
+Given subsets $B$, $\wt{B}'$, $Beq$, $\wt{Beq}$ as above define relations $\sim$ on $B$ and $\simeq'$ on $\wt{B}'$ as follows:
+%
+\begin{enumerate}
+\item for $\Gamma=(m,\uu{X})$, $\Gamma'=(m',\uu{X}')$ in $B$ we set  $\Gamma\sim\Gamma'$ iff $m=m'$, $ft(\Gamma)\sim ft(\Gamma')$ and 
+%
+$$(X_0,\dots,X_{m-2}\rhd X_{m-1}=X_{m-1}')$$
+%
+\item for $(\uu{X}\rhd r:X_m)$, $(\uu{X}'\rhd r':X_m')$ in $\wt{B}'$ where $l(\uu{X})=l(\uu{X}')$ we set $(\uu{X}\rhd r:X_m)\simeq'(\uu{X}'\rhd r':X_m')$ iff $(\uu{X},X_m\rhd)\sim(\uu{X}',X_m'\rhd)$ and 
+%
+$$(\uu{X}\rhd r=r':X_m).$$
+%
+\end{enumerate}
+\end{definition}
+%
+Define the relation $\simeq$ on $\wt{B}=mb_{\rr,\lm}^!(\wt{B}')$ by the formula
+%
+$$(f\simeq f')\Leftrightarrow (mb_{\rr,\lm}(f)\simeq' mb_{\rr,\lm}(f'))$$
+%
+The proof of the  following lemma is omitted because of its simplicity. 
+%
+\begin{lemma}
+\llabel{2015.09.11.l1}
+Let $\sim$ and $\simeq'$ be relations on $B$ and $\wt{B}'$ respectively. Let $\simeq$ be the relation on $\wt{B}$ defined by the formula
+%
+$$(f\simeq f')\Leftrightarrow (mb_{\rr,\lm}(f)\simeq' mb_{\rr,\lm}(f'))$$
+%
+Then $\sim$ and $\simeq$ satisfy the conditions of \cite[Proposition 5.4]{Csubsystems} if and only if the following holds:
+%
+\begin{enumerate}
+\item $\sim$ and $\simeq'$ are compatible with operations $ft, \partial', T',\wt{T}', S', \wt{S}'$ and $\delta'$,
+\item $(m,X)\sim (n,Y)$ implies $m=n$,
+\item for any $(m,X)$, $(m-1,F)$ in $B$ such that $ft(m,X)\sim (m-1,F)$ there exists $(m,X')$ in $B$ such that $(m,X)\sim (m,X')$ and $ft(m,X')=(m-1,F)$, 
+\item for any $(m,(X,r))\in \wt{B}'$ and $(m+1,X')\sim (m+1,X)$ in $B$ there exists $r'\in R(m)$ such that $(m,(X',r'))\simeq'(m,(X,r))$ in $\wt{B}'$.
+\end{enumerate}
+\end{lemma}
+%
+\begin{proposition}
+\llabel{2014.07.10.prop1}
+%
+Let $B$, $\wt{B}'$, $Beq$, $\wt{Beq}$ be as above and suppose in addition that one has:
+%
+\begin{enumerate}
+\item $B$ and $\wt{B}'$ satisfy conditions (a)-(f) of Proposition \ref{2009.10.16.prop3} which are referred to below as conditions (1a)-(1f) of the present proposition,
+%l
+\item let $m=l(\uu{X})$ then 
+%
+$$
+\begin{array}{lcl}
+(a)\spc(\uu{X}\rhd X_m=X_m')&\impl& (\uu{X},X_m\rhd)\\\\
+(b)\spc(\uu{X},X_m\rhd)&\impl& (\uu{X}\rhd X_m=X_m)\\\\
+(c )\spc(\uu{X}\rhd X_m=X_m')&\impl&(\uu{X}\rhd X_m'=X_m)\\\\
+(d)\spc(\uu{X}\rhd X_m=X_m')\wedge(\uu{X}\rhd X_m'=X_m'')&\impl&(\uu{X}\rhd X_m=X_m'')
+\end{array}
+$$
+%
+\item let $m=l(\uu{X})$ then 
+%
+$$
+\begin{array}{lcl}
+(a)\spc(\uu{X}\rhd r=r':X_m)&\impl& (\uu{X}\rhd r:X_m)\\\\
+(b)\spc(\uu{X}\rhd r:X_m)&\impl&(\uu{X}\rhd r=r:X_m)\\\\
+(c )\spc(\uu{X}\rhd r=r':X_m)&\impl&(\uu{X}\rhd r'=r:X_m)\\\\
+(d)\spc (\uu{X}\rhd r=r':X_m)\wedge(\uu{X}\rhd r'=r'':X_m)&\impl&(\uu{X}\rhd r=r'':X_m)
+\end{array}
+$$
+%
+\item let $m=l(\uu{X})$ then 
+%
+$$
+\begin{array}{lcl}
+(a)\spc (\uu{X}\rhd X_m=X_m')\wedge(\uu{X},X_m,\uu{Y}\rhd S=S')&\impl&(\uu{X},X_m',\uu{Y}\rhd S=S')\\\\
+(b)\spc (\uu{X}\rhd X_m=X_m')\wedge(\uu{X},X_m,\uu{Y}\rhd o=o':S)&\impl&(\uu{X},X_m',\uu{Y}'\rhd o=o':S)\\\\
+(c )\spc (\uu{X}\rhd S=S')\wedge(\uu{X}\rhd o=o':S)&\impl&(\uu{X}\rhd o=o':S')
+\end{array}
+$$
+%
+\item let $m=l(\uu{X})$ then 
+%
+$$
+\begin{array}{lcl}
+(a)\spc (\uu{X},X_m\rhd)\wedge(\uu{X},\uu{Y}\rhd S=S')&\impl&(\uu{X},X_m,\partial^{m}(\uu{Y})\rhd \partial^{m}(S)=\partial^{m}(S'))\\\\
+(b)\spc (\uu{X},X_m\rhd)\wedge(\uu{X},\uu{Y}\rhd o=o':S)&\impl&(\uu{X},X_m,\partial^{m}(\uu{Y})\rhd \partial^{m}(o)=\partial^{m}(o'):\partial^{m}(S))
+\end{array}
+$$
+%
+\item let $m=l(\uu{X})$ then 
+%
+$$
+\begin{array}{lcl}
+(a)\spc (\uu{X},X_m,\uu{Y}\rhd S=S')\wedge(\uu{X}\rhd r:X_m)&\impl&
+(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,S)=\sigma(r,S'))\\\\
+(b)\spc (\uu{X},X_m,\uu{Y}\rhd o=o':S)\wedge(\uu{X}\rhd r:X_m)&\impl&(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,o)=\sigma(r,o'):\sigma(r,S))
+\end{array}
+$$
+%
+\item let $m=l(\uu{X})$ then 
+%
+$$
+\begin{array}{lcl}
+(a)\spc (\uu{X},X_m,\uu{Y},S\rhd)\wedge(\uu{X}\rhd r=r':X_m)&\impl&(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,S)=\sigma(r',S))\\\\
+(b)\spc (\uu{X},X_m,\uu{Y}\rhd o:S)\wedge(\uu{X}\rhd r=r':X_m)&\impl&(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,o)=\sigma(r',o):\sigma(r,S))
+\end{array}
+$$
+\end{enumerate}
+%
+Then the relations $\sim$ and $\simeq'$ are equivalence relations on $B$ and $\wt{B}'$ which satisfy the conditions of Lemma \ref{2015.09.11.l1} and therefore correspond to a regular congruence relation on $CC(B,\wt{B})$. 
+\end{proposition}
+%
+\begin{remark}\rm
+\llabel{2015.09.13.rem1}
+As was pointed out by Richard Garner in a private communication in June 2014 the conditions (4a), (4b) of Proposition \ref{2014.07.10.prop1} can be derived from other conditions of the same proposition as follows.  
+
+We do it on the example of conditions (4a). Suppose that we are given that $\uu{X}\rhd X_m=X_m'$ and $\uu{X},X_m,\uu{Y}\rhd S=S'$. We want to obtain $\uu{X},X_m',\uu{Y}\rhd S=S'$. 
+
+We start by obtaining by (2c) and (2a) that $(\uu{X},X_m'\rhd)$. 
+
+Then by (5a) we obtain that $\uu{X},X_m',\partial^{m}(X_m,\uu{Y})\rhd \partial^{m}(S)=\partial^{m}(S')$. 
+
+On the other hand by (1f) we have $\uu{X},X_m'\rhd x_m^{m+1}:\partial^m(X_m')$. 
+
+Then by  (3b) we obtain 
+%
+\begin{eq}\llabel{2015.09.18.eq1}
+\uu{X},X_m'\rhd x_m^{m+1}=x_m^{m+1}:\partial^m(X_m')
+\end{eq}
+%
+By (2c) we obtain from $(\uu{X}\rhd X_m=X_m')$ that $(\uu{X}\rhd X_m'=X_m)$. Then by (5a) we obtain that 
+%
+\begin{eq}\llabel{2015.09.18.eq2}
+\uu{X},X_m'\rhd\partial^m(X_m')=\partial^m(X_m)
+\end{eq}
+%
+Then by (4c) we obtain from (\ref{2015.09.18.eq1}) and (\ref{2015.09.18.eq2}) that
+%
+\begin{eq}\llabel{2015.09.18.eq3}
+\uu{X},X_m'\rhd x_m^{m+1}=x_m^{m+1}:\partial^m(X_m)
+\end{eq}
+%
+Then by (3a) we obtain that 
+%
+\begin{eq}\llabel{2015.09.18.eq4}
+\uu{X},X_m'\rhd x_m^{m+1}:\partial^m(X_m)
+\end{eq}
+%
+Then applying (6a) to $\uu{X},X_m',\partial^m(X_m),\partial^m(\uu{Y})\rhd \partial^{m}(S)=\partial^{m}(S')$ and (\ref{2015.09.18.eq4}) we obtain 
+%
+$$\uu{X},X_m',\sigma(x_m^{m+1},\partial^{m}(\uu{Y}))\rhd \sigma(x_m^{m+1},\partial^{m}(S))=\sigma(x_m^{m+1},\partial^m(S'))$$
+%
+It remains to check that for $j\ge m+1$ and $Z\in LM(\wh{j})$ one has
+%
+$$\sigma(x_m^{m+1},\partial^m(Z))=Z$$
+%
+By definition of $\sigma=\sigma_{\lm}$ given in (\ref{2015.09.07.eq2}) we have:
+%
+$$\sigma(x_m^{m+1},\partial^m(Z))=@\sigma(m+1,x_m^{m+1},j+1,\partial^m(Z))=$$
+$$(x_0^j,\dots,x_m^j,\iota_{m+1}^{j-m-1}(x_{m}^{m+1}),x_{m+1}^j,\dots,x_{j-1}^j)(\partial^m(Z))=$$
+$$(x_0^j,\dots,x_m^j,x_m^j,x_{m+1}^j,\dots,x_{j-1}^j)(\partial^m(Z))=\sigma^m_{j-1}(\partial^m_j(Z))=(\phi_{\rr}(\partial^m_j\circ \sigma^m_{j-1}))(Z)=Z$$
+%???add details?
+%add hats on \partial and \sigma?
+%
+
+
+\end{remark}
+
+
+
+
+
+
+
+
+\begin{lemma}
+\llabel{iseqrelsiml1}
+One has:
+%
+\begin{enumerate}
+\item If conditions (1.2), (4a) of the proposition hold then $(\uu{X}\rhd S=S')\wedge(\uu{X}\sim\uu{Y})\impl (\uu{Y}\rhd S=S')$.
+\item If conditions (1.2), (1.3), (4a), (4b), (4c) hold then $(\uu{X}\rhd o=o':S)\wedge((\uu{X},S)\sim(\uu{Y},S'))\impl (\uu{Y}\rhd o=o':S')$.
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+By induction on $m=l(\uu{X})=l(\uu{Y})$.
+
+(1) For $m=0$ the assertion is obvious. Therefore by induction we may assume that $(\uu{X}\rhd S=S')\wedge(\uu{X}\sim\uu{Y})\impl (\uu{Y}\rhd S=S')$ for all $i<m$ and all appropriate $\uu{X}$,$\uu{Y}$, $S$ and $S'$ and that $(X_0,\dots,X_{m-1}\rhd S=S')\wedge(X_0,\dots,X_{m-1}\sim Y_0,\dots,Y_{m-1})$ holds and we need to show that $(Y_0,\dots,Y_{m-1}\rhd S=S')$ holds. Let us show by induction on $j$ that $(Y_0,\dots,Y_{j-1},X_{j},\dots,X_{m-1}\rhd S=S')$ for all $j=0,\dots,m-1$. For $j=0$ it is a part of our assumptions. By induction we may assume that $(Y_0,\dots,Y_{j-1},X_{j},\dots,X_{m-1}\rhd S=S')$. By definition of $\sim$ we have $(X_0,\dots,X_{j-1}\rhd X_{j}=Y_{j})$. By the inductive assumption we have $(Y_0,\dots,Y_{j-1}\rhd X_{j}=Y_{j})$. Applying (4a) for $(Y_0,\dots Y_{j-1}\rhd X_{j}=Y_{j}$ and $Y_0,\dots Y_{j-1}, X_{j}, X_{j+1},\dots, X_{m-1}\rhd S=S'$ we conclude that $(Y_0,\dots,Y_{j},X_{j+1},\dots,X_{m-1}\rhd S=S')$.
+
+(2) By the first part of the lemma we have $\uu{Y}\rhd S=S'$. Therefore by (4c) it is sufficient to show that $(\uu{X}\rhd o=o':S)\wedge(\uu{X}\sim\uu{Y})\impl (\uu{Y}\rhd o=o':S)$. The proof of this fact is similar to the proof of the first part of the lemma using (4b) instead of (4a).  
+\end{proof}
+%
+\begin{lemma}
+\llabel{iseqrelsim}
+One has:
+%
+\begin{enumerate}
+\item Assume that conditions (1.2), (2b), (2c), (2d) and (4a) hold. Then $\sim$ is an equivalence relation.
+\item Assume that conditions of the previous part of the lemma as well as conditions (1.3), (3b), (3c), (3d), (4b) and (4c) hold. Then $\simeq'$ is an equivalence relation. 
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+By induction on $m=l_f(\Gamma)=l(\uu{Y})$. 
+
+(1) Reflexivity follows directly from (1.2) and (2b). For $m=0$ the symmetry is obvious. Let $(\uu{X},X_m)\sim(\uu{Y},Y_m)$. By induction we may assume that $\uu{Y}\sim\uu{X}$. By Lemma \ref{iseqrelsiml1}(a) we have $(\uu{Y}\rhd X_m=Y_m)$ and by (2c) we have $(\uu{Y}\rhd Y_m=X_m)$. We conclude that $(\uu{Y},Y_m)\sim(\uu{X},X_m)$.  The proof of transitivity is by a similar induction.
+
+(2) Reflexivity follows directly from  reflexivity of $\sim$, (1.3) and (3b). Symmetry and transitivity are also easy using Lemma \ref{iseqrelsiml1}.
+\end{proof}
+%
+From this point on we assume that all conditions of Proposition \ref{2014.07.10.prop1}  hold. Let $BB=B/\sim$ and $\wt{BB}'=\wt{B}'/\simeq'$. It follows immediately from our definitions that the functions $ft:B\sr B$ and $\partial':\wt{B}'\sr B$ define functions $BB\sr BB$ and $\wt{BB}'\sr \wt{BB}'$ that we will also write as $ft$ and $\partial'$. 
+%
+\begin{lemma}
+\llabel{surjl1}
+The conditions (3) and (4) of Lemma \ref{2015.09.11.l1} hold for $\sim$ and $\simeq'$.
+\end{lemma}
+%
+\begin{proof}
+1. We need to show that for $(\uu{X},X_m\rhd)$, and $\uu{X}\sim\uu{Y}$ there exists $(\uu{Y},Y_m\rhd)$ such that $(\uu{X},X_m)\sim(\uu{Y},Y_m)$. It is sufficient to take $Y_m=X_m$. Indeed by (2b) we have $\uu{X}\rhd X_m=X_m$, by Lemma \ref{iseqrelsiml1}(1) we conclude that $\uu{Y}\rhd X_m=X_m$ and by (1a) that $\uu{Y},X_m\rhd$.  
+
+2.  We need to show that for $(\uu{X}\rhd r:X_m)$ and $(\uu{X},X_m)\sim(\uu{Y},Y_m)$ there exists $(\uu{Y}\rhd r':Y_m)$ such that $(\uu{Y}\rhd r':Y_m)\simeq'(\uu{X}\rhd r:X_m)$. It is sufficient to take $r'=r$. Indeed, by (3b) we have $(\uu{X}\rhd r=r:X_m)$, by Lemma \ref{iseqrelsiml1}(2) we conclude that $(\uu{Y}\rhd r=r:Y_m)$ and by (2a) that $(\uu{Y}\rhd r:Y_m)$. 
+\end{proof}
+%
+\begin{lemma}
+\llabel{TSetc}
+The equivalence relations $\sim$ and $\simeq'$ are compatible with the operations $T',\wt{T}',S',\wt{S}'$ and $\delta'$.
+\end{lemma}
+%
+\begin{proof}
+(1) Given $(\uu{X},X_m\rhd)\sim(\uu{X}',X_m'\rhd)$ and $(\uu{X},\uu{Y}\rhd)\sim(\uu{X}',\uu{Y}'\rhd)$ we have to show that 
+%
+$$(\uu{X},X_m,\partial^m(\uu{Y}))\sim (\uu{X}',X_m',\partial^m(\uu{Y}')).$$
+%
+where $m=l(\uu{X})=l(\uu{X}')$.
+
+Proceed by induction on $n=l(\uu{Y})$. For $l(\uu{Y})=0$ the assertion is obvious. Let  $(\uu{X},X_m\rhd)\sim(\uu{X}',X_m'\rhd)$ and $(\uu{X},\uu{Y},S\rhd)\sim(\uu{X}',\uu{Y}',S'\rhd)$. The latter condition is equivalent to $(\uu{X},\uu{Y}\rhd)\sim(\uu{X}',\uu{Y}'\rhd)$  and $(\uu{X},\uu{Y}\rhd S=S')$. By the inductive assumption we have $(\uu{X},X_m,\partial^m(\uu{Y}))\sim (\uu{X}',X_m',\partial^m(\uu{Y}'))$. By (5a) we conclude that $(\uu{X},X_m,\partial^m(\uu{Y})\rhd \partial^m(S)=\partial^m(S'))$. Therefore by definition of $\sim$ we have $(\uu{X},X_m,\partial^m(\uu{Y}),\partial^m(S))\sim(\uu{X}',X_m',\partial^m(\uu{Y}'), \partial^m(S'))$.
+
+(2) Given $(\uu{X},X_m\rhd)\sim(\uu{X}',X_m'\rhd)$ and $(\uu{X},\uu{Y}\rhd o:S)\simeq'(\uu{X}',\uu{Y}'\rhd o':S')$ we have to show that $(\uu{X},X_m,\partial^m(\uu{Y})\rhd \partial^m(o):\partial^m(S))\simeq' (\uu{X}',X_m',\partial^m(\uu{Y}')\rhd \partial^m(o'):\partial^m(S'))$ where $m=l(\uu{X})=l(\uu{X}')$. We have $(\uu{X},\uu{Y},S)\sim(\uu{X}',\uu{Y}',S')$ and $(\uu{X},\uu{Y}\rhd o=o':S)$. By (5b) we get $(\uu{X},X_m, \partial^m(\uu{Y})\rhd \partial^m(o)=\partial^m(o'):\partial^m(S))$. By (1) of this lemma we get $(\uu{X},X_m,\partial^m(\uu{Y}),\partial^m(S))\sim(\uu{X}',X_m',\partial^m(\uu{Y}'),\partial^m(S'))$ and therefore by definition of $\simeq'$ we get $(\uu{X},X_m,\partial^m(\uu{Y})\rhd \partial^m(o):\partial^m(S))\simeq' (\uu{X}',X_m',\partial^m(\uu{Y}')\rhd \partial^m(o'):\partial^m(S'))$.
+
+(3) Given $(\uu{X}\rhd r:X_m)\simeq'(\uu{X}'\rhd r':X_m')$ and $(\uu{X},X_m,\uu{Y}\rhd)\sim(\uu{X}',X_m',\uu{Y}'\rhd)$ we have to show that 
+%
+$$(\uu{X},\sigma(r,\uu{Y}))\sim(\uu{X}',\sigma(r,\uu{Y}')).$$
+%
+where $m=l(\uu{X})=l(\uu{X}')$. Proceed by induction on $l(\uu{Y})$. For $l(\uu{Y})=0$ the assertion follows directly from the definitions. Let $(\uu{X}\rhd r:X_m)\simeq'(\uu{X}'\rhd r':X_m')$ and $(\uu{X},X_m,\uu{Y},S\rhd)\sim(\uu{X}',X_m',\uu{Y}',S'\rhd)$. The later condition is equivalent to $(\uu{X},X_m,\uu{Y}\rhd)\sim(\uu{X}',X_m',\uu{Y}'\rhd)$  and $(\uu{X},X_m,\uu{Y}\rhd S=S')$. By the inductive assumption we have $(\uu{X},\sigma(r,\uu{Y})\sim(\uu{X}',\sigma(r,\uu{Y}')$. It remains to show that $(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,S)=\sigma(r,S')$. By (2d) it is sufficient to show that $(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,S)=\sigma(r,S')$ and $(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,S')=\sigma(r',S')$. The first relation follows directly from (6a). To prove the second one it is sufficient by (7a) to show that $(\uu{X},X_m,\uu{Y},S'\rhd)$ which follows from our assumption through (2c) and (2a). 
+
+(4) Given $(\uu{X}\rhd r:X_m)\simeq'(\uu{X}'\rhd r':X_m')$ and $(\uu{X},X_m,\uu{Y}\rhd o:S)\simeq'(\uu{X}',X_m',\uu{Y}'\rhd o':S')$ we have to show that 
+%
+$$(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,o):\sigma(r,S))\simeq'$$ 
+$$ (\uu{X}',\sigma(r',\uu{Y}')\rhd \sigma(r',o'):\sigma(r',S')).$$
+%
+%
+where $m=l(\uu{X})=l(\uu{X}')$ or equivalently that 
+%
+$$(\uu{X},\sigma(r,\uu{Y}),\sigma(r,S))\sim(\uu{X}',\sigma(r'\uu{Y}'), \sigma(r',S'))$$
+%
+and $(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,o)=\sigma(r',o'):\sigma(r,S))$. The first statement follows from part (3) of the lemma. To prove the second statement it is sufficient by (3d) to show that  $(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,o)=\sigma(r,o'):\sigma(r,S))$ and  $(\uu{X},\sigma(r,\uu{Y})\rhd \sigma(r,o')=\sigma(r',o'):\sigma(r,S))$. The first assertion follows directly from (6b). To prove the second one it is sufficient in view of (7b) to show that $(\uu{X},X_m,\uu{Y}\rhd o':S)$ which follows conditions (3c) and (3a).
+
+(5) Given $(\uu{X},X_m)\sim(\uu{X}',X_m')$ we need to show that $(\uu{X},X_m\rhd x^{m+1}_{m}:\partial^m(X_m))\simeq'(\uu{X}',X_m'\rhd x^{m+1}_{m}:\partial^m(X_m'))$ or equivalently that $(\uu{X},X_m,\partial^m(X_m))\sim(\uu{X},X_m',\partial^m(X_m'))$ and $(\uu{X},X_m\rhd x^{m+1}_{m}=x^{m+1}_{m}:\partial^m(X_m))$. The second part follows from (3b). To prove the first part we need to show that $(\uu{X},X_m\rhd \partial^m(X_m)=\partial^m(X_m'))$. This follows from our assumption by (5a). 
 \end{proof}
 %
 
@@ -2246,230 +2606,43 @@ The "only if" part follows similarly from the assumption that $CC$ is a C-subsys
 
 \subsection{Operations $\sigma$ and $\wt{\sigma}$.}
 %
-C-systems of the form $CC(\rr,\lm)$ have an important additional structure which will play a role in the next section. This structure is given by two operations:
+In the previous section we described an important class of regular congruence relations on C-subsystems of the C-systems of the form $CC(\rr,\lm)$ in terms of pairs of subsets of the form $Beq$, $\wt{Beq}$. 
+
+%??? An example of a regular congruence relation on CC(\rr,\lm)$ that does not arise from such a pair?
+
+C-systems of the form $CC(\rr,\lm)$ have an important additional structure. This structure is given by two operations:
 %
 \begin{enumerate}
-\item For $(m,X)$, $(n,Y)$ where $m\ge n$ we define $\sigma((m,X),(n,Y))$ as the object given in the sequence notation by 
+\item For $(m,\uu{X})$, $(n,\uu{Y})$ where $m\ge n$ we define $\sigma((m,\uu{X}),(n,\uu{Y}))$ as the object given in the sequence notation by 
 %
-$$\sigma((m,X),(n,Y))=(Y_0,\dots,Y_{n-1},X_n,\dots,X_{m-1})$$
+$$\sigma((m,\uu{X}),(n,\uu{Y}))=(Y_0,\dots,Y_{n-1},X_n,\dots,X_{m-1})$$
 %
 This gives us an operation with values in $Ob$ defined on the subset of $Ob\times Ob$ which consists of pairs $(\Gamma,\Gamma')$ such that $l_f(\Gamma)\ge l_f(\Gamma')$. Note that for $m=n$ one has 
 %
-$$\sigma((m,X),(n,Y))=(n,Y)$$
+$$\sigma((m,\uu{X}),(n,\uu{Y}))=(n,\uu{Y})$$
 %
-\item for $(m,(X,r))$ in $\wt{Ob}'$ and $(n,Y)\in Ob$ such that $m+1\ge n$
+\item for $(m,(\uu{X},r))$ in $\wt{Ob}'$ and $(n,\uu{Y})\in Ob$ such that $m+1\ge n$ define $\wt{\sigma}((m,(\uu{X},r)),(n,\uu{Y}))$ as follows:
 %
-$$\wt{\sigma}((m,(X,r)),(n,Y))=(m, (\sigma((m+1,X),(n,Y)),r))$$
+$$\wt{\sigma}((m,(\uu{X},r)),(n,\uu{Y}))=(m, (\sigma((m+1,\uu{X}),(n,\uu{Y})),r))$$
 %
-This gives us an operation with values in $\wt{Ob}'$ defined on the subset of $\wt{Ob}'\times Ob$ which consists of pairs $(r,\Gamma')$ such that $l_f(\partial(r)\le l_f(\Gamma')$.
+This gives us an operation with values in $\wt{Ob}'$ defined on the subset of $\wt{Ob}'\times Ob$ which consists of pairs $(r,\Gamma')$ such that $l_f(\partial(r))\le l_f(\Gamma')$.
 \end{enumerate}
 %
-Both operations can be easily re-written using $\wt{Ob}$ instead of $\wt{Ob}'$ but no analog of these operations exist on general, non-split, C-systems (cf. Remark \ref{}). 
-
-
-
-\subsection{Regular sub-quotients of $CC(\rr,\lm)$.} 
-%
-The concept of a regular congruence relation on a C-system was introduced in \cite[Section 5]{Csubsystems}. This concept is crucial for the mathematics analysis of quotients of the C-systems that arise from ``definitional equalities'' of type systems.
-
-We are going here to describe the regular congruence  relations  on C-systems of the form $CC(\rr,\lm)$ in terms of pairs of subsets 
-%
-$$Beq\subset \coprod_{n\in\nat}  Ob_n(\rr,\lm)\times (LM(\wh{n})\times LM(\wh{n}))$$
-$$\wt{Beq}'\subset \coprod_{n\in\nat}  Ob_n(\rr,\lm)\times (LM(\wh{n})\times (R(n)\times R(n))$$
-%
-satisfying certain conditions. 
-
-For $\Gamma\in Ob(CC(\rr,\lm))$ and $S_1,S_2\in LM(n)$ we write $(\Gamma\rhd^{Beq} S_1=S_2)$ to signify that $(\Gamma,(S_1,S_2))\in Beq$. Similarly for $T\in LM(n)$ and $o,o'\in R(n)$ we write $(\Gamma\rhd^{\wt{Beq}'} o=o':T)$ to signify that $(T_1,\dots,T_n,S,o,o')\in \wt{Beq}$.  When no confusion is possible we will omit the subscripts $Beq$ and $\wt{Beq}'$ at $\rhd$. 
-
-Similarly we will write $\rhd$ instead of $\rhd^C$ and $\rhd$ instead of $\rhd^{\wt{B}}$ if the subsets $C$ and $\wt{B}$ are unambiguously  determined by the context.  
-
-%
-\begin{definition}
-\llabel{simandsimeq}
-Given subsets $C$, $\wt{B}$, $Beq$, $\wt{Beq}$ as above define relations $\sim$ on $C$ and $\simeq$ on $\wt{B}$ as follows:
-%
-\begin{enumerate}
-\item for $\Gamma=(T_1,\dots,T_n)$, $\Gamma'=(T_1',\dots,T_n')$ in $C$ we set  $\Gamma\sim\Gamma'$ iff $ft(\Gamma)\sim ft(\Gamma')$ and 
-%
-$$T_1,\dots,T_{n-1}\rhd T_n=T_n',$$
-\item for $(\Gamma\rhd o:S)$, $(\Gamma'\rhd o':S')$ in $\wt{B}$ we set $(\Gamma\rhd o:S)\simeq(\Gamma'\rhd o':S')$ iff $(\Gamma,S)\sim(\Gamma',S')$ and 
-%
-$$(\Gamma\rhd o=o':S).$$
-\end{enumerate}
-\end{definition}
-%
-
-\begin{proposition}
-\llabel{2014.07.10.prop1}
-%
-Let $C$, $\wt{B}$, $Beq$, $\wt{Beq}$ be as above and suppose in addition that one has:
-%
-\begin{enumerate}
-\item $C$ and $\wt{B}$ satisfy conditions (1)-(6) of Proposition \ref{2009.10.16.prop3} which are referred to below as conditions (1.1)-(1.6) of the present proposition,
-%
-\item 
-%
-$$
-\begin{array}{l}
-(a)\spc(\Gamma\rhd T=T')\impl (\Gamma,T\rhd)\\
-(b)\spc(\Gamma,T\rhd)\impl (\Gamma\rhd T=T)\\
-(c )\spc(\Gamma\rhd T=T')\impl(\Gamma\rhd T'=T)\\
-(d)\spc(\Gamma\rhd T=T')\wedge(\Gamma\rhd T'=T'')\impl(\Gamma\rhd T=T'')
-\end{array}
-$$
-%
-\item 
-%
-$$
-\begin{array}{l}
-(a)\spc(\Gamma\rhd o=o':T)\impl (\Gamma\rhd o:T)\\
-(b)\spc(\Gamma\rhd o:T)\impl (\Gamma\rhd o=o:T)\\
-(c )\spc(\Gamma\rhd o=o':T)\impl(\Gamma\rhd o'=o:T)\\
-(d)\spc (\Gamma\rhd o=o':T)\wedge(\Gamma\rhd o'=o'':T)\impl(\Gamma\rhd o=o'':T)
-\end{array}
-$$
-%
-\item 
-%
-$$
-\begin{array}{l}
-(a)\spc (\Gamma_1\rhd T=T')\wedge(\Gamma_1,T,\Gamma_2\rhd S=S')\impl(\Gamma_1,T',\Gamma_2\rhd S=S')\\
-(b)\spc (\Gamma_1\rhd T=T')\wedge(\Gamma_1,T,\Gamma_2\rhd o=o':S)\impl(\Gamma_1,T',\Gamma_2'\rhd o=o':S)\\
-(c )\spc (\Gamma\rhd S=S')\wedge(\Gamma\rhd o=o':S)\impl(\Gamma\rhd o=o':S')
-\end{array}
-$$
-%
-\item 
-%
-$$
-\begin{array}{ll}
-(a)\spc (\Gamma_1,T\rhd)\wedge(\Gamma_1,\Gamma_2\rhd S=S')\impl(\Gamma_1,T,t_{i+1}\Gamma_2\rhd t_{i+1}S=t_{i+1}S')& i=l(\Gamma)\\
-(b)\spc (\Gamma_1,T\rhd)\wedge(\Gamma_1,\Gamma_2\rhd o=o':S)\impl(\Gamma_1,T,t_{i+1}\Gamma_2\rhd t_{i+1}o=t_{i+1}o':t_{i+1}S)& i=l_f(\Gamma)
-\end{array}
-$$
-%
-\item
-%
-$$
-\begin{array}{ll}
-(a)\spc (\Gamma_1,T,\Gamma_2\rhd S=S')\wedge(\Gamma_1\rhd r:T)\impl&\\
-(\Gamma_1,s_{i+1}(\Gamma_2[r/i+1])\rhd s_{i+1}(S[r/i+1])=s_{i+1}(S'[r/i+1]))&i=l_f(\Gamma_1)\\
-(b)\spc (\Gamma_1,T,\Gamma_2\rhd o=o':S)\wedge(\Gamma_1\rhd r:T)\impl&\\
-(\Gamma_1,s_{i+1}(\Gamma_2[r/i+1])\rhd s_{i+1}(o[r/i+1])=s_{i+1}(o'[r/i+1]):s_{i+1}(S[r/i+1]))&i=l_f(\Gamma_1)
-\end{array}
-$$
-%
-\item 
-%
-$$
-\begin{array}{ll}
-(a)\spc (\Gamma_1,T,\Gamma_2,S\rhd)\wedge(\Gamma_1\rhd r=r':T)\impl&\\
-(\Gamma_1,s_{i+1}(\Gamma_2[r/i+1])\rhd s_{i+1}(S[r/i+1])=s_{i+1}(S[r'/i+1]))&i=l_f(\Gamma_1)\\
-(b)\spc (\Gamma_1,T,\Gamma_2\rhd o:S)\wedge(\Gamma_1\rhd r=r':T)\impl&\\
-(\Gamma_1,s_{i+1}(\Gamma_2[r/i+1])\rhd s_{i+1}(o[r/i+1])=s_{i+1}(o[r'/i+1]):s_{i+1}(S[r/i+1]))&i=l_f(\Gamma_1)
-\end{array}
-$$
-\end{enumerate}
-%
-Then the relations $\sim$ and $\simeq$ are equivalence relations on $C$ and $\wt{B}$ which satisfy the conditions of \cite[Proposition 5.4]{Csubsystems} and therefore they correspond to a regular congruence relation on the C-system defined by $(C,\wt{B})$. 
-\end{proposition}
-%
-\begin{lemma}
-\llabel{iseqrelsiml1}
-One has:
-%
-\begin{enumerate}
-\item If conditions (1.2), (4a) of the proposition hold then $(\Gamma\rhd S=S')\wedge(\Gamma\sim\Gamma')\impl (\Gamma'\rhd S=S')$.
-\item If conditions (1.2), (1.3), (4a), (4b), (4c) hold then $(\Gamma\rhd o=o':S)\wedge((\Gamma,S)\sim(\Gamma',S'))\impl (\Gamma'\rhd o=o':S')$.
-\end{enumerate}
-\end{lemma}
-%
-\begin{proof}
-By induction on $n=l_f(\Gamma)=l_f(\Gamma')$.
-
-(1) For $n=0$ the assertion is obvious. Therefore by induction we may assume that $(\Gamma\rhd S=S')\wedge(\Gamma\sim\Gamma')\impl (\Gamma'\rhd S=S')$ for all $i<n$ and all appropriate $\Gamma$,$\Gamma'$, $S$ and $S'$ and that $(T_1,\dots,T_n\rhd S=S')\wedge(T_1,\dots,T_n\sim T'_1,\dots,T'_n)$ holds and we need to show that $(T'_1,\dots,T'_n\rhd S=S')$ holds. Let us show by induction on $j$ that $(T'_1,\dots,T'_j,T_{j+1},\dots,T_n\rhd S=S')$ for all $j=0,\dots,n$. For $j=0$ it is a part of our assumptions. By induction we may assume that $(T'_1,\dots,T'_j,T_{j+1},\dots,T_n\rhd S=S')$. By definition of $\sim$ we have $(T_1,\dots,T_j\rhd T_{j+1}=T'_{j+1})$. By the inductive assumption we have $(T'_1,\dots,T'_j\rhd T_{j+1}=T'_{j+1})$. Applying (4a) with $\Gamma_1=(T'_1,\dots T'_j)$, $T=T_{j+1}$, $T'=T'_{j+1}$ and $\Gamma_2=(T_{j+2},\dots,T_n)$ we conclude that $(T'_1,\dots,T'_{j+1},T_{j+2},\dots,T_n\rhd S=S')$.
-
-(2)  By the first part of the lemma we have $\Gamma'\rhd S=S'$. Therefore by (4c) it is sufficient to show that $(\Gamma\rhd o=o':S)\wedge(\Gamma\sim\Gamma')\impl (\Gamma'\rhd o=o':S)$. The proof of this fact is similar to the proof of the first part of the lemma using (4b) instead of (4a).  
-\end{proof}
-%
-\begin{lemma}
-\llabel{iseqrelsim}
-One has:
-%
-\begin{enumerate}
-\item Assume that conditions (1.2), (2b), (2c), (2d) and (4a) hold. Then $\sim$ is an equivalence relation.
-\item Assume that conditions of the previous part of the lemma as well as conditions (1.3), (3b), (3c), (3d), (4b) and (4c) hold. Then $\simeq$ is an equivalence relation. 
-\end{enumerate}
-\end{lemma}
-%
-\begin{proof}
-By induction on $n=l_f(\Gamma)=l_f(\Gamma')$. 
-
-(1) Reflexivity follows directly from (1.2) and (2b). For $n=0$ the symmetry is obvious. Let $(\Gamma,T)\sim(\Gamma',T')$. By induction we may assume that $\Gamma'\sim\Gamma$. By Lemma \ref{iseqrelsiml1}(a) we have $(\Gamma'\rhd T=T')$ and by (2c) we have $(\Gamma'\rhd T'=T)$. We conclude that $(\Gamma',T')\sim(\Gamma,T)$.  The proof of transitivity is by a similar induction.
-
-(2) Reflexivity follows directly from  reflexivity of $\sim$, (1.3) and (3b). Symmetry and transitivity are also easy using Lemma \ref{iseqrelsiml1}.
-\end{proof}
-%
-From this point on we assume that all conditions of Proposition \ref{2014.07.10.prop1}  hold. Let $C'=C/\sim$ and $\wt{B}'=\wt{B}/\simeq$. It follows immediately from our definitions that the functions $ft:C\sr C$ and $\partial:\wt{B}\sr C$ define functions $ft':C'\sr C'$ and $\partial':\wt{B}'\sr C'$.
-%
-\begin{lemma}
-\llabel{surjl1}
-The conditions (3) and (4) of \cite[Proposition 5.4]{Csubsystems} hold for $\sim$ and $\simeq$.
-\end{lemma}
-%
-\begin{proof}
-1. We need to show that for $(\Gamma,T\rhd)$, and $\Gamma\sim\Gamma'$ there exists $(\Gamma',T'\rhd)$ such that $(\Gamma,T)\sim(\Gamma',T')$. It is sufficient to take $T=T'$. Indeed by (2b) we have $\Gamma\rhd T=T$, by Lemma \ref{iseqrelsiml1}(1) we conclude that $\Gamma'\rhd T=T$ and by (1a) that $\Gamma',T\rhd$.  
-
-2.  We need to show that for $(\Gamma\rhd o:S)$ and $(\Gamma,S)\sim(\Gamma',S')$ there exists $(\Gamma'\rhd o':S')$ such that $(\Gamma'\rhd o':S')\simeq(\Gamma\rhd o:S)$. It is sufficient to take $o'=o$. Indeed, by (3b) we have $(\Gamma\rhd o=o:S)$, by Lemma \ref{iseqrelsiml1}(2) we conclude that $(\Gamma'\rhd o=o:S')$ and by (2a) that $(\Gamma'\rhd o:S')$. 
-\end{proof}
-%
-\begin{lemma}
-\llabel{TSetc}
-The equivalence relations $\sim$ and $\simeq$ are compatible with the operations $T,\wt{T},S,\wt{S}$ and $\delta$.
-\end{lemma}
-%
-\begin{proof}
-(1) Given $(\Gamma_1,T\rhd)\sim(\Gamma_1',T'\rhd)$ and $(\Gamma_1,\Gamma_2\rhd)\sim(\Gamma_1',\Gamma_2'\rhd)$ we have to show that 
-%
-$$(\Gamma_1,T,\partial^n\Gamma_2)\sim (\Gamma'_1,T',\partial^n\Gamma'_2).$$
-%
-where $n=l_f(\Gamma_1)=l_f(\Gamma_1')$.
-
-Proceed by induction on $l_f(\Gamma_2)$. For $l_f(\Gamma_2)=0$ the assertion is obvious. Let  $(\Gamma_1,T\rhd)\sim(\Gamma_1',T'\rhd)$ and $(\Gamma_1,\Gamma_2,S\rhd)\sim(\Gamma_1',\Gamma_2',S'\rhd)$. The later condition is equivalent to $(\Gamma_1,\Gamma_2\rhd)\sim(\Gamma_1',\Gamma_2'\rhd)$  and $(\Gamma_1,\Gamma_2\rhd S=S')$. By the inductive assumption we have $(\Gamma_1,T,\partial^n\Gamma_2)\sim (\Gamma'_1,T',\partial^n\Gamma'_2)$. By (5a) we conclude that $(\Gamma_1,T,\partial^n\Gamma_2\rhd \partial^nS=\partial^nS')$. Therefore by definition of $\sim$ we have $(\Gamma_1,T,\partial^n\Gamma_2,\partial^nS)\sim(\Gamma'_1,T',\partial^n\Gamma'_2, \partial^nS')$.
-
-(2) Given $(\Gamma_1,T\rhd)\sim(\Gamma_1',T'\rhd)$ and $(\Gamma_1,\Gamma_2\rhd o:S)\simeq(\Gamma_1',\Gamma_2'\rhd o':S')$ we have to show that $(\Gamma_1,T,\partial^n\Gamma_2\rhd \partial^no:\partial^nS)\simeq (\Gamma'_1,T',\partial^n\Gamma'_2\rhd \partial^no':\partial^nS')$ where $n=l_f(\Gamma_1)=l_f(\Gamma_1')$. We have $(\Gamma_1,\Gamma_2,S)\sim(\Gamma_1',\Gamma'_2,S')$ and $(\Gamma_1,\Gamma_2\rhd o=o':S)$. By (5b) we get $(\Gamma_1,T, \partial^n\Gamma_2\rhd \partial^no=\partial^no':\partial^nS)$. By (1) of this lemma we get $(\Gamma_1,T,\partial^n\Gamma_2,\partial^nS)\sim(\Gamma'_1,T',\partial^n\Gamma'_2,\partial^nS')$ and therefore by definition of $\simeq$ we get $(\Gamma_1,T,\partial^n\Gamma_2\rhd \partial^no:\partial^nS)\simeq (\Gamma'_1,T',\partial^n\Gamma'_2\rhd \partial^no':\partial^nS')$.
-
-(3) Given $(\Gamma_1\rhd r:T)\simeq(\Gamma_1'\rhd r':T')$ and $(\Gamma_1,T,\Gamma_2\rhd)\sim(\Gamma_1',T',\Gamma_2'\rhd)$ we have to show that 
-%
-$$(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1]))\sim(\Gamma'_1,s_{n+1}(\Gamma'_2[r'/n+1])).$$
-%
-where $n=l_f(\Gamma_1)=l_f(\Gamma_1')$. Proceed by induction on $l_f(\Gamma_2)$. For $l_f(\Gamma_2)=0$ the assertion follows directly from the definitions. Let $(\Gamma_1\rhd r:T)\simeq(\Gamma_1'\rhd r':T')$ and $(\Gamma_1,T,\Gamma_2,S\rhd)\sim(\Gamma_1',T',\Gamma_2',S'\rhd)$. The later condition is equivalent to $(\Gamma_1,T,\Gamma_2\rhd)\sim(\Gamma_1',T',\Gamma_2'\rhd)$  and $(\Gamma_1,T,\Gamma_2\rhd S=S')$. By the inductive assumption we have $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1]))\sim(\Gamma'_1,s_{n+1}(\Gamma'_2[r'/n+1]))$. It remains to show that $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(S[r/n+1])=s_{n+1}(S'[r'/n+1]))$. By (2d) it is sufficient to show that $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(S[r/n+1])=s_{n+1}(S'[r/n+1]))$ and $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(S'[r/n+1])=s_{n+1}(S'[r'/n+1]))$. The first relation follows directly from (6a). To prove the second one it is sufficient by (7a) to show that $(\Gamma_1,T,\Gamma_2,S'\rhd)$ which follows from our assumption through (2c) and (2a). 
-
-(4) Given $(\Gamma_1\rhd r:T)\simeq(\Gamma_1'\rhd r':T')$ and $(\Gamma_1,T,\Gamma_2\rhd o:S)\simeq(\Gamma_1',T',\Gamma_2'\rhd o':S')$ we have to show that 
-%
-$$(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(o[r/n+1]):s_{n+1}(S[r/n+1]))\simeq$$ 
-$$ (\Gamma'_1,s_{n+1}(\Gamma'_2[r'/n+1])\rhd s_{n+1}(o'[r'/n+1]):s_{n+1}(S'[r'/n+1])).$$
-%
-%
-where $n=l_f(\Gamma_1)=l_f(\Gamma_1')$ or equivalently that 
-%
-$$(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1]),s_{n+1}(S[r/n+1]))\sim(\Gamma'_1,s_{n+1}(\Gamma'_2[r'/n+1]), s_{n+1}(S'[r'/n+1]))$$
-%
-and $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(o[r/n+1])=s_{n+1}(o'[r'/n+1]):s_{n+1}(S[r/n+1]))$. The first statement follows from part (3) of the lemma. To prove the second statement it is sufficient by (3d) to show that  $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(o[r/n+1])=s_{n+1}(o'[r/n+1]):s_{n+1}(S[r/n+1]))$ and  $(\Gamma_1,s_{n+1}(\Gamma_2[r/n+1])\rhd s_{n+1}(o'[r/n+1])=s_{n+1}(o'[r'/n+1]):s_{n+1}(S[r/n+1]))$. The first assertion follows directly from (6b). To prove the second one it is sufficient in view of (7b) to show that $(\Gamma_1,T,\Gamma_2\rhd o':S)$ which follows conditions (3c) and (3a).
-
-(5) Given $(\Gamma,T)\sim(\Gamma',T')$ we need to show that $(\Gamma,T\rhd (n+1):T)\simeq(\Gamma',T'\rhd (n+1):T')$ or equivalently that $(\Gamma,T,T)\sim(\Gamma,T',T')$ and $(\Gamma,T\rhd (n+1)=(n+1):T)$. The second part follows from (3b). To prove the first part we need to show that $(\Gamma,T\rhd T=T')$. This follows from our assumption by (5a). 
-\end{proof}
+\begin{remark}\rm
+\llabel{2015.09.27.rem1}
+Both operations can be easily re-written using $\wt{Ob}$ instead of $\wt{Ob}'$ but it is unclear how to define such operations on general C-systems or what is the natural class of C-systems on which such operations can be defined. 
+\end{remark}
 %
 \begin{lemma}
 \llabel{2014.07.12.l1}
-Let $C$ be a subset of $Ob(CC(\rr,\lm))$ which is closed under $ft$. Let $\le$ be a transitive relation on $C$ such that:
+Let $B$ be a subset of $Ob(CC(\rr,\lm))$ which is closed under $ft$. Let $\sim$ be a transitive relation on $B$ such that:
 %
 \begin{enumerate}
-\item $\Gamma\le \Gamma'$ implies $l_f(\Gamma)=l_f(\Gamma')$,
-\item $\Gamma\in C$ and $ft(\Gamma)\le F$ implies $\sigma(\Gamma,F)\in C$ and $\Gamma\le \sigma(\Gamma,F)$.
+\item $\Gamma\sim \Gamma'$ implies $l_f(\Gamma)=l_f(\Gamma')$,
+\item $\Gamma\in B$ and $ft(\Gamma)\sim F$ implies $\sigma(\Gamma,F)\in B$ and $\Gamma\sim \sigma(\Gamma,F)$.
 \end{enumerate}
 %
-Then $\Gamma\in C$ and $ft^i(\Gamma)\le F$ for some $i\ge 1$, implies that $\Gamma\le \sigma(\Gamma,F)$. 
+Then $\Gamma\in B$ and $ft^i(\Gamma)\sim F$ for some $i\ge 1$, implies that $\sigma(\Gamma,F)\in B$ and $\Gamma\sim \sigma(\Gamma,F)$. 
 \end{lemma}
 %
 \begin{proof}
@@ -2478,36 +2651,36 @@ Simple induction on $i$.
 %
 \begin{lemma}
 \llabel{2014.07.12.l2}
-Let $C$ and $\le$ be as in Lemma \ref{2014.07.12.l1}. Then one has:
+Let $B$ and $\sim$ be as in Lemma \ref{2014.07.12.l1}. Then one has:
 %
 \begin{enumerate}
-\item $(\Gamma,T)\le (\Gamma,T')$ and $\Gamma\le \Gamma'$ implies that $(\Gamma,T)\le (\Gamma',T')$,
-\item if $\le$ is $ft$-monotone (i.e. $\Gamma\le \Gamma'$ implies $ft(\Gamma)\le ft(\Gamma')$) and symmetric then $(\Gamma,T)\le (\Gamma',T')$ implies that $(\Gamma,T)\le (\Gamma,T')$.
+\item $(\Gamma,T)\sim (\Gamma,T')$ and $\Gamma\sim \Gamma'$ implies that $(\Gamma,T)\sim (\Gamma',T')$,
+\item if $\sim$ is $ft$-monotone (i.e. $\Gamma\sim \Gamma'$ implies $ft(\Gamma)\sim ft(\Gamma')$) and symmetric then $(\Gamma,T)\sim (\Gamma',T')$ implies that $(\Gamma,T)\sim (\Gamma,T')$.
 \end{enumerate}
 \end{lemma}
 %
 \begin{proof}
 The first assertion follows from
 %
-$$(\Gamma,T)\le (\Gamma,T')\le \sigma((\Gamma,T'),\Gamma')=(\Gamma',T')$$
+$$(\Gamma,T)\sim (\Gamma,T')\sim \sigma((\Gamma,T'),\Gamma')=(\Gamma',T')$$
 %
 The second assertion  follows from
 %
-$$(\Gamma,T)\le (\Gamma',T')\le \sigma((\Gamma',T'),\Gamma)=(\Gamma,T')$$
+$$(\Gamma,T)\sim (\Gamma',T')\sim \sigma((\Gamma',T'),\Gamma)=(\Gamma,T')$$
 %
-where the second $\le$ requires $\Gamma'\le \Gamma$ which follows from $ft$-monotonicity and symmetry.
+where the second $\sim$ requires $\Gamma'\sim \Gamma$ which follows from $ft$-monotonicity and symmetry.
 \end{proof}
 %
 \begin{lemma}
 \llabel{2014.07.12.l3}
-Let $C,\le$ be as in Lemma \ref{2014.07.12.l1}, let $\wt{B}$ be a subset of $\wt{Ob}(CC(\rr,\lm))$ and $\le'$ a transitive relation on $\wt{B}$ such that: 
+Let $B,\sim$ be as in Lemma \ref{2014.07.12.l1}, let $\wt{B}$ be a subset of $\wt{Ob}(CC(\rr,\lm))$ and $\simeq'$ a transitive relation on $\wt{B}$ such that: 
 %
 \begin{enumerate}
-\item ${\cal J}\le' {\cal J}'$ implies $\partial({\cal J})\le\partial({\cal J}')$,
-\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\le F$ implies $\wt{\sigma}({\cal J},F)\in \wt{B}$ and ${\cal J}\le' \wt{\sigma}({\cal J},F)$.
+\item ${\cal J}\simeq' {\cal J}'$ implies $\partial({\cal J})\sim\partial({\cal J}')$,
+\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies $\wt{\sigma}({\cal J},F)\in \wt{B}$ and ${\cal J}\simeq' \wt{\sigma}({\cal J},F)$.
 \end{enumerate}
 %
-Then ${\cal J}\in \wt{B}$ and $ft^i(\partial({\cal J}))\le F$ for some $i\in\nat$ implies ${\cal J}\le \wt{\sigma}({\cal J},F)$. 
+Then ${\cal J}\in \wt{B}$ and $ft^i(\partial({\cal J}))\sim F$ for some $i\in\nat$ implies ${\cal J}\sim \wt{\sigma}({\cal J},F)$. 
 \end{lemma}
 %
 \begin{proof}
@@ -2516,24 +2689,24 @@ Simple induction on $i$.
 %
 \begin{lemma}
 \llabel{2014.07.12.l4}
-Let $C,\le$ and $\wt{B},\le'$ be as in Lemma \ref{2014.07.12.l3}. Then one has:
+Let $B,\sim$ and $\wt{B},\simeq'$ be as in Lemma \ref{2014.07.12.l3}. Then one has:
 %
 \begin{enumerate}
-\item $(\Gamma\rhd o:T)\le' (\Gamma\rhd o':T)$ and $(\Gamma,T)\le (\Gamma',T')$ implies that $(\Gamma\rhd o:T)\le' (\Gamma'\rhd o':T')$,
-\item if $(\le,\le')$ is $\partial$-monotone (i.e. ${\cal J}\le' {\cal J}'$ implies $\partial({\cal J})\le \partial({\cal J}')$) and $\le$ is symmetric then $(\Gamma\rhd o:T)\le' (\Gamma'\rhd o':T')$ implies that $(\Gamma\rhd o:T)\le' (\Gamma\rhd o':T)$.
+\item $(\Gamma\rhd o:T)\simeq' (\Gamma\rhd o':T)$ and $(\Gamma,T)\sim (\Gamma',T')$ implies that $(\Gamma\rhd o:T)\simeq' (\Gamma'\rhd o':T')$,
+\item if $(\sim,\simeq')$ is $\partial$-monotone (i.e. ${\cal J}\simeq' {\cal J}'$ implies $\partial({\cal J})\sim \partial({\cal J}')$) and $\sim$ is symmetric then $(\Gamma\rhd o:T)\simeq' (\Gamma'\rhd o':T')$ implies that $(\Gamma\rhd o:T)\simeq' (\Gamma\rhd o':T)$.
 \end{enumerate}
 \end{lemma}
 %
 \begin{proof}
 The first assertion follows from
 %
-$$(\Gamma\rhd o:T)\le'  (\Gamma\rhd o':T)\le' \wt{\sigma}((\Gamma\rhd o':T) ,(\Gamma',T'))=(\Gamma'\rhd o':T')$$
+$$(\Gamma\rhd o:T)\simeq'  (\Gamma\rhd o':T)\simeq' \wt{\sigma}((\Gamma\rhd o':T) ,(\Gamma',T'))=(\Gamma'\rhd o':T')$$
 %
 The second assertion follows from
 %
-$$\Gamma\rhd o:T)\le' (\Gamma'\rhd o':T')\le' \sigma((\Gamma'\rhd o':T'),(\Gamma,T))=(\Gamma\rhd o':T)$$
+$$(\Gamma\rhd o:T)\simeq' (\Gamma'\rhd o':T')\simeq' \sigma((\Gamma'\rhd o':T'),(\Gamma,T))=(\Gamma\rhd o':T)$$
 %
-where the second $\le$ requires $\Gamma'\le \Gamma$ which follows from $\partial$-monotonicity of $\le'$ and symmetry of $\le$.
+where the second $\sim$ requires $\Gamma'\sim \Gamma$ which follows from $\partial$-monotonicity of $\simeq'$ and symmetry of $\sim$.
 \end{proof}
 %
 
@@ -2541,32 +2714,32 @@ where the second $\le$ requires $\Gamma'\le \Gamma$ which follows from $\partial
 
 \begin{proposition}
 \llabel{2014.07.10.prop2}
-Let $(C,\wt{B})$ be subsets in $Ob(CC(\rr,\lm))$ and $\wt{Ob}(CC(\rr,\lm))$ respectively which correspond to a C-subsystem $CC$ of $CC(\rr,\lm)$. Then the constructions presented above establish a bijection between pairs of subsets $(Beq,\wt{Beq})$ which together with $(C,\wt{B})$ satisfy the conditions of Proposition \ref{2014.07.10.prop1} and pairs of equivalence relations $(\sim,\simeq)$ on $(C,\wt{B})$ such that:
+Let $(B,\wt{B})$ be subsets in $Ob(CC(\rr,\lm))$ and $\wt{Ob}(CC(\rr,\lm))$ respectively which correspond to a C-subsystem $CC$ of $CC(\rr,\lm)$. Then the constructions presented above establish a bijection between pairs of subsets $(Beq,\wt{Beq})$ which together with $(B,\wt{B})$ satisfy the conditions of Proposition \ref{2014.07.10.prop1} and pairs of equivalence relations $(\sim,\simeq')$ on $(B,\wt{B})$ such that:
 %
 \begin{enumerate}
-\item $(\sim,\simeq)$ corresponds to a regular congruence relation on $CC$ (i.e., satisfies the conditions of \cite[Proposition 5.4]{Csubsystems}),
+\item $(\sim,\simeq')$ corresponds to a regular congruence relation on $CC$ (i.e., satisfies the conditions of \cite[Proposition 5.4]{Csubsystems}),
 %
-\item $\Gamma\in C$ and $ft(\Gamma)\sim F$ implies $\Gamma\sim \sigma(\Gamma,F)$,
+\item $\Gamma\in B$ and $ft(\Gamma)\sim F$ implies $\Gamma\sim \sigma(\Gamma,F)$,
 %
-\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies ${\cal J}\simeq \wt{\sigma}({\cal J},F)$.
+\item ${\cal J}\in \wt{B}$ and $\partial({\cal J})\sim F$ implies ${\cal J}\simeq' \wt{\sigma}({\cal J},F)$.
 \end{enumerate}
 \end{proposition}
 %
 \begin{proof}
-One constructs a pair $(\sim,\simeq)$ from $(Beq,\wt{Beq})$ as in Definition \ref{simandsimeq}. 
+One constructs a pair $(\sim,\simeq')$ from $(Beq,\wt{Beq})$ as in Definition \ref{simandsimeq}. 
 This pair corresponds to a regular congruence relation by Proposition \ref{2014.07.10.prop1}.
 Conditions (2),(3) follow from Lemma \ref{iseqrelsiml1}.
 
-Let $(\sim,\simeq)$ be equivalence relations satisfying the conditions of the proposition. Define $Beq$ as the set of sequences $(\Gamma,T,T')$ such that $(\Gamma,T), (\Gamma,T')\in C$ and $(\Gamma,T)\sim (\Gamma,T')$. Define $\wt{Beq}$ as the set of sequences $(\Gamma,T,o,o')$ such that $(\Gamma,T,o),(\Gamma,T,o')\in \wt{B}$ and $(\Gamma,T,o)\simeq (\Gamma,T,o')$. 
+Let $(\sim,\simeq')$ be equivalence relations satisfying the conditions of the proposition. Define $Beq$ as the set of sequences $(\Gamma,T,T')$ such that $(\Gamma,T), (\Gamma,T')\in B$ and $(\Gamma,T)\sim (\Gamma,T')$. Define $\wt{Beq}$ as the set of sequences $(\Gamma,T,o,o')$ such that $(\Gamma,T,o),(\Gamma,T,o')\in \wt{B}$ and $(\Gamma,T,o)\simeq' (\Gamma,T,o')$. 
 
 Let us show that these subsets satisfy the conditions of Proposition \ref{2014.07.10.prop1}. Conditions (2.a-2.d) and (3.a-3d) are obvious. 
 
 Condition (4a) follows from (2) by Lemma \ref{2014.07.12.l1}.
 Conditions (4b) and (4c) follow from (3) by Lemma \ref{2014.07.12.l3}.
 
-Conditions (5a) and (5b) follow from the compatibility of $(\sim,\simeq)$ with $T$ and $\wt{T}$. 
+Conditions (5a) and (5b) follow from the compatibility of $(\sim,\simeq')$ with $T$ and $\wt{T}$. 
 
-Conditions (6a),(6b),(7a),(7b) follow from the compatibility of $(\sim,\simeq)$ with $S$ and $\wt{S}$.
+Conditions (6a),(6b),(7a),(7b) follow from the compatibility of $(\sim,\simeq')$ with $S$ and $\wt{S}$.
 \end{proof}
 
 
@@ -2582,676 +2755,6 @@ Conditions (6a),(6b),(7a),(7b) follow from the compatibility of $(\sim,\simeq)$ 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-\comment{
-\subsection{Pairs $(\rr,\lm)$ associated with nominal signatures.}
-%
-\llabel{2014.07.22.sec}
-%
-The constructions of this paper produce C-systems from a pair $(\rr,\lm)$ where $R$ is a monad on $Sets$ and $LM$ is a left $R$-module with values in $Sets$ together with sets $C$, $\wt{B}$, $Beq$ and $\wt{Beq}$. 
-
-One class of such pairs is obtained by taking $R$ to be the monad defined by a signature as in \cite[p.228]{HM2007}. For example, the contextual category of the Martin-L\"{o}f type theory from 1972,  $MLTT72$ defined in \cite{ML72}, is obtained by applying Proposition \ref{2014.07.10.prop1} in the case of the pair $(R,R)$ where $R$ is the monad defined by the signature that corresponds to the nominal signature of Example \ref{2014.08.ex}.
-
-
-  
-
-The following construction that covers more examples associates a pair $(\rr,\lm)$ to a quadruple $(\Sigma, Term, P, {\bf Type})$ where $\Sigma$ is a nominal signature with one name-sort $Var$ and a set of data-sorts $D$, $Term\in {\bf D}$ is a data-sort, $P$ is a family of sets parametrized by ${\bf D}-\{Term\}$,  and ${\bf Type}\subset \{\bf D\}$ is a subset of data-sorts. 
-
-In most examples either ${\bf D}=\{Term\}$ or ${\bf D}=\{Term,Type\}$, ${\bf Type}=\{Type\}$ and $P=P_{Type}$ is the set of "type-variables". 
-
-The only example which I know of where there are more than two data-sorts is the logic-enriched type theory of \cite{AczelGambino} where ${\bf D}=\{Term, Type, Prop\}$, ${\bf Type}=\{Type\}$, $P_{Type}$ is the set of type variables and $P_{Prop}$ is the set of propositional variables. 
-
-The construction is as follows.  A {\em nominal signature} (see \cite[Section 8.1]{Pitts}) starts with a set of name-sorts $\bf N$ and the set of data-sorts $\bf D$. We will be interested in the case when there is only one name-sort $Var$.
-
-A compound sort $S$ is defined as an expression formed from $Var$, elements of $\bf D$, and the unit sort $1$ using two operations: one sending $S_1$ and $S_2$ to $(S_1,S_2)$ and another one sending $S$ to $Var.S$.  For better notations one takes $(\_,\_)$ to associate on the left i.e. $(S_1,S_2,S_3)$ means $((S_1,S_2),S_3)$ and similarly for longer sequences. 
-
-
- Let $CS$ be the set of compound sorts. An arity is a pair $(S,D)$ where $S\in CS$ and $D\in {\bf D}$. Let $A({\bf D})$ be the set of arities for the set of data-sorts $\bf D$. 
-
-A nominal signature is defined as a set $Op$, which is called the set of operations, together with a function  $Ar:Op\sr A({\bf D})$ which assigns to any operation its ``arirty". One writes $O:S\sr D$ to denote that operation $O$ has arity $(S,D)$. We let $Ar_{CS}$ and $Ar_{\bf D}$ denote the two components of the arity. 
-
-For example, the nominal signature of the lambda calculus has one data-sort $Term$ and three operations $V$, $L$, and $A$  of the form:
-%
-$$V:Var\sr Term$$
-$$L:Var.Term\sr Term$$
-$$A:(Term,Term)\sr Term$$
-%
-The algebraic signature with one sort $Term$, one operation $S$ in one variable and one constant $O$ will, in this language, have {\em three}  operations:
-%
-$$V:Var\sr Term$$
-$$S: Term\sr Term$$
-$$O:1\sr Term$$
-%
-More generally, one associates to an algebraic signature with the set of sorts $D$ and a set of operations $Op_0$ a nominal signature where 
-%
-$$Op=Op_0\coprod\{v_D\}_{D\in {\bf D}}$$
-%
-with 
-%
-$$v_D:Var\sr D$$
-%
-and for $O\in Op_0$ the nominal arity of $O$ being
-%
-$$O:(D_1,\dots,D_n)\sr D$$
-%
-for some $n\in\nat$ and $D_1,\dots,D_n,D\in {\bf D}$ where $n$ and $D$'s may depend on $O$.  
-
-An example of a signature where variables are not terms is given in \cite{Pitts}. 
-
-A nominal signature can be used to construct terms of all compound sorts in the more or less obvious way. Next one defines the notion free and bound occurrences of variables in these terms and the notion of the  $\alpha$-equivalence. For a nominal signature $\Sigma$ and a compound sort $S$ one writes $\Sigma_{\alpha}(S)$ for the set of $\alpha$-equivalence classes of terms of sort $S$ build using $\Sigma$.
-
-In the case when $\Sigma$ is the $\lambda$-calculus signature one gets the usual set of $\alpha$-equivalence classes of $\lambda$-terms considering $\Sigma_{\alpha}(Term)$. 
-
-To any nominal signature $\Sigma$ one associates, following \cite{Pitts}, a functor $T_{\Sigma}:Nom^{\bf D}\sr Nom^{\bf D}$ where $Nom$ is the category of nominal sets, as follows.
-
-First one associates a functor $[S]:Nom^{\bf D}\sr Nom$ to any compound sort $S$ by the rule:
-%
-$$[Var](X)={\bf A}$$
-$$[D](X)=X_D$$
-$$[1](X)=1$$
-$$[(S_1,S_2)](X)=X\times X$$
-$$[(Var.S)]=[{\bf A}](X)$$
-%
-where ${\bf A}$ is the standard atomic nominal set (the set of names with the canonical action of the permutation group $Perm$) and $[{\bf A}]$ is the name-abstraction functor $Nom\sr Nom$ which is defined in \cite[Section 4]{Pitts}. 
-
-Let $Op_D$ for $D\in {\bf D}$ be the set of operations $O$ with the target sort $D$, i.e., such that $Ar_{\bf D}(O)=D$.  Then one defines $T_{\Sigma}(X)$ by the rule
-%
-$$T_{\Sigma}(X)_D=\coprod_{O\in Op_D} [Ar_{CS}(O)].$$
-%
-For example, if $\Sigma$ is the signature of $\lambda$-calculus then 
-%
-$$T_{\Sigma}(X)={\bf A}\coprod [{\bf A}](X)\coprod (X\times X)$$
-%
-
-One of the main results of \cite{Pitts} is that the functor $T_{\Sigma}$ has an initial algebra $I_{\Sigma}$ for any $\Sigma$ and $(I_{\Sigma})_D=\Sigma_{\alpha}(D)$. 
-
-Let us extend this construction to a monad on $Nom^{\bf D}$ and then on $Sets^{\bf D}$. First observe that for any $X\in Nom^{\bf D}$ the functor $Y\mapsto T_{\Sigma}(Y)\coprod X$ is finitely presented and therefore it has an initial algebra. Let us denote this algebra by $NR_{\Sigma}(X)$. 
-
-By \cite[pp. 243-244]{Awodey2010}, $NR_{\Sigma}$ is a monad on $Nom^{\bf D}$ whose category of algebras is equivalent to the category of $T_{\Sigma}$-algebras (i.e. $NR_{\Sigma}$ is the free monad generated by $T_{\Sigma}$).
-
-The functor $Discr:Sets \sr Nom$ which takes a set to the corresponding discrete nominal set has a right adjoint $Inv:Nom\sr Sets$ which sends a nominal set $X$ to the set of its fixed points $X^{Perm}$. The functors $Discr^{\bf D}$ and $Inv^{\bf D}$ form an adjoint pair between the categories $Nom^{\bf D}$ and $Sets^{\bf D}$.
-
-Given a monad $R$ on a category $\cal C$ and an adjoint pair $(LF,RF)$ where $RF:{\cal C}\sr{\cal C}'$ is the right adjoint, the composition $R'=RF\circ R\circ LF$ is a monad on ${\cal C}'$.
-
-Applying this fact to the monad $NR_{\Sigma}$ and the pair $(Discr^{\bf D},Inv^{\bf D})$ we conclude that the functor 
-%
-$$R_{\Sigma}:X\mapsto NR_{\Sigma}(Discr^{\bf D}(X))^{Perm}$$
-% 
-is a monad on $Sets^{\bf D}$.
-
-For a family of sets $X$ the functor $T_{\Sigma}\coprod Discr^{\bf D}(X)$ is naturally isomorphic to the functor $T_{\Sigma+X}$ where $\Sigma+X$ is the signature with the set of operations $Op\coprod (\coprod_{D\in {\bf D}} X_D)$ and the arity function defined on $x\in X_D$ by $Ar(x)=(1,D)$ and
-%
-$$R_{\Sigma}(X)=NR_{\Sigma}(Discr^{\bf D}(X))^{Perm}=I_{T_{\Sigma}\coprod Discr^{\bf D}(X)}^{Perm}=I_{T_{\Sigma+X}}^{Perm}.$$
-%
-Therefore
-%
-$$(R_{\Sigma}(X))_D=(\Sigma+X)_{\alpha}(D)^{Perm}$$
-%
-is the set of invariants in the set of $\alpha$-equivalence classes of terms of sort $D$ with respect to the signature $\Sigma+X$ i.e. the set of $\alpha$-equivalence classes of closed terms of sort $D$ with respect to $\Sigma+X$. 
-
-If $X_D=\{x_{1,D},\dots,x_{n_D,D}\}$ are finite sets, then the terms with respect to the signature $\Sigma+X$ can be seen as terms with respect to $\Sigma$ which depend on additional parameters $x_{i,D}$ of the corresponding sorts and the closed terms as the terms with respect to $\Sigma$ relative to the name space ${\bf A}^{\bf D}+X$ such that all the occurrences of names from ${\bf A}^{\bf D}$ are bound and all the occurrences of names from $X$ are free. 
-
-To obtain from this construction a pair $(\rr,\lm)$ of a monad on $Sets$ and a left module over this monad with values in $Sets$ we will use Lemma \ref{2014.07.28.l3}. Let $Term\in{\bf D}$ and ${\bf Type}\subset{\bf D}$. Let $P$ a family of sets parametrized by ${\bf D}-{Term}$. For a set $X$ let $(X,P)$ be the family such that $(X,P)_{Term}=X$ and $(X,P)_{D}=P_{D}$ for $D\ne Term$. 
-
-Then $X\mapsto (R_{\Sigma}(X,P))_{Term}$ is a monad $R_{\Sigma,Term,P}$ on $Sets$ by Lemma \ref{2014.07.28.l2} and 
-%
-$$X\mapsto \coprod_{D\in {\bf Type}} (R_{\Sigma}(X,P))_D$$
-%
-is a left module $LM_{\Sigma,Term,P,{\bf Type}}$ over $R_{\Sigma,Term,P}$ by Lemmas \ref{2014.07.28.l3} and \ref{2014.07.28.l1}(b). 
-%
-\begin{example}\rm
-The C-systems of generalized algebraic theories (GATs) of \cite{Cartmell0},\cite{Cartmell1} (see also \cite{Garner}) are obtained by using algebraic signatures with two data sorts ${\bf D}=\{Term,Type\}$, ${\bf Type}=\{Type\}$ and $P=\emptyset$. The ``symbols'' of the GAT are operations of the corresponding algebraic signature. The term symbols of degree $n$ have arity $(Term,\dots,Term)\sr Term$ and the type symbols of degree $n$ have arity $(Term,\dots,Term)\sr Type$ where in both cases the length of the sequence $(Term,\dots,Term)$ is $n$. 
-\end{example}
-%
-\begin{example}
-\llabel{2014.08.ex}\rm
-###not correct! M-L uses only one or two quantifiers the rest are treated using lambda-abstraction
-To define the Martin-L\"{o}f Type theory MLTT72 of \cite{ML72}  one needs to consider the case when ${\bf D}=\{Term\}$ and the nominal signature is of the form:
-%
-$$v:Var\sr Term$$
-$$\Pi:(Term, Var.Term)\sr Term\spc\lambda:(Term,Var.Term)\sr Term$$ $$app:(Term,Term)\sr Term$$
-$$\Sigma:(Term,Var.Term)\sr Term\spc pair:(Term,Term)\sr Term$$ $$E:(Term,Var.(Var.Term))\sr Term$$
-$$+:(Term,Term)\sr Term\spc i:Term\sr Term\spc j:Term\sr Term$$ $$D:((Term,Var.Term),Var.Term))\sr Term$$
-$$V:1\sr Term$$
-$$N_n:1\sr Term\spc i_n:1\sr Term\spc R_n:(Term,\dots,Term),\dots)\sr Term$$ $$n\in\nat\spc 1\le i \le n$$
-$$N:1\sr Term\spc 0:1\sr Term\spc s:Term\sr Term$$ $$R:((Term,Term),(Var.(Var.Term)))\sr Term$$
-
-Note that in fact $E$, $D$, $R_n$, and $R$ should also have the type family $C$ (see \cite[2.3.6, 2.3.8, 2.3.10, 2.3.12]{ML72}) as an argument which, in our notation, means an additional component of the form $Var.Term$ in their arities.  
-
-In fact, the original definition from \cite{ML72} allows for additional ``type constants'' (see \cite[2.2.1]{ML72}) of various algebraic arities which are analogous to the predicate constants in the predicate logic. As such it is a definition of a family of type systems. The signatures underlying all type systems in this family are obtained by extending the signature described above by a set of operations of the form $P:(Term,\dots,Term)\sr Term$. 
-
-For the signature of the MLTT79 see \cite[p. 158]{MLTT79}
-\end{example}
-%
-\begin{remark}\rm
-It is possible to ``encode'' a nominal signature in typed $\lambda$-calculus using the idea that closed terms are objects of a base type $term$, terms with one free variable are objects of the type $term\sr term$, terms with two free variables are objects of $term\sr term\sr term$ etc. This encoding allows one to describe the substitutions of closed terms into terms with free variables as applications in the meta-theory.  However, it does not allow to describe the substitution of, e.g., terms with one free variable into terms with one free variable, i.e., the full monadic structure is not recoverable from such a description. This is the reason why the use of typed $\lambda$-calculus systems such as the Logical Framework for the description of the syntax of dependent type theories is of limited use.
-\end{remark}
-%
-
-
-
-\comment{To be more precise, the input data consists of a nominal signature $\Sigma$ with one name-sort and a set of data-sorts $\bf D$, a distinguished data-sort $Term\in {\bf D}$, a subset of data-sorts ${\bf Type}\subset {\bf D}$ and a family of sets $(P_{D})_{D\in {\bf D}-\{Term\}}$ parametrized by data-sorts distinct from $Term$. For such a quadruple we describe a monad $R$ such that $R(X)$ is the set of $\alpha$-equivalence classes of expressions of sort $Term$ with variables from the name-space 
-%
-$$varnames := {\bf A}\amalg X\amalg (\amalg_{D\in {\bf D}-\{Term\}} P_D)$$
-%
-where ${\bf A}$ is a countable set, all occurrences of variables from ${\bf A}$ are bound and all occurrences of variables from $X\coprod (\coprod_{D\in {\bf D}-\{Term\}} P_D)$ are free. Note that $R(X)$ depends, up to a canonical isomorphism, only on $X$ but not on the choice of a countable set ${\bf A}$.  We also describe a left module $LM$ over $R$ such that $LM(X)$ is the disjoint union of $\alpha$-equivalence classes of similar expressions of sorts $D$ for $D\in {\bf Type}$. 
-
-When $\Sigma$ Suppose now that we are given a type theory based on the syntax of expressions with free and bound variables specified by a nominal signature $\Sigma$ with one name-sort $var$ and one data-sort $Term$ that is formulated in terms of four kinds of basic judgements originally introduced by Per Martin-L\"{o}f in \cite[p.161]{MLTT79}.  
-
-Choosing $\bf Type$ to be $\{Term\}$ we obtain a pair $(\rr,\lm)$ where $LM$ is isomorphic to $R$ considered as a left module over itself. For a set $X$ the set $R(X)$ is the set of $\alpha$-equivalence classes of $\Sigma$-expressions over the name space ${\bf A}\amalg X$ where all occurrences of names from $\bf A$ are bound and all occurrences of names from $X$ are free.  
-
-Since we are only interested in the $\alpha$-equivalence classes of judgements we may assume that the variables declared in the context are taken from the set of natural numbers such that the first declared variable is $1$, the second is $2$ etc.  Then, the set of judgements of the form $(1:A_1,\dots,n:A_n\rhd A\, type)$ (in the notation of Martin-L\"{o}f ``$A\,type\,(1\in A_1,\dots,n\in A_n)$'') can be identified with the set of judgements of the form $(1:A_1,\dots,n:A_n, n+1:A\rhd)$ stating that the context $(1:A_1,\dots,n:A_n, n+1:A)$ is well-formed. 
-
-With this identification the type theory is specified by four sets $C,\wt{B},Beq$ and $\wt{Beq}$ where 
-%
-$$C \subset \coprod_{n\in\nat} R({stn(0)})\times\dots\times R({stn(n-1)})$$
-$$\wt{B}\subset  \coprod_{n\in\nat} R({stn(0)})\times\dots\times R({stn(n-1)})\times R({stn(n)})\times R({stn(n)})$$
-$$Beq \subset \coprod_{n\in\nat} R({stn(0)})\times\dots\times R({stn(n-1)})\times R({stn(n)})^2$$
-$$\wt{Beq} \subset \coprod_{n\in\nat} R({stn(0)})\times\dots\times R({stn(n-1)})\times R({stn(n)})^2\times R({stn(n)})$$ 
-%
-and Proposition \ref{2014.07.10.prop1} spells out the necessary and sufficient conditions that these sets should satisfy in order for it to be possible to construct from them a C-system. 
-
-
-
-
-
-More generally, one may consider the case when $\Sigma$ has more than one data-sort as is for example the case in the description of type theories where there is a strict distinction between type expressions and term expressions. In order to define the associated C-system one only needs to have the substitution of expressions for variables when expression is a term expression i.e. an expression of the sort $Term$. Also not all data-sorts of the signature need to correspond to type expressions as for example in the case of logic enriched type theory (see \cite{AczelGambino}) where there is an additional data-sort of propositional expressions. This leads to the idea to consider $\bf Type$ in our construction as a subset of the set of data-sorts of the signature. In order to have everything properly defined one also needs to specify a family $P$. While one can always take it to be the family of empty sets it might be interesting to consider also non-empty cases which correspond to the C-systems determined by a choice of fixed sets of variables or parameters of data-sorts other than the $Term$ sort. 
-
-}
-
-}
-
-
-
-\comment{
-
-\begin{lemma}
-\llabel{2014.07.28.l2}
-Let $R$ be a monad on the product category ${\cal C}\times {\cal D}$. Let $A\in {\cal D}$. Then the functor $R_{A,1}:X\mapsto pr_{\cal C}(R(X,A))$ has a natural structure of a monad on $\cal C$.
-\end{lemma}
-%
-\begin{proof}
-One defines the morphisms $\eta_X:X\sr R_{A,1}(X)$ by
-%
-$$\eta_X := pr_{\cal C}(\eta_{(X,A)})$$
-%
-and morphisms $ \bind(f):R_{A,1}(X)\sr R_{A,1}(X')$ for $f:X\sr R_{A,1}(X')$ by
-%
-$$ \bind(f) := pr_{\cal C}( \bind(f,pr_{\cal D}(\eta_{(X,A)})))$$
-%
-The verification of the conditions of Lemma \ref{2014.06.30.l1} is straightforward. 
-\end{proof}
-% 
-
-}
-
-
-
-%
-\comment{
-
-\begin{lemma}
-\llabel{2014.07.28.l1}
-Let $R$ be a monad on a category $\cal C$. Then one has:
-%
-\begin{enumerate}
-\item If $LM_1$, $LM_2$ are left $R$-modules with values in ${\cal D}_1$ and ${\cal D}_2$ respectively then the functor $X\mapsto (LM_1(X),LM_2(X))$ has a natural structure of a left $R$-module with values in ${\cal D}_1\times {\cal D}_2$.
-\item If $LM$ is a left $R$-module with values in $\cal D$ and $F:{\cal D}\sr {\cal D'}$ is a functor then $F\circ LM$ has a natural structure of a left $R$-module with values in $\cal D'$.
-\end{enumerate}
-\end{lemma}
-%
-\begin{proof}
-Straightforward.
-\end{proof}
-%
-\begin{lemma}
-\llabel{2014.07.28.l3}
-Under the assumptions and in the notation of Lemma \ref{2014.07.28.l2} the morphisms
-%
-$$\mbind(f:X\sr R_{A,1}(X'))= \bind(f, pr_{\cal D}(\eta_{(X',A)})) : R(X,A)\sr R(X',A)$$
-%
-define a structure of a left $R_{A,1}$-module with values in ${\cal C}\times {\cal D}$ on the functor 
-%
-$$M_{A,1}:X\mapsto R(X,A)$$
-%
-\end{lemma}
-%
-\begin{proof}
-Direct verification of the conditions of Definition \ref{2014.07.26.d1}.
-\end{proof}
-%
-}
-
-
-\comment{
-%
-\begin{definition}
-\llabel{2015.07.29.def1}
-A Kleisli triple (or simply a triple) on a category $\cal C$ is a collection of data of the form:
-%
-\begin{enumerate}
-\item for every object $X$ an object $R(X)$,
-\item for every object $X$ a morphism $\eta_X:X \sr R(X)$,
-\item for every two objects $X$, $X'$ and a morphism $f:X\sr R(X')$, a morphism 
-%
-$$\bind(f):R(X)\sr R(X')$$
-%
-\end{enumerate}
-%
-such that:
-%
-\begin{enumerate}
-\item for any object $X$ one has
-%
-$$\bind(\eta_X)=id_{R(X)}$$
-%
-\item for any morphism of the form $f:X\sr R(X')$ one has
-%
-$$\eta_X\circ \bind(f)=f$$
-%
-\item for any two morphisms of the form $f:X\sr R(X')$, $g:X'\sr R(X'')$ one has
-%
-$$\bind(f\circ\bind(g))=\bind(f)\circ\bind(g).$$
-%
-\end{enumerate}
-\end{definition}
-%
-\begin{problem}
-\llabel{2015.07.30.prob1}
-For a monad $(R,\eta,\mu)$ on $\cal C$ to construct a triple on $\cal C$.
-\end{problem}
-%
-\begin{construction}\rm
-\llabel{2015.07.30.constr1}
-One defines $R$ of the triple to be the same as $R_{Ob}$ where $R=(R_{Ob},R_{Mor})$ is the functor component of the monad. One defines $\eta$ of the triple to be the same as $\eta$ of the monad. For $f:X\sr R_{Ob}(X')$ one defines $\bind(f)$ by the formula
-%
-$$\bind(f)=R_{Mor}(f)\circ \mu_{X'}$$
-%
-For the for the first two axioms we have
-%
-$$\bind(\eta_X)=R(\eta_X)\circ \mu_X=Id_{R(X)}$$
-$$\eta_X\circ \bind(f)=\eta_X\circ R(f)\circ \mu_{X'}=f\circ \eta_{R(X')}\circ \mu_{X'}=f\circ Id_{R(X')}=f$$
-%
-and for the third one:
-%
-$$\bind(f\circ \bind(g))=R(f\circ \bind(g))\circ \mu_{X''}=R(f)\circ R(R(g)\circ \mu_{X''})\circ \mu_{X''}=R(f)\circ R(R(g))\circ R(\mu_{X''})\circ \mu_{X''}=R(f)\circ R(R(g))\circ \mu_{R(X'')}\circ \mu_{X''}$$
-%
-and
-%
-$$\bind(f)\circ \bind(g)=R(f)\circ \mu_{X'}\circ R(g)\circ \mu_{X''}$$
-%
-and
-%
-$$R(R(g))\circ \mu_{R(X'')}=\mu_{X'}\circ R(g)$$
-%
-This completes Construction \ref{2015.07.30.constr1}.
-\end{construction}
-%
-\begin{problem}
-\llabel{2015.07.30.prob2}
-Given a triple $(R,\eta,\bind)$ on $\cal C$ to construct a monad $(R,\eta,\mu)$ on $\cal C$.
-\end{problem}
-%
-\begin{construction}\rm
-\llabel{2015.07.30.constr2}
-One takes $R_{Ob}$ of the functor component of the monad to be $R$. For $f:X\sr Y$ one defines
-%
-$$R_{Mor}(f)=\bind(f\circ \eta_Y)$$
-%
-One takes $\eta$ component of the monad to be the $\eta$ component of the triple. For an object $X$ one defines $\mu_X$ by the formula
-%
-$$\mu_X=\bind_{Id(R(X))}$$
-%
-We leave the verification of the axioms of the monad to the formalized versions of the paper. 
-\end{construction}
-}
-
-
-
-\comment{
-
-\subsection{Monads on sets and their left modules} 
-
-
-In the case of a monad $R$ on $Sets$ and a left $R$-module $LM$ with values in $Sets$, for $X=\{x_1,\dots,x_n\}$, $E\in LM(X)$ and $f:X\sr R(Y)$ such that $f(x_i)=f_i$ we often write $\mbind(f)(E)$ as $E(f/x)$ or $E(f_1/x_1,\dots,f_n/x_n)$. We also often write $x_i$ for $\eta_{X}(x_i)$. 
-
-In this notation the first condition of Definition \ref{2014.07.26.d1} is that $E(x/x)=E$ and the second condition is that if $f:\{x_1,\dots,x_n\}\sr R(\{y_1,\dots,y_o\})$ and $g:\{y_1,\dots,y_o\}\sr R(Z)$ then $E(f/x)(g/y)=E(f_1(g/y)/x_1,\dots,f_n(g/y)/x_n)$\footnote{Note that this rule refers to the case when one substitutes {\em all} free variables of an expression so that the usual condition that $y_1,\dots,y_o$ don't occur in $E$ is not required.}.
-
-For $E\in LM({stn(m)})$ and $n\ge 1$ we set:
-%
-$$t_n(E)=E(1/1,\dots,n-1/n-1,n+1/n,n+2/n+1,\dots,m+1/m)\in LM(\wh{m+1})$$
-$$s_n(E)=E(1/1,\dots,n/n,n/n+1,n+1/n+2,\dots,m-1/m) \in LM(\wh{m-1})$$
-%
-If we were numbering elements of a set with $n$ elements from $0$ then in views of Definition \ref{2014.07.26.d1}(3) we would have $t_n=LM(\partial_{n-1})$ and $s_n=LM(\sigma_{n-1})$ where $\partial_i$ and $\sigma_i$ are the usual generators of the simplicial category. 
-
-In particular $t_{m+1}=LM(i_m)$ where $i_m:\wh{m+1}\sr \wh{m}$ is the morphism corresponding to the function given by $j\mapsto j$ for $j=1,\dots,m$. For $E\in LM({stn(m)})$ we will often write $E$ instead of $t_{m+1}(E)$.
-
-For a monad $R$ on $Sets$ we let $R-cor$ (``R-correspondences'') to be the full subcategory of the Kleisli category of $R$ whose objects are finite sets. Recall, that the set of morphisms from $X$ to $Y$ in $R-cor$ is the set of maps from $X$ to $R(Y)$ i.e. $R(Y)^X$ (in other words, $R-cor$ is the 
-category of free, finitely generated $R$-algebras).   
-
-We further let ${C(\rr)}$ denote the pre-category\footnote{See the introduction to \cite{Csubsystems}.}  with 
-%
-%
-$$Ob({C(\rr)})=\nn$$
-$$Mor({C(\rr)})=\coprod_{m,n\in\nn} Fun({stn(n)},R({stn(m)}))$$
-%
-%
-where $Fun(A,B)$ is the set of functions from the set $A$ to the set $B$. The identity morphism of $n$ is given by $\eta_{{stn(n)}}$. The composition of morphisms is given by 
-%
-$$f\circ g=f\circ_{Sets} \bind(g)$$
-%
-Let $F$ be the category such that
-%
-$$Ob(F)=\nn$$
-$$Mor(F)=\amalg_{m,n\in\nn}Fun({stn(m)},{stn(n)})$$
-%
-Then there is a functor $Crc_2:F^{op}\sr {C(\rr)}$ that is identity on objects and sends a morphism $f=(m,n,f_0)$ where $f_0\in Fun({stn(n)},{stn(m)})$ to $(m,n,f_0\circ \eta_{m})$. We will often use this functor as a ``coercion'', using the terminology of proof assistant Coq, i.e., we will write simply $f$ instead of $\Phi(f)$. 
-
-A left $R$-module $LM$ defines as outlined in \cite[Def. 10]{HM2010} a covariant functor on the Kleisli category of $R$ and correspondingly a contravariant functor (a presheaf) $LM_{PreShv}$ on ${C(\rr)}$. This presheaf is given by:
-%
-\begin{enumerate}
-\item for $n\in Ob({C(\rr)})$ one has $LM_{PreShv}(n)=LM(n)$,
-\item for $f:m\sr n$ in ${C(\rr)}$ and $E\in LM_{PreShv}(n)$ one has
-%
-$$LM_{PreShv}(f)(E)=\mbind(f)(E)$$
-%
-\end{enumerate}
-%
-In what follows we will write $LM$ instead of $LM_{PreShv}$.  
-
-\comment{
-For two morphisms 
-%
-$$f:\wh{n_1}\sr \wh{n_2}\spc f=(f_1,\dots,f_{n_2})\spc where\spc f_i\in R(\wh{n_1})$$
-$$g:\wh{n_2}\sr \wh{n_3}\spc g=(g_1,\dots,g_{n_3})\spc where\spc g_i\in R(\wh{n_2})$$
-%
-their composition is given by
-%
-\begin{eq}\llabel{2015.07.26.eq1}
-f\circ g:\wh{n_1}\sr \wh{n_3}\spc f\circ g=((f\circ g)_1,\dots,(f\circ g)_{n_3}) \spc where\spc (f\circ g)_i\in R(\wh{n_3})
-\end{eq}
-%
-and 
-%
-\begin{eq}\llabel{2015.07.26.eq2}
-(f\circ g)_i=(f_1,\dots,f_{n_2})\circ g_i=g_i(f_1/1,\dots,f_{n_2}/n_2)
-\end{eq}
-%
-}
-%
-\begin{remark}\rm
-A finitary monad (on sets) is a monad $R:Sets\sr Sets$ that, as a functor, commutes with filtering colimits. Since any set is, canonically, the colimit of the filtering diagram of its finite subsets, a functor $Sets \sr Sets$ that commutes with filtering colimits can be equivalently described as a functor $FSets \sr Sets$ where $FSets$ is the category of finite sets. Furthermore, Lemma \ref{2014.06.30.l1} can be used to show that finitary monads on $Sets$ can be defined as collections of data of the form:
-%
-\begin{enumerate}
-\item for every finite set $X$ a set $R(X)$,
-\item for every finite set $X$ a function $\eta_X: X \sr R(X)$,
-\item for every finite sets $X$, $X'$ and a function $f:X\sr R(X')$, a function $ \bind(f):R(X)\sr R(X')$
-\end{enumerate}
-%
-which satisfy the conditions:
-%
-\begin{enumerate}
-\item for a finite set $X$, $\bind(\eta_X)=id_{R(X)}$,
-\item for a function of finite sets $f:X\sr X'$, $\eta_X\circ \bind(f)=f$,
-\item for two functions $f:X\sr R(X')$, $g:X'\sr R(X'')$, $ \bind(f\circ \bind(g))= \bind(f)\circ \bind(g)$.
-\end{enumerate}
-%
-This description shows how any monad $R$ defines a finitarty monad $R^{fin}$ whose underlying functor is obtained by first taking the restriction of $R$ to a functor $R_{FSets}:FSets\sr Sets$ and then the extension of $R_{FSets}$ to a finitary functor $R^{Fin}:Sets\sr Sets$. 
-
-Similar observation applies to left $R$-modules. The constructions of this paper, while done for a general pair $(\rr,\lm)$, only depend on the corresponding finitary pair $(R^{fin},LM^{fin})$. 
-\end{remark}
-%
-\begin{remark}\rm
-The correspondence $R\mapsto {C(\rr)}$ defines an equivalence between the type of the finitary monads on $Sets$ and the type of the pre-category structures on $\nn$ that extend the pre-category structure of finite sets and where the addition remains to be the coproduct. 
-\end{remark}
-%
-\begin{remark}\rm A finitary sub-monad of $R$ is the same as a sub-pre-category in ${C(\rr)}$ which contains all objects. Intersection of two sub-monads is a sub-monad which allows one to speak of sub-monads generated by a set of elements. 
-\end{remark}
-
-}
-
-
-\comment{ Let $C(\rr)$ be the category whose set of objects is the set of symbols of the form $\wh{n}$ where $n\in \nn$ and the set of morphisms is 
-%
-$$Mor(C(\rr))=\amalg_{\wh{m},\wh{n}}Hom_{Sets_R}(stn(n),stn(m))=\amalg_{\wh{m},\wh{n}} R(stn(m))^{stn(n)}$$
-%
-The domain and codomain functions $Mor(C(\rr))\sr Ob(C(\rr))$ are defined in the obvious way and the identity and composition are defined in such a way that the mapping $\wh{n}\mapsto stn(n)$ extends to a fully faithful functor $cr_1:C(\rr)^{op}\sr Sets_R$. The unity and the associativity of composition in $C(\rr)$ follows immediately from the unity and associativity of composition in $Sets_R$ which is proved in \cite{Kleisli} (cf. also Construction \ref{2015.07.30.constr3}). 
-
-If $LM$ is a left module over $R$ with values in $Sets$ then the functor $cr_1$ composed with the Kleisli extension $LM_R:Sets_R\sr Sets$ of $LM$  gives a presheaf on $C(\rr)$. We will use both the Kleisli extension construction and the composition with $cr_1$ as ``coercions'' in the terminology of the Coq proof assistant, i.e., we will write $LM$ instead of both $LM_R$ and $cr_1\circ LM_R$. 
-
-Let $F$ be the category whose objects are natural numbers and
-%
-$$Mor(F)=\amalg_{m,n}Fun(stn(m),stn(n))$$
-%
-Then for any $R$, there is an obvious functor $cr_0:F\sr C(\rr)^{op}$. 
-%
-We will use $cr_0$ as a coercions as well, i.e., we will write $f$ instead of $cr_0(f)$.
-%
-\begin{remark}\rm
-\llabel{2015.08.12.rem2}
-The pair $(C(\rr)^{op}, cr_0)$ is an algebraic theory in the sense of Lawvere (cf. \cite[Definition on p.62]{Lawvere}). 
-
-The functor $cr_1\circ LM_R:C(\rr)^{op}\sr Sets$ is, by Lawvere's terminology, a pre-coalgebra over this theory (cf. \cite[Ch. III, \S 1]{Lawvere}). Since the construction of $CC(\rr,\lm)$ uses only $C(\rr)$ and $cr_1\circ LM_R$ it could be directly formulated as a construction of a C-system from an algebraic theory and a pre-coalgebra over this theory. However we find the formulation based on a monad and a module over a monad to be easier to understand for a mathematical reader. 
-\end{remark}
-%
-}
-
-\comment{
-\begin{problem}
-\llabel{2015.07.30.prob3}
-Given a monad $(R,\eta,\mu)$ on a precategory $\cal C$ to construct a new precategory ${\cal C}_R$ and a functor $G_R:{\cal C}\sr {\cal C}_R$.
-\end{problem}
-%
-The following construction is due to Kleisli and first appeared in \cite{Kleisli}. Kleisli  worked with the dual concept that we today would call a co-monad. To obtain the correct correspondence between his construction and Construction \ref{2015.07.30.constr3} one needs to replace his $\cal L$ by our ${\cal C}^{op}$, his $\cal K$ by our $({\cal C}_R)^{op}$ and his $G$ by our $(G_R)^{op}$. 
-%
-\begin{construction}\rm
-\llabel{2015.07.30.constr3}
-We set $Ob({\cal C}_R)=Ob({\cal C})$ and
-%
-$$Mor({\cal C}_R)=\amalg_{X,Y\in Ob({\cal C})}Hom_{\cal C}(X, R(Y))$$
-%
-For $X\in Ob({\cal C})$ define $Id_X$ in $Mor({\cal C}_R)$ by the formula
-%
-$$Id_{X, {\cal C}_R}=(X,(X,\eta_X))$$
-%
-For $f=(X,(X',f_0:X\sr R(X')))$ and $g=(X',(X'',g_0:X'\sr R(X'')))$  in $Mor({\cal C}_R)$  define their composition $f\circ g$ by the formula
-%
-$$f\circ g=(X,(X'', f_0\circ R(g_0)\circ \mu_{X''}))$$
-%
-Define the object component $(G_R)_{Ob}$ of the functor $G_R$ to be the identity function of $Ob({\cal C})$ the morphism component by the formula
-%
-$$(G_R)_{Mor}(f:X\sr X')=(X,(X',f\circ \eta_{X'}))$$
-%
-For the verification of the axioms needed for the proof that these data defines a category and a functor we refer to  \cite{Kleisli}. 
-\end{construction}
-%
-The category ${\cal C}_R$ specified by Construction \ref{2015.07.30.constr3} is called the Kleisli category of $R$. 
-%
-
-
-
-\begin{remark}\rm
-\llabel{2015.08.12.rem3}
-In the univalent foundations the relationship between the type of finitary functors $Sets\sr Sets$ (where by $Sets$ we mean the category of h-sets in a fixed universe) and the type of functors $FSets\sr Sets$ is not entirely clear at the moment. On the other hand the relationship between the type of functors $FSets\sr Sets$ and the type of functors $F\sr Sets$ is better in the univalent foundations then in the set-theoretic ones since in the univalent foundations these two types are constructively equivalent (cf. \cite[Theorem 8.4]{RezkCompletion}).
-\end{remark}
-%
-
-
-%
-Definition \ref{2015.07.30.def1} below is, according to Manes \cite[p.30]{Manes}, due to Godement \cite{Godement}. See also \cite[Ch. VI]{MacLane}.
-%
-\begin{definition}
-\llabel{2015.07.30.def1}
-A monad on a category $\cal C$ is a collection of data of the form:
-%
-\begin{enumerate}
-\item a functor $R:{\cal C}\sr {\cal C}$,
-\item for any $X\in {\cal C}$, a morphism $\eta_X:X\sr R(X)$,
-\item for any $X\in {\cal C}$, a morphism $\mu_X:R(R(X))\sr R(X)$
-\end{enumerate}
-%
-such that:
-%
-\begin{enumerate}
-\item for any $f:X\sr Y$ one has 
-%
-\begin{enumerate}
-\item $\eta_X\circ R(f)=f\circ \eta_Y$,
-\item $\mu_X\circ R(f)=R(R(f))\circ \mu_Y$,
-\end{enumerate}
-%
-\item for any $X$ one has 
-%
-$$R(\mu_X)\circ \mu_X=\mu_{R(X)}\circ \mu_X$$
-%
-\item for any $X$ one has
-%
-$$R(\eta_X)\circ \mu_X=Id_{R(X)}$$
-%
-and
-%
-$$\eta_{R(X)}\circ \mu_X=Id_{R(X)}$$
-%
-\end{enumerate}
-\end{definition}
-%
-\begin{remark}\rm
-\llabel{2015.07.30.rem1a}
-It is very easy to construct an equivalence between the type of monads on a given precategory $\cal C$ (resp. a bijection between the set of monads on $\cal C$) and the type (resp. set) of monoids in the category $Funct({\cal C},{\cal C})$ with respect to the monoidal structure given by the composition of functors. This equivalence, in the case of a type theoretic formalization, is actually an isomorphism where by an isomorphism we mean an isomorphism of the corresponding objects of the syntactic category. 
-\end{remark}
-%
-\begin{remark}\rm
-\llabel{2015.08.12.rem1}
-There are at least two other definitions that specify, over any universe, types of objects that are equivalent to the type of monads. Objects specified by one of these definition are called by Manes ``algebraic theories in clone form in $\cal C$''. See \cite[Def. 3.2, p.24]{Manes}. The objects specified by another one, which appears in \cite[Exercise 12, p.32]{Manes} and then more explicitly in \cite{Moggi91} are called by Moggi  ``Kleisli triples''. Kleisli triples are more popular than monads in papers related to computer science while monads are more popular in mathematical papers. Formally proving the equivalence between these three definitions as well as constructing examples that show that these equivalences are not isomorphisms in the syntactic category may be the topic for a small project in univalent formalization.
-
-An analogous project in the set-theoretic formalization should be able to construct bijections between the corresponding sets because the underlying function $R_{Ob}:Ob({\cal C})\sr Ob({\cal C})$ remains unchanged by the corresponding equivalences and therefore they can be seen as bijections between the sets of monad, algebraic theory in clone form, and Kleisli triple structures on a given function $R_{Ob}$.
-\end{remark} 
-%
-
-\begin{definition}
-\llabel{2015.07.30.def4}
-Let $\cal C$ be a category and $(R,\eta,\mu)$ a monad on $\cal C$. A left module over $R$ with values in a category $\cal D$ is a collection of data of the following form
-%
-\begin{enumerate}
-\item a functor $LM:{\cal C}\sr {\cal D}$,
-\item for any $X\in {\cal C}$ a morphism $\rho_X:LM(R(X))\sr LM(X)$
-\end{enumerate}
-%
-such that:
-%
-\begin{enumerate}
-%
-\item for any $f:X\sr Y$ one has 
-%
-$$\rho_X\circ LM(f)=LM(R(f))\circ \rho_Y$$
-%
-\item for any $X$ one has:
-%
-$$LM(\eta_X)\circ \rho_X=Id_{LM(X)}$$
-%
-and
-\item for any $X$ one has:
-%
-$$LM(\mu_X)\circ \rho_X=\rho_{R(X)}\circ \rho_X$$
-%
-\end{enumerate}
-\end{definition}
-%
-\begin{example}\rm
-\llabel{2015.07.30.ex1}
-Taking ${\cal D}={\cal C}$, $LM=R$ and $\rho=\mu$ one obtains a left module over $R$ whose underlying functor is $R$ itself. 
-\end{example}
-%
-\begin{remark}\rm
-\llabel{2015.07.30.rem1}
-It is very easy to construct an equivalence between the type of left modules over a given monad (resp. a bijection between the set of left modules over a given monad) with values in the same category $\cal C$ and the type (resp. set) of left modules over the corresponding monoid in the monoidal category $(Funct({\cal C},{\cal C}),\circ)$. In the type theoretic case this equivalence is an isomorphism of the corresponding objects of the syntactic category. 
-\end{remark}
-%
-The following construction was, to the best of our knowledge, first described in \cite[Def. 10, p.550]{HM2010} under the name of a Kleisli extension. 
-%
-\begin{problem}
-\llabel{2015.07.30.prob5}
-For a monad $R$ and a left module $LM$ over $R$ to construct a functor $LM_R:{\cal C}_R\sr {\cal D}$.
-\end{problem}
-%
-\begin{construction}\rm
-\llabel{2015.07.30.constr4}
-We define the object component of $LM_R$ to be the object component of $LM$. For $f=(X,(X',f_0))$ in $Mor({\cal C}_R)$ we define 
-%
-$$(LM_R)_{Mor}(f)=LM(f_0)\circ \rho_{X'}$$
-%
-For the identity morphism axiom we have
-%
-$$LM_R(Id_X)=LM_R((X,(X,\eta_X)))=LM(\eta_X)\circ \rho_X=Id_{LM(X)}$$
-%
-For the composition axiom we have
-%
-$$LM_R((X,(X',f_0))\circ (X',(X'',g_0)))=LM_R((X,(X'',f_0\circ R(g_0)\circ \mu_{X''})))=$$$$LM(f_0\circ R(g_0)\circ \mu_{X''})\circ \rho_{X''}=LM(f_0)\circ LM(R(g_0))\circ LM(\mu_{X''})\circ \rho_{X''}=$$$$LM(f_0)\circ LM(R(g_0))\circ \rho_{R(X'')}\circ \rho_{X''}=LM(f_0)\circ \rho_{X'}\circ LM(g_0)\circ \rho_{X''}$$
-%
-and
-%
-$$LM_R((X,(X',f_0)))\circ LM_R((X',(X'',g_0)))=LM(f_0)\circ \rho_{X'}\circ LM(g_0)\circ \rho_{X''}$$
-%
-This completes Construction \ref{2015.07.30.constr4}.
-\end{construction}
-%
-\begin{lemma}
-\llabel{2015.07.30.l1}
-For a monad $R$ on $\cal C$, a left module $LM$ and $f:X\sr X'$ in $\cal C$ one has
-%
-$$LM_R(G_R(f))=LM(f)$$
-%
-\end{lemma}
-%
-\begin{proof}
-One has
-%
-$$LM_R(G_R(f))=LM_R((X,(X',f\circ \eta_{X'})))=LM(f\circ \eta_{X'})\circ \rho_{X'}=LM(f)\circ LM(\eta_{X'})\circ \rho_{X'}=$$$$LM(f)\circ Id_{LM(X')}=LM(f)$$
-%
-\end{proof}
-%
-%
-\begin{remark}\rm
-A construction of a left $R$-module from a functor ${\cal C}_R\sr {\cal D}$ is outlined in \cite[Prop. 3]{HM2010} and in the same paper there is an outline of a proof that these two constructions are inverse to each other providing a bijection between left $R$-modules with values in a category $\cal D$ and functors ${\cal C}_R\sr {\cal D}$. This bijection is identity on the underlying functions from the type (resp. set) of objects of ${\cal C}$ to the type (resp. set) of objects of $\cal D$ so that one can talk about the bijection between the sets of a left $R$-module structures on a function $Ob({\cal C})\sr Ob({\cal D})$ and the set of functor structures on the same function considered as a function from $Ob({\cal C}_R)$. In type theoretic formalization this equivalence is not an isomorphism in the syntactic category.
-\end{remark}
-%
-
-
-}
-
-
-\comment{??? Build the example better, less confusing, separate \rr and \lm better
-\begin{example}\rm
-For the pre-algebraic theory of the form $LM(n)=R(n)=stn(n)$ we have $Ob(CC(\rr,\lm))=\{pt\}$ and there is only one C-subsystem, namely itself. For the pre-algebraic theory of the form $LM(n)=R(n)=stn(1)$ the C-system $CC(\rr,\lm)$ has two subsystems - itself and the trivial one for which $B={pt}$. 
-
-The first non-trivial example is the pre-algebraic theory $R(n)=stn(n)\amalg \{*\}$ and $\lm=\rr$. In this case the set of ``expressions in n-variables'' is the set of variables itself together with one constant $*$. 
-
-We conjecture that in this case the set of all C-subsystems of $CC(\rr,\rr)$ is {\em uncountable}.
-
-One can probably show this as follows. Let $\epsilon:\nn\sr\{0,1\}$, be a sequence of $0$'s and $1$'s. Consider the C-subsystem $CC_{\epsilon}$ of $CC(\rr,\lm)$ which is generated by the set of elements of the form 
-%
-$$(*, 0,\dots,n-1\rhd^{C(\epsilon_*)})\in Ob(CC(\rr,\rr)$$
-%
-for all $n\in\nat$ and elements 
-%
-$$(*,0,\dots,n\rhd^{\wt{C}(\epsilon_*)} n+1:*)\in \wt{Ob}(CC(\rr,\rr)$$
-%
-for $n$ such that $\epsilon(n)=1$. It should be possible to show that $CC_{\epsilon}\ne CC_{\epsilon'}$ for $\epsilon\ne \epsilon'$ which would imply the conjecture. 
-
-Note that unless $\epsilon(i)=0$ for all $i$, in this C-system $*$ is a universe
-\end{example}
-}
 
 
 
