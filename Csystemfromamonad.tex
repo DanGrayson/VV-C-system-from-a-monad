@@ -279,7 +279,7 @@ The existence of these homomorphisms in the particular case of the ``standard
 univalent models'' of Martin-L\"{o}f type theories and of the Calculus of
 Inductive Constructions (CIC) provides the only known justification for the use
 of proof assistants such as Coq for the formalization of mathematics in the
-univalent style \cite{UniMath2015}, \cite{UniMath}.
+univalent style \cite{UniMath2015,UniMath}.
 
 Only if we know that the Initiality Conjecture holds for a given type theory can we
 claim that a  model defines a representation. A similar  problem also arises in
@@ -292,7 +292,7 @@ this approach  to type  theories that  have more  substitutional (definitional)
 equalities than LF itself.
 
 A construction of a model for the version of Martin-L\"{o}f type theory
-that is used in the UniMath library \cite{UniMath,UniMath2015} is
+that is used in the {\em UniMath} library \cite{UniMath,UniMath2015} is
 sketched in \cite{KLV1}. When that paper was written it was
 unfortunately assumed that a proof of the Initiality Conjecture can be found in the
 existing body of work on type theory, as reflected in \cite[Theorem
@@ -335,7 +335,7 @@ five kinds of ``sequents'' originally introduced by Per Martin-L\"{o}f in
 \cite[p.161]{MLTT79}\footnote{This paper is highly recommended. It is a
   foundational one for many ideas of type theory and for the modern approach to
   constructive mathematics in general.}.  If we consider the type theory as a
-language, then sequents are complete sentences in this language - the smallest
+language, then sequents are complete sentences in this language---the smallest
 units that have semantical meaning when an interpretation is chosen. Below we
 use the word ``sentence'' instead of the word ``sequent'' to avoid confusion
 with the meaning of the word ``sequent'' in logic. The five kinds of sentences
@@ -433,12 +433,12 @@ theory.
 
 We intend two meta-theories for the present paper. The first one is 
 ZFC with a Grothendieck universe $U$. The second one is a univalent foundation
-called {\em UniMath}.  We consider ZFC to be the primary meta-theory and UniMath a
+called {\em UniMath}.  We consider ZFC to be the primary meta-theory and {\em UniMath} a
 secondary one. That is, we take care to adapt our definitions and proofs
-precisely for ZFC, while accepting that UniMath formalization will require
+precisely for ZFC, while accepting that {\em UniMath} formalization will require
 some small degree of modification.
 
-Having UniMath as a secondary meta-theory imposes a number of strong
+Having {\em UniMath} as a secondary meta-theory imposes a number of strong
 restrictions on the features of ZFC that we can use.  Most
 notably, we can not use the law of excluded middle and we can not use the axiom
 of choice.
@@ -521,7 +521,7 @@ Note that that up to this point our constructions have been completely elementar
 Suppose now that we want to associate with the family of sets $Exp(X)$ not a
 relative monad, but a monad. First we would need to extend the function
 $Exp:2^V\sr U$ to a function $U\sr U$. There is no way of doing it in
-UniMath, and I do not know of any way of doing it in any constructive
+{\em UniMath}, and I do not know of any way of doing it in any constructive
 foundation. The best one could achieve is to construct a function $Exp':U\sr U$
 and a family of isomorphisms $\phi_V:Exp(X)\sr Exp'(X)$ for $X\subset V$. This
 requires developing a constructive theory of filtered colimits and functors
@@ -587,7 +587,7 @@ in each argument.
 
 The best known examples of operations with binders are the quantifiers
 $\forall$ and $\exists$ of predicate logic and the $\lambda$-abstraction of the
-(untyped) lambda calculus \cite{Church1932},\cite{Barendregt}. All three of
+(untyped) lambda calculus \cite{Church1932,Barendregt}. All three of
 these operations have arity $(1)$, that is, they have one argument in which
 they bind one variable.
 
@@ -602,7 +602,7 @@ $$E=\lambda\,x_{n-1}.\lambda\,x_{n-2}.\dots.\lambda\,x_0.x$$
 Here $x_n,\dots,x_{0}$ are bound variables. We do not assume that $x_i\ne x_j$
 for $i\ne j$ or that $x_i\ne x$. In particular $x$ is a free variable if
 $x_i\ne x$ for all $i\ge 0$ and a bound one otherwise. The usual, but hard to
-formulate precisely, rules of $\alpha$-equivalence (see e.g. \cite[Def. 2.1.11,
+formulate precisely, rules of $\alpha$-equivalence (see, e.g., \cite[Def. 2.1.11,
   p.26]{Barendregt}) imply that if we rename the bound variables in any way
 that preserves the rightmost occurrence of $x$ among the $x_i$'s then the
 resulting expression will be $\alpha$-equivalent to the original one. In
@@ -610,16 +610,16 @@ particular, we can always rename $x_i$ such that $x_i\ne x_j$ for $i\ne j$ and
 there is an most one $k$ such that $x_k=x$. If such a $k$ exists then $E$ has
 no free variables and if it does not then $E$ has one free variable $x$.
 
-If $x$ is a free variable then we can substitute another expression $E'$ of the
+If $x$ is a free variable, then we can substitute another expression $E'$ of the
 same form for $x$. However, we can not do it directly. Instead we have to use
-something called the {\em capture avoiding substitution} to avoid the
+something called {\em capture avoiding substitution} to avoid the
 ``capture'' of variable names by binders. For example, let $E=\lambda\,x_0.x$,
-where $x$ is free, and $E'=x'$. Then we have two cases - if $x_0\ne x'$ then we
+where $x$ is free, and $E'=x'$. Then we have two cases---if $x_0\ne x'$ then we
 can directly substitute $E'$ for $x$ and $E[E'/x]=\lambda\,x_0.x'$. If $x_0=x'$
-we have first to rename $x_0$ into $x_0'$ such that $x_0'\ne x'$ and then to
-substitute, obtaining $E[E'/x]=\lambda\,x_0'.x'$. If we used direct
-substitution the resulting operation would not respect the
-$\alpha$-equivalence. The capture avoiding substitution does.
+we must first rename $x_0$ into $x_0'$, chosen so that $x_0'\ne x'$, and then
+substitute, obtaining $E[E'/x]=\lambda\,x_0'.x'$. If we were to use direct
+substitution, then the resulting operation would not respect 
+$\alpha$-equivalence.  Capture avoiding substitution does.
 
 One shows, and it should be clear from the above that it is not easy, that for
 any binding signature $(Op,Ar)$ one can define, for expressions constructed
@@ -631,50 +631,50 @@ can define the concept of $\alpha$-equivalence on each of the sets
 $Exp^{\cdot}(X)$ and define the sets $Exp^{\alpha}(X)$ of $\alpha$-equivalence
 classes of expressions with free variables from $X$. Most definitions of
 $\alpha$-equivalence require $V$ to be a set with an additional operation that
-for every finite subset of $V$ gives an element in the complement to this
-subset. Let us call it a freshness operation. Some approaches to the
+for every finite subset of $V$ gives an element in the complement of this
+subset. Let us call it a freshness operation. Some approaches to 
 $\alpha$-equivalence and further constructions discussed below, notably the
-approach through the nominal sets \cite{Pitts}, may only require that for any
-finite subset of $V$ there exist an element in the complement to this
+approach through nominal sets \cite{Pitts}, may require only that for any
+finite subset of $V$ there exist an element in the complement of this
 subset. In the latter case we will say that $V$ has the freshness property. In
-the ZFC a set has the freshness property if and only if it is infinite. In
+ZFC a set has the freshness property if and only if it is infinite. In
 constructive meta-theories the situation may be more involved and it is
-convenient to have a special name for this particular property.
+convenient to have a special name for this property.
 
 If $V$ has the freshness property one can define, and again it is not at all
-easy, the simultaneous capture avoiding substitution of expressions $E_x\in
-Exp^{\cdot}(Y)$, $x\in X$, for the free variables of an expression $E'\in
-Exp^{\cdot}(X)$ such that it is compatible with the $\alpha$-equivalence.
-After the passage to the $\alpha$-equivalence classes these constructions
+easy, simultaneous capture avoiding substitution of expressions 
+$E_x\in Exp^{\cdot}(Y)$, $x\in X$, for the free variables of an expression 
+$E' \in Exp^{\cdot}(X)$, such that it is compatible with $\alpha$-equivalence.
+After passage to $\alpha$-equivalence classes these constructions
 become equivalent and one obtains, for any function $X\sr Exp^{\alpha}(Y)$ and
 an element of $Exp^{\alpha}(X)$, an element of $Exp^{\alpha}(Y)$. In addition
 one has, for any $X\subset V$, a function $X\sr Exp^{\alpha}(X)$.
 
 This brings us again to a structure of the same form as we obtained in the case
-of algebraic operations - a $J_V$-relative monad, where $J_V$ is the obvious
+of algebraic operations---a $J_V$-relative monad, where $J_V$ is the obvious
 functor from $Sets(2^V)$ to $Sets(U)$. Performing the same construction as the
-one described above in the case of algebraic expressions one obtains from a
+one described above in the case of algebraic expressions, one obtains from a
 $J_{\nat}$-relative monad, a $Jf$-relative monad ${\bf Exp}_{Sig}$. This is a
 direct generalization of the construction that we described previously from
 algebraic expressions to expressions with binders. The main idea behind this
-generalization goes back to Fiore, Plotkin and Turi \cite{FPT} where structures
-equivalent to the $Jf$-relative monads are introduced under the name of
-abstract clones.
+generalization goes back to Fiore, Plotkin, and Turi \cite{FPT}, where structures
+equivalent to $Jf$-relative monads are introduced under the name of
+{\em abstract clones}.
 
 {\em This is how the $Jf$-relative monads appear in the theory of expressions with binders.}
 
 Let us calculate what we get from this construction when the signature is given
-by one operation $\lambda$ with the arity $(1)$. The expressions then are the
+by one operation $\lambda$ with arity $(1)$. The expressions then are the
 expressions that we considered above. We have seen that
 %
-$$Exp^{\alpha}(\emptyset)=\{a_{n,k}\,|\,n\in\nat,k=0,\dots,n-1\}$$
+$$Exp^{\alpha}(\emptyset)=\{a_{n,k}\,|\,n\in\nat,k=0,\dots,n-1\},$$
 %
 where $a_{n,k}$ is (the equivalence class of) the expression with $n$
 $\lambda$-abstractions such that $k$ is the smallest index satisfying $x_k=x$.
 
 Next, we know that
 %
-$$Exp^{\alpha}(\{x\})=Exp^{\alpha}(\emptyset)\cup \{b_n(x)\,|\,n\in \nat\}$$
+$$Exp^{\alpha}(\{x\})=Exp^{\alpha}(\emptyset)\cup \{b_n(x)\,|\,n\in \nat\},$$
 %
 where $b_n(x)$ is the expression with $n$ $\lambda$-abstractions ending with
 $x$ and such that $x_i\ne x$ for all $n-1\ge i\ge 0$. We have to add
@@ -683,32 +683,32 @@ expression with free variables from the set $\{x\}$.
 
 Finally, for a general $X\subset V$ we have
 %
-$$Exp^{\alpha}(X)=Exp^{\alpha}(\emptyset)\cup (\cup_{x\in X}\{b_n(x)\,|\,n\in \nat\})$$
+$$Exp^{\alpha}(X)=Exp^{\alpha}(\emptyset)\cup (\cup_{x\in X}\{b_n(x)\,|\,n\in \nat\}),$$
 %
 and the union on the right hand side is disjoint. 
 
-The capture avoiding substitution in the case of one free variable is of the form
+Capture avoiding substitution in the case of one free variable is of the form
 %
 $$b_n(a_{n',k'}/x)=a_{n+n',k'}$$
-$$b_n(b_{n'}(x')/x)=b_{n+n'}(x')$$
+$$b_n(b_{n'}(x')/x)=b_{n+n'}(x').$$
 %
 For many free variables the substitution is determined by the case of one free
 variable because in any one expression there is at most one free variable.
 
 It is easy to see that the $Jf$-monad that we obtain in this case is isomorphic
 to the $Jf$-monad defined by the algebraic signature with operations $a_k$,
-$k\in\nat$ and $b$ where the arity of $a_k$ is $0$ and the arity of $b$ is
+$k\in\nat$, and $b$, where the arity of $a_k$ is $0$ and the arity of $b$ is
 $1$. The elements corresponding under this isomorphism to $a_{n,k}$ are
-$b^n(a_k)$ and the elements corresponding to $b_n(x)$ are $b^n(x)$.
+$b^n(a_k)$, and the elements corresponding to $b_n(x)$ are $b^n(x)$.
 
 Church's famous $\lambda$-calculus starts with the system of abstract
 expressions corresponding to two operations $ap$ and $\lambda$ with the arity
-of $ap$ being $(0,0)$ and the arity of $\lambda$ being $(1)$. Operation $ap$ is
-called application and is usually denoted using the infix notation with the
-empty operation symbol, that is, $ap(E,E')$ is denoted $E\,E'$.
+of $ap$ being $(0,0)$ and the arity of $\lambda$ being $(1)$.  The operation $ap$ is
+called application and is usually denoted using infix notation with the
+empty operation symbol, that is, $ap(E,E')$ is denoted by $E\,E'$.
 
 I do not know of an algebraic representation similar to what we have described
-above for the free Church's $\lambda$-expressions, that is, for the $Jf$-monad
+above for free Church $\lambda$-expressions, that is, for the $Jf$-monad
 corresponding to the binding signature
 %
 $$Sig_{\Lambda}=(\{ap,\lambda\}, Ar(ap)=(0,0), Ar(\lambda)=(1))$$
@@ -722,75 +722,76 @@ To obtain the $\lambda$-calculus, or more specifically, the
 $\lambda_{\eta\beta}$-calculus, one has to add to the system of expressions
 defined by $Sig_{\Lambda}$ two relations that are called the $\beta$- and the
 $\eta$-reductions. The fact that one still gets a $Jf$-monad structure after
-passing to the equivalence classes under the equivalence relation generated by
-these ``reductions'' requires a proof.
+passing to equivalence classes under the equivalence relation generated by
+these ``reductions'' requires proof.
 
-It appears that the $Jf$-monad, corresponding to the
+It appears that the $Jf$-monad corresponding to the
 $\lambda_{\eta\beta}$-calculus has an algebraic presentation closely related to
 the combinatory logic of Schönfinkel \cite{Schonfinkel1924} (translated in
-\cite{FtoG}) and Curry \cite{Curry1930}. However many subtle difficulties arise
-in making it precise (cf. \cite{2002Selinger}) and we know of no theorem
+\cite{FtoG}) and Curry \cite{Curry1930}.  However, many subtle difficulties arise
+in making it precise (cf. \cite{2002Selinger}), and we know of no theorem
 asserting such a presentation in terms of relative monads or monads.
 
-{\em This is how the $Jf$-relative monads corresponding to binding signatures
+{\em This is how $Jf$-relative monads corresponding to binding signatures
   relate to the $Jf$-relative monads corresponding to algebraic signatures.}
 
 What we said about the direct extension of ${\bf Exp}_{Sig}$ from a
 $Jf$-relative monad to a monad immediately generalizes from the algebraic case
 to the case of operations with binders.
 
-Also generalizes the discussion about the possibility to construct a monad
-corresponding to the signature directly using category theory. The beginnings
+One may also generalize the discussion above by using category theory directly
+to construct the monad corresponding to a signature.  The beginnings
 of this generalization can be see in \cite{FPT}. It is highly non-trivial.
-Operations that bind variables change the set of free variables e.g for $x\in
+Operations that bind variables change the set of free variables, e.g., for $x\in
 X$, the operation $\lambda\,x$ can be seen as an operation from
 $Exp(X\coprod\{x\})$ to $Exp(X)$. Because of this, the individual sets
 $Exp^{\alpha}(X)$ do not have universal characterization. Instead, a universal
 characterization can be given to a functor $Exp:Sets(U)\sr Sets(U)$ that will
 be later given a monad structure. This functor has an initial algebra structure
-for $\uu{Id}+H_{Sig}$ where $H_{Sig}$ is a {\em functor of the second order} -
+for $\uu{Id}+H_{Sig}$, where $H_{Sig}$ is a {\em functor of the second order}---%
 a functor from functors to functors and $\uu{Id}$ is the functor of second
 order that takes any $F$ to the identity functor of $Sets(U)$. The functor
 $H_{Sig}$ can be directly constructed from the binding signature
-$Sig$. Bindings correspond to the operation on functors $F\mapsto F'$ where
+$Sig$. Bindings correspond to the operation on functors $F\mapsto F'$, where
 $F'(X)=F(X\coprod pt)$. The general theory of initial algebras for
 $\omega$-cocontinuous functors from \cite{Adamek1974} is applicable here as
-well and an initial algebra $Exp''$ for $\uu{Id}+H_{Sig}$ can be constructed as
-the colimit of the sequence of functors $(\uu{Id}+H_{Sig})^n(\uu{\emptyset})$
+well, and an initial algebra $Exp''$ for $\uu{Id}+H_{Sig}$ can be constructed as
+the colimit of the sequence of functors $(\uu{Id}+H_{Sig})^n(\uu{\emptyset})$,
 where $\uu{\emptyset}$ is the functor $X\mapsto \emptyset$. Since the initial
 algebras are unique up to a unique algebra isomorphism the sets $Exp''(X)$
 constructed by the colimit construction are in a bijective correspondence with
 the sets $Exp(X)$ of $\alpha$-equivalence classes of expressions. The set
-$Exp''$ are closely related to the sets that one obtains representing
-$\alpha$-equivalence classes using de Bruijn levels or indexes. There is more
-story to tell here, but it is too much outside of the scope of the present
+$Exp''$ are closely related to the sets that one obtains when 
+$\alpha$-equivalence classes are represented using de Bruijn levels or indexes. 
+There is more
+to tell here, but it is outside of the scope of the present
 paper.
 
 Next one needs to construct a monad structure on $Exp''$. The corresponding
-theory is developed in \cite{MatthesUustalu}, \cite{AM2016} and
+theory is developed in \cite{MatthesUustalu}, \cite{AM2016}, and
 \cite{AMM2016}. An outline of the theory that allows one to give a universal
-characterization to the monad structure itself can be found in
-\cite{HM2012}. Not all is understood yet and it remains an active area of
-research. Much of the work that is being done today is being simultaneously
-formalized in the UniMath. The key question here is what structure on $H$ has
+characterization of the monad structure itself can be found in
+\cite{HM2012}. Not all is understood yet, and it remains an active area of
+research. Much of the work being done today is being simultaneously
+formalized in {\em UniMath}. The key question here is: what structure on $H$ has
 to be specified in order to obtain a monad structure on the initial algebra of
-$\uu{Id}+H$. The main idea was introduced in \cite{MatthesUustalu}. In
+$\uu{Id}+H$?  The main idea was introduced in \cite{MatthesUustalu}. In
 \cite{AM2016} a functor with this structure is called an (abstract)
 signature. As became understood later in \cite{AMM2016}, the additional
 condition of $H$ being $\omega$-cocontinuous allows one to remove the condition
 of the existence of the right adjoints from the main theorem \cite[Th. 15,
-  p.170]{MatthesUustalu} leading to \cite[Th. 48]{AMM2016}.
+  p.170]{MatthesUustalu}, leading to \cite[Th. 48]{AMM2016}.
 
-The case that is most important for us, that of the monads defined by the
-binding signatures, has been fully formalized in the UniMath. There remains the
-problem of showing that the families of sets of the $J_V$-relative monads
+The case that is most important for us, that of monads defined by
+binding signatures, has been fully formalized in {\em UniMath}. There remains the
+problem of showing that the families of sets of $J_V$-relative monads
 corresponding to this monad are isomorphic to the sets of expressions modulo
-the $\alpha$-equivalence and that the monad structure that one obtains
+$\alpha$-equivalence and that the monad structure that one obtains
 satisfies the universality conditions of \cite{HM2012}.
 
 \comment{As was envisioned in \cite{FPT}, the isomorphisms, for $X\subset V$,
   between the sets $Exp''(X)$ and the corresponding sets of expressions modulo
-  the $\alpha$-equivalence depend on the choice of the binary coproduct
+  $\alpha$-equivalence depend on the choice of the binary coproduct
   structure on $Sets(U)$. Choosing the usual inclusions of $X$ and $Y$ into
   $X\coprod Y$ as the structural ones leads to one set of isomorphisms while
   choosing the inclusions composed with the permutation of $X$ and $Y$ as the
@@ -806,29 +807,29 @@ satisfies the universality conditions of \cite{HM2012}.
 %Two different structures actually lead to two different sets $Exp''(stn(n))$. Each of this sets comes with a filtration and the isomorphisms }
 }
 
-{\em The preceding discussion shows how the monads corresponding to the binding
+{\em The preceding discussion shows how monads corresponding to binding
   signatures can be constructed by methods of category theory.}
 
 The raw syntax of a type theory can be specified by a binding
 signature\footnote{The type theories whose syntax can be specified by an
   algebraic signature correspond to the ``generalized algebraic theories'' of
-  John Cartmell \cite{Cartmell1}, \cite{Cartmell0}, \cite{Garner}.}.  For
+  John Cartmell \cite{Cartmell1,Cartmell0,Garner}.}.  For
 example, the raw syntax of Streicher's formulation of the Calculus of
-Constructions of G. Huet and T. Coquand (CC-S), when brought into the standard
-form, consists of six operations $\prod$, $Prop$, $Proof$, $\lambda$, $app$ and
-$\forall$ with the corresponding arities $(0,1)$, $()$, $(0)$, $(0,1)$,
-$(0,1,0,0)$ and $(0,1)$, see \cite[p.157]{Streicher}.
+Constructions of G. Huet and T. Coquand (CC-S), when brought into standard
+form, consists of six operations $\prod$, $Prop$, $Proof$, $\lambda$, $app$, and
+$\forall$, with the corresponding arities $(0,1)$, $()$, $(0)$, $(0,1)$,
+$(0,1,0,0)$, and $(0,1)$; see \cite[p.{} 157]{Streicher}.
 
 In view of the preceding discussion, this suggests that the class of abstract
 mathematical objects that can be used to most directly model the raw syntax of
 type theories is the class of $Jf$-relative monads. However, in this paper we
-use pairs of a $Jf$-relative monad $\RR$ and a left module $\LM$ (see
+use pairs consisting of a $Jf$-relative monad $\RR$ and a left module $\LM$ (see
 Definition \ref{2017.03.16.def1}) over this monad. Let us explain why we need
 such pairs and how one can generate them from data similar to binding
 signatures.
 
 To obtain the binding signature of the raw syntax from the usual presentation
-of a type theory by a list of inference rules such as (\ref{2017.03.02.eq1})
+of a type theory by a list of inference rules such as (\ref{2017.03.02.eq1}),
 one should make the list of operations that these inference rules introduce
 with their names and their binding arities. Often operations will be given in a
 non-standard form such as $\prod\,x:A,B$ instead of $\prod(A,x.B)$, but for
@@ -843,16 +844,16 @@ introduce types while operations $\lambda$, $app$ and $\forall$ introduce
 elements.  In addition, some arguments of each operation must be types and some
 elements. However, {\em only element variables can be bound}.
 
-Define a restricted 2-sorted binding signature as a signature where arities of
+Define a {\em restricted 2-sorted binding signature} to be a signature where the arities of the
 operations are given by sequences
-$((n_0,\epsilon_0),\dots,(n_{d-1},\epsilon_{d-1}),\epsilon)$ where
+$((n_0,\epsilon_0),\dots,(n_{d-1},\epsilon_{d-1}),\epsilon)$, where
 $\epsilon\in\{0,1\}$ with $0$ corresponding to elements and $1$ to types. Such
 two sorted arities of the six operations of CC-S are, correspondingly,
 $((0,1),(1,1),1)$, $(1)$, $((0,0),1)$, $((0,1),(1,0),0)$,
 $((0,1),(1,1),(0,0),(0,0),0)$ and $((0,1),(1,0),0)$.
 
-Any restricted 2-sorted binding signature defines the usual, 1-sorted one,
-where the set of operations is the same and the arity function is the
+From any restricted 2-sorted binding signature one may construct a 1-sorted binding signature,
+where the set of operations is the same, and the arity function is the
 composition of the original arity function with the function that maps
 $((n_0,\epsilon_0),\dots,(n_{d-1},\epsilon_{d-1}),\epsilon)$ to
 $(n_0,\dots,n_d)$.
@@ -866,8 +867,8 @@ by the sequences $(\epsilon_0,\dots,\epsilon_{n-1},\epsilon)$ of the 2-sorted
 arities of the operations of $Sig_2$ under the assumption that a variable can
 be used as an element variable if and only if it is in $V$ and as a type
 variable if and only if it is in $Y$. This subset will be the disjoint union of
-two smaller subsets $ElExp_{Sig_2}[V,Y]$ and $TyExp_{Sig_2}[V,Y]$ where the
-first one consists of expressions of sort ``element'' and the second one of
+two smaller subsets $ElExp_{Sig_2}[V,Y]$ and $TyExp_{Sig_2}[V,Y]$, where the
+first one consists of expressions of sort ``element'', and the second one of
 expressions of sort ``type''.
 
 Next, for a subset $X$ of $V$ let $Exp^{\cdot}_{Sig_2}(X,Y)$ be the subset of
@@ -886,36 +887,36 @@ instead of $ElExp^{\alpha}_{Sig_2}(X,PrTy)$ and
 $TyExp_{Sig_2}^{\alpha}(X,PrTy)$.
 
 The structures that we get on the families of sets $RR_V(-)$ and $LM_V(-)$ are
-slightly different. On $RR$ we get the $J_V$-relative monad structure - for any
-$X\subset V$ we have a function $\eta_X:X\sr RR_V(X)$ and for any $X,Y\subset
-V$ and a function $f:X\sr RR_V(Y)$ we have a function
+slightly different. On $RR$ we get a $J_V$-relative monad structure---for any
+$X\subset V$ we have a function $\eta_X:X\sr RR_V(X)$, and for any $X,Y\subset V$
+and for any function $f:X\sr RR_V(Y)$ we have a function
 %
 $$rr_{X,Y}(f):RR_V(X)\sr RR_V(Y)$$
 %
 On the other hand, on the $LM_V$ we do not have $\eta_X$ since variables from
-$X$ are not type expressions and substitution defines for any $X,Y\subset V$
-and a function $f:X\sr RR_V(Y)$, a function
+$X$ are not type expressions, and substitution defines for any $X,Y\subset V$
+and for any function $f:X\sr RR_V(Y)$, a function
 %
 $$lm_{X,Y}(f):LM_V(X)\sr LM_V(Y)$$
 %
 This operation makes the family of sets $LM_V(X)$ into a left module
-$\LM_V=(LM_V, lm)$ over the $J_V$-monad $\RR_V=(RR_V,\eta,rr)$.
+$\LM_V:=(LM_V, lm)$ over the $J_V$-monad $\RR_V=(RR_V,\eta,rr)$.
 
 Precomposing $\RR_{\nat}$ and $\LM_{\nat}$ with the obvious functor
 $\Phi:\FF\sr Sets(2^{\nat})$ using Constructions \ref{2017.02.24.constr1} and
-\ref{2017.03.12.constr1} we obtain a pair $(\RR,\LM)$ of a $J_f$-relative monad
+\ref{2017.03.12.constr1} we obtain a pair $(\RR,\LM)$ consisting of a $J_f$-relative monad
 and a left module over it.
 
-In some type theories all types are elements of universes and moreover element
+In some type theories all types are elements of universes, and, moreover, element
 expressions are not syntactically distinguishable from type expressions. For
-example, it is the case in the very important type theory MLTT79 - the
+example, it is the case in the very important type theory MLTT79---the
 Martin-L\"{o}f type theory from \cite{MLTT79}. The inference rules related to
 the universes \cite[p.172]{MLTT79} make all type expressions also element
-expressions and an element expression of any form may be used as a type. In our
+expressions, and an element expression of any form may be used as a type. In our
 notation it means that $LM(X)=RR(X)$.
 
-{\em The preceding discussion shows how pairs of a $Jf$-relative monad $\RR$
-  and a left module $\LM$ over it correspond to the raw syntax of type theories
+{\em The preceding discussion shows how pairs consisting of a $Jf$-relative monad $\RR$
+  and a left module $\LM$ over it correspond to the raw syntax of type theories,
   because some expressions are type expressions and some are element
   expressions.}
 
@@ -923,8 +924,8 @@ To construct the pair $(\RR,\LM)$ by methods of category theory without a
 reference to expressions one can proceed as follows.
 
 A restricted 2-sorted binding signature defines a monad on the category
-$Sets(U)\times Sets(U)$. See \cite{Zsido} for a much more general case of multi
-sorted signatures. For the formalization of this construction in UniMath see
+$Sets(U)\times Sets(U)$. See \cite{Zsido} for the much more general case of multi
+sorted signatures. For the formalization of this construction in {\em UniMath} see
 \cite{AMM2017}.
 %### Check with B. whether what is being formalized is what is described in \cite{Zsido}.
 
@@ -933,7 +934,7 @@ Choosing an object $PrTy$ of $Sets(U)$ and applying Construction
 $\RR^*$. Applying Construction \ref{2017.04.23.constr3} we obtain a module
 $\LM^*$ over this monad with values in $Sets(U)$.  Precomposing with the
 functor $Jf:\FF\sr Sets(U)$ using Constructions \ref{2017.02.24.constr1} and
-\ref{2017.03.12.constr1} one obtains a pair $(\RR,\LM)$ of a $Jf$-monad and a
+\ref{2017.03.12.constr1} one obtains a pair $(\RR,\LM)$ consisting of a $Jf$-monad and a
 module over it.
 
 {\em This is how the pairs $(\RR,\LM)$ can be obtained from a restricted
@@ -944,9 +945,9 @@ constructions let us recall that when $\RR$ and $\LM$ are obtained as the sets
 of $\alpha$-equivalence classes of expressions as described above then the
 substitution structure on elements of $RR(\ff{n})$ and $LM(\ff{n})$ can be
 easily expressed in terms of the structures of the relative monad and a module
-of a relative monad. Namely, if $E_1,\dots,E_k\in RR(\ff{m})$, $E\in
-RR(\ff{n})$ and $0\le i_1,\dots,i_k\le n-1$ then $E[E_1/i_1,\dots,E_k/\i_k]\in
-RR(\ff{m})$ is the element $rr(f)(E)$ where $f:stn(n)\sr RR(\ff{m})$ is given
+of a relative monad. Namely, if $E_1,\dots,E_k\in RR(\ff{m})$, 
+$E\in RR(\ff{n})$ and $0\le i_1,\dots,i_k\le n-1$ then 
+$E[E_1/i_1,\dots,E_k/\i_k]\in RR(\ff{m})$ is the element $rr(f)(E)$, where $f:stn(n)\sr RR(\ff{m})$ is given
 by $f(i)=\eta{i}$ for $i\ne i_1,\dots,i_k$ and $f(i_j)=E_j$. Exactly the same
 formula with the replacement of $RR(n)$ by $LM(n)$ describes
 $T[E_1/i_1,\dots,E_k/i_k]$ for $T\in LM(n)$.
@@ -957,14 +958,14 @@ sets of free variables as mathematical objects.
 
 Let us return to sentences of type theory that can be of the five kinds
 (\ref{2017.02.06.eq1})-(\ref{2017.02.06.eq5}). The expressions in the sentences
-are considered modulo the $\alpha$-equivalence. Moreover, the sentences
-themselves are also considered modulo the $\alpha$-equivalence, that is, modulo
+are considered modulo $\alpha$-equivalence. Moreover, the sentences
+themselves are also considered modulo $\alpha$-equivalence, that is, modulo
 the renaming of the variables $x_0,\dots,x_{n-1}$ introduced by the
 context. Using this $\alpha$-equivalence we may assume that
 $(x_0,\dots,x_{n-1})=(0,\dots,n-1)$. Then $T_i$ has free variables from
 $stn(i)$ and $T,T',t$ and $t'$ free variables from $stn(n)$. When we are given
 all the necessary additional information for the construction of the pair
-$(\RR,\LM)$ where $RR(n)$ and $LM(n)$ are the $\alpha$-equivalence classes of
+$(\RR,\LM)$, where $RR(n)$ and $LM(n)$ are the $\alpha$-equivalence classes of
 type and element expressions with free variables from the sets $stn(n)$ we
 obtain the following description of the sets of all possible sentences of the
 five main kinds:
@@ -999,7 +1000,7 @@ n-1:T_{n-1},n:T\rh ok$. This allows one not to consider sentences of the form
 
 This description of sentences immediately generalizes from the pairs
 $(\RR,\LM)$ corresponding to the $\alpha$-equivalence classes of expressions to
-all pairs $(\RR,\LM)$ where $\RR$ is a $Jf$-relative monad and $\LM$ a left
+all pairs $(\RR,\LM)$, where $\RR$ is a $Jf$-relative monad and $\LM$ a left
 module over $\RR$.
 
 %### Explain that we can now define subsets in ... of the derivable sentences as the smallest subsets closed under the operations defined by the inference rules. First, that we can interpret the inference rules as systems of operations on the sets of raw sentences, that is, sets ... . 
@@ -1033,7 +1034,7 @@ sub-quotient will be the term model C-system of our type theory.
 The conditions on the $B$-subsets will be seen to be the conditions many of
 which have been long known as the ``structural properties'' that the valid
 sentences of all type theories must satisfy. By approaching them from the
-direction of \cite{Csubsystems} we will see why these particular conditions are
+direction of \cite{Csubsystems} we will see why these conditions are
 necessary and sufficient for a type theory to ``make sense''.
 
 The main property of a sentence is its validity. Validity of sentences is
@@ -1157,7 +1158,7 @@ extensionally speaking, the subsets of well-typed context-judgment pairs.
 
 For $p:X\sr Y$ in a category, let $sec(p)=\{s:Y\sr X\,|\,s\circ
 p=Id_X\}$. Elements of $sec(p)$ are called sections of $p$. To any C-system
-$CC$ one associates a pair of sets $(Ob(CC),\wt{Ob}(CC))$ where $Ob(CC)$ is the
+$CC$ one associates a pair of sets $(Ob(CC),\wt{Ob}(CC))$, where $Ob(CC)$ is the
 set of objects of the category underlying $CC$ and where
 %
 \begin{eq}
@@ -1303,7 +1304,7 @@ one needs to know the B-sets of this C-system, the length function and the
 action of the eight B-system operations on these sets. Such a collection of
 data is called a pre-B-system (see \cite{Bsystems}). The main result of this
 paper is a detailed description of the pre-B-systems of the form
-$(B(CC[F]),\wt{B}(CC[F]))$ for an important particular class of ``coefficient''
+$(B(CC[F]),\wt{B}(CC[F]))$ for an important class of ``coefficient''
 C-systems $CC$ (see below).
 
 In Section \ref{Jfrel} we first remind the notion of a relative monad on a
@@ -1329,7 +1330,7 @@ $K(\RR)$ of a relative monad $\RR$ given in \cite{ACU2}.  Most of Section
 monads $\RR$.
 
 In \cite{LandC} we constructed an isomorphism between the category of Lawvere
-theories and the category of l-bijective C-systems - the C-systems $CC$ where
+theories and the category of l-bijective C-systems---the C-systems $CC$ where
 the length function $Ob(CC)\sr \nat$ is a bijection. In Section \ref{CRR} we
 consider the C-system $C(\RR)$ corresponding to the Lawvere theory $RML(\RR)$
 defined by a $Jf$-relative monad $\RR$. The underlying category of this
@@ -1353,7 +1354,7 @@ of this type theory to be defined.
 
 We use neither the axiom of excluded middle nor the axiom of choice. The paper
 is written in the formalization-ready style and should be easily formalizable
-both in the UniMath and in the ZF.
+both in {\em UniMath} and in ZF.
 
 \vspace{5mm}
 
@@ -1366,7 +1367,7 @@ composition is a partially defined operation. A functor $F:\C\sr \D$ is a pair
 of functions $F_{Ob}:Ob(\C)\sr Ob(\D)$, $F_{Mor}:Mor(\C)\sr Mor(\D)$ satisfying
 the well known conditions. We emphasize it here because it is also possible to
 define a category starting with a set $Ob(\C)$ and a {\em family} of sets
-$Mor_{\C}(X,Y)$ parametrized by $X,Y\in Ob(\C)$ where a {family} is understood
+$Mor_{\C}(X,Y)$ parametrized by $X,Y\in Ob(\C)$, where a {family} is understood
 in the sense of \cite[Remark 3.9]{fromunivwithPiI}. These two concepts are a
 little different from each other. For example there exists a category with
 $Ob(\C)=\{0,1\}$ and $Mor_{\C}(a,b)=\{0\}$ for all $a,b\in Ob(\C)$, in the
@@ -1381,7 +1382,7 @@ perform additional constructions such as ...
 
 Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form
 of saying ``a family $y$, parametrized by $x$ in $A$, such that $y(x)$ is in
-$B(x)$''. For a way to define a family of sets in the ZFC without a universe
+$B(x)$''. For a way to define a family of sets in ZFC without a universe
 see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a
 set. However, families of sets with a given parameter set and such that all the
 sets of the family are subsets of given set do. A formulation in terms of
@@ -1421,7 +1422,7 @@ be enforced.
 %
 \begin{definition}
   \llabel{2017.04.01.def1}
-  A monad in the monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$
+  A monad in the monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
   where $R:\C\sr \C$ is a functor and $\eta:Id_{\C}\sr R$, $\mu:R\circ R\sr R$
   are natural transformations such that for any $X\in\C$ one has
   %
@@ -1439,7 +1440,7 @@ time in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \llabel{2017.04.13.def1}
-A monad in the Kleisli form on a category $\C$ is a triple $\RR=(RR_{Ob},\eta,rr)$ where 
+A monad in the Kleisli form on a category $\C$ is a triple $\RR=(RR_{Ob},\eta,rr)$, where 
 %
 \begin{enumerate}
 \item \llabel{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
@@ -1568,7 +1569,7 @@ detail in \cite{ACU2}. Let us remind it here.
 %
 \begin{definition}
 \llabel{2015.12.22.def1}
-Let $J:\C\sr \D$ be a functor. A relative monad $\RR$ on $J$ or a $J$-relative monad or a $J$-monad is a triple $(RR_{Ob},\eta,rr)$ where
+Let $J:\C\sr \D$ be a functor. A relative monad $\RR$ on $J$ or a $J$-relative monad or a $J$-monad is a triple $(RR_{Ob},\eta,rr)$, where
 %
 \begin{enumerate}
 \item $RR_{Ob}:Ob(\C)\sr Ob(\D)$ is a function,
@@ -1687,7 +1688,7 @@ $$Et(f\circ g)=J(f\circ g)\circ \eta_Z=J(f)\circ J(g)\circ \eta_Z$$
 and
 %
 $$Et(f)\circ Et(g)=(J(f)\circ \eta_Y)\circ_{K(\RR)}(J(g)\circ \eta_Z)=
-$$$$J(f)\circ \eta_Y\circ rr_{Y,Z}(J(g)\circ \eta_Z)=J(f)\circ J(g)\circ \eta_Z$$
+$$$$J(f)\circ \eta_Y\circ rr_{Y,Z}(J(g)\circ \eta_Z)=J(f)\circ J(g)\circ \eta_Z,$$
 %
 where the second equality is by (\ref{2017.04.05.eq1}) and the third by
 condition (2) of Definition \ref{2015.12.22.def1}. This proves the composition
@@ -1702,7 +1703,7 @@ monad. To construct a functor $\RR^{lm}:K(\RR)\sr \D$.
 %We will write $RR$ instead of $RR_{Ob}$. 
 We set $\RR^{lm}_{Ob}=RR_{Ob}$. For 
 %
-$$f\in Mor_{K(\RR)}(X,Y)=Mor_{\D}(J(X),RR_{Ob}(Y))$$
+$$f\in Mor_{K(\RR)}(X,Y)=Mor_{\D}(J(X),RR_{Ob}(Y)),$$
 %
 where the equality is actually the bijection mentioned in the definition of
 $K(\RR)$, we set $\RR^{lm}_{Mor}(f)=rr_{X,Y}(f)$.
@@ -1796,13 +1797,13 @@ F^{\circ}(\RR)_{Mor}(f)=(F_{Mor}\circ RR_{Mor})(f)
 %
 We have
 %
-$$F^{\circ}(\RR)_{Mor}(f)=F^{\circ}(rr)((F\circ J)(f)\circ F^{\circ}(\eta)_Y)=rr_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)})$$
+$$F^{\circ}(\RR)_{Mor}(f)=F^{\circ}(rr)((F\circ J)(f)\circ F^{\circ}(\eta)_Y)=rr_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)}),$$
 %
 where the first equality is by (\ref{2017.04.05.eq3}) and
 (\ref{2017.04.11.eq3}) and the second by (\ref{2017.04.11.eq1}) and
 (\ref{2017.04.11.eq2}). On the other hand
 %
-$$(F_{Mor}\circ RR_{Mor})(f)=RR_{Mor}(F(f))=rr_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)})$$
+$$(F_{Mor}\circ RR_{Mor})(f)=RR_{Mor}(F(f))=rr_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)}),$$
 %
 where the second equality is by (\ref{2017.04.05.eq3}). This completes the proof of the lemma.
 \end{proof}
@@ -1842,7 +1843,7 @@ Note first that for $X\in\C_0$ one has
 %
 \begin{eq}
 \llabel{2017.03.12.eq1}
-Id_{K(F^{\circ}(\RR)),X}=F^{\circ}(\eta)_{X}=\eta_{F(X)}
+Id_{K(F^{\circ}(\RR)),X}=F^{\circ}(\eta)_{X}=\eta_{F(X)},
 \end{eq}%
 %
 where the first equality is by Construction \ref{2017.03.12.constr3} and the
@@ -1850,7 +1851,7 @@ second by Construction \ref{2017.02.24.constr1}. The data
 $(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the identity axiom because of the
 equalities
 %
-$$F_{\RR,X,X}(Id_{K(F^{\circ}(\RR)),X})=F_{\RR,X,X}(\eta_{F(X)})=\eta_{F(X)}=Id_{K(\RR),F(X)}$$
+$$F_{\RR,X,X}(Id_{K(F^{\circ}(\RR)),X})=F_{\RR,X,X}(\eta_{F(X)})=\eta_{F(X)}=Id_{K(\RR),F(X)},$$
 %
 where the first equality is by (\ref{2017.03.12.eq1}), the second by (\ref{2017.03.12.eq2}) and the third by Construction \ref{2017.03.12.constr3}. 
 
@@ -1867,7 +1868,7 @@ $(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the composition axiom because of the
 equalities
 %
 $$F_{\RR,X,Z}(f\circ_{K(F^{\circ}(\RR))} g)=F_{\RR,X,Z}(f\circ_{\D} rr_{F(Y),F(Z)}(g))=
-$$$$f\circ_{\D} rr_{F(Y),F(Z)}(g)=f\circ_{K(\RR)}g=F_{\RR,X,Y}(f)\circ_{K(RR)}F_{\RR,Y,Z}(g)$$
+$$$$f\circ_{\D} rr_{F(Y),F(Z)}(g)=f\circ_{K(\RR)}g=F_{\RR,X,Y}(f)\circ_{K(RR)}F_{\RR,Y,Z}(g),$$
 %
 where the first equality is by (\ref{2017.03.12.eq3}), the second by (\ref{2017.03.12.eq2}), the third by Construction \ref{2017.03.12.constr3} and the fourth again by (\ref{2017.03.12.eq2}). 
 
@@ -1979,7 +1980,7 @@ Let $X\in\C$. Then
 rr_{X,X}((\eta^{\D}_X,\nu_{X,X}\circ \eta^{\D'}_X))=
 rr_{X,X}((\eta^{\D}_X,\eta^{\D'}_X))=
 rr_{X,X}(\eta_X)=
-Id_{RR(X)}
+Id_{RR(X)},
 \end{eq}%
 %
 where the first equality holds by Definition
@@ -1991,7 +1992,7 @@ Therefore,
 %
 $$rr^{\D}_{X,X}(\eta^{\D}_X)=
 pr_{\D}(rr_{X,X}((\eta^{\D}_X,\nu_{X,X}\circ \eta^{\D'}_X)))=
-pr_{\D}(Id_{RR(X)})=Id_{RR_{\D}(X)}$$
+pr_{\D}(Id_{RR(X)})=Id_{RR_{\D}(X)},$$
 %
 where the first equality holds by (\ref{2017.04.21.eq2}), the second by
 (\ref{2017.04.23.eq1}) and the third by the definition of $pr_{\D}$. This
@@ -2005,7 +2006,7 @@ Let $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$. Then
 $$$$pr_{\D}(\eta_X)\circ pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
 pr_{\D}(\eta_X\circ rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
 $$$$pr_{\D}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))=
-f
+f,
 \end{eq}%
 %
 where the first equality holds by (\ref{2017.04.21.eq1}) and
@@ -2033,7 +2034,7 @@ $$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Z
 %
 \begin{eq}
 \llabel{2017.04.21.eq5}
-rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z))
+rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)),
 \end{eq}%
 %
 where the first equality holds by the property
@@ -2056,7 +2057,7 @@ $$$$pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ rr_{Y,Z}((g,\nu_{Y,Z}
 %
 $$$$pr_{\D}(rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)))=
 %
-$$$$rr^{\D}_{X,Z}(f\circ rr^{\D}_{Y,Z}(g))$$
+$$$$rr^{\D}_{X,Z}(f\circ rr^{\D}_{Y,Z}(g)),$$
 %
 where the first equality holds by (\ref{2017.04.21.eq2}), the second since
 $pr_{\D}$ commutes with compositions, the third by (\ref{2017.04.21.eq5}), and
@@ -2064,7 +2065,7 @@ the fourth again by (\ref{2017.04.21.eq2}). This proves the property
 \ref{2017.04.13.def1}\ref{2017.04.19.eq6} for $\RR_{\D}$ and completes
 Construction \ref{2017.04.21.constr1}.  \ec
 %
-We want to emphasize the following particular case of Construction \ref{2017.04.21.constr1}.
+We want to emphasize the following case of Construction \ref{2017.04.21.constr1}.
 %
 \begin{problem}
 \llabel{2017.04.23.prob1}
@@ -2115,7 +2116,7 @@ one has:
 \end{enumerate}
 %
 A left $\R$-module in the monoidal form with values in $\E$ is a pair ${\bf
-  L}=(L,\rho)$ where $L:\C\sr \E$ is a functor and $\rho$ an $\R$-module
+  L}=(L,\rho)$, where $L:\C\sr \E$ is a functor and $\rho$ an $\R$-module
 structure on $L$.
 \end{definition}
 %
@@ -2130,7 +2131,7 @@ Left modules can also be defined in Kleisli form.
 \llabel{2017.04.15.def1} 
 Let $\C$,$\E$ be categories and
 $\RR=(RR_{Ob},\eta,rr)$ a monad on $\C$. A (left) $\RR$-module with values in
-$\E$ in the Kleisli form is a pair $(LM_{Ob},lm)$ where $LM_{Ob}:Ob(\C)\sr
+$\E$ in the Kleisli form is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
 Ob(\E)$ is a function and $lm$ is a family, parametrized by $X,Y\in Ob(\C)$ of
 functions
 %
@@ -2156,7 +2157,7 @@ $\RR=(RR_{Ob},\eta,rr)$ on $\C$, and a function $LM_{Ob}:Ob(\C)\sr Ob(\E)$ to
 construct a bijection between the following two sets:
 %
 \begin{enumerate}
-\item the set of pairs $(LM_{Mor},\rho)$ where $LM_{Mor}:Mor(\C)\sr Mor(\E)$ is
+\item the set of pairs $(LM_{Mor},\rho)$, where $LM_{Mor}:Mor(\C)\sr Mor(\E)$ is
   a function such that $LM=(LM_{Ob},LM_{Mor})$ is a functor and $(LM,\rho)$ is
   a left $\RR^M$-module in the monoidal form,
 \item the set of families $lm$, parametrized by $X,Y\in Ob(\C)$, of functions
@@ -2199,7 +2200,7 @@ $\RR$ with values in a category $\E$ and the set of functors from the Kleisli
 category $K(\RR)$ of $\RR$ to $\E$. Whether this bijection is the identity
 bijection or not depends on how the expressions such as ``collection of data''
 or ``family of functions'' are translated into the formal constructions of set
-theory. We assume that in this particular case they have been translated in a
+theory. We assume that in this case they have been translated in a
 such a way that this bijection is the identity and left modules over $\RR$ with
 values in $\E$ are actually and precisely the same as (covariant) functors from
 $K(\RR)$ to $\E$.
@@ -2208,7 +2209,7 @@ $K(\RR)$ to $\E$.
 \llabel{2017.03.16.def1} 
 Let $J:\C\sr\D$ be a functor and
 $\RR=(RR_{Ob},\eta,rr)$ a $J$-monad. A left module over $\RR$ with values in a
-category $\E$ is a functor $\LM:K(\RR)\sr \E$, that is, a pair $(LM_{Ob},lm)$
+category $\E$ is a functor $\LM:K(\RR)\sr \E$, that is, a pair $(LM_{Ob},lm)$,
 where $LM_{Ob}:Ob(\C)\sr Ob(\E)$ is a function and $lm$ is a family,
 parametrized by $X,Y\in Ob(\C)$, of functions
 %
@@ -2277,7 +2278,7 @@ Indeed, for $f:X\sr Y$ in $Mor(\C)$ we have
 %
 $$({\bf L}^K)^f_{Mor}(f)={\bf L}^K_{Mor}(Et_{\R^K,Mor}(f))=
 $$$${\bf L}^K_{Mor}(f\circ \eta_Y)=L_{Mor}(f\circ \eta_Y)\circ \rho_Y=L_{Mor}(f)\circ (L_{Mor}(\eta_Y)\circ \rho_Y)=
-$$$$L_{Mor}(f)\circ Id_{L(Y)}=L_{Mor}(f)$$
+$$$$L_{Mor}(f)\circ Id_{L(Y)}=L_{Mor}(f),$$
 %
 where the first equality is by Definition \ref{2017.04.05.def1}, the second by
 (\ref{2017.04.09.eq2}), the third by (\ref{2017.04.09.eq4}), the fourth by the
@@ -2374,7 +2375,7 @@ F\crc(lm)_{X,Y}((F\circ J)(f)\circ F\crc(\eta)_Y)=
 $$$$F\crc(lm)_{X,Y}(J(F(f))\circ \eta_{F(Y)})=
 lm_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)})=
 $$$$\LM^f_{Mor}(F(f))=
-(F\circ \LM^f_{Mor})(f)$$
+(F\circ \LM^f_{Mor})(f),$$
 %
 where the first equality is by (\ref{2017.04.11.eq5}), the second by definition
 of $F\circ J$ and (\ref{2017.04.11.eq1}), the third by (\ref{2017.04.17.eq8}),
@@ -2400,14 +2401,14 @@ Note that in the notation of Problem \ref{2017.04.05.prob1}, we have
 %
 \begin{eq}
 \llabel{2017.04.17.eq9}
-J\crc(\R^K)^f=J\circ (\R^K)^f=J\circ R
+J\crc(\R^K)^f=J\circ (\R^K)^f=J\circ R,
 \end{eq}%
 %
 where the first equality is by (\ref{2017.04.17.eq6}) and the second by (\ref{2017.04.05.eq2}). Similarly,
 %
 \begin{eq}
 \llabel{2017.04.17.eq10}
-J\crc(\L^K)^f=J\circ ({\bf L}^K)^f=J\circ L
+J\crc(\L^K)^f=J\circ ({\bf L}^K)^f=J\circ L,
 \end{eq}%
 %
 where the second equality is by (\ref{2017.04.13.eq2}) and the third by (\ref{2017.04.17.eq4}).
@@ -2509,7 +2510,7 @@ $f:\Gamma''\sr \Gamma'$ is over $\Gamma$ if
 $$f\circ p_{\Gamma',\Gamma}=p_{\Gamma'',\Gamma}$$
 %
 If $\Delta'$ is an object over $\Delta$ and $f:\Gamma\sr \Delta$ is a morphism
-then we denote simply by $f^*(\Delta')$ the object $f^*(\Gamma',n)$ where
+then we denote simply by $f^*(\Delta')$ the object $f^*(\Gamma',n)$, where
 $n=l(\Gamma')-l(\Delta)$. Note that $n$ can always be inferred from $f$ and
 $\Gamma'$.
 
@@ -2614,11 +2615,11 @@ We set
 %
 \begin{eq}\llabel{2016.01.19.eq1}
 Ob(CC[F])=\amalg_{X\in CC} F(ft^{l(X)}(X))\times\dots\times F(ft^2(X))\times
-F(ft(X))
+F(ft(X)),
 \end{eq}%
 %
 where the product of the empty sequence of factors is a 1-point set. We will
-write elements of $Ob(CC[F])$ as $(X,\Gamma)$ where $X\in CC$ and
+write elements of $Ob(CC[F])$ as $(X,\Gamma)$, where $X\in CC$ and
 $\Gamma=(T_0,\dots,T_{l(X)-1})$. Note that $ft^{l(X)}(X)=pt$ for any $X$ and
 therefore all the products in (\ref{2016.01.19.eq1}) start with $F(pt)$.
 
@@ -2647,7 +2648,7 @@ We define the length function as
 %
 $$l((X,\Gamma))=l(X)$$
 
-If $l((X,\Gamma))=0$ then $X=pt$ and $\Gamma=()$ where $()$ is the unique
+If $l((X,\Gamma))=0$ then $X=pt$ and $\Gamma=()$, where $()$ is the unique
 element of the one point set that is the product of the empty sequence. We will
 often write $(pt,())$ as $pt$.
 
@@ -2663,7 +2664,7 @@ We define the p-morphisms as
 %
 $$p_{(X,\Gamma)}=((X,\Gamma),ft(X,\Gamma), p_X)$$
 
-For $(Y,\Gamma')$ such that $l((Y,\Gamma'))>0$ and $f:(X,\Gamma)\sr ft(Y,\Gamma')$ where $\Gamma=(T_0,\dots,T_{l(X)-1})$ and $\Gamma'=(T_0',\dots,T_{l(Y)-1}')$ we set
+For $(Y,\Gamma')$ such that $l((Y,\Gamma'))>0$ and $f:(X,\Gamma)\sr ft(Y,\Gamma')$, where $\Gamma=(T_0,\dots,T_{l(X)-1})$ and $\Gamma'=(T_0',\dots,T_{l(Y)-1}')$ we set
 %
 \begin{eq}\llabel{2016.01.31.eq1}
 f^*((Y,\Gamma'))=(f^*(Y),(T_0,\dots,T_{l(X)-1},F(f)(T'_{l(Y)-1}))).
@@ -2863,7 +2864,7 @@ which coincides with our goal (\ref{2016.01.31.eq3}).
 \comment{
 \begin{lemma}
 \llabel{2015.08.26.l7} 
-Let $(Y,\Gamma')\ge (W,\Delta)$ where
+Let $(Y,\Gamma')\ge (W,\Delta)$, where
 $\Gamma'=(T'_0,\dots,T'_{l(Y)-1})$ and let $f:(X,\Gamma)\sr (W,\Delta)$ be a
 morphism where $\Gamma=(T_0,\dots,T_{l(X)-1})$. Then one has
 %
@@ -2920,7 +2921,7 @@ objects of $Sets(U)$ is $U$. The set of morphisms is
 %
 $$Mor(Sets(U))=\cup_{X,Y\in U}Fun(X,Y)$$
 %
-Since a function from $X$ to $Y$ is defined as a triple $(X,Y,G)$ where $G$ is
+Since a function from $X$ to $Y$ is defined as a triple $(X,Y,G)$, where $G$ is
 the graph subset of this function the domain and codomain functions are well
 defined on $Mor(Sets(U))$ such that
 %
@@ -2982,7 +2983,7 @@ Recall that the category $T$ has as the set of objects the set of natural number
 $$Mot_T=\amalg_{m,n} Fun(stn(m),RR(n))$$
 %
 Therefore the set of morphisms in $T$ from $m$ to $n$ is the set of iterated
-pairs $((m,n),f)$ where $f\in Fun(stn(m),RR(n))$. We fix the obvious bijection
+pairs $((m,n),f)$, where $f\in Fun(stn(m),RR(n))$. We fix the obvious bijection
 between this set and $Fun(stn(m),RR(n))$ and use the corresponding functions in
 both directions as coercions. A coercion, in the terminology of the proof
 assistant Coq, is a function $f:X\sr Y$ such that when an expression denoting
@@ -3021,7 +3022,7 @@ $Fun(RR(m),RR(n))$ is expected it has to be replaced by $RR(f)$.
 \llabel{2015.11.20.rem4} 
 We can not replace $\amalg$ by $\cup$ in our
 definition of the set of morphisms of $T$ because for a general $\RR$ the sets
-$RR(m,n)$ are not disjoint.  For example, if $RR(m)=pt$ where $pt$ is a fixed
+$RR(m,n)$ are not disjoint.  For example, if $RR(m)=pt$, where $pt$ is a fixed
 one element set then $RR$ has a (unique) structure of a $Jf$-relative monad and
 $RR(m,n)=RR(m,n')$ for all $m,n,n'$. Therefore no function to $\nat$ from the
 union of these sets can distinguish the codomain of a morphism. In particular,
@@ -3190,7 +3191,7 @@ We have ${L}(\iota_n^1)=L(\partial_n^n)=(x_0^{n+1},\dots,x^{n+1}_{n-1})$. By
 Lemma \ref{2015.08.26.l2} and (\ref{2015.08.22.eq8}) we get
 %
 $$qq^i({L}(\iota_n^1))=(\iota_{n+1}^i(x_0^{n+1}),\dots,\iota_{n+1}^i(x_{n-1}^{n+1}),x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})=$$
-$$=(x_0^{n+1+i},\dots,x_{n-1}^{n+1+i},x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})={L}(\partial_n^{n+i})$$
+$$=(x_0^{n+1+i},\dots,x_{n-1}^{n+1+i},x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})={L}(\partial_n^{n+i}),$$
 %
 where the last equality is (\ref{2015.08.24.eq7}). 
 \end{proof}
@@ -3207,7 +3208,7 @@ $$qq^i(x_0^m,\dots,x^m_{m-1},r)=(x_0^{m+i},\dots,x^{m+i}_{m-1},\iota_m^i(r),x_m^
 One has
 %
 $$qq^i(x_0^m,\dots,x^m_{m-1},r)=(\iota_m^i(x_0^m),\dots,\iota_m^i(x^m_{m-1}),\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i})=$$
-$$(x_0^{m+i},\dots,x^{m+i}_{m-1},\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i})$$
+$$(x_0^{m+i},\dots,x^{m+i}_{m-1},\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i}),$$
 %
 where the first equality is by Lemma \ref{2015.08.26.l2} and the second one by
 (\ref{2015.08.22.eq8}).
@@ -3282,7 +3283,7 @@ $$p_{\wh{m+1}}\circ_C f=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-1)))$$
 \begin{proof}
 Both sides of the first equality are elements of $Fun(stn(n), RR(m+1))$ and for $i\in stn(n)$ we have
 %
-$$(f\circ_C p_{\wh{n+1}})(i)=(L(\iota_{n}^1)\circ_T f)(i)=f(i)$$
+$$(f\circ_C p_{\wh{n+1}})(i)=(L(\iota_{n}^1)\circ_T f)(i)=f(i),$$
 %
 where the second equality is by (\ref{2015.08.26.eq4}). 
 
@@ -3327,7 +3328,7 @@ by Lemma \ref{2015.07.24.l1}(2).
 Both sides of the second equation are elements of $Fun(stn(1),RR(m+1))$ and it
 is sufficient that their values on $0$ coincide. We have
 %
-$$(q(f)\circ_C (x_n^{n+1}))(0)=((x_n^{n+1})\circ_T qq(f))(0)=((x_n^{n+1})\circ \mbind{qq(f)})=$$$$\mbind{qq(f)}(x_n^{n+1})=qq(f)(n)=x_m^{m+1}$$
+$$(q(f)\circ_C (x_n^{n+1}))(0)=((x_n^{n+1})\circ_T qq(f))(0)=((x_n^{n+1})\circ \mbind{qq(f)})=$$$$\mbind{qq(f)}(x_n^{n+1})=qq(f)(n)=x_m^{m+1},$$
 %
 where the fourth equality is by (\ref{2015.08.24.eq5}) and the fifth by
 (\ref{2015.08.26.eq9}). This completes the proof of Lemma \ref{2016.01.15.l3}.
@@ -3342,8 +3343,8 @@ could be understood either as the canonical morphism $m\sr n$ using the
 notation $p_{\Gamma',\Gamma}$ introduced in Section \ref{onCsystems} or as the
 canonical morphism $m\sr m-n$ using the notation $p_{\Gamma,i}$ that we have
 used in \cite{Csubsystems}.  The use of the wide-hat diacritic allows to
-distinguish between $p_{\wh{m},\wh{n}}$ - a morphism $\wh{m}\sr \wh{n}$, and
-$p_{\wh{m},n}$ - a morphism $\wh{m}\sr \wh{m-n}$.
+distinguish between $p_{\wh{m},\wh{n}}$, a morphism $\wh{m}\sr \wh{n}$, and
+$p_{\wh{m},n}$, a morphism $\wh{m}\sr \wh{m-n}$.
 %
 \begin{lemma}
 \llabel{2015.08.22.l6}
@@ -3381,7 +3382,7 @@ parts are proved by induction simultaneously. One has
   second from the identity axiom of the category $C(\RR)$,
 \item for the successor of $i$ we have
 %
-$$p_{\wh{n+i+1},i+1}=p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=(x_0^{n+i+1},\dots,x_{n-1}^{n+i+1})$$
+$$p_{\wh{n+i+1},i+1}=p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=(x_0^{n+i+1},\dots,x_{n-1}^{n+i+1}),$$
 %
 where the second equality is by the second part of the inductive
 assumption. For the inductive step in the second part we have
@@ -3417,7 +3418,7 @@ It follows immediately from Lemma \ref{2015.08.26.l1}.
 %
 \begin{lemma}
 \llabel{2015.09.09.l1}
-Let $f=(f(0),\dots,f(n-1))$ be a morphism from $\wh{m}$ to $\wh{n}$ where $n>0$. Then one has
+Let $f=(f(0),\dots,f(n-1))$ be a morphism from $\wh{m}$ to $\wh{n}$, where $n>0$. Then one has
 %
 $$s_f=(x_0^{m},\dots,x_{m-1}^{m},f(n-1))$$
 %
@@ -3430,7 +3431,7 @@ $$s_f\circ p_{\wh{m+1}}=Id_{\wh{m}}$$
 %
 Therefore, by Lemma \ref{2015.08.22.l7}, $s_f$ is of the form
 $(x_0^m,\dots,x_{m-1}^m,sf)$ for some $sf\in RR(m)$. By \cite[Definition
-  2.3(3)]{Csubsystems} we have $f=s_f\circ q(ft(f),\wh{n})$ where $ft(f)=f\circ
+  2.3(3)]{Csubsystems} we have $f=s_f\circ q(ft(f),\wh{n})$, where $ft(f)=f\circ
 p_{\wh{n}}$. By Lemma \ref{2015.07.24.l1}(1) we have
 $ft(f)=(f(0),\dots,f(n-2))$ and by Lemma \ref{2016.01.15.l3} and
 (\ref{2015.08.26.eq9}) we have
@@ -3456,7 +3457,7 @@ f(n-1)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(x_{m}^{m+1})
 For the first series of equalities we get, by inserting the coercion $RR$ and
 rewriting of the right hand side, the following
 %
-$$\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))=(\mbind{(L(\iota_m^1))}\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})(f(i))=$$$$\mbind{(L(\iota_m^1)\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})}(f(i))=\mbind{(L(\iota_m^1)\hc (x_0^m,\dots,x_{m-1}^m,sf))}(f(i))=$$$$\mbind{(x_0^m,\dots,x_{m-1}^m)}(f(i))=\mbind{\eta_{m}}(f(i))=Id_{RR(m)}(f(i))=f(i)$$
+$$\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))=(\mbind{(L(\iota_m^1))}\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})(f(i))=$$$$\mbind{(L(\iota_m^1)\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})}(f(i))=\mbind{(L(\iota_m^1)\hc (x_0^m,\dots,x_{m-1}^m,sf))}(f(i))=$$$$\mbind{(x_0^m,\dots,x_{m-1}^m)}(f(i))=\mbind{\eta_{m}}(f(i))=Id_{RR(m)}(f(i))=f(i),$$
 %
 where the fourth equality is by (\ref{2016.01.15.eq3}). 
 
@@ -3702,7 +3703,7 @@ We have:
   \ref{2015.08.26.l3a}.
 %
 \item Operation $S'$ is defined on the set of pairs $((m,r)\in
-  \wt{Ob}',\wh{n}\in Ob)$ where $n>\partial(mb_{\RR}^!(m,r))$. Since
+  \wt{Ob}',\wh{n}\in Ob)$, where $n>\partial(mb_{\RR}^!(m,r))$. Since
   $\partial(mb_{\RR}^!(m,r))=m+1$ we obtain the required domain of
   definition. The operation itself is given by
 %
@@ -3726,7 +3727,7 @@ The theorem is proved.
 %
 The length function on $Ob=\nat$ is the identity. Of the remaining three
 operations that define the pre-B-system structure on the pair of sets
-$(Ob,\wt{Ob}')$ - $pt$, $ft$ and $\partial'$, the first two are described above
+$(Ob,\wt{Ob}')$, namely $pt$, $ft$ and $\partial'$, the first two are described above,
 and $\partial'$ is given by $\partial'((m,r))=m+1$.
 
 This completes the description of the pre-B-system structure on $(Ob,\wt{Ob}')$
@@ -3814,7 +3815,7 @@ Define now a function $\psi:RR(2)\sr RR(2)$ by the formula
 %
 $$\psi=\partial^0_2\circ \partial^0_3\circ \theta_{3,4}(x_0^3,-)\circ \theta_{2,3}(x_1^2,-)$$
 %
-One can verify that for any $Jf$-relative monad $RR$, $\psi=\sigma$ where
+One can verify that for any $Jf$-relative monad $RR$, $\psi=\sigma$, where
 $\sigma$ is the permutation of $0$ and $1$ in $stn(2)$.
 
 In the substitution notation this can be seen as follows:
@@ -3884,7 +3885,7 @@ same symbol $\RR$ as the underlying $Jf$-relative monad.
 
 This functor is isomorphic to the (contravariant) functor represented by the
 object $\wh{1}$ but it is not equal to this functor since the set of elements
-of the form $((\wh{n},\wh{1}),r')$ where $r'\in RR(1,n)$ is isomorphic but not
+of the form $((\wh{n},\wh{1}),r')$, where $r'\in RR(1,n)$ is isomorphic but not
 equal to the set $RR(n)$.
 \end{example}
 
@@ -3898,21 +3899,21 @@ regular sub-quotients given in \cite{Csubsystems}.
 By construction,
 %
 \begin{eq}\llabel{2016.01.21.eq3}
-Ob(C(\RR,\LM))=\amalg_{n\in\nat}Ob_n(\RR,\LM)
+Ob(C(\RR,\LM))=\amalg_{n\in\nat}Ob_n(\RR,\LM),
 \end{eq}%
 %
 where 
 %
 $$Ob_n(\RR,\LM)=\LM(\wh{0})\times\dots\times\LM(\wh{n-1})$$
 %
-and therefore objects of $C(\RR,\LM)$ are pairs of the form $(n,\Gamma)$ where
-$\Gamma$ is a sequence $(T_0,\dots,T_{n-1})$ where $T_i\in LM(\wh{i})$. While
+and therefore objects of $C(\RR,\LM)$ are pairs of the form $(n,\Gamma)$, where
+$\Gamma$ is a sequence $(T_0,\dots,T_{n-1})$, where $T_i\in LM(\wh{i})$. While
 the number $n$ in a pair $(n,\Gamma)$ is an object of $C(\RR)$ we will not add
 the ${\,\,\wh{}\,\,}$ diacritic to it since no confusion of the kind possible
 with objects of $C(RR)$ and objects of $F$ can arise. We may sometimes omit $n$
 from our notation altogether since it can be recovered from
 $\Gamma$. Similarly, while the morphisms of $C(\RR,\LM)$ are given by iterated
-pairs of the form $(((m,\Gamma),(n,\Gamma')),((\wh{m},\wh{n}),f))$ where $f\in
+pairs of the form $(((m,\Gamma),(n,\Gamma')),((\wh{m},\wh{n}),f))$, where $f\in
 \RR(n,m)$ we will sometimes write them as $f:(m,\Gamma)\sr (n,\Gamma')$ or
 $f:\Gamma\sr \Gamma'$ or even just as $f$.
 
@@ -3928,7 +3929,7 @@ and the morphism $q(f,Y):f^*(Y)\sr Y$ by the formula $q(f,Y)=qq(f)$.
 % 
 \begin{lemma}
 \llabel{2015.08.26.l8}
-Let $X=(m,(T_0,\dots,T_{m-1}))$ and $Y=(n,(T_0,\dots,T_{n-2},T))$ where $m>n-1$. Then one has
+Let $X=(m,(T_0,\dots,T_{m-1}))$ and $Y=(n,(T_0,\dots,T_{n-2},T))$, where $m>n-1$. Then one has
 %
 $$p_{Y}^*(X)=(m+1,(T_0,\dots,T_{n-2},T,\partial_{n-1}^{n-1}(T_{n-1}),\dots,\partial_{m-1}^{n-1}(T_{m-1})))$$
 %
@@ -3947,7 +3948,7 @@ where $i=m-n+1$. Therefore,
 %
 $$p_Y^*(X)=p_Y^*(X,i)=$$$$(p_{\wh{n}}^*(\wh{m},i), (T_0,\dots,T_{n-2},T,q(p_{\wh{n}},ft^i(\wh{m}),0)(T_{m-i}),\dots,q(p_{\wh{n}},ft(\wh{m}),i-1)(T_{m-1}))=$$
 $$(m+1,(T_0,\dots,T_{n-2},T,\iota_{n-1}^1(T_{n-1}),\dots,qq^{i-1}(L(\iota_{n-1}^1))(T_{m-1})))=$$
-$$(m+1,(T_0,\dots,T_{n-2},T,\partial_{n-1}^{n-1}(T_{n-1}),\dots,\partial_{m-1}^{n-1}(T_{m-1})))$$
+$$(m+1,(T_0,\dots,T_{n-2},T,\partial_{n-1}^{n-1}(T_{n-1}),\dots,\partial_{m-1}^{n-1}(T_{m-1}))),$$
 %
 where the third equality is by Lemma \ref{2015.08.22.l6}(2) and the fourth one by Lemma \ref{2015.08.26.l3a}. 
 \end{proof}
@@ -4032,10 +4033,10 @@ provides us with the explicit form of the operation $f\mapsto s_f$.
 %
 \begin{lemma}
 \llabel{2015.09.09.l2}
-Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$ where $n>0$. Then $s_f:X\sr (ft(f))^*(Y)$,
+Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$, where $n>0$. Then $s_f:X\sr (ft(f))^*(Y)$,
 %
 \begin{eq}\llabel{2015.09.09.eq1}
-s_f=(x_0^{m},\dots,x_{m-1}^{m},f(n-1))
+s_f=(x_0^{m},\dots,x_{m-1}^{m},f(n-1)),
 \end{eq}%
 %
 where $ft(f)=f\circ p_Y$ and $m=l(X)$. 
@@ -4052,7 +4053,7 @@ our goal follows from Lemma \ref{2015.09.09.l1}.
 \llabel{2015.09.03.l1}
 For $i>0$, $f:X\sr ft^i(Y)$ and $s:ft(Y)\sr Y$ in $\wt{Ob}(C(\RR,\LM))$ one has $s:f^*(ft(Y))\sr f^*(Y)$,
 %
-$$f^*(s)=(x_0^{m+i-1},\dots,x_{m+i-2}^{m+i-1},\mbind{qq^{i-1}(f)}(s(n+i-1)))$$
+$$f^*(s)=(x_0^{m+i-1},\dots,x_{m+i-2}^{m+i-1},\mbind{qq^{i-1}(f)}(s(n+i-1))),$$
 %
 where $m=l(\Gamma')$ and $n=l(\Gamma)$.
 \end{lemma}
@@ -4088,13 +4089,13 @@ To show that this is a bijection let us construct an inverse. For $n\in\nat$, $\
 %
 $$mb_{\RR,\LM}^!(n,(\Gamma,o))=((ft((n+1,\Gamma)),(n+1,\Gamma)),(x^{n}_0,\dots,x^{n}_{n-1},o))$$
 %
-This is a morphism from $ft(X)$ to $X$ where $X=(n+1,\Gamma)$. The equation
+This is a morphism from $ft(X)$ to $X$, where $X=(n+1,\Gamma)$. The equation
 $mb_{\RR,\LM}^!(n,(\Gamma,o))\circ p_X=Id_{ft(X)}$ follows from Lemma
 \ref{2015.08.22.l5}.
 
 Let us show now that $mb_{\RR,\LM}$ and $mb_{\RR,\LM}^!$ are mutually inverse bijections. Let $s\in \wt{Ob}$ be as above, then:
 %
-$$mb_{\RR,\LM}^!(mb_{\RR,\LM}(s))=mb_{\RR,\LM}^!(n,(\Gamma,s(n)))=((ft(X),X),(x^{n}_0,\dots,x^{n}_{n-1},s(n)))=s$$
+$$mb_{\RR,\LM}^!(mb_{\RR,\LM}(s))=mb_{\RR,\LM}^!(n,(\Gamma,s(n)))=((ft(X),X),(x^{n}_0,\dots,x^{n}_{n-1},s(n)))=s,$$
 %
 where the last equality follows from the assumption that $s\in \wt{Ob}$ and Lemma \ref{2015.08.22.l5}.
 
@@ -4108,7 +4109,7 @@ This completes Construction \ref{2015.08.22.constr1}.
 %
 \begin{lemma}
 \llabel{2015.09.09.l3}
-Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$ where $X=(m,(T_0,\dots,T_{m-1}))$, $Y=(n,(T_0',\dots,T_{n-1}'))$. Then one has
+Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$, where $X=(m,(T_0,\dots,T_{m-1}))$, $Y=(n,(T_0',\dots,T_{n-1}'))$. Then one has
 %
 $$mb_{\RR,\LM}(s_f)=(m,((T_0,\dots,T_{m-1},(f(0),\dots,f(n-2))(T_{n-1}')), f(n-1)))$$
 %
@@ -4135,7 +4136,7 @@ $$\theta^{\LM}_{m,n}:RR(m)\times LM(n)\sr LM(n-1)$$
 by the formula
 %
 \begin{eq}\llabel{2015.09.07.eq2}
-\theta^{\LM}_{m,n}(r,E)=$$$$(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))(E)=(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_m^{n-m-1}(r),x_m^{n-1},\dots, x_{n-2}^{n-1})(E)
+\theta^{\LM}_{m,n}(r,E)=$$$$(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))(E)=(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_m^{n-m-1}(r),x_m^{n-1},\dots, x_{n-2}^{n-1})(E),
 \end{eq}%
 %
 where the second equality is the equality of Lemma \ref{2015.08.28.l1}. As in
@@ -4150,14 +4151,14 @@ Let $Ob=Ob(C(\RR,\LM))$ and let $\wt{Ob}'=\wt{Ob}'(\RR,\LM)$ be the right hand s
 %
 \begin{enumerate}
 \item Operation $T'$ is defined on the set $T'_{dom}$ of pairs
-  $(m,\Gamma),(n,\Gamma')\in Ob$ where $\Gamma=(T_0,\dots,T_{m-1})$,
+  $(m,\Gamma),(n,\Gamma')\in Ob$, where $\Gamma=(T_0,\dots,T_{m-1})$,
   $\Gamma'=(T_0',\dots,T_{n-1}')$ such that $m>0$, $n>m-1$ and $T_i=T_i'$ for
   $i=0,\dots,m-2$. It takes values in $Ob$ and is given by
 %
 $$T((m,\Gamma),(n,\Gamma'))=$$$$(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots,\partial_{n-1}^{m-1}(T'_{n-1})))$$
 %
 \item Operation $\wt{T}'$ is defined on the set $\wt{T}'_{dom}$ of pairs
-  $(m,\Gamma)\in Ob$, $(n,(\Gamma',s))\in\wt{Ob}'$ where
+  $(m,\Gamma)\in Ob$, $(n,(\Gamma',s))\in\wt{Ob}'$, where
   $\Gamma=(T_0,\dots,T_{m-1})$, $\Gamma'=(T_0',\dots,T_{n-1}')$ such that
   $m>0$, $n+1>m-1$ and $T_i=T_i'$ for $i=0,\dots,m-2$. It takes values in
   $\wt{Ob'}$ and is given by
@@ -4165,14 +4166,14 @@ $$T((m,\Gamma),(n,\Gamma'))=$$$$(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}
 $$\wt{T}'((m,\Gamma),(n,(\Gamma',s)))=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_{n}^{m-1}(s)))$$
 %
 \item Operation $S'$ is defined on the set of pairs $(m,(\Gamma,r))\in
-  \wt{Ob}'$, $(n,\Gamma')\in Ob$ where $\Gamma=(T_0,\dots,T_{m})$,
+  \wt{Ob}'$, $(n,\Gamma')\in Ob$, where $\Gamma=(T_0,\dots,T_{m})$,
   $\Gamma'=(T_0',\dots,T_{n-1}')$ such that $n>m+1$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in the set $Ob$ and is given by
 %
 $$S'((m,(\Gamma,r)),(n,\Gamma'))=$$$$(n-1,(T_0',\dots,T_{m-1}',\theta_{m,m+1}(r,T_{m+1}'),\theta_{m,m+2}(r,T_{m+2}'),\dots,\theta_{m,n-1}(r,T_{n-1}')))$$
 %
 \item Operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in
-  \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$ where $\Gamma=(T_0,\dots,T_{m})$,
+  \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$, where $\Gamma=(T_0,\dots,T_{m})$,
   $\Gamma'=(T_0',\dots,T_{n}')$ such that $n>m$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in $\wt{Ob}'$ and is given by
 %
@@ -4199,7 +4200,7 @@ $mb^!_{\RR,\LM}$. We have:
 The operation itself is given by 
 %
 $$T'((m,\Gamma),(n,\Gamma'))=p_{(m,\Gamma)}^*((n,\Gamma'))=$$
-$$(m,(T_0,\dots,T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots, \partial_{n-1}^{m-1}(T_{n-1}')))$$
+$$(m,(T_0,\dots,T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots, \partial_{n-1}^{m-1}(T_{n-1}'))),$$
 %
 where the first equality is by Definition \ref{2015.08.26.def1}(1) and the second by Lemma \ref{2015.08.26.l8}. 
 %
@@ -4212,14 +4213,14 @@ where the first equality is by Definition \ref{2015.08.26.def1}(1) and the secon
 To verify the formula for the operation itself consider the equalities:
 %
 $$\wt{T}'((m,\Gamma),(n,(\Gamma',s)))=mb(p_{(m,\Gamma)}^*(mb^!(n,(\Gamma',s))))=$$
-$$mb(p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s)))))$$
+$$mb(p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s))))),$$
 %
 where the first equality is by Definition \ref{2015.08.26.def1}(2). By Lemma
 \ref{2015.09.03.l1} we can extend these equalities as follows:
 %
 $$mb(p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s)))))=$$
 $$mb(p_{X}^*(ft(Y)),(p_{X}^*(Y),(x^{n+1}_0,\dots,x^{n+1}_{n},(qq^{n-m+1}(\iota^1_{m-1}))(s))))=$$
-$$(n+1,(p_{X}^*(Y),\partial_{n}^{m-1}(s)))=(n+1,(T((m,\Gamma),(n+1,\Gamma')),\partial_n^{m-1}(s)))$$
+$$(n+1,(p_{X}^*(Y),\partial_{n}^{m-1}(s)))=(n+1,(T((m,\Gamma),(n+1,\Gamma')),\partial_n^{m-1}(s))),$$
 %
 where $X=(m,\Gamma)$, $Y=(n+1,\Gamma')$, the first equality is by Lemma
 \ref{2015.09.03.l1}, the second by Lemma \ref{2015.08.26.l3a} and the third by
@@ -4237,7 +4238,7 @@ S'((m,(\Gamma,r)),(n,\Gamma'))=(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))
 %
 Next we have 
 %
-$$(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))=$$$$((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B)=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B,i)$$
+$$(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))=$$$$((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B)=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B,i),$$
 %##
 where $A=(m+1,\Gamma)$, $B=(n,\Gamma')$ and $i=n-m-1$. To apply Lemma
 \ref{2016.01.31.l1} we should take $X=\wh{m}$, $lx=m$ and $Y=\wh{n}$, $ly=n$
@@ -4247,7 +4248,7 @@ follows
 %
 $$f^*((n,\Gamma'),i)=(rr^*(\wh{n},i),(T_0,\dots,T_{m-1},q(rr,ft^i(\wh{n}),0)(T'_{m+1}),\dots,q(rr,ft(\wh{n}),i-1)(T'_{n-1})))$$
 $$(n-1,(T_0,\dots,T_{m-1},rr(T'_{m+1}),\dots,qq^{n-m-2}(rr)(T'_{n-1})))=$$
-$$(n-1,(T_0',\dots,T_{m-1}',rr(T_{m+1}'),qq(rr)(T_{m+2}'),\dots,qq^{n-m-2}(rr)(T_{n-1}')))$$
+$$(n-1,(T_0',\dots,T_{m-1}',rr(T_{m+1}'),qq(rr)(T_{m+2}'),\dots,qq^{n-m-2}(rr)(T_{n-1}'))),$$
 %
 where the last equality holds by the assumption that $T_i=T_i'$ for $i=0,\dots,m$. 
 The required formula follows from the equality 
@@ -4273,7 +4274,7 @@ Then the operation itself is given by:
 %
 $$\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s)))=mb((mb^!(m,(\Gamma,r)))^*(mb^!((n,(\Gamma',s)))))=mb(rr^*ss)=$$
 $$mb((x_0^{n-1},\dots,x^{n-1}_{n-2},(qq^{n-m-1}(rr))(s)))=(n-1,(rr^*((n+1,\Gamma')),(qq^{n-m-1}(rr))(s)))=$$
-$$(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s))$$
+$$(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s)),$$
 %
 where the third equality is by Lemma \ref{2015.09.03.l1} and the fifth by
 (\ref{2016.01.21.eq2}) and the definition of $\theta_{m,n}(r,s)$.
@@ -4301,14 +4302,16 @@ This completes the proof of the theorem.
 %
 The length function on $Ob$ is described above. Of the remaining three
 operations that define the pre-B-system structure on the pair of sets
-$(Ob,\wt{Ob}')$ - $pt$, $ft$ and $\partial'$, the first two are described above
+$(Ob,\wt{Ob}')$, namely $pt$, $ft$ and $\partial'$, the first two are described above,
 as well and $\partial'$ is given by $\partial'((m,(\Gamma,r)))=(m+1,\Gamma)$.
 
 This completes the description of the pre-B-system structure on $(Ob,\wt{Ob}')$
 that is obtained by the transport of structure from the standard pre-B-system
 structure on $(Ob,\wt{Ob})$ by means of the pair of isomorphisms $Id$ and
 $mb_{\RR,\LM}$.
-%
+
+EDITOR: The paragraphs above have occurred previously.
+
 \begin{remark}\rm
 \llabel{2015.09.13.rem1} 
 Given an $Jf$-relative monad $\RR$ in the form
@@ -4319,7 +4322,7 @@ define a left l-module $l\LM$ over $\RR$ as a quadruple:
 \item a set $lLM$,
 \item a function $l:lLM\sr \nn$,
 \item a function $\partial:\{E\in lLM, i\in\nat\,|\, l_{\LM}(E)\ge i\}\sr lLM$,
-\item a function $\theta^{\LM}:\{r\in lR,E\in lLM\,|\,l_{\LM}(E)>l_{\RR}(r)\}\sr lLM$
+\item a function $\theta^{\LM}:\{r\in lR,E\in lLM\,|\,l_{\LM}(E)>l_{\RR}(r)\}\sr lLM$,
 %
 \end{enumerate}
 %
