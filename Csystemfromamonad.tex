@@ -519,31 +519,31 @@ Relative monads on a functor $\C_1\sr \C_2$ can be precomposed with functors $\C
 Note that that up to this point our constructions have been completely elementary. 
 
 Suppose now that we want to associate with the family of sets $Exp(X)$ not a
-relative monad but a usual monad. First we would need to extend the function
-$Exp:2^V\sr U$ to a function $U\sr U$. There is no way of doing it in the
-UniMath and I do not know of any way of doing it in any constructive
+relative monad, but a monad. First we would need to extend the function
+$Exp:2^V\sr U$ to a function $U\sr U$. There is no way of doing it in
+UniMath, and I do not know of any way of doing it in any constructive
 foundation. The best one could achieve is to construct a function $Exp':U\sr U$
 and a family of isomorphisms $\phi_V:Exp(X)\sr Exp'(X)$ for $X\subset V$. This
 requires developing a constructive theory of filtered colimits and functors
-that commute with such colimits and it is not an obvious task.
+that commute with such colimits, and it is not an obvious task.
 
 Alternatively, one can build a monad $Exp''$ corresponding to a signature
 directly by constructing the set $Exp''(X)$ as an initial algebra over the
 functor $F_{Sig,X}:Sets(U)\sr Sets(U)$ given on objects by the formula
 %
-$$F_{Sig,X}(A):=X\coprod(\coprod_{O\in Op}A^{Ar(O)})$$
+$$F_{Sig,X}(A):=X\coprod(\coprod_{O\in Op}A^{Ar(O)}).$$
 %
 Constructing initial algebras for $F_{Sig,X}$ also requires the use of
-colimits, but only $\omega$-colimits, that is, colimits of sequences, see
-e.g. \cite{Adamek1974}. The monad structure on the family of sets $Exp''(X)$
+colimits, but only $\omega$-colimits, that is, colimits of sequences, see,
+e.g., \cite{Adamek1974}. The monad structure on the family of sets $Exp''(X)$
 can be constructed from the initial algebra structures, see \cite{Barr1970} or
 \cite[Th.3, p.161]{MatthesUustalu}. One is then left with the task of
 establishing a family of bijections between $Exp''(X)$ and $Exp(X)$ for
-$X\subset V$ that are compatible with the substitution which can be done but
+$X\subset V$ that are compatible with substitution, which can be done but
 requires extra work.
 
-In general, a monad on $Sets(U)$ is a richer object than a $Jf$-relative monad
-and there may be situations when a monad associated with a signature is
+In general, a monad on $Sets(U)$ is a richer object than a $Jf$-relative monad,
+and there may be situations where a monad associated with a signature is
 required as an intermediary between the syntax and an abstract mathematical
 construction. However, in our case, when we want to construct from the syntax a
 C-system, a $Jf$-relative monad is precisely what we need, so that even when we
@@ -553,29 +553,29 @@ first in order to perform our construction.
 {\em This is why we use $Jf$-relative monads and not the usual monads.}
 
 Let us now explain another very important point. At the very start of our
-explanation of how the $Jf$-relative monads are related to expressions we said
+explanation of how $Jf$-relative monads are related to expressions, we said
 that we will consider {\em algebraic} expressions. However, the expressions
-that appear in the sentences of type theories are often not algebraic because
-they contain operations that bound some of the variables in their
-arguments. For example, the expression $\prod\,x:A,B$ that appear in
-(\ref{2017.03.02.eq1}) can be rewritten as $\prod(A,x.B)$ which makes it
+that appear in the sentences of type theories are often not algebraic, because
+they contain operations that bind some of the variables in their
+arguments. For example, the expression $\prod\,x:A,B$ that appears in
+(\ref{2017.03.02.eq1}) can be rewritten as $\prod(A,x.B)$, which makes it
 visible that it is the result of an operation $\prod$ applied to two arguments
-$A$ and $B$ and that this operation binds one variable, here called $x$, in its
+$A$ and $B$, and that this operation binds one variable, here called $x$, in its
 second argument.
 
-{\em Expressions that contain operations that may bound variables in their
+{\em Expressions that contain operations that may bind variables in their
   arguments are called expressions with binders}.
  
-Expressions with binders are specified by binding signatures 
+Expressions with binders are specified by {\em binding signatures}% 
 %### Fiore's *second-order signatures* is better, ask Marcelo for a reference to one of his papers?
-- pairs consisting of a set of operations $Op$ and the arity function $Ar:Op\sr
-Fseq(\nat)$. Here $Fseq(\nat)$ is the set of finite sequences of elements of
+---pairs consisting of a set of operations $Op$ and an arity function $Ar:Op\sr Fseq(\nat)$.
+Here $Fseq(\nat)$ is the set of finite sequences of elements of
 $\nat$. The set $\nat$ is considered as a subset of $Fseq(\nat)$ through the
 embedding taking $d$ to the sequence $(0,\dots,0)$ of length $d$. This defines
 an inclusion of algebraic signatures into binding signatures. The earliest
-mention of the concept equivalent to the binding arity that we know of is in
-\cite{Aczel1978}. The meaning of an operation $E$ with the algebraic arity $d$
-is that $E$ has $d$ arguments. The meaning of an operation $E$ with the binding
+mention of a concept equivalent to binding arity that we know of is in
+\cite{Aczel1978}. The meaning of an operation $E$ with algebraic arity $d$
+is that $E$ has $d$ arguments. The meaning of an operation $E$ with binding
 arity $(i_1,\dots,i_d)$ is that $E$ has $d$ arguments and binds $i_k$ variables
 in its $k$-th argument.
 
