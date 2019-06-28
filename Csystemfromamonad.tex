@@ -1447,7 +1447,7 @@ be enforced.
 %
 \begin{definition}
   \llabel{2017.04.01.def1}
-  A monad in the monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
+  A monad in monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
   where $R:\C\sr \C$ is a functor and $\eta:Id_{\C}\sr R$, $\mu:R\circ R\sr R$
   are natural transformations such that for any $X\in\C$ one has
   %
@@ -1457,7 +1457,7 @@ be enforced.
   \end{enumerate}
 \end{definition}
 %
-We will omit the qualification ``in the monoidal form'' when it is clear from the context. 
+We will omit the qualification ``in monoidal form'' when it is clear from the context. 
 
 The following definition specifies objects that we will call ``monads in
 Kleisli form''. To the best of my knowledge it explicitly appeared in the first
@@ -1508,7 +1508,7 @@ $$\mu_X:RR_{Ob}(RR_{Ob}(X))\sr RR_{Ob}(X)$$
 %
 \end{enumerate}
 %
-such that $((RR_{Ob},RR_{Mor}),\eta,\mu)$ is a monad on $\C$ in the monoidal form, that is, 
+such that $((RR_{Ob},RR_{Mor}),\eta,\mu)$ is a monad on $\C$ in monoidal form, that is, 
 %
 \begin{enumerate}[resume]
 \item $RR=(RR_{Ob},RR_{Mor})$ is a functor,
@@ -1532,10 +1532,10 @@ such that $(RR_{Ob},\eta,rr)$ is a monad on $\C$ in Kleisli form, that is,
 \end{enumerate}
 \end{problem}
 %
-We have intentionally expanded the definitions of monads in the monoidal form
+We have intentionally expanded the definitions of monads in monoidal form
 and monads in Kleisli form to show that that the expanded definition of the
 latter is much shorter than that of the former. Monads are used extensively in
-computer science, but almost always in Kleisli form and the fact that
+computer science, but almost always in Kleisli form, and the fact that
 Kleisli form is much more concise than the monoidal form may be one of the
 reasons.
 
@@ -1585,7 +1585,7 @@ We leave the verification of the conditions and the proof that these functions
 are mutually inverse to the formally verified version of the paper.  \ec
 %#### details, to M.
 For a monad $\RR$ in Kleisli form we let $\RR^M$ denote the corresponding
-monad in the monoidal form and a monad $\R$ in the monoidal form we let $\R^K$
+monad in monoidal form and a monad $\R$ in monoidal form we let $\R^K$
 denote the corresponding monad in Kleisli form.
 
 The notion of a relative monad arises very naturally for monads in Kleisli
@@ -2126,7 +2126,7 @@ endo-monad $\RR_{2,A}$ on $\D$.
 \subsection{Left modules over monads and relative monads}
 
 %
-A left module in the monoidal form over a monad in the monoidal form is defined as follows (cf. \cite[p.222]{HM2007}). 
+A left module in monoidal form over a monad in monoidal form is defined as follows (cf. \cite[p.222]{HM2007}). 
 %
 \begin{definition}
 \llabel{2017.04.01.def2} 
@@ -2140,7 +2140,7 @@ one has:
 \item $L(\eta_X)\circ \rho_X=Id_{L(X)}$.
 \end{enumerate}
 %
-A left $\R$-module in the monoidal form with values in $\E$ is a pair ${\bf
+A left $\R$-module in monoidal form with values in $\E$ is a pair ${\bf
   L}=(L,\rho)$, where $L:\C\sr \E$ is a functor and $\rho$ an $\R$-module
 structure on $L$.
 \end{definition}
@@ -2184,7 +2184,7 @@ construct a bijection between the following two sets:
 \begin{enumerate}
 \item the set of pairs $(LM_{Mor},\rho)$, where $LM_{Mor}:Mor(\C)\sr Mor(\E)$ is
   a function such that $LM=(LM_{Ob},LM_{Mor})$ is a functor and $(LM,\rho)$ is
-  a left $\RR^M$-module in the monoidal form,
+  a left $\RR^M$-module in monoidal form,
 \item the set of families $lm$, parametrized by $X,Y\in Ob(\C)$, of functions
 %
 $$lm_{X,Y}:Mor_{\C}(X,RR_{Ob}(Y))\sr Mor_{\C}(LM_{Ob}(X),LM_{Ob}(Y))$$
@@ -2256,9 +2256,9 @@ say that $\LM$ is a module over $\RR$ without specifying $\E$ if $\E=\D$.
 From the unfolded definition we see that the left modules over an $Id$-relative
 monad are exactly the same as the left modules in Kleisli form over the
 corresponding monad. Following the notation $\R^K$ for the monad in Kleisli
-form corresponding to a monad $\R$ in the monoidal form, we let ${\bf L}^K$
+form corresponding to a monad $\R$ in monoidal form, we let ${\bf L}^K$
 denote the module over $\R^K$ in Kleisli form corresponding to a module
-${\bf L}$ over $\R$ in the monoidal form.
+${\bf L}$ over $\R$ in monoidal form.
 %
 \begin{definition}
 \llabel{2017.04.05.def1} 
@@ -2285,7 +2285,7 @@ $\LM^f_{Mor}$, with or without the subscripts $Ob$ and $Mor$ as our
 preferential notation for the corresponding objects.
 
 If $\R$ and ${\bf L}=(L,\rho)$ are a monad on $\C$ and a left module over it
-with values in $\E$ given in the monoidal form then we have
+with values in $\E$ given in monoidal form then we have
 %
 \begin{eq}
 \llabel{2017.04.17.eq4}
@@ -2316,7 +2316,7 @@ of $\E$.
 Construction \ref{2017.04.09.constr1} gives us, for any $J:\C\sr \D$ and any
 $J$-monad $\RR$ a left module $\RR^{lm}$ over $\RR$ with values in $\D$.  If
 $\RR=(RR_{Ob},\eta,rr)$ then $\RR^{lm}=(RR_{Ob},rr)$. This is the same
-relationship as in the case of monads in the monoidal form where for
+relationship as in the case of monads in monoidal form where for
 $\R=(R,\eta,\mu)$ we have $\R^{lm}=(R,\mu)$.
 
 We have 
