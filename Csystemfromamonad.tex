@@ -1459,13 +1459,13 @@ be enforced.
 %
 We will omit the qualification ``in the monoidal form'' when it is clear from the context. 
 
-The following definition specifies objects that we will call ``monads in the
+The following definition specifies objects that we will call ``monads in
 Kleisli form''. To the best of my knowledge it explicitly appeared in the first
 time in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \llabel{2017.04.13.def1}
-A monad in the Kleisli form on a category $\C$ is a triple $\RR=(RR_{Ob},\eta,rr)$, where 
+A monad in Kleisli form on a category $\C$ is a triple $\RR=(RR_{Ob},\eta,rr)$, where 
 %
 \begin{enumerate}
 \item \llabel{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
@@ -1488,7 +1488,7 @@ $$rr_{X,Y}(f)\circ rr_{Y,Z}(g)=rr_{X,Z}(f\circ rr_{Y,Z}(g))$$
 \end{enumerate}
 \end{definition}
 %
-We will omit the qualification ``in the Kleisli form'' when it is clear from the context. 
+We will omit the qualification ``in Kleisli form'' when it is clear from the context. 
 Definition \ref{2017.04.01.def1} is equivalent to the Definition \ref{2017.04.13.def1} in the precise sense that is specified by Problem \ref{2017.01.04.prob1} and following  it Construction \ref{2017.01.04.constr1}. 
 %
 \begin{problem}
@@ -1522,7 +1522,7 @@ such that $((RR_{Ob},RR_{Mor}),\eta,\mu)$ is a monad on $\C$ in the monoidal for
 %
 $$rr_{X,Y}:Mor_{\C}(X,RR_{Ob}(Y))\sr Mor_{\C}(RR_{Ob}(X),RR_{Ob}(Y))$$
 %
-such that $(RR_{Ob},\eta,rr)$ is a monad on $\C$ in the Kleisli form, that is, 
+such that $(RR_{Ob},\eta,rr)$ is a monad on $\C$ in Kleisli form, that is, 
 %
 \begin{enumerate}
 \item $(RR_{Ob},\eta,rr)$ satisfies condition \ref{2017.04.19.eq4} of Definition \ref{2017.04.13.def1},
@@ -1533,16 +1533,16 @@ such that $(RR_{Ob},\eta,rr)$ is a monad on $\C$ in the Kleisli form, that is,
 \end{problem}
 %
 We have intentionally expanded the definitions of monads in the monoidal form
-and monads in the Kleisli form to show that that the expanded definition of the
+and monads in Kleisli form to show that that the expanded definition of the
 latter is much shorter than that of the former. Monads are used extensively in
-computer science, but almost always in the Kleisli form and the fact that
+computer science, but almost always in Kleisli form and the fact that
 Kleisli form is much more concise than the monoidal form may be one of the
 reasons.
 
-On the other hand, it is likely that monads in the Kleisli form have not been
+On the other hand, it is likely that monads in Kleisli form have not been
 widely known among mathematicians because they are defined not as functors with
 a structure, but as functions between sets of objects with a structure. In
-particular, it is not obvious from their definition that monads in the Kleisli
+particular, it is not obvious from their definition that monads in Kleisli
 form can be transported along equivalences of categories.
 
 We devote so much attention to these two definitions because they provide one
@@ -1584,11 +1584,11 @@ RR_{Mor}(f)=rr_{X,Y}(f\circ \eta_Y)
 We leave the verification of the conditions and the proof that these functions
 are mutually inverse to the formally verified version of the paper.  \ec
 %#### details, to M.
-For a monad $\RR$ in the Kleisli form we let $\RR^M$ denote the corresponding
+For a monad $\RR$ in Kleisli form we let $\RR^M$ denote the corresponding
 monad in the monoidal form and a monad $\R$ in the monoidal form we let $\R^K$
 denote the corresponding monad in Kleisli form.
 
-The notion of a relative monad arises very naturally for monads in the Kleisli
+The notion of a relative monad arises very naturally for monads in Kleisli
 form. It was introduced in \cite[Def.1, p.299]{ACU} and considered in more
 detail in \cite{ACU2}. Let us remind it here.
 %
@@ -1641,7 +1641,7 @@ The proofs of the composition and the identity axioms of a functor are straightf
 %### details, to M. or J.?
 %
 An $Id_{\C}$-relative monad will be called an endo-monad. An endo-monad is
-precisely a monad on the corresponding category given in the Kleisli form. This
+precisely a monad on the corresponding category given in Kleisli form. This
 permits us to call, sometimes, the endo-monads simply monads. As the explicit
 form of functions $(-)^K$ and $(-)^M$ defined in Construction
 \ref{2017.01.04.constr1} shows that for $\R=(R,\eta,\mu)$ we have
@@ -1740,7 +1740,7 @@ formalized version of the paper.  \ec
 %### details to M.?
 
 So far our only examples of relative monad were provided by the ``usual''
-monads in the Kleisli form, in particular, they all were endo-monads. The
+monads in Kleisli form, in particular, they all were endo-monads. The
 following construction allows one to obtain a large class of relative monads
 that are not endo-monads.
 %
@@ -2156,7 +2156,7 @@ Left modules can also be defined in Kleisli form.
 \llabel{2017.04.15.def1} 
 Let $\C$,$\E$ be categories and
 $\RR=(RR_{Ob},\eta,rr)$ a monad on $\C$. A (left) $\RR$-module with values in
-$\E$ in the Kleisli form is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
+$\E$ in Kleisli form is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
 Ob(\E)$ is a function and $lm$ is a family, parametrized by $X,Y\in Ob(\C)$ of
 functions
 %
@@ -2189,7 +2189,7 @@ construct a bijection between the following two sets:
 %
 $$lm_{X,Y}:Mor_{\C}(X,RR_{Ob}(Y))\sr Mor_{\C}(LM_{Ob}(X),LM_{Ob}(Y))$$
 %
-such that $(LM_{Ob},lm)$ is a left $\RR$-module in the Kleisli form. 
+such that $(LM_{Ob},lm)$ is a left $\RR$-module in Kleisli form. 
 \end{enumerate}
 \end{problem}
 %
@@ -2215,7 +2215,7 @@ We leave the verification of the conditions and the proof that these functions
 are mutually inverse to the formally verified version of the paper.  \ec
 %#### details to M.?
 %
-Left $\RR$-modules in the Kleisli form with values in $\E$ are precisely the
+Left $\RR$-modules in Kleisli form with values in $\E$ are precisely the
 (covariant) functors from the Kleisli category of $\RR$ to $\E$, see below.
 
 Left modules over relative monads were introduced in \cite[Definition
@@ -2254,10 +2254,10 @@ say that $\LM$ is a module over $\RR$ without specifying $\E$ if $\E=\D$.
 \end{definition}
 %
 From the unfolded definition we see that the left modules over an $Id$-relative
-monad are exactly the same as the left modules in the Kleisli form over the
-corresponding monad. Following the notation $\R^K$ for the monad in the Kleisli
+monad are exactly the same as the left modules in Kleisli form over the
+corresponding monad. Following the notation $\R^K$ for the monad in Kleisli
 form corresponding to a monad $\R$ in the monoidal form, we let ${\bf L}^K$
-denote the module over $\R^K$ in the Kleisli form corresponding to a module
+denote the module over $\R^K$ in Kleisli form corresponding to a module
 ${\bf L}$ over $\R$ in the monoidal form.
 %
 \begin{definition}
