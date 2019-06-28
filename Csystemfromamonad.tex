@@ -278,7 +278,7 @@ representations provide a mathematical meaning to formulas of type theory.
 The existence of these homomorphisms in the particular case of the ``standard
 univalent models'' of Martin-L\"{o}f type theories and of the Calculus of
 Inductive Constructions (CIC) provides the only known justification for the use
-of proof assistants such as Coq for the formalization of mathematics in the
+of proof assistants such as {\em Coq} for the formalization of mathematics in the
 univalent style \cite{UniMath2015,UniMath}.
 
 Only if we know that the Initiality Conjecture holds for a given type theory can we
@@ -829,10 +829,10 @@ such pairs and how one can generate them from data similar to binding
 signatures.
 
 To obtain the binding signature of the raw syntax from the usual presentation
-of a type theory by a list of inference rules such as (\ref{2017.03.02.eq1}),
+of a type theory by a list of inference rules, such as (\ref{2017.03.02.eq1}),
 one should make the list of operations that these inference rules introduce
 with their names and their binding arities. Often operations will be given in a
-non-standard form such as $\prod\,x:A,B$ instead of $\prod(A,x.B)$, but for
+non-standard form, such as $\prod\,x:A,B$, instead of $\prod(A,x.B)$, but for
 unambiguous inference rules it should be easy to see what the corresponding
 standard form should be.
 
@@ -1393,7 +1393,7 @@ see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a
 set. However, families of sets with a given parameter set and such that all the
 sets of the family are subsets of given set do. A formulation in terms of
 iterated families can be used for ``for all'' expressions where there are
-several parameters such as in Definition \ref{2015.12.22.def1}(3). Similarly, a
+several parameters, such as in Definition \ref{2015.12.22.def1}(3). Similarly, a
 ``collection of data'', is understood as an $n$-tuple, which is understood as
 an iterated pair $(\dots(-,-),-)\dots,-)$.
 
@@ -1626,8 +1626,8 @@ $$rr_{X,Y}(f)\circ rr_{Y,Z}(g)=rr_{X,Z}(f\circ rr_{Y,Z}(g))$$
 %
 Sometimes one writes $f^*$ instead of $rr_{X,Y}(f)$. It makes long computations
 look nicer, but one should remember that the notation $f^*$ is under-specified,
-because $f^*$ depends not only on $f$ but also on $X$ and $Y$ and it is
-possible that for example $RR_{Ob}(Y_1)=RR_{Ob}(Y_2)$ while $Y_1\ne Y_2$.
+because $f^*$ depends not only on $f$ but also on $X$ and $Y$, and it is
+possible that, for example, $RR_{Ob}(Y_1)=RR_{Ob}(Y_2)$ while $Y_1\ne Y_2$.
 %###To Matthew or Joj - construct an example where rr_{X,Y}(f)\ne rr_{X',Y'}(f)
 %
 \begin{problem}\llabel{2016.01.15.prob1}
@@ -1643,13 +1643,13 @@ For $f:X\sr Y$ in $\C$ set
 RR_{Mor}(f)=rr_{X,Y}(J(f)\circ \eta_{Y})
 \end{eq}%
 %
-The proofs of the composition and the identity axioms of a functor are straightforward. 
+The proofs of the composition and the identity axioms of a functor are omitted. 
 \ec
 %### details, to M. or J.?
 %
 An $Id_{\C}$-relative monad will be called an endo-monad. An endo-monad is
 precisely a monad on the corresponding category given in Kleisli form. This
-permits us to call, sometimes, the endo-monads simply monads. As the explicit
+permits us to call, sometimes, the endo-monads simply monads.  The explicit
 form of functions $(-)^K$ and $(-)^M$ defined in Construction
 \ref{2017.01.04.constr1} shows that for $\R=(R,\eta,\mu)$ we have
 $\R^K=(R_{Ob},\eta,rr)$ and for $\RR=(RR_{Ob},\eta,rr)$ we have
@@ -1702,11 +1702,11 @@ $$Et_{\RR}:\C\sr K(\RR)$$
 \end{problem}
 %
 \begin{construction}\rm\llabel{2017.04.05.constr2}
-We omit the index $\RR$ at $Et$. We set $Et_{Ob}=Id$. For a morphism $f:X\sr Y$ in $\C$ we set 
+We omit the subscript $\RR$ on $Et$. We set $Et_{Ob}:=Id$. For a morphism $f:X\sr Y$ in $\C$ we set 
 %
 \begin{eq}
 \llabel{2017.04.09.eq2}
-Et_{Mor}(f)=J(f)\circ \eta_Y
+Et_{Mor}(f):=J(f)\circ \eta_Y
 \end{eq}%
 %
 For $f=Id_X$ we have 
@@ -1722,7 +1722,7 @@ and
 $$Et(f)\circ Et(g)=(J(f)\circ \eta_Y)\circ_{K(\RR)}(J(g)\circ \eta_Z)=
 $$$$J(f)\circ \eta_Y\circ rr_{Y,Z}(J(g)\circ \eta_Z)=J(f)\circ J(g)\circ \eta_Z,$$
 %
-where the second equality is by (\ref{2017.04.05.eq1}) and the third by
+where the second equality follows from (\ref{2017.04.05.eq1}), and the third follows from
 condition (2) of Definition \ref{2015.12.22.def1}. This proves the composition
 axiom.  \ec
 %
@@ -1746,8 +1746,8 @@ formalized version of the paper.  \ec
 %
 %### details to M.?
 
-So far our only examples of relative monad were provided by the ``usual''
-monads in Kleisli form, in particular, they all were endo-monads. The
+So far our only examples of relative monads have been provided by the ``usual''
+monads in Kleisli form, in particular, they have all been endo-monads.  The
 following construction allows one to obtain a large class of relative monads
 that are not endo-monads.
 %
@@ -1757,26 +1757,27 @@ to construct a $(F\circ J)$-relative monad $F^{\circ}(\RR)$.
 \end{problem}
 %
 \begin{construction}\llabel{2017.02.24.constr1}\rm
-We omit the indexes $Ob$ and $Mor$ at $F$ and $J$. Let $\RR=(RR_{Ob},\eta,rr)$. We set
+We omit the subscripts $Ob$ and $Mor$ on $F$ and $J$. Let $\RR=(RR_{Ob},\eta,rr)$. We set
 %
 \begin{eq}
 \llabel{2017.04.11.eq3}
-F^{\circ}(\RR)=(F^{\circ}(RR_{Ob}), F^{\circ}(\eta), F^{\circ}(rr))
+F^{\circ}(\RR):=(F^{\circ}(RR_{Ob}), F^{\circ}(\eta), F^{\circ}(rr))
 \end{eq}%
 %
 where, for for $X\in \C_0$
 %
-\begin{eq}
+\begin{align}
 \llabel{2017.04.11.eq1}
-F^{\circ}(RR_{Ob})(X)=RR_{Ob}(F(X))\spc\spc F^{\circ}(\eta)_X=\eta_{F(X)}
-\end{eq}%
+F^{\circ}(RR_{Ob})(X)&:=RR_{Ob}(F(X))\\
+F^{\circ}(\eta)_X&:=\eta_{F(X)}
+\end{align}%
 %
 and for $X,Y\in\C_0$ and $f:J(F(X))\sr RR_{Ob}(F(Y))$,
 %
-\begin{eq}
+\begin{align}
 \llabel{2017.04.11.eq2}
-F^{\circ}(rr)_{X,Y}(f)=rr_{F(X),F(Y)}(f)
-\end{eq}%
+F^{\circ}(rr)_{X,Y}(f)&:=rr_{F(X),F(Y)}(f)
+\end{align}%
 %
 Let us verify conditions (1)-(3) of Definition \ref{2015.12.22.def1}. We write
 $RR$ instead of $RR_{Ob}$ :
@@ -1816,8 +1817,8 @@ In the context of Problem \ref{2017.02.24.prob1} one has
 \end{lemma}
 %
 \begin{proof}
-In what follows we omit the indexes $Ob$ and $Mor$ at $F$ and $J$. Both the
-left and right hand side of (\ref{2017.04.17.eq6}) are functors
+In what follows we omit the subscripts $Ob$ and $Mor$ on $F$ and $J$. The
+left and right hand sides of (\ref{2017.04.17.eq6}) are functors
 $\C_0\sr\D$. Let $\RR=(RR_{Ob},\eta,rr)$. Then both of these functors on
 objects are given, by construction, by $F\circ RR_{Ob}$. It remains to show
 that for $f:\sr Y$ in $\C_0$ we have
@@ -1841,11 +1842,11 @@ where the second equality is by (\ref{2017.04.05.eq3}). This completes the proof
 \end{proof}
 %
 \begin{remark}\rm\llabel{2017.04.09.rem1}
-Note that in the construction of $F^{\circ}(\RR)$ there participate only
-$F_{Ob}$, but not $F_{Mor}$. On the other hand we have
+Note that the construction of $F^{\circ}(\RR)$ depends on
+$F_{Ob}$ but not on $F_{Mor}$.  On the other hand, we have
 (\ref{2017.04.09.eq5}). The explanation for this seeming contradiction is that
-$F^{\circ}(\RR)$ is a $(F\circ J)$-relative monad and $(F\circ J)_{Mor}$, and,
-therefore $F_{Mor}$, participates in the definition of $F^{\circ}(\RR)_{Mor}$.
+$F^{\circ}(\RR)$ is a $(F\circ J)$-relative monad, and $(F\circ J)_{Mor}$, and
+therefore $F_{Mor}$, participate in the definition of $F^{\circ}(\RR)_{Mor}$.
 \end{remark}
 %
 \begin{problem}
@@ -1902,15 +1903,15 @@ equalities
 $$F_{\RR,X,Z}(f\circ_{K(F^{\circ}(\RR))} g)=F_{\RR,X,Z}(f\circ_{\D} rr_{F(Y),F(Z)}(g))=
 $$$$f\circ_{\D} rr_{F(Y),F(Z)}(g)=f\circ_{K(\RR)}g=F_{\RR,X,Y}(f)\circ_{K(RR)}F_{\RR,Y,Z}(g),$$
 %
-where the first equality is by (\ref{2017.03.12.eq3}), the second by (\ref{2017.03.12.eq2}), the third by Construction \ref{2017.03.12.constr3} and the fourth again by (\ref{2017.03.12.eq2}). 
+where the first equality is by (\ref{2017.03.12.eq3}), the second by (\ref{2017.03.12.eq2}), the third by Construction \ref{2017.03.12.constr3} and the fourth also by (\ref{2017.03.12.eq2}). 
 
 This completes Construction \ref{2017.03.12.constr2}.
 \ec
 %
 
 The following construction together with Construction \ref{} are used to
-extract pairs $(\RR,\LM)$ of a relative monad and a left module over it from
-two-sorted relative monads such as the ones that arise from two-sorted
+extract pairs $(\RR,\LM)$ consisting of a relative monad and a left module over it from
+two-sorted relative monads, such as the ones that arise from two-sorted
 second-order signatures, see \cite{AMM2017}.
 
 For two functors $F:\C\sr\D$, $F':\C'\sr\D'$ we let $F\boxtimes F'$ denote the
@@ -1920,7 +1921,7 @@ $F\times F'$ denote the composition of $F\boxtimes F'$ with the diagonal $\C\sr
 (F(X),F'(X))$. For a functor $FF:\C\sr \D\times\D'$ we let $FF_{\D}$ and
 $FF_{\D'}$ denote the compositions of $FF$ with the projections from
 $\D\times\D'$ to $\D$ and $\D'$ respectively. We will also use the notation
-$FF_{\D}$ when $FF$ is only a function on objects.
+$FF_{\D}$ when $FF$ is (just) a function on objects.
 %
 \begin{definition}
   \llabel{2017.04.21.def1}
@@ -2230,8 +2231,8 @@ Left modules over relative monads were introduced in \cite[Definition
 that there is a bijection between the set of modules over a relative monad
 $\RR$ with values in a category $\E$ and the set of functors from the Kleisli
 category $K(\RR)$ of $\RR$ to $\E$. Whether this bijection is the identity
-bijection or not depends on how the expressions such as ``collection of data''
-or ``family of functions'' are translated into the formal constructions of set
+bijection or not depends on how the expressions, such as ``collection of data''
+or ``family of functions'', are translated into the formal constructions of set
 theory. We assume that in this case they have been translated in a
 such a way that this bijection is the identity and left modules over $\RR$ with
 values in $\E$ are actually and precisely the same as (covariant) functors from
@@ -3018,7 +3019,7 @@ Therefore the set of morphisms in $T$ from $m$ to $n$ is the set of iterated
 pairs $((m,n),f)$, where $f\in Fun(stn(m),RR(n))$. We fix the obvious bijection
 between this set and $Fun(stn(m),RR(n))$ and use the corresponding functions in
 both directions as coercions. A coercion, in the terminology of the proof
-assistant Coq, is a function $f:X\sr Y$ such that when an expression denoting
+assistant {\em Coq}, is a function $f:X\sr Y$ such that when an expression denoting
 an element $x$ of the set $X$ occurs in a position where an element of $Y$
 should be it is assumed that $x$ is replaced by $f(x)$.
 
@@ -3063,8 +3064,8 @@ being equal $RR(m,n)$.
 \end{remark}
 %
 Since we will have to deal with elements of the sets of functions
-$Fun(stn(m),RR(n))$ and of similar sets such as the sets $Ob_n(C(\RR,\LM))$
-introduced later we need to choose some way to represent them. For the purpose
+$Fun(stn(m),RR(n))$ and of similar sets, such as the sets $Ob_n(C(\RR,\LM))$
+introduced later, we need to choose some way to represent them. For the purpose
 of the present paper we will write such elements as sequences, i.e., to denote
 the function, which in the notation of $\lambda$-calculus is written as
 $\lambda\,i:stn(n), f_i$, we will write $(f_0,\dots,f_{n-1})$. In particular,
@@ -3557,7 +3558,7 @@ equality
 %
 $$f^*(s)=(qq^i(f))^*(s)$$
 %
-On the other hand by Lemma \ref{2015.08.24.l1} we have
+On the other hand, by Lemma \ref{2015.08.24.l1} we have
 %
 $$qq^i(f)^*(s)=(x_0^{m+i},\dots,x_{m+i-1}^{m+i},\mbind{qq^i(f)}(s(n+i))).$$
 %
@@ -3825,7 +3826,7 @@ $$\theta_{m,n}(r,E)=E[r/x_m,x_m/x_{m+1},\dots,x_{n-2}/x_{n-1}],$$
 %
 i.e., the operation $\theta_{m,n}$ corresponds to the substitution of an
 expression in variables $x_0,\dots,x_{m-1}$ for the variable $x_m$ in an
-expression in variables $x_0,\dots,x_n$ followed by a downshift of the indexes
+expression in variables $x_0,\dots,x_n$ followed by a downshift of the subscripts
 of the variables with the higher index.
 
 The operation $\partial_n^i$ and the constants $x_n:=x^{n+1}_{n}$ are similarly
@@ -4015,7 +4016,7 @@ This functor is clearly an equivalence but not an isomorphism of categories.
 
 There are an obvious object $pt$, function $ft$ and $p$-morphisms. 
 
-What is unclear is how to define operation $f^*$ on objects such as to satisfy
+What is unclear is how to define operation $f^*$ on objects so as to satisfy
 the first parts of the sixth and seventh conditions in the definition
 \cite[Definition 2.1]{Csubsystems} of a C0-system. For
 $\Gamma'=(x'_0:T'_0,\dots, x'_{m-1}:T'_{m-1})$,
@@ -4131,7 +4132,7 @@ $$mb_{\RR,\LM}^!(mb_{\RR,\LM}(s))=mb_{\RR,\LM}^!(n,(\Gamma,s(n)))=((ft(X),X),(x^
 %
 where the last equality follows from the assumption that $s\in \wt{Ob}$ and Lemma \ref{2015.08.22.l5}.
 
-On the other hand for $\Gamma\in Ob_{n+1}(\RR,\LM)$ and $o\in R(n)$ we have
+On the other hand, for $\Gamma\in Ob_{n+1}(\RR,\LM)$ and $o\in R(n)$ we have
 %
 $$mb_{\RR,\LM}(mb_{\RR,\LM}^!(n,(\Gamma,o)))=mb_{\RR,\LM}(ft((n+1,\Gamma)),((n+1,\Gamma),(x^{n}_0,\dots,x^{n}_{n-1},o)))=$$
 $$(n,(\Gamma,o))$$
@@ -4367,7 +4368,7 @@ systems of expressions associated with binding signatures can be described as
 universal objects carrying some additional operations in this category.
 
 These l-versions of the relative monads and their modules should be easier to
-formalize in systems such as HOL.
+formalize in systems such as {\em HOL}.
 \end{remark} 
 %
 
