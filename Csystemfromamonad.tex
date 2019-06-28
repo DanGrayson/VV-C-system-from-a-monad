@@ -332,7 +332,7 @@ construction to the main constructions of \cite{LandJf} and \cite{LandC}.
 
 The description of a type theory in a modern paper is usually given in terms of
 five kinds of ``sequents'' originally introduced by Per Martin-L\"{o}f in
-\cite[p. 161]{MLTT79}\footnote{This paper is highly recommended. It is a
+\cite[p.~161]{MLTT79}\footnote{This paper is highly recommended. It is a
   foundational one for many ideas of type theory and for the modern approach to
   constructive mathematics in general.}.  If we consider the type theory as a
 language, then sequents are complete sentences in this language---the smallest
@@ -495,7 +495,7 @@ Mor(\FF)=\cup_{m,n}Fun(stn(m),stn(n)),
 %
 where $stn(m)=\{i\in\nat\,|\,i<m\}$ is our choice for the standard set with $m$
 elements, and where, for two sets $X$ and $Y$, $Fun(X,Y)$ is the set of functions
-from $X$ to $Y$, defined as in \cite[p. 81]{Bourbaki.Sets}, so that each
+from $X$ to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each
 function has a well defined domain and codomain. Then the union in
 (\ref{2017.02.24.eq1}) is disjoint and
 %
@@ -537,7 +537,7 @@ Constructing initial algebras for $F_{Sig,X}$ also requires the use of
 colimits, but only $\omega$-colimits, that is, colimits of sequences, see,
 e.g., \cite{Adamek1974}. The monad structure on the family of sets $Exp''(X)$
 can be constructed from the initial algebra structures, see \cite{Barr1970} or
-\cite[Th.3, p. 161]{MatthesUustalu}. One is then left with the task of
+\cite[Th.3, p.~161]{MatthesUustalu}. One is then left with the task of
 establishing a family of bijections between $Exp''(X)$ and $Exp(X)$ for
 $X\subset V$ that are compatible with substitution, which can be done but
 requires extra work.
@@ -603,7 +603,7 @@ Here $x_n,\dots,x_{0}$ are bound variables. We do not assume that $x_i\ne x_j$
 for $i\ne j$ or that $x_i\ne x$. In particular $x$ is a free variable if
 $x_i\ne x$ for all $i\ge 0$ and a bound one otherwise. The usual, but hard to
 formulate precisely, rules of $\alpha$-equivalence (see, e.g., \cite[Def. 2.1.11,
-  p. 26]{Barendregt}) imply that if we rename the bound variables in any way
+  p.~26]{Barendregt}) imply that if we rename the bound variables in any way
 that preserves the rightmost occurrence of $x$ among the $x_i$'s, then the
 resulting expression will be $\alpha$-equivalent to the original one. In
 particular, we can always rename $x_i$ such that $x_i\ne x_j$ for $i\ne j$ and
@@ -678,7 +678,7 @@ $$Exp^{\alpha}(\{x\})=Exp^{\alpha}(\emptyset)\cup \{b_n(x)\,|\,n\in \nat\},$$
 %
 where $b_n(x)$ is the expression with $n$ $\lambda$-abstractions ending with
 $x$ and such that $x_i\ne x$ for all $n-1\ge i\ge 0$. We have to add
-$Exp^{\alpha}(\emptyset)$ because an expression without free variables is an
+$Exp^{\alpha}(\emptyset)$, because an expression without free variables is an
 expression with free variables from the set $\{x\}$.
 
 Finally, for a general $X\subset V$ we have
@@ -693,7 +693,7 @@ $$b_n(a_{n',k'}/x)=a_{n+n',k'}$$
 $$b_n(b_{n'}(x')/x)=b_{n+n'}(x').$$
 %
 For many free variables the substitution is determined by the case of one free
-variable because in any one expression there is at most one free variable.
+variable, because in any one expression there is at most one free variable.
 
 It is easy to see that the $Jf$-monad that we obtain in this case is isomorphic
 to the $Jf$-monad defined by the algebraic signature with operations $a_k$,
@@ -780,7 +780,7 @@ $\uu{Id}+H$?  The main idea was introduced in \cite{MatthesUustalu}. In
 signature. As became understood later in \cite{AMM2016}, the additional
 condition of $H$ being $\omega$-cocontinuous allows one to remove the condition
 of the existence of the right adjoints from the main theorem \cite[Th. 15,
-  p. 170]{MatthesUustalu}, leading to \cite[Th. 48]{AMM2016}.
+  p.~170]{MatthesUustalu}, leading to \cite[Th. 48]{AMM2016}.
 
 The case that is most important for us, that of monads defined by
 binding signatures, has been fully formalized in {\em UniMath}. There remains the
@@ -818,7 +818,7 @@ example, the raw syntax of Streicher's formulation of the Calculus of
 Constructions of G. Huet and T. Coquand (CC-S), when brought into standard
 form, consists of six operations $\prod$, $Prop$, $Proof$, $\lambda$, $app$, and
 $\forall$, with the corresponding arities $(0,1)$, $()$, $(0)$, $(0,1)$,
-$(0,1,0,0)$, and $(0,1)$; see \cite[p.{} 157]{Streicher}.
+$(0,1,0,0)$, and $(0,1)$; see \cite[p.~157]{Streicher}.
 
 In view of the preceding discussion, this suggests that the class of abstract
 mathematical objects that can be used to most directly model the raw syntax of
@@ -911,7 +911,7 @@ In some type theories all types are elements of universes, and, moreover, elemen
 expressions are not syntactically distinguishable from type expressions. For
 example, it is the case in the very important type theory MLTT79---the
 Martin-L\"{o}f type theory from \cite{MLTT79}. The inference rules related to
-the universes \cite[p. 172]{MLTT79} make all type expressions also element
+the universes \cite[p.~172]{MLTT79} make all type expressions also element
 expressions, and an element expression of any form may be used as a type. In our
 notation it means that $LM(X)=RR(X)$.
 
@@ -1020,15 +1020,15 @@ morphisms and all the required structures using the subsets $\wt{B}$ and
 $\wt{Beq}$. Already the first step, the definition from $\wt{B}$ of a set, which
 will later have to be factorized by an equivalence relation coming from
 $\wt{Beq}$ to produce the set of morphisms, is non-trivial, cf.{} \cite[Def. 2.11,
-  p. 97]{Hofmann}. Constructing the composition and proving its properties, such
+  p.~97]{Hofmann}. Constructing the composition and proving its properties, such
 as associativity, present additional difficulties.
 
 We proceed in a different manner. Instead of starting with $B/{\sim}$ and
 building the C-system structure on it, we will construct a C-system
 $C(\RR,\LM)$, which knows nothing about the subsets
 $B$,$\wt{B}$,$Beq$,$\wt{Beq}$, and then we use the results of \cite{Csubsystems}
-to show how any quadruple of subsets $B$,$\wt{B}$,$Beq$,$\wt{Beq}$, satisfying
-certain properties, defines a sub-quotient C-system of $C(\RR,\LM)$. This
+to show how any quadruple of subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying
+certain properties defines a sub-quotient C-system of $C(\RR,\LM)$. This
 sub-quotient will be the term model C-system of our type theory.
 
 The conditions on the $B$-subsets will be seen to include many
@@ -1049,7 +1049,8 @@ is an expression and the sentence $0:\nat\rh ok$ is valid.
 
 One often uses the words ``type'', ``type expression'' and ``expression that
 describes a type'' interchangeably. The same applies to ``element'', ``element
-expression'' and ``expression that describes an element''.
+expression'' and ``expression that describes an element''.\footnote{Note from
+  editor: I'm considering inserting a warning about this.}
 
 A sentence of the form $0:T_0,1:T\rh ok$ asserts that $T_0$ is a valid, closed,
 type expression and $T$ is an expression with the only possible free variable
@@ -1067,7 +1068,7 @@ $x_0$ and $x_1$ as free variables, is a type family with two parameters
 $x_0:T_0$ and $x_1:T_1(x_0)$.
 
 Let $\Gamma=(x_0:T_0,\dots,x_{n-1}:T_{n-1})$. If the sentence
-(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$. A
+(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.\footnote{From the editor: why is this true?}  A
 sentence (\ref{2017.02.06.eq3}) with $n=0$, that is a sentence of the form $\rh
 t:T$, asserts that $T$ is a valid (closed) type expression and $t$ is a valid
 (closed) expression that describes an element of type $T$. For example, the
@@ -1081,16 +1082,16 @@ contain $x_0$, then the family of types is constant and the sentence
 to $T$.
 
 If the sentence (\ref{2017.02.06.eq4}) is valid than so are the sentences
-$\Gamma\rh T\type$ and $\Gamma\rh T'\type$. The validity of
+$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.\footnote{From the editor: why is this true?}  The validity of
 (\ref{2017.02.06.eq4}) asserts that the type expressions $T$ and $T'$ are {\em
-  definitionally equal} in the context $\Gamma$. The similar meaning is
+  definitionally equal} in the context $\Gamma$.  The analogous meaning is
 assigned to sentences of the form (\ref{2017.02.06.eq5}).
 %### want to say about "substitutional", but can not without a previous discussion of capture avoiding substitution...
-%
+
 Definitional equality of type expressions can be used to define definitional
 equality of contexts. Namely, one defines two contexts
-$x_0:T_0,\dots,x_{n-1}:T_{n-1}$ and $x_0:T'_0,\dots,x_{n-1}:T'_{n-1}$ to be
-definitionally equal if the sentences in the following sequence are valid
+$\Gamma = (x_0:T_0,\dots,x_{n-1}:T_{n-1})$ and $\Gamma' = (x_0:T'_0,\dots,x_{n-1}:T'_{n-1})$ to be
+{\em definitionally equal} if the sentences in the following sequence are valid
 %
 \begin{flalign}\llabel{2017.04.07.eq1}
 \rh &\,\, T_0\equiv T_0'\\
@@ -1099,20 +1100,21 @@ x_0:T_0\rh &\,\, T_1\equiv T_1'\\
 x_0:T_0,\dots,x_{n-2}:T_{n-2}\rh &\,\, T_{n-1}\equiv T_{n-1}'
 \end{flalign}
 %
+We will use the notation $\Gamma \equiv \Gamma'$ to denote this condition.
 
 This provides us with the concept of definitional equality of sentences of the
-form (\ref{2017.02.06.eq1}). Two such sentences are called definitionally equal
+form (\ref{2017.02.06.eq1}). Two such sentences are called {\em definitionally equal}
 if their contexts are.
 
 Two sentences of the form (\ref{2017.02.06.eq2}) $\Gamma\rh T\type$ and
-$\Gamma'\rh T'\type$ are definitionally equal if $\Gamma\equiv \Gamma'$ and
+$\Gamma'\rh T'\type$ are {\em definitionally equal} if $\Gamma\equiv \Gamma'$ and
 $\Gamma\rh T\equiv T'$.
 
 Similarly, one can use definitional equality of type expressions and
 definitional equality of element expressions defined by sentences of the form
-(\ref{2017.02.06.eq4}), and (\ref{2017.02.06.eq5}) to define definitional
+(\ref{2017.02.06.eq4}) and (\ref{2017.02.06.eq5}) to define definitional
 equality of sentences of the form (\ref{2017.02.06.eq3}). Two such sentences
-$\Gamma\rh t:T$ and $\Gamma'\rh t':T'$ are called definitionally equal if
+$\Gamma\rh t:T$ and $\Gamma'\rh t':T'$ are called {\em definitionally equal} if
 $\Gamma\equiv \Gamma'$ and the following two sentences are valid:
 %
 \begin{flalign*}
@@ -1122,24 +1124,26 @@ $\Gamma\equiv \Gamma'$ and the following two sentences are valid:
 %
 It should be immediately clear from the asymmetry of these rules that in order
 for the definitional equality relations on sentences of the form
-(\ref{2017.02.06.eq1}), (\ref{2017.02.06.eq2}) and (\ref{2017.02.06.eq3}) to be
+(\ref{2017.02.06.eq1}), (\ref{2017.02.06.eq2}), and (\ref{2017.02.06.eq3}) to be
 equivalence relations the sets of sentences of various kinds should satisfy
 more conditions than the ones that we have mentioned so far. These conditions
-are among the conditions \ref{} whose mathematical meaning is established in
+are among the conditions whose mathematical meaning is established in
 this paper.
 
-@@@If we write $x\notin \Gamma$ for the condition that $x$ is a name of free
-variable not contained in the subset of names declared in $\Gamma$, then this
-assertion can be expressed in the form of a pair of inference rules
+If we write $x\notin \Gamma$ for the condition that $x$ is the name of a free
+variable not contained in the set of names declared in $\Gamma$, then this
+assertion\footnote{From the editor: what assertion?} can be expressed in the form of a pair of inference rules:\footnote{From the editor: this paragraph seems to have been marked ``incomplete'' by the author.}
 %
 $$
-\frac{\Gamma\rh T\type}{x\notin\Gamma\spc\Gamma, x:T\rh ok}\spc\spc\spc
+\frac{\Gamma\rh T\type \spc x\notin\Gamma\spc}{\Gamma, x:T\rh ok}
+\spc\spc\spc
 \frac{\Gamma, x:T\rh ok}{\Gamma\rh T\type}
 $$
 %
-@@@
 
-@@@the form of a list of ``inference rules'' that may look like, for example, this one:
+
+@@@
+the form of a list of ``inference rules'' that may look like, for example, this one:
 %
 \begin{eq}
 \llabel{2017.03.02.eq1}
@@ -1148,7 +1152,8 @@ $$
 %
 These inference rules are formulated in@@@
 
-To speak about the mathematical meaning of the conditions that the valid sentences should satisfy, we need to find a way to view the structure formed by the five kinds of sentences as a mathematical object and to describe, and analyze, a construction that generates a C-system from such an object.
+
+To speak about the mathematical meaning of the conditions that the valid sentences should satisfy, we need to find a way to view the structure formed by the five kinds of sentences as a mathematical object and to describe and analyze a construction that generates a C-system from such an object.
 
 ...  that were specified through their raw syntax and typing algorithms or,
 extensionally speaking, the subsets of well-typed context-judgment pairs.
@@ -1157,16 +1162,16 @@ extensionally speaking, the subsets of well-typed context-judgment pairs.
 %@@@
 
 For $p:X\sr Y$ in a category, let $sec(p)=\{s:Y\sr X\,|\,s\circ
-p=Id_X\}$. Elements of $sec(p)$ are called sections of $p$. To any C-system
+p=Id_X\}$. Elements of $sec(p)$ are called {\em sections} of $p$. To any C-system
 $CC$ one associates a pair of sets $(Ob(CC),\wt{Ob}(CC))$, where $Ob(CC)$ is the
-set of objects of the category underlying $CC$ and where
+set of objects of the category underlying $CC$, and where
 %
 \begin{eq}
 \llabel{2017.02.04.eq1}
-\wt{Ob}(CC)=\{s\in Mor(CC)\,|\,s\in sec(p_{codom(s)}), l(codom(s))>0\}
+\wt{Ob}(CC):=\{s\in Mor(CC)\,|\,s\in sec(p_{codom(s)}), l(codom(s))>0\},
 \end{eq}%
 %
-or, in words, where $\wt{Ob}(CC)$ is the set of sections of the non-trivial
+i.e., where $\wt{Ob}(CC)$ is the set of sections of the non-trivial
 p-morphisms of $CC$. When $CC$ is clear from the context we will abbreviate
 $Ob(CC)$ and $\wt{Ob}(CC)$ to $Ob$ and $\wt{Ob}$ respectively.
 
@@ -1177,10 +1182,10 @@ operations of such form are called (unital) pre-B-systems
 Proposition 4.2, shows how to construct from a sub-pre-B-system $(B,\wt{B})$ of
 $(Ob,\wt{Ob})$ a sub-C-system of $CC$ whose associated pre-B-system is
 $(B,\wt{B})$. The second main result of that paper, Proposition 5.4, shows how
-to construct from a pair of equivalence relations $(\sim,\approx)$ on $Ob$ and
+to construct, from a pair of equivalence relations $(\sim,\approx)$ on $Ob$ and
 $\wt{Ob}$ respectively that satisfies certain conditions, a quotient C-system
-of $CC$ whose associated pre-B-system is $(Ob/{\sim},\wt{Ob}/approx)$. These
-conditions are shows in Proposition \ref{} of the present paper to be
+of $CC$ whose associated pre-B-system is $(Ob/{\sim},\wt{Ob}/\approx)$. These
+conditions are shown in Proposition \ref{} of the present paper to be
 compatible with isomorphisms of pre-B-systems.
 
 After defining $C(\RR,\LM)$ in Sections \ref{} and \ref{}
@@ -1193,15 +1198,15 @@ Using this isomorphism we formulate the conditions on subsets $B\subset
 B(\RR,\LM)$ and $\wt{B}\in \wt{B}(\RR,\LM)$ that are necessary and sufficient
 for such a pair to correspond to a sub-C-system of $C(\RR,\LM)$.
 
-Next, we construct, for any subsets $B$, $\wt{B}$ and $Beq$, $\wt{Beq}$ a pair
-of relations $\sim$ and $\approx$ on $B$ and $\wt{B}$ respectively and show
-under which condition on $Beq$, $\wt{Beq}$ the transport of these relations to
-the subsets of $(Ob(C(\RR,\LM)),\wt{Ob}(C(\RR,LM)))$ corresponding to $B$,
-$\wt{B}$, satisfy the conditions of \cite[Prop. 5.4]{Csubsystems} and therefore
+Next, we construct, for any subsets $B$, $\wt{B}$, $Beq$, and $\wt{Beq}$, a pair
+of relations $\sim$ and $\approx$ on $B$ and $\wt{B}$ respectively, and we show
+under what condition on $Beq$ and $\wt{Beq}$ the transport of these relations to
+the subsets of $(Ob(C(\RR,\LM))$ and $\wt{Ob}(C(\RR,LM)))$ corresponding to $B$ and
+$\wt{B}$ satisfy the conditions of \cite[Prop. 5.4]{Csubsystems}, and therefore
 define a (regular) quotient of the C-system corresponding to $(B,\wt{B})$.
 
 Summing it up in Construction \ref{} we obtain a construction, for any four
-subsets $B$,$\wt{B}$,$Beq$,$\wt{Beq}$ satisfying certain condition, of a
+subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying certain conditions, of a
 C-system. This is the final construction of the paper.
 
 It should be possible to approach this construction in a more direct
@@ -1230,18 +1235,19 @@ obtain a C-system that will be the C-system corresponding to the quadruple of
 sets $B$,$\wt{B}$,$Beq$ and $\wt{Beq}$.
 
 Such a direct construction would probably be more satisfying than the one that
-we provide. However, it would require a lot of non-trivial work and, as far as
-the goal of constructing a C-system from the subsets $B$,$\wt{B}$,$Beq$ and
-$\wt{Beq}$, will give the same result as our less direct, but more simple
+we provide. However, it would require a lot of non-trivial work, and, as far as
+the goal of constructing a C-system from the subsets $B$, $\wt{B}$, $Beq$, and
+$\wt{Beq}$ is concerned, it will give the same result as our less direct, but simpler,
 approach. Still, defining B-systems and constructing an equivalence between the
-categories of C-systems and B-systems is important and we plan to address it in
+categories of C-systems and B-systems is important, and we plan to address it in
 future papers. The approach that we take here, using the results of
 \cite{Csubsystems} instead, gives us a rigorous construction that can be
 completed today.
 
-{\bf Note: Ignore the rest of the introduction}
-
-To construct the regular sub-quotient of $C(\RR,\LM)$ that corresponds to the
+To\footnote{From the editor: author's instruction just before this paragraph:
+  ``ignore the rest of the introduction''.  I didn't know what to make of this,
+  so I left the rest of the introduction in.}
+construct the regular sub-quotient of $C(\RR,\LM)$ that corresponds to the
 type system generated by the given system of inference rules one uses the main
 results, Propositions 4.3 and 5.4, of \cite{Csubsystems}. To use these
 propositions to obtain a sub-quotient of a C-system $CC$ one should provide a
@@ -1271,7 +1277,7 @@ in some of the arguments that significantly simplifies the proofs.
 
 In the second section we construct for any C-system $CC$ and a presheaf $F$ on
 the category underlying $CC$ a new C-system $CC[F]$ that we call the
-$F$-extension of $CC$. The C-systems of this form remind in some way the affine
+$F$-extension of $CC$. The C-systems of this form are reminiscent of affine
 spaces over schemes in algebraic geometry. While the geometry of affine spaces
 in itself is not very interesting their sub-spaces encompass all affine
 algebraic varieties of finite type . Similarly, while the C-systems $CC[F]$
@@ -1307,8 +1313,8 @@ paper is a detailed description of the pre-B-systems of the form
 $(B(CC[F]),\wt{B}(CC[F]))$ for an important class of ``coefficient''
 C-systems $CC$ (see below).
 
-In Section \ref{Jfrel} we first remind the notion of a relative monad on a
-functor $J:C\sr D$ that was introduced in \cite[Def.1, p. 299]{ACU} and
+In Section \ref{Jfrel} we first recall the notion of relative monad on a
+functor $J:C\sr D$ that was introduced in \cite[Def.1, p.~299]{ACU} and
 considered in more detail in \cite{ACU2}. Then we focus our attention on
 relative monads over the functor $Jf$ that is defined as follows.
 
@@ -1353,7 +1359,7 @@ of this type theory to be defined.
 \vspace{5mm}
 
 We use neither the axiom of excluded middle nor the axiom of choice. The paper
-is written in the formalization-ready style and should be easily formalizable
+is written in a formalization-ready style and should be easily formalizable
 both in {\em UniMath} and in ZF.
 
 \vspace{5mm}
@@ -1365,7 +1371,7 @@ A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$
 connected by the operations of domain, codomain, identity and composition where
 composition is a partially defined operation. A functor $F:\C\sr \D$ is a pair
 of functions $F_{Ob}:Ob(\C)\sr Ob(\D)$, $F_{Mor}:Mor(\C)\sr Mor(\D)$ satisfying
-the well known conditions. We emphasize it here because it is also possible to
+the well known conditions. We emphasize it here, because it is also possible to
 define a category starting with a set $Ob(\C)$ and a {\em family} of sets
 $Mor_{\C}(X,Y)$ parametrized by $X,Y\in Ob(\C)$, where a {family} is understood
 in the sense of \cite[Remark 3.9]{fromunivwithPiI}. These two concepts are a
@@ -1435,21 +1441,21 @@ will allow the files to be located.
 
 \subsection{Monads and relative monads} 
 
-Let us start by reminding the definition of a monad in the form that became
-standard after MacLane's textbook \cite[p. 133]{MacLane} and that we will call
+Let us start by recalling the definition of ``monad'' in the form that became
+standard after MacLane's textbook \cite[p.~133]{MacLane}, which we will call
 the {\em monoidal} form. For a category $\C$ we often write $X\in\C$ instead of
 $X\in Ob(C)$. For a functor $F=(F_{Ob},F_{Mor})$ from $\C$ to $\D$ we often
 write $F(X)$ instead of $F_{Ob}(X)$ for $X\in Ob(\C)$ and $F(f)$ instead of
-$F_{Mor}(f)$ for $f\in Mor(\C)$.  We emphasize these standard conventions here
+$F_{Mor}(f)$ for $f\in Mor(\C)$.  We emphasize these standard conventions here,
 because below we will sometimes work with the object and morphism components of
-a functor separately in which case the subscripts $Ob$ and $Mor$ will need to
-be enforced.
+a functor separately, in which case the subscripts $Ob$ and $Mor$ will need to
+be used.
 %
 \begin{definition}
   \llabel{2017.04.01.def1}
   A monad in monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
-  where $R:\C\sr \C$ is a functor and $\eta:Id_{\C}\sr R$, $\mu:R\circ R\sr R$
-  are natural transformations such that for any $X\in\C$ one has
+  where $R:\C\sr \C$ is a functor, and where $\eta:Id_{\C}\sr R$ and $\mu:R\circ R\sr R$
+  are natural transformations, such that for any $X\in\C$ one has
   %
   \begin{enumerate}
   \item \llabel{2017.04.19.eq7} $R(\mu_X)\circ \mu_{X}=\mu_{R(X)}\circ \mu_X$ (``associativity''),
@@ -1489,7 +1495,7 @@ $$rr_{X,Y}(f)\circ rr_{Y,Z}(g)=rr_{X,Z}(f\circ rr_{Y,Z}(g))$$
 \end{definition}
 %
 We will omit the qualification ``in Kleisli form'' when it is clear from the context. 
-Definition \ref{2017.04.01.def1} is equivalent to the Definition \ref{2017.04.13.def1} in the precise sense that is specified by Problem \ref{2017.01.04.prob1} and following  it Construction \ref{2017.01.04.constr1}. 
+Definition \ref{2017.04.01.def1} is equivalent to Definition \ref{2017.04.13.def1} in the precise sense that is specified by Problem \ref{2017.01.04.prob1} and Construction \ref{2017.01.04.constr1} immediately following. 
 %
 \begin{problem}
 \llabel{2017.01.04.prob1}
@@ -1532,8 +1538,8 @@ such that $(RR_{Ob},\eta,rr)$ is a monad on $\C$ in Kleisli form, that is,
 \end{enumerate}
 \end{problem}
 %
-We have intentionally expanded the definitions of monads in monoidal form
-and monads in Kleisli form to show that that the expanded definition of the
+We have intentionally expanded the definitions of {\em monad in monoidal form}
+and {\em monad in Kleisli form} to show that that the expanded definition of the
 latter is much shorter than that of the former. Monads are used extensively in
 computer science, but almost always in Kleisli form, and the fact that
 Kleisli form is much more concise than the monoidal form may be one of the
@@ -1545,7 +1551,7 @@ a structure, but as functions between sets of objects with a structure. In
 particular, it is not obvious from their definition that monads in Kleisli
 form can be transported along equivalences of categories.
 
-We devote so much attention to these two definitions because they provide one
+We devote so much attention to these two definitions, because they provide one
 of the clearest examples of how the same objects can have different and often
 mutually incomprehensible definitions in the parallel realities of mathematics
 and that part of theoretical computer science which is known as Theoretical
@@ -1585,24 +1591,25 @@ We leave the verification of the conditions and the proof that these functions
 are mutually inverse to the formally verified version of the paper.  \ec
 %#### details, to M.
 For a monad $\RR$ in Kleisli form we let $\RR^M$ denote the corresponding
-monad in monoidal form and a monad $\R$ in monoidal form we let $\R^K$
+monad in monoidal form, and for a monad $\R$ in monoidal form we let $\R^K$
 denote the corresponding monad in Kleisli form.
 
-The notion of a relative monad arises very naturally for monads in Kleisli
-form. It was introduced in \cite[Def.1, p. 299]{ACU} and considered in more
-detail in \cite{ACU2}. Let us remind it here.
+The notion of relative monad arises naturally from the notion of monads in Kleisli
+form. It was introduced in \cite[Def.~1, p.~299]{ACU} and considered in more
+detail in \cite{ACU2}. Let us recall it here.
 %
 \begin{definition}
 \llabel{2015.12.22.def1}
-Let $J:\C\sr \D$ be a functor. A relative monad $\RR$ on $J$ or a $J$-relative monad or a $J$-monad is a triple $(RR_{Ob},\eta,rr)$, where
+Let $J:\C\sr \D$ be a functor. A relative monad $\RR$ on $J$ (or a $J$-relative monad, or a $J$-monad) is a triple $(RR_{Ob},\eta,rr)$, where
 %
 \begin{enumerate}
 \item $RR_{Ob}:Ob(\C)\sr Ob(\D)$ is a function,
-\item for all $X$ in $\C$, a morphism $\eta_{X}:J(X)\sr RR_{Ob}(X)$ in $\D$,
-\item for all $X,Y$ in $\C$ and $f:J(X)\sr RR_{Ob}(Y)$ in $\D$, a morphism in $\D$
+\item for all $X$ in $\C$, $\eta_{X}:J(X)\sr RR_{Ob}(X)$ is a morphism in $\D$,
+\item and for all $X,Y$ in $\C$ and $f:J(X)\sr RR_{Ob}(Y)$ in $\D$,
 %
 $$rr_{X,Y}(f):RR_{Ob}(X)\sr RR_{Ob}(Y)$$
 %
+is a morphism in $\D$,
 \end{enumerate}
 %
 such that the following conditions hold:
@@ -1618,7 +1625,7 @@ $$rr_{X,Y}(f)\circ rr_{Y,Z}(g)=rr_{X,Z}(f\circ rr_{Y,Z}(g))$$
 \end{definition}
 %
 Sometimes one writes $f^*$ instead of $rr_{X,Y}(f)$. It makes long computations
-look nicer, but one should remember that the notation $f^*$ is under-specified
+look nicer, but one should remember that the notation $f^*$ is under-specified,
 because $f^*$ depends not only on $f$ but also on $X$ and $Y$ and it is
 possible that for example $RR_{Ob}(Y_1)=RR_{Ob}(Y_2)$ while $Y_1\ne Y_2$.
 %###To Matthew or Joj - construct an example where rr_{X,Y}(f)\ne rr_{X',Y'}(f)
@@ -1656,8 +1663,8 @@ $\RR^M=(\RR^f,\eta,\mu)$. In particular, since $(\R^K)^M=\R$, we have
 The construction of the Kleisli category of a monad\footnote{Actually Kleisli,
   in \cite{Kleisli}, introduced the corresponding category for what we would
   today call a comonad.} was extended to the case of relative monads in
-\cite[p. 8]{ACU2} (see also \cite[Constr. 2.9]{LandJf}). Since it plays an
-important role in what follows let us remind the definition of the
+\cite[p.~8]{ACU2} (see also \cite[Constr. 2.9]{LandJf}). Since it plays an
+important role in what follows let us recall the definition of the
 corresponding category data here without proving that it actually defines a
 category.
 %
@@ -1873,7 +1880,7 @@ Id_{K(F^{\circ}(\RR)),X}=F^{\circ}(\eta)_{X}=\eta_{F(X)},
 %
 where the first equality is by Construction \ref{2017.03.12.constr3} and the
 second by Construction \ref{2017.02.24.constr1}. The data
-$(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the identity axiom because of the
+$(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the identity axiom, because of the
 equalities
 %
 $$F_{\RR,X,X}(Id_{K(F^{\circ}(\RR)),X})=F_{\RR,X,X}(\eta_{F(X)})=\eta_{F(X)}=Id_{K(\RR),F(X)},$$
@@ -1889,7 +1896,7 @@ f\circ_{KK(F^{\circ}(\RR))} g= f\circ_{\D} F^{\circ}(rr)_{Y,Z}(g)=f\circ_{\D} rr
 %
 where, again, the first equality is by Construction \ref{2017.03.12.constr3}
 and the second by Construction \ref{2017.02.24.constr1}. The data
-$(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the composition axiom because of the
+$(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the composition axiom, because of the
 equalities
 %
 $$F_{\RR,X,Z}(f\circ_{K(F^{\circ}(\RR))} g)=F_{\RR,X,Z}(f\circ_{\D} rr_{F(Y),F(Z)}(g))=
@@ -2126,7 +2133,7 @@ endo-monad $\RR_{2,A}$ on $\D$.
 \subsection{Left modules over monads and relative monads}
 
 %
-A left module in monoidal form over a monad in monoidal form is defined as follows (cf.{} \cite[p. 222]{HM2007}). 
+A left module in monoidal form over a monad in monoidal form is defined as follows (cf.{} \cite[p.~222]{HM2007}). 
 %
 \begin{definition}
 \llabel{2017.04.01.def2} 
@@ -2324,7 +2331,7 @@ We have
 $$(\RR^{lm})^f=\RR^f$$
 %
 Indeed, for $\RR=(RR_{Ob},\eta,\mu)$ both functors are given by $RR_{Ob}$ on
-objects and on morphisms they also coincide by construction because
+objects and on morphisms they also coincide by construction, because
 (\ref{2017.04.11.eq5}) becomes (\ref{2017.04.05.eq3}) when $lm=rr$.
 
 When $J=Id_{\C}$ we also have
@@ -2339,7 +2346,7 @@ and
 %
 $$(\R^{lm})^K=(R,\mu)^K=(R_{Ob},lm(R_{Mor},\mu))$$
 %
-and $rr(R_{Mor},\mu)$ and $lm(R_{Mor},\mu)$ coincide by construction because formulas (\ref{2017.04.17.eq1}) and (\ref{2017.04.09.eq4}) become the same when $RR_{Mor}=LM_{Mor}$ and $\mu=\rho$.
+and $rr(R_{Mor},\mu)$ and $lm(R_{Mor},\mu)$ coincide by construction, because formulas (\ref{2017.04.17.eq1}) and (\ref{2017.04.09.eq4}) become the same when $RR_{Mor}=LM_{Mor}$ and $\mu=\rho$.
 \end{example}
 %
 \begin{problem}
@@ -2514,7 +2521,7 @@ $$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A})))$$
 %
 The definition of a C-system is given in \cite[Def. 2.1,
   2.3]{Csubsystems}. Homomorphisms of C-systems are defined in \cite[Def. 3.1,
-  p 1188]{Cfromauniverse}. In \cite[Lemma 3.4, p. 1190]{Cfromauniverse} it is
+  p 1188]{Cfromauniverse}. In \cite[Lemma 3.4, p.~1190]{Cfromauniverse} it is
 shown that for two C-systems $CC_1, CC_2$ a homomorphism between the underlying
 C0-systems is always a homomorphism of C-systems.
 
@@ -2610,7 +2617,7 @@ $$F(\delta(\Gamma))=\delta(F(\Gamma))$$
 For (1),(2),(3) see \cite[Lemma 2.5]{fromunivwithPiI}. For (4) see \cite[Lemma
   2.14]{fromunivwithPiI}. For (5) recall that we have
 $\delta(\Gamma)=s_{Id_{\Gamma}}$ by the definition of $\delta$ in
-\cite[p. 131]{Csubsystems}. Next, we have $F(s_f)=s_{F(f)}$ by \cite[Lemma
+\cite[p.~131]{Csubsystems}. Next, we have $F(s_f)=s_{F(f)}$ by \cite[Lemma
   3.4]{Cfromauniverse}. Therefore
 %
 $$F(\delta(\Gamma))=F(s_{Id_{\Gamma}})=s_{F(Id_{\Gamma})}=s(Id_{F(\Gamma)})=\delta(F(\Gamma))$$
@@ -2679,9 +2686,9 @@ often write $(pt,())$ as $pt$.
 
 We define the ft-function on $(X,\Gamma)$ such that $l(X)>0$ as 
 %
-$$ft((X,(T_0,\dots,T_{l(X)-1}))=(ft(X),(T_0,\dots,T_{l(X)-2}))$$
+$$ft((X,(T_0,\dots,T_{l(X)-1}))=(ft(X),(T_0,\dots,T_{l(X)-2})),$$
 %
-which is well defined because $l(ft(X))=l(X)-1$, and set
+which is well defined because $l(ft(X))=l(X)-1$, and we set
 $ft((pt,()))=(pt,())$. We will write $ft(\Gamma)$ for $(T_0,\dots,T_{l(X)-2})$
 so that $ft((X,\Gamma))=(ft(X),ft(\Gamma))$.
 
@@ -2807,7 +2814,7 @@ $X$ and as a C-system $CC[F]$ is often very different from $CC$, for example,
 in that that it may have many more C-subsystems.
 \end{remark}
 %
-We provide the following lemma without a proof because the proof is immediate
+We provide the following lemma without a proof, because the proof is immediate
 from the definitions and \cite[Lemma 3.4]{Cfromauniverse} that asserts that a
 functor that satisfies all conditions of the definition of a homomorphism
 except possibly the s-morphisms condition is a homomorphism.
@@ -2938,7 +2945,7 @@ objects $\nat$ and the set of morphisms from $m$ to $n$ being
 $Fun(stn(m),stn(n))$, where $stn(m)=\{i\in\nat\,|\,i<m\}$ is our choice for the
 standard set with $m$ elements (cf.{} \cite{LandC}) and where for two sets $X$
 and $Y$, $Fun(X,Y)$ is the set of functions from $X$ to $Y$ defined as in
-\cite[p. 81]{Bourbaki.Sets} such that each function has a well defined domain
+\cite[p.~81]{Bourbaki.Sets} such that each function has a well defined domain
 and codomain.
 
 For any set $U$ there is a category $Sets(U)$ of the following form. The set of
@@ -2971,7 +2978,7 @@ monad. Combined with our construction of $C(\RR)$ this gives a construction of
 a C-system for any monad on sets.
 
 \begin{problem}\llabel{2016.01.13.prob1}
-Given a monad ${\bf R}=(R,\eta,\mu)$ (cf.{} \cite{MacLane}[p. 133]) on the
+Given a monad ${\bf R}=(R,\eta,\mu)$ (cf.{} \cite{MacLane}[p.~133]) on the
 category of sets to construct a $Jf$-relative monad $\RR$.
 \end{problem}
 %
@@ -3046,7 +3053,7 @@ $Fun(RR(m),RR(n))$ is expected it has to be replaced by $RR(f)$.
 \begin{remark}\rm
 \llabel{2015.11.20.rem4} 
 We can not replace $\amalg$ by $\cup$ in our
-definition of the set of morphisms of $T$ because for a general $\RR$ the sets
+definition of the set of morphisms of $T$, because for a general $\RR$ the sets
 $RR(m,n)$ are not disjoint.  For example, if $RR(m)=pt$, where $pt$ is a fixed
 one element set, then $RR$ has a (unique) structure of a $Jf$-relative monad and
 $RR(m,n)=RR(m,n')$ for all $m,n,n'$. Therefore no function to $\nat$ from the
