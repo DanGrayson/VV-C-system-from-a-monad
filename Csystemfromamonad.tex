@@ -65,19 +65,13 @@
 %\newcommand{\C}[4]{\preceqft[\begin{array}{rcl}&#1\\#3&\dw\dw&#4\\&#2\end{array}\right]}
 %\newcommand{\llabel}[1]{\label{#1}[{\bf #1}]}
 \newcommand{\llabel}[1]{\label{#1}}
-\renewcommand{\comment}[1]{}
+\renewcommand{\comment}[1]{}    %commenting this out results in an empty pdf file
 \newcommand{\sr}{\rightarrow}
 \newcommand{\lr}{\longrightarrow}
 \newcommand{\xr}{\xrightarrow}
 \newcommand{\dw}{\downarrow}
-\newcommand{\bdl}{\bar{\Delta}}
-\newcommand{\zz}{{\bf Z\rm}}
-\newcommand{\zq}{{\bf Z}_{qfh}}
-\newcommand{\nn}{{\bf N\rm}}
+\newcommand{\nn}{{\mathbb N}}
 \newcommand{\nat}{\nn}
-\newcommand{\qq}{{\bf Q\rm}}
-\newcommand{\rr}{{\bf R}}
-\newcommand{\nq}{{\bf N}_{qfh}}
 \newcommand{\oo}{\otimes}
 \newcommand{\uu}{\underline}
 \newcommand{\ih}{\uu{Hom}}
@@ -270,9 +264,9 @@ systems of operations. Such homomorphisms are called {\em representations} or
 {\em interpretations} of the type theory. More generally, any functor from the
 category underlying the term C-system of the type theory to another category
 may be called a representation of the type theory in that category. Since
-objects and morphisms of term models are built from formulas of the type theory
-and objects and morphisms of abstract C-systems are built from mathematical
-objects such as sets or homotopy types and the corresponding functions, such
+the objects and morphisms of term models are built from formulas of the type theory,
+and the objects and morphisms of abstract C-systems are built from mathematical
+objects, such as sets or homotopy types and the corresponding functions, such
 representations provide a mathematical meaning to formulas of type theory.
 
 The existence of these homomorphisms in the particular case of the ``standard
@@ -391,7 +385,7 @@ language in which the proof assistant is written and on the personal tastes of
 the developers, ``expressions'' will be represented as elements of various
 datatypes. They may be represented as strings of characters, or as trees
 with labels at nodes and edges, or as something else entirely.  While
-each of these representations can be given a precise mathematical form it would
+each of these representations can be given a precise mathematical form, it would
 clearly be wrong to make the mathematical theory of type theories dependent on
 which of these representations is chosen.  Therefore, we need a concept of
 abstract expression, or, as we will see below, two concepts: one for abstract
@@ -404,16 +398,16 @@ first mathematical abstraction in the case of expressions with binders was
 described by Fiore, Plotkin and Turi in \cite{FPT}. Later a different abstraction,
 more convenient for mathematicians, was described by Hirschowitz and
 Maggesi in a series of papers, which includes \cite{HM2010}.  The two approaches were
-shown to be equivalent in \cite{ACU,ACU2} using the concept of a well
-behaved functor.
-%### Is it true? Ask Fiore to check and find references
+shown to be equivalent in \cite{ACU,ACU2} using the concept of {\em well
+behaved functor}.
+%### Is it true? Ask Fiore to check and find references.  DRG - I've asked Marcelo.
 The proof of equivalence in \cite{ACU,ACU2} was based on the important
 observation that the monoids of \cite{FPT} are particular cases of {\em
   relative monads}.
 
 These results would have closed the issue, and in
-this paper we probably would have used the Hirschowitz and
-Maggesi concept of abstract expression, which is based
+this paper we probably would have used the concept of abstract expression
+due to Hirschowitz and Maggesi, which is based
 on the concept of a monad, if not for the fact that the proof of the equivalence
 uses the axiom of choice.
 
@@ -437,13 +431,13 @@ called {\em UniMath}.  We consider ZFC to be the primary meta-theory and {\em Un
 secondary one. That is, we take care to adapt our definitions and proofs
 precisely for ZFC, while accepting that {\em UniMath} formalization will require
 some small degree of modification.
-
-Having {\em UniMath} as a secondary meta-theory imposes a number of strong
+%
+Having {\em UniMath} as a secondary meta-theory imposes strong
 restrictions on the features of ZFC that we can use.  Most
 notably, we can not use the law of excluded middle and we can not use the axiom
 of choice.
 
-Let us go back to the concept of an abstract expression. Let us consider the
+Let us go back to the concept of abstract expression. Let us consider the
 case of algebraic expressions first.  The modern mathematical theory of algebraic
 expressions has been developed at least as far back as the 1963 Ph.D.{} thesis of
 Bill Lawvere \cite{Lawvere}. However, our interest in having the theory
@@ -552,7 +546,7 @@ first in order to perform our construction.
 
 {\em This is why we use $Jf$-relative monads and not the usual monads.}
 
-Let us now explain another very important point. At the very start of our
+Let us now explain another important point. At the start of our
 explanation of how $Jf$-relative monads are related to expressions, we said
 that we will consider {\em algebraic} expressions. However, the expressions
 that appear in the sentences of type theories are often not algebraic, because
@@ -570,7 +564,7 @@ Expressions with binders are specified by {\em binding signatures}%
 %### Fiore's *second-order signatures* is better, ask Marcelo for a reference to one of his papers?
 ---pairs consisting of a set of operations $Op$ and an arity function $Ar:Op\sr Fseq(\nat)$.
 Here $Fseq(\nat)$ is the set of finite sequences of elements of
-$\nat$. The set $\nat$ is considered as a subset of $Fseq(\nat)$ through the
+$\nat$. The set $\nat$ may be identified with a subset of $Fseq(\nat)$ through the
 embedding taking $d$ to the sequence $(0,\dots,0)$ of length $d$. This defines
 an inclusion of algebraic signatures into binding signatures. The earliest
 mention of a concept equivalent to binding arity that we know of is in
@@ -599,23 +593,23 @@ arity $(1)$ that we will call $\lambda$. Every such expression is of the form
 %
 $$E=\lambda\,x_{n-1}.\lambda\,x_{n-2}.\dots.\lambda\,x_0.x$$
 %
-Here $x_n,\dots,x_{0}$ are bound variables. We do not assume that $x_i\ne x_j$
+Here $x_{n-1},\dots,x_{0}$ are bound variables.  We do not assume that $x_i\ne x_j$
 for $i\ne j$ or that $x_i\ne x$. In particular $x$ is a free variable if
-$x_i\ne x$ for all $i\ge 0$ and a bound one otherwise. The usual, but hard to
+$x_i\ne x$ for all $i\ge 0$ and is a bound variable otherwise. The usual, but hard to
 formulate precisely, rules of $\alpha$-equivalence (see, e.g., \cite[Def. 2.1.11,
   p.~26]{Barendregt}) imply that if we rename the bound variables in any way
 that preserves the rightmost occurrence of $x$ among the $x_i$'s, then the
 resulting expression will be $\alpha$-equivalent to the original one. In
-particular, we can always rename $x_i$ such that $x_i\ne x_j$ for $i\ne j$ and
+particular, we can always rename the variables $x_i$ so that $x_i\ne x_j$ for $i\ne j$ and
 there is an most one $k$ such that $x_k=x$. If such a $k$ exists, then $E$ has
-no free variables and if it does not, then $E$ has one free variable $x$.
+no free variables, and if it does not, then $E$ has one free variable, namely $x$.
 
 If $x$ is a free variable, then we can substitute another expression $E'$ of the
-same form for $x$. However, we can not do it directly. Instead we have to use
+same form for $x$, yielding an expression denoted $E[E'/x]$.  However, we can not do it directly. Instead we have to use
 something called {\em capture avoiding substitution} to avoid the
 ``capture'' of variable names by binders. For example, let $E=\lambda\,x_0.x$,
-where $x$ is free, and $E'=x'$. Then we have two cases---if $x_0\ne x'$, then we
-can directly substitute $E'$ for $x$ and $E[E'/x]=\lambda\,x_0.x'$. If $x_0=x'$
+where $x$ is free, and let $E'=x'$ be a variable.  Then we have two cases---if $x_0\ne x'$, then we
+can directly substitute $E'$ for $x$, obtaining $E[E'/x]=\lambda\,x_0.x'$. If $x_0=x'$
 we must first rename $x_0$ into $x_0'$, chosen so that $x_0'\ne x'$, and then
 substitute, obtaining $E[E'/x]=\lambda\,x_0'.x'$. If we were to use direct
 substitution, then the resulting operation would not respect 
@@ -632,7 +626,7 @@ $Exp^{\cdot}(X)$ and define the sets $Exp^{\alpha}(X)$ of $\alpha$-equivalence
 classes of expressions with free variables from $X$. Most definitions of
 $\alpha$-equivalence require $V$ to be a set with an additional operation that
 for every finite subset of $V$ gives an element in the complement of this
-subset. Let us call it a freshness operation. Some approaches to 
+subset. Let us call it a {\em freshness operation}. Some approaches to 
 $\alpha$-equivalence and further constructions discussed below, notably the
 approach through nominal sets \cite{Pitts}, may require only that for any
 finite subset of $V$ there exist an element in the complement of this
@@ -641,13 +635,13 @@ ZFC a set has the freshness property if and only if it is infinite. In
 constructive meta-theories the situation may be more involved and it is
 convenient to have a special name for this property.
 
-If $V$ has the freshness property one can define, and again it is not at all
+If $V$ has the freshness property, then one can define, and again it is not at all
 easy, simultaneous capture avoiding substitution of expressions 
 $E_x\in Exp^{\cdot}(Y)$, $x\in X$, for the free variables of an expression 
-$E' \in Exp^{\cdot}(X)$, such that it is compatible with $\alpha$-equivalence.
+$E' \in Exp^{\cdot}(X)$, in a way that is compatible with $\alpha$-equivalence.
 After passage to $\alpha$-equivalence classes these constructions
-become equivalent and one obtains, for any function $X\sr Exp^{\alpha}(Y)$ and
-an element of $Exp^{\alpha}(X)$, an element of $Exp^{\alpha}(Y)$. In addition
+become equivalent and one obtains, for any function $X\sr Exp^{\alpha}(Y)$ and for
+any element of $Exp^{\alpha}(X)$, an element of $Exp^{\alpha}(Y)$. In addition
 one has, for any $X\subset V$, a function $X\sr Exp^{\alpha}(X)$.
 
 This brings us again to a structure of the same form as we obtained in the case
@@ -661,7 +655,7 @@ generalization goes back to Fiore, Plotkin, and Turi \cite{FPT}, where structure
 equivalent to $Jf$-relative monads are introduced under the name of
 {\em abstract clones}.
 
-{\em This is how the $Jf$-relative monads appear in the theory of expressions with binders.}
+{\em This is how $Jf$-relative monads appear in the theory of expressions with binders.}
 
 Let us calculate what we get from this construction when the signature is given
 by one operation $\lambda$ with arity $(1)$. The expressions then are the
@@ -685,12 +679,12 @@ Finally, for a general $X\subset V$ we have
 %
 $$Exp^{\alpha}(X)=Exp^{\alpha}(\emptyset)\cup (\cup_{x\in X}\{b_n(x)\,|\,n\in \nat\}),$$
 %
-and the union on the right hand side is disjoint. 
+and the unions on the right hand side are disjoint. 
 
 Capture avoiding substitution in the case of one free variable is of the form
 %
-$$b_n(a_{n',k'}/x)=a_{n+n',k'}$$
-$$b_n(b_{n'}(x')/x)=b_{n+n'}(x').$$
+$$b_n(x)[a_{n',k'}/x]=a_{n+n',k'}$$
+$$b_n(x)[b_{n'}(x')/x]=b_{n+n'}(x').$$
 %
 For many free variables the substitution is determined by the case of one free
 variable, because in any one expression there is at most one free variable.
@@ -702,9 +696,9 @@ $1$. The elements corresponding under this isomorphism to $a_{n,k}$ are
 $b^n(a_k)$, and the elements corresponding to $b_n(x)$ are $b^n(x)$.
 
 Church's famous $\lambda$-calculus starts with the system of abstract
-expressions corresponding to two operations $ap$ and $\lambda$ with the arity
+expressions corresponding to two operations $ap$ and $\lambda$, with the arity
 of $ap$ being $(0,0)$ and the arity of $\lambda$ being $(1)$.  The operation $ap$ is
-called application and is usually denoted using infix notation with the
+called {\em application} and is usually denoted using infix notation with the
 empty operation symbol, that is, $ap(E,E')$ is denoted by $E\,E'$.
 
 I do not know of an algebraic representation similar to what we have described
@@ -713,15 +707,15 @@ corresponding to the binding signature
 %
 $$Sig_{\Lambda}=(\{ap,\lambda\}, Ar(ap)=(0,0), Ar(\lambda)=(1))$$
 %
-More generally, one may ask if for any binding signature $Sig$ one may
+More generally, one may ask whether for any binding signature $Sig$ one may
 construct an algebraic signature $Alg(Sig)$ and an isomorphism between the
-$Jf$-relative monads corresponding to $Sig$ and $Alg(Sig)$ as we have done in
+$Jf$-relative monads corresponding to $Sig$ and $Alg(Sig)$, as we have done in
 the case when $Sig=(\{\lambda\},Ar(\lambda)=(1))$.
 
 To obtain the $\lambda$-calculus, or more specifically, the
 $\lambda_{\eta\beta}$-calculus, one has to add to the system of expressions
-defined by $Sig_{\Lambda}$ two relations that are called the $\beta$- and the
-$\eta$-reductions. The fact that one still gets a $Jf$-monad structure after
+defined by $Sig_{\Lambda}$ two relations that are called $\beta$-reduction and 
+$\eta$-reduction. The fact that one still gets a $Jf$-monad structure after
 passing to equivalence classes under the equivalence relation generated by
 these ``reductions'' requires proof.
 
@@ -745,9 +739,9 @@ of this generalization can be see in \cite{FPT}. It is highly non-trivial.
 Operations that bind variables change the set of free variables, e.g., for $x\in
 X$, the operation $\lambda\,x$ can be seen as an operation from
 $Exp(X\coprod\{x\})$ to $Exp(X)$. Because of this, the individual sets
-$Exp^{\alpha}(X)$ do not have universal characterization. Instead, a universal
-characterization can be given to a functor $Exp:Sets(U)\sr Sets(U)$ that will
-be later given a monad structure. This functor has an initial algebra structure
+$Exp^{\alpha}(X)$ do not have a universal characterization.  Instead, a universal
+characterization can be given to a functor $Exp:Sets(U)\sr Sets(U)$, which will
+be given a monad structure later.  This functor has an initial algebra structure
 for $\uu{Id}+H_{Sig}$, where $H_{Sig}$ is a {\em functor of the second order}---%
 a functor from functors to functors and $\uu{Id}$ is the functor of second
 order that takes any $F$ to the identity functor of $Sets(U)$. The functor
@@ -773,11 +767,11 @@ theory is developed in \cite{MatthesUustalu}, \cite{AM2016}, and
 characterization of the monad structure itself can be found in
 \cite{HM2012}. Not all is understood yet, and it remains an active area of
 research. Much of the work being done today is being simultaneously
-formalized in {\em UniMath}. The key question here is: what structure on $H$ has
+formalized in {\em UniMath} \cite{}. The key question here is: what structure on $H$ has
 to be specified in order to obtain a monad structure on the initial algebra of
 $\uu{Id}+H$?  The main idea was introduced in \cite{MatthesUustalu}. In
 \cite{AM2016} a functor with this structure is called an (abstract)
-signature. As became understood later in \cite{AMM2016}, the additional
+{\em signature}. As became understood later in \cite{AMM2016}, the additional
 condition of $H$ being $\omega$-cocontinuous allows one to remove the condition
 of the existence of the right adjoints from the main theorem \cite[Th. 15,
   p.~170]{MatthesUustalu}, leading to \cite[Th. 48]{AMM2016}.
@@ -966,9 +960,9 @@ $(x_0,\dots,x_{n-1})=(0,\dots,n-1)$. Then $T_i$ has free variables from
 $stn(i)$ and $T,T',t$ and $t'$ free variables from $stn(n)$. When we are given
 all the necessary additional information for the construction of the pair
 $(\RR,\LM)$, where $RR(n)$ and $LM(n)$ are the $\alpha$-equivalence classes of
-type and element expressions with free variables from the sets $stn(n)$ we
+type and element expressions with free variables from the sets $stn(n)$, then we
 obtain the following description of the sets of all possible sentences of the
-five main kinds:
+five main kinds.
 %
 \begin{enumerate}
 \item a sentence of the form (\ref{2017.02.06.eq1}) is an element of
@@ -977,19 +971,19 @@ $$B(\RR,\LM)=\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq2}) is an element of
 %
-$$Bt(\RR,\LM)=\coprod_{n\ge 0} (\prod_{i=0}^{n-1}LM(\ff{i}))\times LM(\ff{n})$$
+$$Bt(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times LM(\ff{n})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq3}) is an element of
 %
-$$\wt{B}(\RR,\LM)=\coprod_{n\ge 0} (\prod_{i=0}^{n-1}LM(\ff{i}))\times RR(\ff{n})\times LM(\ff{n})$$
+$$\wt{B}(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times RR(\ff{n})\times LM(\ff{n})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq4}) is an element of
 %
-$$Beq(\RR,\LM)=\coprod_{n\ge 0} (\prod_{i=0}^{n-1}LM(\ff{i}))\times LM(\ff{n})\times LM(\ff{n})$$
+$$Beq(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times LM(\ff{n})\times LM(\ff{n})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq5}) is an element of
 %
-$$\wt{Beq}(\RR,\LM)=\coprod_{n\ge 0} (\prod_{i=0}^{n-1}LM(\ff{i}))\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})$$
+$$\wt{Beq}(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})$$
 %
 \end{enumerate}
 %
@@ -1025,8 +1019,8 @@ as associativity, present additional difficulties.
 
 We proceed in a different manner. Instead of starting with $B/{\sim}$ and
 building the C-system structure on it, we will construct a C-system
-$C(\RR,\LM)$, which knows nothing about the subsets
-$B$,$\wt{B}$,$Beq$,$\wt{Beq}$, and then we use the results of \cite{Csubsystems}
+$C(\RR,\LM)$ that knows nothing about the subsets
+$B$, $\wt{B}$, $Beq$, $\wt{Beq}$, and then we use the results of \cite{Csubsystems}
 to show how any quadruple of subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying
 certain properties defines a sub-quotient C-system of $C(\RR,\LM)$. This
 sub-quotient will be the term model C-system of our type theory.
@@ -1044,7 +1038,7 @@ The validity of a sentence of the form $0:T_0\rh ok$ asserts that $T_0$, which
 must be a closed expression according to the rules stated above, is a valid
 expression that describes {\em a type} in the system. For example, in any of
 the Martin-L\"{o}f type theories, there is a type $\nat$, which is called the
-type of natural numbers. The formal equivalent of this assertion is that $\nat$
+{\em type of natural numbers}. The formal equivalent of this assertion is that $\nat$
 is an expression and the sentence $0:\nat\rh ok$ is valid.
 
 One often uses the words ``type'', ``type expression'' and ``expression that
@@ -1052,9 +1046,9 @@ describes a type'' interchangeably. The same applies to ``element'', ``element
 expression'' and ``expression that describes an element''.\footnote{Note from
   editor: I'm considering inserting a warning about this.}
 
-A sentence of the form $0:T_0,1:T\rh ok$ asserts that $T_0$ is a valid, closed,
-type expression and $T$ is an expression with the only possible free variable
-being $0$ that describes {a family of types} parametrized by $T_0$. For
+A sentence of the form $0:T_0,1:T\rh ok$ asserts that $T_0$ is a valid closed
+type expression, and that $T$ is an expression with the only possible free variable
+being $0$, thereby describing {\em a family of types} parametrized by $T_0$. For
 example, in any of the Martin-L\"{o}f type theories, given a type $T$ and two
 elements $t,t':T$ of $T$, there is a type $Id\,T\,t\,t'$ whose elements are to
 be thought of as constructions of equalities between $t$ and $t'$ in
@@ -1161,8 +1155,8 @@ extensionally speaking, the subsets of well-typed context-judgment pairs.
 
 %@@@
 
-For $p:X\sr Y$ in a category, let $sec(p)=\{s:Y\sr X\,|\,s\circ
-p=Id_X\}$. Elements of $sec(p)$ are called {\em sections} of $p$. To any C-system
+For $p:X\sr Y$ in a category, let $sec(p)=\{s:Y\sr X\,|\,s\circ p=Id_X\}$. 
+Elements of $sec(p)$ are called {\em sections} of $p$. To any C-system
 $CC$ one associates a pair of sets $(Ob(CC),\wt{Ob}(CC))$, where $Ob(CC)$ is the
 set of objects of the category underlying $CC$, and where
 %
@@ -1277,7 +1271,7 @@ in some of the arguments that significantly simplifies the proofs.
 
 In the second section we construct for any C-system $CC$ and a presheaf $F$ on
 the category underlying $CC$ a new C-system $CC[F]$ that we call the
-$F$-extension of $CC$. The C-systems of this form are reminiscent of affine
+{\em $F$-extension of $CC$}. The C-systems of this form are reminiscent of affine
 spaces over schemes in algebraic geometry. While the geometry of affine spaces
 in itself is not very interesting their sub-spaces encompass all affine
 algebraic varieties of finite type . Similarly, while the C-systems $CC[F]$
@@ -1292,7 +1286,7 @@ $(B,\wt{B}, \sim,\simeq)$ of the following form.
 Let $\wt{Ob}(CC)$ be the set of sections of the p-morphisms of $CC$, i.e., the
 subset in $Mor(CC)$ that consists of morphisms $s$ such that
 $dom(s)=ft(codom(f))$ and $s\circ p_{codom(f)}=Id_{dom(f)}$.  The sets $Ob(CC)$
-and $\wt{Ob}(CC)$ are called the B-sets of a C-system and can also be denoted
+and $\wt{Ob}(CC)$ are called the {\em B-sets} of a C-system, and they can also be denoted
 as $B(CC)$ and $\wt{B}(CC)$.
 
 The first two components $B$ and $\wt{B}$ of the quadruple are subsets in the
@@ -1308,7 +1302,7 @@ function $l:B\sr\nat$ on $B$.
 Therefore, in order to be able to describe regular sub-quotients of a C-system
 one needs to know the B-sets of this C-system, the length function and the
 action of the eight B-system operations on these sets. Such a collection of
-data is called a pre-B-system (see \cite{Bsystems}). The main result of this
+data is called a {\em pre-B-system} (see \cite{Bsystems}). The main result of this
 paper is a detailed description of the pre-B-systems of the form
 $(B(CC[F]),\wt{B}(CC[F]))$ for an important class of ``coefficient''
 C-systems $CC$ (see below).
@@ -1360,7 +1354,7 @@ of this type theory to be defined.
 
 We use neither the axiom of excluded middle nor the axiom of choice. The paper
 is written in a formalization-ready style and should be easily formalizable
-both in {\em UniMath} and in ZF.
+both in {\em UniMath} and in ZFC.
 
 \vspace{5mm}
 
@@ -1407,7 +1401,7 @@ This is one the papers extending the material which I started to work on in
 \cite{NTS}. I would like to thank the Institute Henri Poincare in Paris and the
 organizers of the ``Proofs'' trimester for their hospitality during the
 preparation of the first version of this paper. The work on this paper was
-facilitated by discussions with Benedikt Ahrens, Richard Garner and Egbert
+facilitated by discussions with Benedikt Ahrens, Richard Garner, and Egbert
 Rijke.
 
 %###??? Make a note that we do not use dependent types in the paper which is why we can not simply write Hom(\wh{n},\wh{m})=R(stn(n))^{stn(m)}
@@ -1441,8 +1435,8 @@ be used.
 We will omit the qualification ``in monoidal form'' when it is clear from the context. 
 
 The following definition specifies objects that we will call ``monads in
-Kleisli form''. To the best of my knowledge it explicitly appeared in the first
-time in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
+Kleisli form''. To the best of my knowledge it explicitly appeared first
+in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \llabel{2017.04.13.def1}
@@ -1622,9 +1616,9 @@ The proofs of the composition and the identity axioms of a functor are omitted.
 \ec
 %### details, to M. or J.?
 %
-An $Id_{\C}$-relative monad will be called an endo-monad. An endo-monad is
+An $Id_{\C}$-relative monad will be called an {\em endo-monad}. An endo-monad is
 precisely a monad on the corresponding category given in Kleisli form. This
-permits us to call, sometimes, the endo-monads simply monads.  The explicit
+permits us to call, sometimes, endo-monads simply monads.  The explicit
 form of functions $(-)^K$ and $(-)^M$ defined in Construction
 \ref{2017.01.04.constr1} shows that for $\R=(R,\eta,\mu)$ we have
 $\R^K=(R_{Ob},\eta,rr)$ and for $\RR=(RR_{Ob},\eta,rr)$ we have
@@ -1646,7 +1640,7 @@ category.
 \begin{problem}
   \llabel{2017.03.12.prob3}
   Given a functor $J:\C\sr\D$ and a $J$-monad $\RR=(RR,\eta,rr)$ to construct a
-  category $K(\RR)$ that will be called the Kleisli category of $\RR$.
+  category $K(\RR)$ that will be called the {\em Kleisli category} of $\RR$.
 \end{problem}
 %
 \begin{construction}\rm
@@ -1924,7 +1918,7 @@ that is, $\nu_{X,Y}$ and $\nu_{Y,X}$ are mutually inverse and, in particular, $\
 For any object $A$ of $\D$ the functor $\uu{A}_{\C}:\C\sr \D$ given on objects
 by $\uu{A}_{\C}(X)=A$ and on morphisms by $\uu{A}_{\C}(f)=Id_A$ has an obvious
 object constancy structure with $\nu_{X,Y}=Id_A$ for all $X,Y$. We will call it
-the identity object constancy structure corresponding to $A$.
+the {\em identity object constancy structure corresponding to $A$}.
 
 Since the object constancy structure does not impose any condition on $\nu$
 with respect to morphisms of $\C$ or $\D$, there are many other
@@ -2606,7 +2600,7 @@ This completes the proof of Lemma \ref{2015.09.03.l2}.
 %
 Let $CC$ be a C-system and $F:CC^{op}\sr Sets$ a presheaf on the category
 underlying $CC$. In this section we construct a new C-system $CC[F]$ which we
-call the $F$-extension of $CC$ and describe a unital pre-B-system $B(CC,F)$ and
+call the {\em $F$-extension of $CC$}, we describe a unital pre-B-system $B(CC,F)$, and we introduce
 an isomorphism $B(CC[F])\sr B(CC,F)$.
 
 We will first construct a C0-system $CC[F]$ and then show that it is a
@@ -2615,7 +2609,7 @@ C-system. For the definition of a C0-system see \cite[Definition
 %
 \begin{problem}\llabel{2016.01.19.prob1}
 Given a C-system $CC$ and a presheaf $F:CC^{op}\sr Sets$ to construct a
-C0-system that will be denoted $CC[F]$ and called the $F$-extension of $CC$.
+C0-system that will be denoted $CC[F]$ and called the {\em $F$-extension of $CC$}.
 \end{problem}
 %
 \begin{construction}\rm\llabel{2016.01.19.constr1}
@@ -2938,10 +2932,10 @@ $$Mor_{Sets(U)}(X,Y)=Fun(X,Y)$$
 and a composition function can be defined that restricts to the composition of
 functions function on each $Mor_{Sets(U)}(X,Y)$. Finally the identity function
 $U\sr Mor(Sets(U))$ is obvious and the collection of data that one obtains
-satisfies the axioms of a category. This category is called the category of
-sets in $U$ and denoted $Sets(U)$.
+satisfies the axioms of a category.  This category is called the {\em category of
+sets in $U$} and is denoted by $Sets(U)$.
 
-We will only consider the case when $U$ is a universe. As was mentioned in the
+We will consider only the case when $U$ is a universe. As was mentioned in the
 introduction we fix $U$ and omit it from our notations below.
 
 Following \cite{ACU} we let $Jf:F\sr Sets$ denote the functor that takes $n$ to
@@ -3968,8 +3962,8 @@ where the third equality is by Lemma \ref{2015.08.22.l6}(2) and the fourth one b
 %??? should E be from LM(\wh{n}) or LM(x_1,\dots,x_n)? Probably it does not matter as it leads to isomorphic C-systems
 %
 There is another construction of a pre-category from $(\RR,\LM)$ which takes as
-an additional parameter a countable set $Var$ (with decidable equality) which
-is called the set of variables. Let $F_n(Var)$ be the set of sequences of
+an additional parameter a countable set $Var$ (with decidable equality), which
+is called the {\em set of variables}. Let $F_n(Var)$ be the set of sequences of
 length $n$ of pair-wise distinct elements of $Var$. Define the pre-category
 $C(\RR,\LM,Var)$ as follows. The set of objects of $C(\RR,\LM,Var)$ is
 %
