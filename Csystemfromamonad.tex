@@ -1438,7 +1438,7 @@ at
   } .}
 The paper is visible as an entry in the archival record of Voevodsky's work at
 \hfill\break\centerline{\tiny{\tt \href{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}%
-  } .}
+  } ,}
 and a link there will allow the reader to view all existing drafts of the paper.
 If those links are ever broken, perhaps a search for the randomly chosen string
 \hfill\break\centerline{\tiny{\tt 808d59c861bd87b38873e2d2e288511453262b1e}}
@@ -1775,18 +1775,20 @@ F^{\circ}(\RR):=(F^{\circ}(RR_{Ob}), F^{\circ}(\eta), F^{\circ}(rr))
 %
 where, for for $X\in \C_0$
 %
-\begin{align}
-\llabel{2017.04.11.eq1}
-F^{\circ}(RR_{Ob})(X)&:=RR_{Ob}(F(X))\\
-F^{\circ}(\eta)_X&:=\eta_{F(X)}
-\end{align}%
+\begin{eq}
+  \llabel{2017.04.11.eq1}
+  \begin{split}
+    F^{\circ}(RR_{Ob})(X)&:=RR_{Ob}(F(X))\\
+    F^{\circ}(\eta)_X&:=\eta_{F(X)}
+  \end{split}
+\end{eq}%
 %
 and for $X,Y\in\C_0$ and $f:J(F(X))\sr RR_{Ob}(F(Y))$,
 %
-\begin{align}
+\begin{eq}
 \llabel{2017.04.11.eq2}
-F^{\circ}(rr)_{X,Y}(f)&:=rr_{F(X),F(Y)}(f)
-\end{align}%
+F^{\circ}(rr)_{X,Y}(f):=rr_{F(X),F(Y)}(f)
+\end{eq}%
 %
 Let us verify conditions (1)-(3) of Definition \ref{2015.12.22.def1}. We write
 $RR$ instead of $RR_{Ob}$ :
@@ -2057,26 +2059,19 @@ the third by the property \ref{2017.04.13.def1}\ref{2017.04.19.eq5} of $\RR$,
 and the fourth by definition of $pr_{\D}$. This proves the property
 \ref{2017.04.13.def1}\ref{2017.04.19.eq5} for $\RR_{\D}$.
 
-Let $X,Y,Z\in\C$, $f:J_{\D}(X)\sr RR_{\D}(Y)$, $g:J_{\D}(Y)\sr RR_{\D}(Z)$. Then
-%
-$$rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ 
-rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))=
-%
-$$$$rr_{X,Z}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
-%
-$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ\eta^{\D'}_Y\circ pr_{\D'}(rr_{Y,Z}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z))) )))=
-%
-$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ pr_{\D'}(\eta_Y\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z))) ))=
-%
-$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ pr_{\D'}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z)) ))=
-%
-$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ\nu_{Y,Z}\circ\eta^{\D'}_Z) )=
-%
-$$$$rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Z}\circ\eta^{\D'}_Z) ))=$$
-%
+Let $X,Y,Z\in\C$, $f:J_{\D}(X)\sr RR_{\D}(Y)$, and $g:J_{\D}(Y)\sr RR_{\D}(Z)$.  Then
 \begin{eq}
-\llabel{2017.04.21.eq5}
-rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)),
+  \llabel{2017.04.21.eq5}
+  \begin{split}
+      &rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))=
+    \\&rr_{X,Z}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
+    \\&rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ\eta^{\D'}_Y\circ pr_{\D'}(rr_{Y,Z}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z))) )))=
+    \\&rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ pr_{\D'}(\eta_Y\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z))) ))=
+    \\&rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ pr_{\D'}((g,\nu_{Y,Z}\circ\eta^{\D'}_Z)) ))=
+    \\&rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Y}\circ\nu_{Y,Z}\circ\eta^{\D'}_Z) )=
+    \\&rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Z}\circ\eta^{\D'}_Z) ))=
+    \\&rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)),
+  \end{split}
 \end{eq}%
 %
 where the first equality holds by the property
@@ -3069,7 +3064,7 @@ one element set, then $RR$ has a (unique) structure of a $Jf$-relative monad and
 $RR(m,n)=RR(m,n')$ for all $m,n,n'$. Therefore no function to $\nat$ from the
 union of these sets can distinguish the codomain of a morphism. In particular,
 in this case there is no category with the sets of morphisms from $m$ to $n$
-being equal $RR(m,n)$.
+being equal to $RR(m,n)$.
 \end{remark}
 %
 Since we will have to deal with elements of the sets of functions
@@ -3285,10 +3280,10 @@ We consider $L$ as a functor
 %
 $${L}:F^{op}\sr C(\RR)$$
 %
-i.e., as a contravariant functor from $F$ to $C(\RR)$ and keep the conventions
-introduced in the previous section the most important of which is that for
-$f\in F(m,n)$ and $x\in RR(m)$ we write $f(x)$ for $RR(f)(x)=\mbind{(f\circ
-  \eta_{n})}(x)$.
+i.e., as a contravariant functor from $F$ to $C(\RR)$, and we keep the conventions
+introduced in the previous section, the most important of which is that for
+$f\in F(m,n)$ and $x\in RR(m)$ we may write $f(x)$ for 
+$RR(f)(x)=\mbind{(f\circ \eta_{n})}(x)$.
 
 The $ft$ function on $C(\RR)$ is defined by the formula $ft(\wh{n+1})=\wh{n}$
 and $ft(\wh{0})=\wh{0}$.
@@ -3323,14 +3318,14 @@ $$p_{\wh{m+1}}\circ_C f=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-1)))$$
 \end{lemma}
 %
 \begin{proof}
-Both sides of the first equality are elements of $Fun(stn(n), RR(m+1))$ and for $i\in stn(n)$ we have
+Both sides of the first equality are elements of $Fun(stn(n), RR(m+1))$, and for $i\in stn(n)$ we have
 %
 $$(f\circ_C p_{\wh{n+1}})(i)=(L(\iota_{n}^1)\circ_T f)(i)=f(i),$$
 %
 where the second equality is by (\ref{2015.08.26.eq4}). 
 
-Both sides of the second equality are again elements of $Fun(stn(n), RR(m+1))$
-and for $i\in stn(n)$ we have:
+Both sides of the second equality are elements of $Fun(stn(n), RR(m+1))$,
+and for $i\in stn(n)$ we have the following equations.
 %
 $$(p_{\wh{m+1}}\circ_C f)(i)=(f\circ_T L(\iota_{m}^1))(i)=(f\circ \mbind{(L(\iota_{m}^1))})(i)=(f\circ RR(\iota_{m}^1))(i)=\iota_{m}^1(f(i))$$
 %
@@ -3367,7 +3362,7 @@ $$p_{\wh{m+1}}\circ_C f = (\iota_m^1(f(0)),\dots,\iota_m^1(f(n-1)))$$
 %
 by Lemma \ref{2015.07.24.l1}(2).
 
-Both sides of the second equation are elements of $Fun(stn(1),RR(m+1))$ and it
+Both sides of the second equation are elements of $Fun(stn(1),RR(m+1))$, and it
 is sufficient that their values on $0$ coincide. We have
 %
 $$(q(f)\circ_C (x_n^{n+1}))(0)=((x_n^{n+1})\circ_T qq(f))(0)=((x_n^{n+1})\circ \mbind{qq(f)})=$$$$\mbind{qq(f)}(x_n^{n+1})=qq(f)(n)=x_m^{m+1},$$
@@ -3378,12 +3373,12 @@ where the fourth equality is by (\ref{2015.08.24.eq5}) and the fifth by
 
 %
 Let us describe the constructions introduced in Section \ref{onCsystems} in the
-case of $C(\RR)$. Note that our wide-hat notation that distinguishes the places
-in formulas where natural numbers are used as objects of $C(\RR)$ allows us to
-avoid the ambiguity that might have arisen otherwise. For example $p_{m,n}$
+case of $C(\RR)$. Note that our wide-hat notation, which distinguishes the places
+in formulas where natural numbers are used as objects of $C(\RR)$, allows us to
+avoid the ambiguity that might have arisen otherwise. For example, $p_{m,n}$
 could be understood either as the canonical morphism $m\sr n$ using the
 notation $p_{\Gamma',\Gamma}$ introduced in Section \ref{onCsystems} or as the
-canonical morphism $m\sr m-n$ using the notation $p_{\Gamma,i}$ that we have
+canonical morphism $m\sr m-n$ using the notation $p_{\Gamma,i}$, which we have
 used in \cite{Csubsystems}.  The use of the wide-hat diacritic allows to
 distinguish between $p_{\wh{m},\wh{n}}$, a morphism $\wh{m}\sr \wh{n}$, and
 $p_{\wh{m},n}$, a morphism $\wh{m}\sr \wh{m-n}$.
@@ -3509,7 +3504,7 @@ Equality (\ref{2016.01.15.eq7}) gives us, by (\ref{2015.08.24.eq5}) that $sf=f(n
 %
 
 Recall from \cite{Csubsystems} that for a C-system $CC$ one defines
-$\wt{Ob}(CC)$ as the subset of $Mor(CC)$ which consists of morphisms $s$ of the
+$\wt{Ob}(CC)$ as the subset of $Mor(CC)$ that consists of morphisms $s$ of the
 form $ft(X)\sr X$ such that $l(X)>0$ and $s\circ p_X=Id_{ft(X)}$.
 %
 \begin{lemma}
@@ -3562,8 +3557,8 @@ $$
 $$
 %
 The morphism $s$ is a morphism from $Id_{\wh{n+i}}$ to $p_{\wh{n+i+1}}$ over
-$\wh{n+i}$. Therefore, we may apply Lemma \ref{2015.08.29.l2} obtaining the
-equality
+$\wh{n+i}$. Therefore, we may apply Lemma \ref{2015.08.29.l2}, obtaining the following
+equality.
 %
 $$f^*(s)=(qq^i(f))^*(s)$$
 %
@@ -3574,7 +3569,7 @@ $$qq^i(f)^*(s)=(x_0^{m+i},\dots,x_{m+i-1}^{m+i},\mbind{qq^i(f)}(s(n+i))).$$
 The lemma is proved. 
 \end{proof}
 %
-Another operation that we would like to have an explicit form of is operation
+Another operation that we would like to have an explicit form of is the operation
 $\delta$. For a C-system $CC$ and an object $\Gamma$ in $CC$ such that
 $l(\Gamma)>0$ one defines $\delta_{\Gamma}$ as $s_{Id(\Gamma)}$
 (cf.{} \cite[Section 3]{Csubsystems}).
@@ -3628,7 +3623,7 @@ Let $CC$ be a C-system. We will write $Ob$ for $Ob(CC)$ and $\wt{Ob}$ for $\wt{O
 %
 %
 \begin{enumerate}
-\item Operation $T$ is defined on the set
+\item The operation $T$ is defined on the set
 %
 $$T_{dom}=\{\Gamma,\Gamma'\in Ob\,|\,l(\Gamma)>0\,\,and\,\, \Gamma'>ft(\Gamma)\}$$
 %
@@ -3636,7 +3631,7 @@ and takes values in $Ob$. For $(\Gamma,\Gamma')\in T_{dom}$ one defines
 %
 $$T(\Gamma,\Gamma')=p_{\Gamma}^*(\Gamma')$$
 %
-\item Operation $\wt{T}$ is defined on the set
+\item The operation $\wt{T}$ is defined on the set
 %
 $$\wt{T}_{dom}=\{\Gamma\in Ob, s\in \wt{Ob}\,|\,l(\Gamma)>0\,\,and\,\, \partial(s)>ft(\Gamma)\}$$
 %
@@ -3644,7 +3639,7 @@ and takes values in $\wt{Ob}$. For $(\Gamma,s)\in \wt{T}_{dom}$ one defines
 %
 $$\wt{T}(\Gamma,s)=p_{\Gamma}^*(s)$$
 %
-\item Operation $S$ is defined on the set
+\item The operation $S$ is defined on the set
 %
 $$S_{dom}=\{r\in \wt{Ob}, \Gamma\in Ob\,|\,\Gamma>\partial(r)\}$$
 %
@@ -3652,7 +3647,7 @@ and takes values in $Ob$. For $(r,\Gamma)\in S_{dom}$ one defines
 %
 $$S(r,\Gamma)=r^*(\Gamma)$$
 %
-\item Operation $\wt{S}$ is defined on the set 
+\item The operation $\wt{S}$ is defined on the set 
 %
 $$\wt{S}_{dom}=\{r,s\in \wt{Ob}\,|\,\partial(s)>\partial(r)\}$$
 %
@@ -3660,7 +3655,7 @@ and takes values in $\wt{Ob}$. For $(r,s)\in \wt{S}_{dom}$ one defines
 %
 $$S(r,s)=r^*(s)$$
 %
-\item Operation $\delta$ is defined on the set 
+\item The operation $\delta$ is defined on the set 
 %
 $$\delta_{dom}=\{\Gamma\in Ob\,|\,l(\Gamma)>0\}$$
 %
@@ -3669,14 +3664,16 @@ and takes values in $\wt{Ob}$. For $\Gamma\in \delta_{dom}$ one defines $\delta(
 \end{definition}
 %
 
-Define, for any $Jf$-relative monad $\RR$ operations
+Define, for any $Jf$-relative monad $\RR$, operations
 $\theta_{m,n}=\theta^{\RR}_{m,n}$ such that for $m,n\in\nat$, $n>m$ and $r\in
 RR(m)$, $s\in RR(n)$ one has
 %
 \begin{eq}
-\llabel{2015.09.07.eq1}
-\theta_{m,n}(r,s)=\mbind{(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))}(s)=$$
-$$\mbind{(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_{m}^{n-m-1}(r),x_m^{n-1},\dots,x_{n-2}^{n-1})}(s)
+  \llabel{2015.09.07.eq1}
+  \begin{split}
+    \theta_{m,n}(r,s)&=\mbind{(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))}(s) \\
+    &=\mbind{(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_{m}^{n-m-1}(r),x_m^{n-1},\dots,x_{n-2}^{n-1})}(s)
+  \end{split}
 \end{eq}%
 %
 \begin{theorem}
@@ -3684,7 +3681,7 @@ $$\mbind{(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_{m}^{n-m-1}(r),x_m^{n-1},\dots,x_{
 Let $Ob=Ob(C(\RR))$ and let $\wt{Ob}'$ be the right hand side of (\ref{2015.08.24.eq9}). One has:
 %
 \begin{enumerate}
-\item Operation $T'$ is defined on the set
+\item The operation $T'$ is defined on the set
 %
 $$T'_{dom}=\{\wh{m},\wh{n}\in Ob\,|\,m>0\,\,and\,\,n>m-1\}$$
 %
@@ -3692,7 +3689,7 @@ and is given by
 %
 $$T'(\wh{m},\wh{n})=\wh{n+1}$$
 %
-\item Operation $\wt{T}'$ is defined on the set 
+\item The operation $\wt{T}'$ is defined on the set 
 %
 $$\wt{T}'_{dom}=\{\wh{m}\in Ob, (n,s)\in \wt{Ob}'\,|\,m>0\,\,and\,\,n+1>m-1\}$$
 %
@@ -3700,7 +3697,7 @@ and is given by
 %
 $$\wt{T}'(\wh{m},(n,s))=(n+1,\partial_n^{m-1}(s))$$
 %
-\item Operation $S'$ is defined on the set
+\item The operation $S'$ is defined on the set
 %
 $$S'_{dom}=\{(m,r)\in \wt{Ob}',\wh{n}\in Ob\,|\,n>m+1\}$$
 %
@@ -3708,7 +3705,7 @@ and is given by
 %
 $$S'((m,r),\wh{n})=\wh{n-1}$$
 %
-\item Operation $\wt{S}'$ is defined on the set 
+\item The operation $\wt{S}'$ is defined on the set 
 %
 $$\wt{S}'_{dom}=\{(m,r)\in\wt{Ob}',(n,s)\in \wt{Ob}'\,|\,n>m\}$$
 %
@@ -3716,7 +3713,7 @@ and is given by
 %
 $$\wt{S}'((m,r),(n,s))=\theta_{m,n}(r,s)$$
 %
-\item Operation $\delta'$ is defined on the subset
+\item The operation $\delta'$ is defined on the subset
 %
 $$\delta'_{dom}=\{\wh{n}\in Ob\,|\,n>0\}$$
 %
@@ -3732,32 +3729,32 @@ We have:
 %
 \begin{enumerate}
 %
-\item Operation $T'$ is the same as operation $T$ for $C(\RR)$ since $\wt{Ob}$
+\item The operation $T'$ is the same as operation $T$ for $C(\RR)$ since $\wt{Ob}$
   is not involved in it. The form of $T'_{dom}$ is obtained by unfolding
   definitions and the formula for the operation itself follows from Lemma
   \ref{2015.08.22.l6}(2).
 %
-\item Operation $\wt{T}'$ is defined on the set of pairs $(\wh{m}\in Ob,
+\item The operation $\wt{T}'$ is defined on the set of pairs $(\wh{m}\in Ob,
   (n,s)\in \wt{Ob}')$ such that $m>0$ and
   $\partial(mb_{\RR}^!(n,s))>m-1$. Since $\partial(mb_{\RR}^!(n,s))=n+1$ we
   obtain the required domain of definition. The formula by the operation itself
   is obtained immediately by combining Lemma \ref{2015.08.29.l1} and Lemma
   \ref{2015.08.26.l3a}.
 %
-\item Operation $S'$ is defined on the set of pairs $((m,r)\in
+\item The operation $S'$ is defined on the set of pairs $((m,r)\in
   \wt{Ob}',\wh{n}\in Ob)$, where $n>\partial(mb_{\RR}^!(m,r))$. Since
   $\partial(mb_{\RR}^!(m,r))=m+1$ we obtain the required domain of
   definition. The operation itself is given by
 %
 $$S'((m,r),n)=(mb_{\RR}^!(m,r))^*(\wh{n})=(x_0^m,\dots,x_{m-1}^m,r)^*(\wh{n})=\wh{n+m-(m+1)}=\wh{n-1}$$
 %
-\item Operation $\wt{S}'$ is defined on the set of pairs $(m,r),(n,s)\in
+\item The operation $\wt{S}'$ is defined on the set of pairs $(m,r),(n,s)\in
   \wt{Ob}'$ such that $\partial(mb_{\RR}^!(n,s))>\partial(mb_{\RR}^!(m,r))$
   which is equivalent to $n>m$. The formula for the operation itself is
   obtained immediately by combining Lemma \ref{2015.08.29.l1} with $i=n-m-1$
   and Lemma \ref{2015.08.28.l1}.
 %
-\item Operation $\delta'$ is defined on the subset $\wh{n}\in Ob$ such that
+\item The operation $\delta'$ is defined on the subset $\wh{n}\in Ob$ such that
   $n>0$ and is given by
 %
 $$\delta'(\wh{n})=mb_{\RR}(\delta(\wh{n}))=mb_{\RR}((x_0^n,\dots,x_{n-1}^n,x_{n-1}^n))=(n,x_{n-1}^n)$$
@@ -4167,9 +4164,9 @@ from the operations $T$, $\wt{T}$, $S$ and $\wt{S}$ and $\delta$ corresponding
 to the C-system $C(\RR,\LM)$ (cf.{} Definition \ref{2015.08.26.def1}).  Let us
 give an explicit description of these operations.
 
-Recall that we defined, for any $Jf$-relative monad $\RR$, operations 
+Recall that we have defined, for any $Jf$-relative monad $\RR$, operations 
 %
-$$\theta^{\RR}_{m,n}:RR(m)\times RR(n)\sr RR(n-1)$$
+$$\theta^{\RR}_{m,n}:RR(m)\times RR(n)\sr RR(n-1).$$
 % 
 For $\LM$ as above and $n>m$ define operations $\theta^{\LM}_{m,n}$ of the form
 %
@@ -4178,7 +4175,10 @@ $$\theta^{\LM}_{m,n}:RR(m)\times LM(n)\sr LM(n-1)$$
 by the formula
 %
 \begin{eq}\llabel{2015.09.07.eq2}
-\theta^{\LM}_{m,n}(r,E)=$$$$(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))(E)=(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_m^{n-m-1}(r),x_m^{n-1},\dots, x_{n-2}^{n-1})(E),
+  \begin{split}
+    \theta^{\LM}_{m,n}(r,E)&=(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))(E)\\
+                          &=(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_m^{n-m-1}(r),x_m^{n-1},\dots, x_{n-2}^{n-1})(E),
+  \end{split}
 \end{eq}%
 %
 where the second equality is the equality of Lemma \ref{2015.08.28.l1}. As in
@@ -4192,14 +4192,14 @@ $\theta^{\LM}$ can be inferred from the type of the arguments.
 Let $Ob=Ob(C(\RR,\LM))$ and let $\wt{Ob}'=\wt{Ob}'(\RR,\LM)$ be the right hand side of (\ref{2009.10.15.eq2}). One has:
 %
 \begin{enumerate}
-\item Operation $T'$ is defined on the set $T'_{dom}$ of pairs
+\item The operation $T'$ is defined on the set $T'_{dom}$ of pairs
   $(m,\Gamma),(n,\Gamma')\in Ob$, where $\Gamma=(T_0,\dots,T_{m-1})$,
   $\Gamma'=(T_0',\dots,T_{n-1}')$ such that $m>0$, $n>m-1$ and $T_i=T_i'$ for
   $i=0,\dots,m-2$. It takes values in $Ob$ and is given by
 %
 $$T((m,\Gamma),(n,\Gamma'))=$$$$(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots,\partial_{n-1}^{m-1}(T'_{n-1})))$$
 %
-\item Operation $\wt{T}'$ is defined on the set $\wt{T}'_{dom}$ of pairs
+\item The operation $\wt{T}'$ is defined on the set $\wt{T}'_{dom}$ of pairs
   $(m,\Gamma)\in Ob$, $(n,(\Gamma',s))\in\wt{Ob}'$, where
   $\Gamma=(T_0,\dots,T_{m-1})$, $\Gamma'=(T_0',\dots,T_{n-1}')$ such that
   $m>0$, $n+1>m-1$ and $T_i=T_i'$ for $i=0,\dots,m-2$. It takes values in
@@ -4207,21 +4207,21 @@ $$T((m,\Gamma),(n,\Gamma'))=$$$$(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}
 %
 $$\wt{T}'((m,\Gamma),(n,(\Gamma',s)))=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_{n}^{m-1}(s)))$$
 %
-\item Operation $S'$ is defined on the set of pairs $(m,(\Gamma,r))\in
+\item The operation $S'$ is defined on the set of pairs $(m,(\Gamma,r))\in
   \wt{Ob}'$, $(n,\Gamma')\in Ob$, where $\Gamma=(T_0,\dots,T_{m})$,
   $\Gamma'=(T_0',\dots,T_{n-1}')$ such that $n>m+1$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in the set $Ob$ and is given by
 %
 $$S'((m,(\Gamma,r)),(n,\Gamma'))=$$$$(n-1,(T_0',\dots,T_{m-1}',\theta_{m,m+1}(r,T_{m+1}'),\theta_{m,m+2}(r,T_{m+2}'),\dots,\theta_{m,n-1}(r,T_{n-1}')))$$
 %
-\item Operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in
+\item The operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in
   \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$, where $\Gamma=(T_0,\dots,T_{m})$,
   $\Gamma'=(T_0',\dots,T_{n}')$ such that $n>m$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in $\wt{Ob}'$ and is given by
 %
 $$\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s)))=(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s))$$
 %
-\item Operation $\delta'$ is defined on the subset of $(m,\Gamma)$ in $Ob$ such
+\item The operation $\delta'$ is defined on the subset of $(m,\Gamma)$ in $Ob$ such
   that $m>0$. It takes values in $\wt{Ob}'$ and is given by
 %
 $$\delta'((m,\Gamma))=(m,(T((m,\Gamma),(m,\Gamma)),x_{m-1}^m))$$
@@ -4235,7 +4235,7 @@ $mb^!_{\RR,\LM}$. We have:
 %
 \begin{enumerate}
 %
-\item Operation $T'$ is the same as operation $T$ for $C(\RR,\LM)$ since
+\item The operation $T'$ is the same as operation $T$ for $C(\RR,\LM)$ since
   $\wt{Ob}$ is not involved in it. The form of $T'_{dom}$ is obtained by
   unfolding definitions.
 
@@ -4246,7 +4246,7 @@ $$(m,(T_0,\dots,T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots, \partial_{n-1}^{m-
 %
 where the first equality is by Definition \ref{2015.08.26.def1}(1) and the second by Lemma \ref{2015.08.26.l8}. 
 %
-\item Operation $\wt{T}'$ is defined on the set of pairs $(m,\Gamma)\in Ob$,
+\item The operation $\wt{T}'$ is defined on the set of pairs $(m,\Gamma)\in Ob$,
   $(n,(\Gamma',s))\in \wt{Ob}'$ such that $m>0$ and
   $\partial(mb^!(n,(\Gamma',s)))>ft(m,\Gamma)$ and takes values in
   $\wt{Ob}'$. Since $\partial(mb^!(n,(\Gamma',s))=(n+1,\Gamma')$ we obtain the
@@ -4268,7 +4268,7 @@ where $X=(m,\Gamma)$, $Y=(n+1,\Gamma')$, the first equality is by Lemma
 \ref{2015.09.03.l1}, the second by Lemma \ref{2015.08.26.l3a} and the third by
 Definition \ref{2015.08.26.def1}(1).
 %
-\item Operation $S'$ is defined on the set of pairs $((m,(\Gamma,r))\in
+\item The operation $S'$ is defined on the set of pairs $((m,(\Gamma,r))\in
   \wt{Ob}',(n,\Gamma')\in Ob)$ such that
   $(n,\Gamma')>\partial(mb^!(m,(\Gamma,r)))$ and takes values in $Ob$. Since
   $\partial(mb^!(m,(\Gamma,r)))=(m+1,\Gamma)$ we obtained the required domain
@@ -4297,7 +4297,7 @@ The required formula follows from the equality
 %
 $$qq^j(rr)(T_{m+j+1}')=\theta_{m,m+j+1}(r,T_{m+j+1}').$$
 %
-\item Operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$ such that 
+\item The operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$ such that 
 %
 \begin{eq}\llabel{2016.01.21.eq1}
 \partial(mb^!((n,(\Gamma',s))))>\partial(mb^!(m,(\Gamma,r)))
@@ -4321,7 +4321,7 @@ $$(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s)),$$
 where the third equality is by Lemma \ref{2015.09.03.l1} and the fifth by
 (\ref{2016.01.21.eq2}) and the definition of $\theta_{m,n}(r,s)$.
 %
-\item Operation $\delta'$ is defined on the subset $(m,\Gamma)\in Ob$ such that $m>0$ and is given by
+\item The operation $\delta'$ is defined on the subset $(m,\Gamma)\in Ob$ such that $m>0$ and is given by
 %
 $$\delta'((m,\Gamma))=mb(\delta((m,\Gamma)))$$
 %
