@@ -1596,7 +1596,8 @@ RR_{Mor}(f)=rr_{X,Y}(f\circ \eta_Y)
 \end{enumerate}
 %
 We leave the verification of the conditions and the proof that these functions
-are mutually inverse to the formally verified version of the paper.  \ec
+are mutually inverse to the formally verified version of the paper. 
+\ec
 %#### details, to M.
 For a monad $\RR$ in Kleisli form we let $\RR^M$ denote the corresponding
 monad in monoidal form, and for a monad $\R$ in monoidal form we let $\R^K$
@@ -1739,7 +1740,8 @@ and
 %
 where the second equality follows from (\ref{2017.04.05.eq1}), and the third follows from
 condition (2) of Definition \ref{2015.12.22.def1}. This proves the composition
-axiom.  \ec
+axiom. 
+\ec
 %
 \begin{problem}\llabel{2017.04.11.prob1}
 Let $J:\C\sr\D$ be a functor and $\RR=(RR_{Ob},\eta,rr)$ a $J$-relative
@@ -1757,7 +1759,8 @@ $K(\RR)$, we set $\RR^{lm}_{Mor}(f)=rr_{X,Y}(f)$.
 
 The verification of the composition and identity axioms for
 $(\RR^{lm}_{Ob},\RR^{lm}_{Mor})$ is straightforward and is left for the
-formalized version of the paper.  \ec
+formalized version of the paper. 
+\ec
 %
 %### details to M.?
 
@@ -1917,8 +1920,13 @@ and the second by Construction \ref{2017.02.24.constr1}. The data
 $(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the composition axiom, because of the
 equalities
 %
-$$F_{\RR,X,Z}(f\circ_{K(F^{\circ}(\RR))} g)=F_{\RR,X,Z}(f\circ_{\D} rr_{F(Y),F(Z)}(g))=
-$$$$f\circ_{\D} rr_{F(Y),F(Z)}(g)=f\circ_{K(\RR)}g=F_{\RR,X,Y}(f)\circ_{K(RR)}F_{\RR,Y,Z}(g),$$
+\begin{equation*}
+  \begin{split}
+    F_{\RR,X,Z}(f\circ_{K(F^{\circ}(\RR))} g)&=F_{\RR,X,Z}(f\circ_{\D} rr_{F(Y),F(Z)}(g)) \\
+    &=f\circ_{\D} rr_{F(Y),F(Z)}(g)=f\circ_{K(\RR)}g \\
+    &=F_{\RR,X,Y}(f)\circ_{K(RR)}F_{\RR,Y,Z}(g),
+  \end{split}
+\end{equation*}
 %
 where the first equality is by (\ref{2017.03.12.eq3}), the second by (\ref{2017.03.12.eq2}), the third by Construction \ref{2017.03.12.constr3} and the fourth also by (\ref{2017.03.12.eq2}). 
 
@@ -2051,12 +2059,15 @@ proves the property \ref{2017.04.13.def1}\ref{2017.04.19.eq4} for $\RR_{\D}$.
 Let $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$. Then
 %
 \begin{equation}
-\llabel{2017.04.23.eq2}
-\eta^{\D}_X\circ rr^{\D}_{X,Y}(f)=
-$$$$pr_{\D}(\eta_X)\circ pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
-pr_{\D}(\eta_X\circ rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
-$$$$pr_{\D}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))=
-f,
+  \llabel{2017.04.23.eq2}
+  \begin{split}
+    \eta^{\D}_X\circ rr^{\D}_{X,Y}(f)
+    &=pr_{\D}(\eta_X)\circ pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))
+    \\
+    &=pr_{\D}(\eta_X\circ rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))
+    \\
+    &=pr_{\D}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))=f,
+  \end{split}
 \end{equation}%
 %
 where the first equality holds by (\ref{2017.04.21.eq1}) and
@@ -2091,22 +2102,26 @@ of $pr_{\D'}$, the sixth by Definition
 
 Therefore,
 %
-$$rr^{\D}_{X,Y}(f)\circ rr^{\D}_{Y,Z}(g)=
-%
-pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))\circ 
-pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
-%
-$$$$pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))=
-%
-$$$$pr_{\D}(rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)))=
-%
-$$$$rr^{\D}_{X,Z}(f\circ rr^{\D}_{Y,Z}(g)),$$
+\begin{equation*}
+  \begin{split}
+    rr^{\D}_{X,Y}(f)\circ rr^{\D}_{Y,Z}(g)&=
+    pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))\circ 
+    pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))
+    \\
+    &=pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z)))
+    \\
+    &=pr_{\D}(rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)))
+    \\
+    &=rr^{\D}_{X,Z}(f\circ rr^{\D}_{Y,Z}(g)),
+  \end{split}
+\end{equation*}
 %
 where the first equality holds by (\ref{2017.04.21.eq2}), the second since
 $pr_{\D}$ commutes with compositions, the third by (\ref{2017.04.21.eq5}), and
 the fourth again by (\ref{2017.04.21.eq2}). This proves the property
 \ref{2017.04.13.def1}\ref{2017.04.19.eq6} for $\RR_{\D}$ and completes
-Construction \ref{2017.04.21.constr1}.  \ec
+Construction \ref{2017.04.21.constr1}. 
+\ec
 %
 We want to emphasize the following case of Construction \ref{2017.04.21.constr1}.
 %
@@ -2230,7 +2245,8 @@ and for $X$,
 $$\rho_X=lm_{RR_{Ob}(X),X}(Id_{RR_{Ob}(X)})$$
 
 We leave the verification of the conditions and the proof that these functions
-are mutually inverse to the formally verified version of the paper.  \ec
+are mutually inverse to the formally verified version of the paper. 
+\ec
 %#### details to M.?
 %
 Left $\RR$-modules in Kleisli form with values in $\E$ are precisely the
@@ -2319,9 +2335,15 @@ show that
 %
 Indeed, for $f:X\sr Y$ in $Mor(\C)$ we have
 %
-$$({\bf L}^K)^f_{Mor}(f)={\bf L}^K_{Mor}(Et_{\R^K,Mor}(f))=
-$$$${\bf L}^K_{Mor}(f\circ \eta_Y)=L_{Mor}(f\circ \eta_Y)\circ \rho_Y=L_{Mor}(f)\circ (L_{Mor}(\eta_Y)\circ \rho_Y)=
-$$$$L_{Mor}(f)\circ Id_{L(Y)}=L_{Mor}(f),$$
+\begin{equation*}
+  \begin{split}
+    ({\bf L}^K)^f_{Mor}(f) &= {\bf L}^K_{Mor}(Et_{\R^K,Mor}(f))
+    \\
+    &= {\bf L}^K_{Mor}(f\circ \eta_Y)=L_{Mor}(f\circ \eta_Y)\circ \rho_Y=L_{Mor}(f)\circ (L_{Mor}(\eta_Y)\circ \rho_Y)
+    \\
+    &= L_{Mor}(f)\circ Id_{L(Y)}=L_{Mor}(f),
+  \end{split}
+\end{equation*}
 %
 where the first equality is by Definition \ref{2017.04.05.def1}, the second by
 (\ref{2017.04.09.eq2}), the third by (\ref{2017.04.09.eq4}), the fourth by the
@@ -2413,12 +2435,18 @@ is by construction and to prove the equality
 %
 we have, for $f:X\sr Y$ in $\C_0$,
 %
-$$(F\crc(\LM))^f_{Mor}(f)=
-F\crc(lm)_{X,Y}((F\circ J)(f)\circ F\crc(\eta)_Y)=
-$$$$F\crc(lm)_{X,Y}(J(F(f))\circ \eta_{F(Y)})=
-lm_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)})=
-$$$$\LM^f_{Mor}(F(f))=
-(F\circ \LM^f_{Mor})(f),$$
+\begin{equation*}
+  \begin{split}
+    (F\crc(\LM))^f_{Mor}(f)
+    &= F\crc(lm)_{X,Y}((F\circ J)(f)\circ F\crc(\eta)_Y)
+    \\
+    &= F\crc(lm)_{X,Y}(J(F(f))\circ \eta_{F(Y)})=
+    lm_{F(X),F(Y)}(J(F(f))\circ \eta_{F(Y)})
+    \\
+    &= \LM^f_{Mor}(F(f))=
+    (F\circ \LM^f_{Mor})(f),
+  \end{split}
+\end{equation*}
 %
 where the first equality is by (\ref{2017.04.11.eq5}), the second by definition
 of $F\circ J$ and (\ref{2017.04.11.eq1}), the third by (\ref{2017.04.17.eq8}),
@@ -2451,7 +2479,7 @@ where the first equality is by (\ref{2017.04.17.eq6}) and the second by (\ref{20
 %
 \begin{equation}
 \llabel{2017.04.17.eq10}
-J\crc(\L^K)^f=J\circ ({\bf L}^K)^f=J\circ L,
+J\crc(L^K)^f=J\circ ({\bf L}^K)^f=J\circ L,
 \end{equation}%
 %
 where the second equality is by (\ref{2017.04.13.eq2}) and the third by (\ref{2017.04.17.eq4}).
@@ -2868,7 +2896,15 @@ $$\Gamma'=(T'_0,\dots,T'_{ly-1})$$
 %
 Then
 %
-$$f^*((Y,\Gamma'),i)=(f^*(Y,i),(T_0,\dots,T_{lx-1},F(q(f,ft^i(Y),0))(T'_{ly-i}),\dots,F(q(f,ft(Y),i-1))(T'_{ly-1}))$$
+\begin{equation*}
+  \begin{split}
+    f^*((Y,\Gamma'),i)=(f^*(Y,i),(T_0,&\dots,T_{lx-1},
+    \\&
+    F(q(f,ft^i(Y),0))(T'_{ly-i}),\dots,
+    \\&
+    F(q(f,ft(Y),i-1))(T'_{ly-1}))
+  \end{split}
+\end{equation*}
 %
 \end{lemma}
 %
@@ -2882,8 +2918,17 @@ $$f^*((Y,\Gamma'),0)=(X,\Gamma)=(f^*(Y,0),(T_0,\dots,T_{lx-1}))$$
 For the successor of $i$ we need to show that
 %
 \begin{equation}\llabel{2016.01.31.eq3}
-f^*((Y,\Gamma'),i+1)=$$$$(f^*(Y,i+1),(T_0,\dots,T_{lx-1},F(q(f,ft^{i+1}(Y),0))(T'_{ly-i-1}),\dots,F(q(f,ft(Y),i))(T'_{ly-1}))
+  \begin{split}
+    f^*((Y,\Gamma'),i+1)=(f^*(Y,i+1),(T_0,&\dots,T_{lx-1},
+    \\
+    &
+    F(q(f,ft^{i+1}(Y),0))(T'_{ly-i-1}),\dots,
+    \\
+    &
+    F(q(f,ft(Y),i))(T'_{ly-1})))
+  \end{split}
 \end{equation}%
+EDITOR: check parentheses in the equation above.
 %
 We have by (\ref{2016.01.31.eq2}),  
 %
@@ -2891,13 +2936,38 @@ $$f^*((Y,\Gamma'),i+1)=q(f,ft((Y,\Gamma')),i)^*((Y,\Gamma'))$$
 %
 By the inductive assumption, $q(f,ft((Y,\Gamma')),i)$ is a morphism with the domain
 %
-$$f^*(ft(Y,\Gamma'),i)=$$$$(f^*(ft(Y),i),(T_0,\dots,T_{lx-1},F(q(f,ft^{i}(ft(Y)),0))(T'_{ly-1-i}),\dots,F(q(f,ft(ft(Y))),i-1)(T'_{ly-2})))$$
+\begin{equation*}
+  \begin{split}
+    f^*&(ft(Y,\Gamma'),i)
+    \\&=
+    (f^*(ft(Y),i),
+    \\&
+       \spc\spc\spc\spc (T_0,\dots,T_{lx-1},
+    \\&
+          \spc\spc\spc\spc\spc\spc F(q(f,ft^{i}(ft(Y)),0))(T'_{ly-1-i}),\dots,
+    \\&
+          \spc\spc\spc\spc\spc\spc F(q(f,ft(ft(Y))),i-1)(T'_{ly-2})
+          ))
+  \end{split}
+\end{equation*}
 %
 By (\ref{2016.01.31.eq1}) we get
 %
-$$q(f,ft((Y,\Gamma')),i)^*((Y,\Gamma'))=$$
-$$(q(f,ft(Y),i)^*(Y),$$
-$$(T_0,\dots,T_{lx-1},F(q(f,ft^{i}(ft(Y)),0))(T'_{ly-1-i}),\dots,F(q(f,ft(ft(Y))),i-1)(T'_{ly-2}), $$$$F(q(f,ft(Y),i))(T'_{ly-1})))$$
+\begin{equation*}
+  \begin{split}
+    q(f,&ft((Y,\Gamma')),i)^*((Y,\Gamma'))
+    \\&=
+    (q(f,ft(Y),i)^*(Y),
+    \\&
+    \spc\spc\spc (T_0,\dots,T_{lx-1},
+    \\&
+    \spc\spc\spc\spc\spc\spc F(q(f,ft^{i}(ft(Y)),0))(T'_{ly-1-i}),\dots,
+    \\&
+    \spc\spc\spc\spc\spc\spc F(q(f,ft(ft(Y))),i-1)(T'_{ly-2}),
+    \\&
+    \spc\spc\spc\spc\spc\spc F(q(f,ft(Y),i))(T'_{ly-1})))
+  \end{split}
+\end{equation*}
 %
 which coincides with our goal (\ref{2016.01.31.eq3}). 
 \end{proof}
@@ -2935,8 +3005,15 @@ $$f^*(ft(Y,\Gamma'),i)=(f^*(ft(Y)),(T_0,\dots,T_{m-1},F(q(f,ft^{i+1}(Y)))(T'_n),
 %
 and by (\ref{2016.01.31.eq1}) we have
 %
-$$q(f,ft((Y,\Gamma')),i)^*((Y,\Gamma'))=$$$$(q(f,ft(Y),i)^*(Y),(T_0,\dots,T_{m-1},F(q(f,ft^{i+1}(Y)))(T'_n),\dots,F(q(f,ft(Y)))(T'_{n-2+i}), F(q(q(f,ft((Y)),i),Y))(T'_{n+i}))=$$
-$$(q(f,ft(Y),i)^*(Y),(T_0,\dots,T_{m-1},F(q(f,ft^{i+1}(Y)))(T'_n),\dots,F(q(f,ft(Y)))(T'_{n-2+i}), F(q(f,Y,i),i))(T'_{n+i}))$$
+\begin{equation*}
+  \begin{split}
+    q(f,ft((Y,\Gamma')),i)^*((Y,\Gamma'))
+    \\&=
+    (q(f,ft(Y),i)^*(Y),(T_0,\dots,T_{m-1},F(q(f,ft^{i+1}(Y)))(T'_n),\dots,F(q(f,ft(Y)))(T'_{n-2+i}), F(q(q(f,ft((Y)),i),Y))(T'_{n+i}))
+    \\&=
+    (q(f,ft(Y),i)^*(Y),(T_0,\dots,T_{m-1},F(q(f,ft^{i+1}(Y)))(T'_n),\dots,F(q(f,ft(Y)))(T'_{n-2+i}), F(q(f,Y,i),i))(T'_{n+i}))
+  \end{split}
+\end{equation*}
 %
 \end{proof}
 }
@@ -3371,7 +3448,13 @@ by Lemma \ref{2015.07.24.l1}(2).
 Both sides of the second equation are elements of $Fun(stn(1),RR(m+1))$, and it
 is sufficient that their values on $0$ coincide. We have
 %
-$$(q(f)\circ_C (x_n^{n+1}))(0)=((x_n^{n+1})\circ_T qq(f))(0)=((x_n^{n+1})\circ \mbind{qq(f)})=$$$$\mbind{qq(f)}(x_n^{n+1})=qq(f)(n)=x_m^{m+1},$$
+\begin{equation*}
+  \begin{split}
+    (q(f)\circ_C (x_n^{n+1}))(0)&=((x_n^{n+1})\circ_T qq(f))(0)=((x_n^{n+1})\circ \mbind{qq(f)})
+    \\
+    &= \mbind{qq(f)}(x_n^{n+1})=qq(f)(n)=x_m^{m+1},
+  \end{split}
+\end{equation*}
 %
 where the fourth equality is by (\ref{2015.08.24.eq5}) and the fifth by
 (\ref{2015.08.26.eq9}). This completes the proof of Lemma \ref{2016.01.15.l3}.
@@ -3430,8 +3513,15 @@ $$p_{\wh{n+i+1},i+1}=p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=(x_0^{n+i+1},\dots,x_{n-
 where the second equality is by the second part of the inductive
 assumption. For the inductive step in the second part we have
 %
-$$(g(0),\dots,g(n+i))\circ p_{\wh{n+i+1},i+1}=(g(0),\dots,g(n+i))\circ p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=$$$$
-(g(0),\dots,g(n+i-1))\circ p_{\wh{n+i},i}=(g(0),\dots,g(n-1))$$
+\begin{equation*}
+  \begin{split}
+    (g(0),\dots,g(n+i))\circ p_{\wh{n+i+1},i+1}&=(g(0),\dots,g(n+i))\circ p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}
+    \\&=
+    (g(0),\dots,g(n+i-1))\circ p_{\wh{n+i},i}
+    \\&=
+    (g(0),\dots,g(n-1))
+  \end{split}
+\end{equation*}
 %
 \end{enumerate}
 %
@@ -3500,7 +3590,21 @@ f(n-1)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(x_{m}^{m+1})
 For the first series of equalities we get, by inserting the coercion $RR$ and
 rewriting of the right hand side, the following
 %
-$$\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))=(\mbind{(L(\iota_m^1))}\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})(f(i))=$$$$\mbind{(L(\iota_m^1)\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})}(f(i))=\mbind{(L(\iota_m^1)\hc (x_0^m,\dots,x_{m-1}^m,sf))}(f(i))=$$$$\mbind{(x_0^m,\dots,x_{m-1}^m)}(f(i))=\mbind{\eta_{m}}(f(i))=Id_{RR(m)}(f(i))=f(i),$$
+\begin{equation*}
+  \begin{split}
+    \mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))
+    &=
+    (\mbind{(L(\iota_m^1))}\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})(f(i))
+    \\&=
+    \mbind{(L(\iota_m^1)\circ \mbind{(x_0^m,\dots,x_{m-1}^m,sf)})}(f(i))
+    \\&=
+    \mbind{(L(\iota_m^1)\hc (x_0^m,\dots,x_{m-1}^m,sf))}(f(i))
+    \\&=
+    \mbind{(x_0^m,\dots,x_{m-1}^m)}(f(i))=\mbind{\eta_{m}}(f(i))
+    \\&=
+    Id_{RR(m)}(f(i))=f(i),
+  \end{split}
+\end{equation*}
 %
 where the fourth equality is by (\ref{2016.01.15.eq3}). 
 
@@ -3530,11 +3634,18 @@ $$fs(m)=\mbind{f}(s(n))=(s\hc f)(n)$$
 %
 The morphism $f^*(s)$, as a morphism over $\wh{m}$ is defined by the equation
 %
-$$f^*(s)\circ_C q(f,\wh{n+1})=f\circ_C s$$
+$$f^*(s)\circ_C q(f,\wh{n+1})=f\circ_C s,$$
 %
 which is equivalent, by Lemma \ref{2016.01.15.l3},  to $qq(f)\hc fs=s\hc f$. Therefore 
 %
-$$(s\hc f)(n)=(qq(f)\hc fs)(n)=\mbind{(fs)}(qq(f)(n))=\mbind{(fs)}(x_m^{m+1})=\mbind{(fs)}(\eta_{m+1}(m))=$$$$(\eta_{m+1}\circ\mbind{(fs)})(m)=fs(m)$$ 
+\begin{equation*}
+  \begin{split}
+    (s\hc f)(n)&=(qq(f)\hc fs)(n)=\mbind{(fs)}(qq(f)(n))=\mbind{(fs)}(x_m^{m+1})
+    \\&
+    = \mbind{(fs)}(\eta_{m+1}(m))
+    = (\eta_{m+1}\circ\mbind{(fs)})(m)=fs(m).
+  \end{split}
+\end{equation*}
 %
 The lemma is proved.
 \end{proof}
@@ -3991,9 +4102,19 @@ $$(n-1,(T_0,\dots,T_{n-2}))=ft^i((m,(T_0,\dots,T_{m-1})))$$
 %
 where $i=m-n+1$. Therefore, 
 %
-$$p_Y^*(X)=p_Y^*(X,i)=$$$$(p_{\wh{n}}^*(\wh{m},i), (T_0,\dots,T_{n-2},T,q(p_{\wh{n}},ft^i(\wh{m}),0)(T_{m-i}),\dots,q(p_{\wh{n}},ft(\wh{m}),i-1)(T_{m-1}))=$$
-$$(m+1,(T_0,\dots,T_{n-2},T,\iota_{n-1}^1(T_{n-1}),\dots,qq^{i-1}(L(\iota_{n-1}^1))(T_{m-1})))=$$
-$$(m+1,(T_0,\dots,T_{n-2},T,\partial_{n-1}^{n-1}(T_{n-1}),\dots,\partial_{m-1}^{n-1}(T_{m-1}))),$$
+\begin{equation*}
+  \begin{split}
+    p_Y^*(X)&=p_Y^*(X,i)
+    \\&=
+    (p_{\wh{n}}^*(\wh{m},i), (T_0,\dots,T_{n-2},T,
+    \\& \spc\spc\spc\spc\spc
+           q(p_{\wh{n}},ft^i(\wh{m}),0)(T_{m-i}),\dots,q(p_{\wh{n}},ft(\wh{m}),i-1)(T_{m-1}))
+    \\&=
+    (m+1,(T_0,\dots,T_{n-2},T,\iota_{n-1}^1(T_{n-1}),\dots,qq^{i-1}(L(\iota_{n-1}^1))(T_{m-1})))
+    \\&=
+    (m+1,(T_0,\dots,T_{n-2},T,\partial_{n-1}^{n-1}(T_{n-1}),\dots,\partial_{m-1}^{n-1}(T_{m-1}))),
+  \end{split}
+\end{equation*}
 %
 where the third equality is by Lemma \ref{2015.08.22.l6}(2) and the fourth one by Lemma \ref{2015.08.26.l3a}. 
 \end{proof}
@@ -4065,7 +4186,7 @@ these two equations for a general $R$.
 %
 \begin{lemma}
 \llabel{2015.08.22.l5} A morphism $f:X\sr Y$, where $l(Y)=n+1$ and $f\in
-R(n+1,n)$ belongs to $\wt{Ob}(C(\RR,\LM))$ if and only if $X=ft(Y)$ and
+R(n+1,n)$, belongs to $\wt{Ob}(C(\RR,\LM))$ if and only if $X=ft(Y)$ and
 $f(i)=x^n_i$ for $i=0,\dots,n-1$.
 \end{lemma}
 %
@@ -4203,7 +4324,12 @@ Let $Ob=Ob(C(\RR,\LM))$ and let $\wt{Ob}'=\wt{Ob}'(\RR,\LM)$ be the right hand s
   $\Gamma'=(T_0',\dots,T_{n-1}')$ such that $m>0$, $n>m-1$ and $T_i=T_i'$ for
   $i=0,\dots,m-2$. It takes values in $Ob$ and is given by
 %
-$$T((m,\Gamma),(n,\Gamma'))=$$$$(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots,\partial_{n-1}^{m-1}(T'_{n-1})))$$
+\begin{equation*}
+  \begin{split}
+    T((m,\Gamma),&(n,\Gamma'))
+    \\:= &(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots,\partial_{n-1}^{m-1}(T'_{n-1})))
+  \end{split}
+\end{equation*}
 %
 \item The operation $\wt{T}'$ is defined on the set $\wt{T}'_{dom}$ of pairs
   $(m,\Gamma)\in Ob$, $(n,(\Gamma',s))\in\wt{Ob}'$, where
@@ -4211,26 +4337,33 @@ $$T((m,\Gamma),(n,\Gamma'))=$$$$(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}
   $m>0$, $n+1>m-1$ and $T_i=T_i'$ for $i=0,\dots,m-2$. It takes values in
   $\wt{Ob'}$ and is given by
 %
-$$\wt{T}'((m,\Gamma),(n,(\Gamma',s)))=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_{n}^{m-1}(s)))$$
+$$\wt{T}'((m,\Gamma),(n,(\Gamma',s))):=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_{n}^{m-1}(s)))$$
 %
 \item The operation $S'$ is defined on the set of pairs $(m,(\Gamma,r))\in
   \wt{Ob}'$, $(n,\Gamma')\in Ob$, where $\Gamma=(T_0,\dots,T_{m})$,
   $\Gamma'=(T_0',\dots,T_{n-1}')$ such that $n>m+1$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in the set $Ob$ and is given by
 %
-$$S'((m,(\Gamma,r)),(n,\Gamma'))=$$$$(n-1,(T_0',\dots,T_{m-1}',\theta_{m,m+1}(r,T_{m+1}'),\theta_{m,m+2}(r,T_{m+2}'),\dots,\theta_{m,n-1}(r,T_{n-1}')))$$
+\begin{equation*}
+  \begin{split}
+    S'((m,(\Gamma,r)),&(n,\Gamma'))
+    \\ :=& (n-1,(T_0',\dots,T_{m-1}',\theta_{m,m+1}(r,T_{m+1}'),\theta_{m,m+2}(r,T_{m+2}'),\dots,
+    \\  & \spc\spc\spc\spc\spc
+    \theta_{m,n-1}(r,T_{n-1}')))
+  \end{split}
+\end{equation*}
 %
 \item The operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in
   \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$, where $\Gamma=(T_0,\dots,T_{m})$,
   $\Gamma'=(T_0',\dots,T_{n}')$ such that $n>m$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in $\wt{Ob}'$ and is given by
 %
-$$\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s)))=(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s))$$
+$$\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s))):=(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s))$$
 %
 \item The operation $\delta'$ is defined on the subset of $(m,\Gamma)$ in $Ob$ such
   that $m>0$. It takes values in $\wt{Ob}'$ and is given by
 %
-$$\delta'((m,\Gamma))=(m,(T((m,\Gamma),(m,\Gamma)),x_{m-1}^m))$$
+$$\delta'((m,\Gamma)):=(m,(T((m,\Gamma),(m,\Gamma)),x_{m-1}^m))$$
 %
 \end{enumerate}
 \end{theorem}
@@ -4286,7 +4419,15 @@ S'((m,(\Gamma,r)),(n,\Gamma'))=(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))
 %
 Next we have 
 %
-$$(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))=$$$$((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B)=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B,i),$$
+\begin{equation*}
+  \begin{split}
+    (mb^!((m,(&\Gamma,r))))^*((n,\Gamma'))
+    \\&=
+    ((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B)
+    \\&=
+    ((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))^*(B,i),
+  \end{split}
+\end{equation*}
 %##
 where $A=(m+1,\Gamma)$, $B=(n,\Gamma')$ and $i=n-m-1$. To apply Lemma
 \ref{2016.01.31.l1} we should take $X=\wh{m}$, $lx=m$ and $Y=\wh{n}$, $ly=n$
@@ -4294,9 +4435,24 @@ and $f=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))$. Let further
 $rr=(x^{m}_0,\dots,x^{m}_{m-1},r)$. Then we can extend these equalities as
 follows
 %
-$$f^*((n,\Gamma'),i)=(rr^*(\wh{n},i),(T_0,\dots,T_{m-1},q(rr,ft^i(\wh{n}),0)(T'_{m+1}),\dots,q(rr,ft(\wh{n}),i-1)(T'_{n-1})))$$
-$$(n-1,(T_0,\dots,T_{m-1},rr(T'_{m+1}),\dots,qq^{n-m-2}(rr)(T'_{n-1})))=$$
-$$(n-1,(T_0',\dots,T_{m-1}',rr(T_{m+1}'),qq(rr)(T_{m+2}'),\dots,qq^{n-m-2}(rr)(T_{n-1}'))),$$
+\begin{equation*}
+  \begin{split}
+    f^*&((n,\Gamma'),i)
+    \\&=
+    (rr^*(\wh{n},i),(T_0,\dots,T_{m-1},
+    \\& \spc\spc\spc\spc
+    q(rr,ft^i(\wh{n}),0)(T'_{m+1}),\dots,q(rr,ft(\wh{n}),i-1)(T'_{n-1})))
+    \\&=
+    (n-1,(T_0,\dots,T_{m-1},
+    \\& \spc\spc\spc\spc
+    rr(T'_{m+1}),\dots,qq^{n-m-2}(rr)(T'_{n-1})))
+    \\&=
+    (n-1,(T_0',\dots,T_{m-1}',
+    \\& \spc\spc\spc\spc
+    rr(T_{m+1}'),qq(rr)(T_{m+2}'),\dots,qq^{n-m-2}(rr)(T_{n-1}'))),
+  \end{split}
+\end{equation*}
+FOOBAR
 %
 where the last equality holds by the assumption that $T_i=T_i'$ for $i=0,\dots,m$. 
 The required formula follows from the equality 
