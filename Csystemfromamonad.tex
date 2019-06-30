@@ -680,10 +680,12 @@ $$Exp^{\alpha}(X)=Exp^{\alpha}(\emptyset)\cup (\cup_{x\in X}\{b_n(x)\,|\,n\in \n
 %
 and the unions on the right hand side are disjoint. 
 
-Capture avoiding substitution in the case of one free variable is of the form
+Capture avoiding substitution in the case of one free variable takes the following forms.
 %
-$$b_n(x)[a_{n',k'}/x]=a_{n+n',k'}$$
-$$b_n(x)[b_{n'}(x')/x]=b_{n+n'}(x').$$
+\begin{align}
+b_n(x)[a_{n',k'}/x]&=a_{n+n',k'}\\
+b_n(x)[b_{n'}(x')/x]&=b_{n+n'}(x')
+\end{align}
 %
 For many free variables the substitution is determined by the case of one free
 variable, because in any one expression there is at most one free variable.
@@ -847,9 +849,8 @@ $((0,1),(1,1),(0,0),(0,0),0)$ and $((0,1),(1,0),0)$.
 
 From any restricted 2-sorted binding signature one may construct a 1-sorted binding signature,
 where the set of operations is the same, and the arity function is the
-composition of the original arity function with the function that maps
-$((n_0,\epsilon_0),\dots,(n_{d-1},\epsilon_{d-1}),\epsilon)$ to
-$(n_0,\dots,n_d)$.
+composition of the original arity function with the function defined as follows.
+$$((n_0,\epsilon_0),\dots,(n_{d-1},\epsilon_{d-1}),\epsilon) \mapsto (n_0,\dots,n_d)$$
 
 Let $Sig_2$ be a (restricted) 2-sorted binding signature and $Sig_1$ the
 corresponding 1-sorted one. Let $Z$ be a set such that the set of expressions
@@ -893,7 +894,7 @@ and for any function $f:X\sr RR_V(Y)$, a function
 $$lm_{X,Y}(f):LM_V(X)\sr LM_V(Y)$$
 %
 This operation makes the family of sets $LM_V(X)$ into a left module
-$\LM_V:=(LM_V, lm)$ over the $J_V$-monad $\RR_V=(RR_V,\eta,rr)$.
+$$\LM_V:=(LM_V, lm)$$ over the $J_V$-monad $\RR_V=(RR_V,\eta,rr)$.
 
 Precomposing $\RR_{\nat}$ and $\LM_{\nat}$ with the obvious functor
 $\Phi:\FF\sr Sets(2^{\nat})$ using Constructions \ref{2017.02.24.constr1} and
@@ -1479,7 +1480,7 @@ in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \llabel{2017.04.13.def1}
-A monad in Kleisli form on a category $\C$ is a triple $\RR=(RR_{Ob},\eta,rr)$, where 
+A monad in Kleisli form on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
 %
 \begin{enumerate}
 \item \llabel{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
@@ -1818,8 +1819,14 @@ $$f:J(F(X))\sr RR(F(Y))\spc\spc g:J(F(Y))\sr RR(F(Z))$$
 %
 are morphisms in $\D$. Then
 %
-$$F^{\circ}(rr)_{X,Y}(f)\circ F^{\circ}(rr)_{Y,Z}(g)=rr_{F(X),F(Y)}(f)\circ rr_{F(Y),F(Z)}(g)=$$
-$$rr_{F(X),F(Z)}(f\circ rr_{F(Y),F(Z)}(g))=F^{\circ}(rr)_{X,Z}(f\circ F^{\circ}(rr)_{Y,Z}(g))$$
+\begin{equation*}
+  \begin{split}
+    F^{\circ}(rr)_{X,Y}(f)\circ F^{\circ}(rr)_{Y,Z}(g)
+      &= rr_{F(X),F(Y)}(f)\circ rr_{F(Y),F(Z)}(g)
+    \\&= rr_{F(X),F(Z)}(f\circ rr_{F(Y),F(Z)}(g))
+    \\&= F^{\circ}(rr)_{X,Z}(f\circ F^{\circ}(rr)_{Y,Z}(g))
+  \end{split}
+\end{equation*}
 \end{enumerate}
 %
 This completes Construction \ref{2017.02.24.constr1}.
@@ -2637,10 +2644,12 @@ Let $F:CC\sr CC'$ be a homomorphism of C-systems. Then one has:
 \item for $\Gamma',\Gamma\in CC$, $\Gamma\ge \Gamma'$ implies $F(\Gamma)\ge F(\Gamma')$ and similarly for $>$,
 \item for $\Gamma'\ge \Gamma$ in $CC$ one has $F(p_{\Gamma',\Gamma})=p_{F(\Gamma'),F(\Gamma)}$,
 \item for $\Gamma'\ge \Delta$ and $f:\Gamma\sr \Delta$ one has
-%
-$$F(f^*(\Gamma'))=(F(f))^*(F(\Gamma'))$$
-$$F(q(f,\Gamma'))=q(F(f),F(\Gamma'))$$
-%
+  \begin{equation*}
+    \begin{split}
+      F(f^*(\Gamma'))&=(F(f))^*(F(\Gamma')) \\
+      F(q(f,\Gamma'))&=q(F(f),F(\Gamma'))
+    \end{split}
+  \end{equation*}
 \item for $a:\Gamma'\sr \Gamma''$ over $\Gamma$ and $f:\Delta\sr \Gamma$, $F(a)$ is a morphism over $F(\Gamma)$ and one has
 %
 $$F(f^*(a))=(F(f))^*(F(a))$$
@@ -2891,8 +2900,12 @@ $$(X,\Gamma)=ft^{l(Y)-l(X)}((Y,\Gamma')).$$
 Let $i\ge 0$, $(Y,\Gamma')$ be such that $l(Y)\ge
 i$. Let $f:(X,\Gamma)\sr ft^i(Y,\Gamma')$. Let $lx=l(X)$, $ly=l(Y)$ and
 %
-$$\Gamma=(T_0,\dots,T_{lx-1})$$
-$$\Gamma'=(T'_0,\dots,T'_{ly-1})$$
+\begin{equation*}
+  \begin{split}
+    \Gamma&=(T_0,\dots,T_{lx-1})\\
+    \Gamma'&=(T'_0,\dots,T'_{ly-1})
+  \end{split}
+\end{equation*}
 %
 Then
 %
@@ -3039,17 +3052,17 @@ and codomain.
 For any set $U$ there is a category $Sets(U)$ of the following form. The set of
 objects of $Sets(U)$ is $U$. The set of morphisms is
 %
-$$Mor(Sets(U))=\cup_{X,Y\in U}Fun(X,Y)$$
+$$Mor(Sets(U))=\cup_{X,Y\in U}Fun(X,Y).$$
 %
 Since a function from $X$ to $Y$ is defined as a triple $(X,Y,G)$, where $G$ is
-the graph subset of this function the domain and codomain functions are well
-defined on $Mor(Sets(U))$ such that
+the graph of the function, the domain and codomain functions are well
+defined on $Mor(Sets(U))$, in such a way that
 %
 $$Mor_{Sets(U)}(X,Y)=Fun(X,Y)$$
 %
 and a composition function can be defined that restricts to the composition of
-functions function on each $Mor_{Sets(U)}(X,Y)$. Finally the identity function
-$U\sr Mor(Sets(U))$ is obvious and the collection of data that one obtains
+functions function on each $Mor_{Sets(U)}(X,Y)$. Finally, one defines the identity function
+$U\sr Mor(Sets(U))$, and the collection of data that one obtains
 satisfies the axioms of a category.  This category is called the {\em category of
 sets in $U$} and is denoted by $Sets(U)$.
 
@@ -3273,7 +3286,7 @@ In particular, if $f\in RR(n+1,n)$, then $L(\iota_n^1)\hc f=Id_{T,n}$ if and onl
 %
 \begin{proof}
 Both sides of the required equality are elements of
-$Fun(stn(m),RR(n))$. Therefore, the equality holds if and only if for all
+$Fun(stn(m),RR(n))$. Thus the equality holds if and only if for all
 $i=0,\dots,n-1$ we have $(L(\iota_m^1)\hc f)(i)=f(i)$. The assertion of the
 lemma follows now from Lemma \ref{2015.08.30.l1}.
 
@@ -3309,10 +3322,13 @@ $$qq^i(L(\iota_n^1))=L(\partial^n_{n+i})$$
 \begin{proof}
 We have ${L}(\iota_n^1)=L(\partial_n^n)=(x_0^{n+1},\dots,x^{n+1}_{n-1})$. By
 Lemma \ref{2015.08.26.l2} and (\ref{2015.08.22.eq8}) we get
-%
-$$qq^i({L}(\iota_n^1))=(\iota_{n+1}^i(x_0^{n+1}),\dots,\iota_{n+1}^i(x_{n-1}^{n+1}),x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})=$$
-$$=(x_0^{n+1+i},\dots,x_{n-1}^{n+1+i},x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})={L}(\partial_n^{n+i}),$$
-%
+\begin{equation*}
+  \begin{split}
+    qq^i({L}(\iota_n^1))&=(\iota_{n+1}^i(x_0^{n+1}),\dots,\iota_{n+1}^i(x_{n-1}^{n+1}),x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})
+    \\
+    &=(x_0^{n+1+i},\dots,x_{n-1}^{n+1+i},x_{n+1}^{n+1+i},\dots,x_{n+i}^{n+1+i})=L(\partial_n^{n+i}),
+  \end{split}
+\end{equation*}
 where the last equality is (\ref{2015.08.24.eq7}). 
 \end{proof}
 %
@@ -3326,10 +3342,12 @@ $$qq^i(x_0^m,\dots,x^m_{m-1},r)=(x_0^{m+i},\dots,x^{m+i}_{m-1},\iota_m^i(r),x_m^
 %
 \begin{proof}
 One has
-%
-$$qq^i(x_0^m,\dots,x^m_{m-1},r)=(\iota_m^i(x_0^m),\dots,\iota_m^i(x^m_{m-1}),\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i})=$$
-$$(x_0^{m+i},\dots,x^{m+i}_{m-1},\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i}),$$
-%
+\begin{equation*}
+  \begin{split}
+    qq^i(x_0^m,\dots,x^m_{m-1},r)&=(\iota_m^i(x_0^m),\dots,\iota_m^i(x^m_{m-1}),\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i})
+    \\&=(x_0^{m+i},\dots,x^{m+i}_{m-1},\iota_m^i(r),x_m^{m+i},\dots,x_{m+i-1}^{m+i}),
+  \end{split}
+\end{equation*}
 where the first equality is by Lemma \ref{2015.08.26.l2} and the second one by
 (\ref{2015.08.22.eq8}).
 \end{proof}
@@ -3343,7 +3361,7 @@ In \cite{LandC} we constructed for any Lawvere theory $(T,L)$ a C-system
 $LC((T,L))$. For $(T,L)=RML(\RR)$ we denote the C-system $LC((T,L))$ by
 $C(\RR)$. In this section we first provide a more explicit description of
 $C(\RR)$ and then compute the action of the operations $T,\wt{T},S,\wt{S}$ and
-$\delta$ on the B-sets $(Ob(C(\RR)),\wt{Ob}(C(\RR)))$ of this C-system
+$\delta$ on the B-sets $$(Ob(C(\RR)),\wt{Ob}(C(\RR)))$$ of this C-system
 (cf.{} Definition \ref{2015.08.26.def1}).
 
 Recall that as a category $C(\RR)$ is the opposite category to $T$.  Its set of
@@ -3862,9 +3880,12 @@ We have:
   \wt{Ob}',\wh{n}\in Ob)$, where $n>\partial(mb_{\RR}^!(m,r))$. Since
   $\partial(mb_{\RR}^!(m,r))=m+1$ we obtain the required domain of
   definition. The operation itself is given by
-%
-$$S'((m,r),n)=(mb_{\RR}^!(m,r))^*(\wh{n})=(x_0^m,\dots,x_{m-1}^m,r)^*(\wh{n})=\wh{n+m-(m+1)}=\wh{n-1}$$
-%
+  \begin{equation*}
+    \begin{split}
+      S'((m,r),n)&=(mb_{\RR}^!(m,r))^*(\wh{n})
+      \\&=(x_0^m,\dots,x_{m-1}^m,r)^*(\wh{n})=\wh{n+m-(m+1)}=\wh{n-1}
+    \end{split}
+  \end{equation*}
 \item The operation $\wt{S}'$ is defined on the set of pairs $(m,r),(n,s)\in
   \wt{Ob}'$ such that $\partial(mb_{\RR}^!(n,s))>\partial(mb_{\RR}^!(m,r))$
   which is equivalent to $n>m$. The formula for the operation itself is
@@ -3974,11 +3995,13 @@ $$\psi=\partial^0_2\circ \partial^0_3\circ \theta_{3,4}(x_0^3,-)\circ \theta_{2,
 One can verify that for any $Jf$-relative monad $RR$, $\psi=\sigma$, where
 $\sigma$ is the permutation of $0$ and $1$ in $stn(2)$.
 
-In the substitution notation this can be seen as follows:
-%
-$$\psi(E(x^2_0,x_1^2))=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,\partial^0_3(\partial^0_2(E(x^2_0,x_1^2)))))=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,\partial^0_3(E(x^3_1,x^3_2))))=$$
-$$\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,E(x^4_2,x^4_3)))=\theta_{2,3}(x_1^2,E(x^3_2,x^3_0))=E(x^2_1,x^2_0)$$
-%
+In substitution notation this can be seen as follows:
+\begin{equation*}
+  \begin{split}
+    \psi(E(x^2_0,x_1^2))&=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,\partial^0_3(\partial^0_2(E(x^2_0,x_1^2)))))=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,\partial^0_3(E(x^3_1,x^3_2))))
+    \\&=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,E(x^4_2,x^4_3)))=\theta_{2,3}(x_1^2,E(x^3_2,x^3_0))=E(x^2_1,x^2_0)
+  \end{split}
+\end{equation*}
 \end{remark}
 %
 
@@ -4256,26 +4279,39 @@ To show that this is a bijection let us construct an inverse. For $n\in\nat$, $\
 $$mb_{\RR,\LM}^!(n,(\Gamma,o))=((ft((n+1,\Gamma)),(n+1,\Gamma)),(x^{n}_0,\dots,x^{n}_{n-1},o))$$
 %
 This is a morphism from $ft(X)$ to $X$, where $X=(n+1,\Gamma)$. The equation
-$mb_{\RR,\LM}^!(n,(\Gamma,o))\circ p_X=Id_{ft(X)}$ follows from Lemma
+$$mb_{\RR,\LM}^!(n,(\Gamma,o))\circ p_X=Id_{ft(X)}$$ follows from Lemma
 \ref{2015.08.22.l5}.
 
 Let us show now that $mb_{\RR,\LM}$ and $mb_{\RR,\LM}^!$ are mutually inverse bijections. Let $s\in \wt{Ob}$ be as above, then:
-%
-$$mb_{\RR,\LM}^!(mb_{\RR,\LM}(s))=mb_{\RR,\LM}^!(n,(\Gamma,s(n)))=((ft(X),X),(x^{n}_0,\dots,x^{n}_{n-1},s(n)))=s,$$
-%
+\begin{equation*}
+  \begin{split}
+    mb_{\RR,\LM}^!(mb_{\RR,\LM}(s))&=mb_{\RR,\LM}^!(n,(\Gamma,s(n)))\\
+    &=((ft(X),X),(x^{n}_0,\dots,x^{n}_{n-1},s(n)))=s,
+  \end{split}
+\end{equation*}
 where the last equality follows from the assumption that $s\in \wt{Ob}$ and Lemma \ref{2015.08.22.l5}.
 
 On the other hand, for $\Gamma\in Ob_{n+1}(\RR,\LM)$ and $o\in R(n)$ we have
-%
-$$mb_{\RR,\LM}(mb_{\RR,\LM}^!(n,(\Gamma,o)))=mb_{\RR,\LM}(ft((n+1,\Gamma)),((n+1,\Gamma),(x^{n}_0,\dots,x^{n}_{n-1},o)))=$$
-$$(n,(\Gamma,o))$$
-%
+\begin{equation*}
+  \begin{split}
+    mb_{\RR,\LM}(&mb_{\RR,\LM}^!(n,(\Gamma,o)))
+    \\ &=mb_{\RR,\LM}(ft((n+1,\Gamma)),((n+1,\Gamma),(x^{n}_0,\dots,x^{n}_{n-1},o)))
+    \\ &=(n,(\Gamma,o)).
+  \end{split}
+\end{equation*}
 This completes Construction \ref{2015.08.22.constr1}.
 \ec
 %
 \begin{lemma}
 \llabel{2015.09.09.l3}
-Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$, where $X=(m,(T_0,\dots,T_{m-1}))$, $Y=(n,(T_0',\dots,T_{n-1}'))$. Then one has
+Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$, where
+\begin{equation*}
+  \begin{split}
+    X&:=(m,(T_0,\dots,T_{m-1}))\\
+    Y&:=(n,(T_0',\dots,T_{n-1}')).
+  \end{split}
+\end{equation*}
+Then one has
 %
 $$mb_{\RR,\LM}(s_f)=(m,((T_0,\dots,T_{m-1},(f(0),\dots,f(n-2))(T_{n-1}')), f(n-1)))$$
 %
@@ -4379,10 +4415,12 @@ $mb^!_{\RR,\LM}$. We have:
   unfolding definitions.
 
 The operation itself is given by 
-%
-$$T'((m,\Gamma),(n,\Gamma'))=p_{(m,\Gamma)}^*((n,\Gamma'))=$$
-$$(m,(T_0,\dots,T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots, \partial_{n-1}^{m-1}(T_{n-1}'))),$$
-%
+\begin{equation*}
+  \begin{split}
+    T'((m,\Gamma),(n,\Gamma'))&=p_{(m,\Gamma)}^*((n,\Gamma'))\\
+    &=(m,(T_0,\dots,T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots, \partial_{n-1}^{m-1}(T_{n-1}'))),
+  \end{split}
+\end{equation*}
 where the first equality is by Definition \ref{2015.08.26.def1}(1) and the second by Lemma \ref{2015.08.26.l8}. 
 %
 \item The operation $\wt{T}'$ is defined on the set of pairs $(m,\Gamma)\in Ob$,
@@ -4393,16 +4431,23 @@ where the first equality is by Definition \ref{2015.08.26.def1}(1) and the secon
 
 To verify the formula for the operation itself consider the equalities:
 %
-$$\wt{T}'((m,\Gamma),(n,(\Gamma',s)))=mb(p_{(m,\Gamma)}^*(mb^!(n,(\Gamma',s))))=$$
-$$mb(p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s))))),$$
+\begin{equation*}
+  \begin{split}
+    \wt{T}'((&m,\Gamma),(n,(\Gamma',s)))=mb(p_{(m,\Gamma)}^*(mb^!(n,(\Gamma',s))))\\&=
+    mb(p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s))))),
+  \end{split}
+\end{equation*}
 %
 where the first equality is by Definition \ref{2015.08.26.def1}(2). By Lemma
 \ref{2015.09.03.l1} we can extend these equalities as follows:
-%
-$$mb(p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s)))))=$$
-$$mb(p_{X}^*(ft(Y)),(p_{X}^*(Y),(x^{n+1}_0,\dots,x^{n+1}_{n},(qq^{n-m+1}(\iota^1_{m-1}))(s))))=$$
-$$(n+1,(p_{X}^*(Y),\partial_{n}^{m-1}(s)))=(n+1,(T((m,\Gamma),(n+1,\Gamma')),\partial_n^{m-1}(s))),$$
-%
+\begin{equation*}
+  \begin{split}
+    mb(&p_{(m,\Gamma)}^*((ft((n+1,\Gamma')),((n+1,\Gamma'),(x^{n}_0,\dots,x^{n}_{n-1},s)))))\\&=
+       mb(p_{X}^*(ft(Y)),(p_{X}^*(Y),(x^{n+1}_0,\dots,x^{n+1}_{n},(qq^{n-m+1}(\iota^1_{m-1}))(s))))\\&=
+       (n+1,(p_{X}^*(Y),\partial_{n}^{m-1}(s)))\\&=
+       (n+1,(T((m,\Gamma),(n+1,\Gamma')),\partial_n^{m-1}(s))),
+  \end{split}
+\end{equation*}
 where $X=(m,\Gamma)$, $Y=(n+1,\Gamma')$, the first equality is by Lemma
 \ref{2015.09.03.l1}, the second by Lemma \ref{2015.08.26.l3a} and the third by
 Definition \ref{2015.08.26.def1}(1).
@@ -4430,10 +4475,10 @@ Next we have
 \end{equation*}
 %##
 where $A=(m+1,\Gamma)$, $B=(n,\Gamma')$ and $i=n-m-1$. To apply Lemma
-\ref{2016.01.31.l1} we should take $X=\wh{m}$, $lx=m$ and $Y=\wh{n}$, $ly=n$
-and $f=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r))$. Let further
+\ref{2016.01.31.l1} we should take $X=\wh{m}$, $lx=m$ and $Y=\wh{n}$, $ly=n$,
+and $$f=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r)).$$  Let further
 $rr=(x^{m}_0,\dots,x^{m}_{m-1},r)$. Then we can extend these equalities as
-follows
+follows.
 %
 \begin{equation*}
   \begin{split}
@@ -4452,7 +4497,6 @@ follows
     rr(T_{m+1}'),qq(rr)(T_{m+2}'),\dots,qq^{n-m-2}(rr)(T_{n-1}'))),
   \end{split}
 \end{equation*}
-FOOBAR
 %
 where the last equality holds by the assumption that $T_i=T_i'$ for $i=0,\dots,m$. 
 The required formula follows from the equality 
@@ -4471,15 +4515,21 @@ $$(n+1,\Gamma')>(m+1,\Gamma)$$
 %
 which is, in turn, equivalent to the conditions in the theorem. In the computation  below let us sometimes abbreviate $((X,Y),f)$ to $f$. Let
 %
-$$rr=(x_0^m,\dots,x_{m-1}^m,r)$$
-$$ss=(x_0^n,\dots,x_{n-1}^n,s)$$
+\begin{equation*}
+  \begin{split}
+    rr&:=(x_0^m,\dots,x_{m-1}^m,r)\\
+    ss&:=(x_0^n,\dots,x_{n-1}^n,s)
+  \end{split}
+\end{equation*}
 %
 Then the operation itself is given by:
-%
-$$\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s)))=mb((mb^!(m,(\Gamma,r)))^*(mb^!((n,(\Gamma',s)))))=mb(rr^*ss)=$$
-$$mb((x_0^{n-1},\dots,x^{n-1}_{n-2},(qq^{n-m-1}(rr))(s)))=(n-1,(rr^*((n+1,\Gamma')),(qq^{n-m-1}(rr))(s)))=$$
-$$(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s)),$$
-%
+\begin{equation*}
+  \begin{split}
+    \wt{S}'((m,&(\Gamma,r)),(n,(\Gamma',s)))\\&=mb((mb^!(m,(\Gamma,r)))^*(mb^!((n,(\Gamma',s)))))]=mb(rr^*ss)\\&=
+    mb((x_0^{n-1},\dots,x^{n-1}_{n-2},(qq^{n-m-1}(rr))(s)))\\&=(n-1,(rr^*((n+1,\Gamma')),(qq^{n-m-1}(rr))(s)))\\&=
+    (n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s)),
+  \end{split}
+\end{equation*}
 where the third equality is by Lemma \ref{2015.09.03.l1} and the fifth by
 (\ref{2016.01.21.eq2}) and the definition of $\theta_{m,n}(r,s)$.
 %
@@ -4532,8 +4582,8 @@ define a left l-module $l\LM$ over $\RR$ as a quadruple:
 %
 where operations $l,\partial$ and $\theta^{\LM}$ satisfy some conditions. 
 
-Once these conditions are properly established the category of such pairs
-$(l\RR,l\LM)$ should be equivalent to the Hirschowitz-Maggesi ``large module
+Once these conditions are properly established, the category of such pairs
+$$(l\RR,l\LM)$$ should be equivalent to the Hirschowitz-Maggesi ``large module
 category'' category (see \cite[Definition 2.9]{HM2008}) and in particular the
 systems of expressions associated with binding signatures can be described as
 universal objects carrying some additional operations in this category.
