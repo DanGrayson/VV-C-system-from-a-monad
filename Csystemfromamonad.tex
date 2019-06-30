@@ -35,7 +35,6 @@
 %\renewcommand{\thesubsection}{\arabic{subsection}}
 %
 %
-\newenvironment{eq}{\begin{equation}}{\end{equation}}
 %
 %\newenvironment{proof}{{\bf Proof}:}{\vskip 5mm }
 \newenvironment{rem}{{\bf Remark}:}{\vskip 5mm }
@@ -482,10 +481,10 @@ monad.
 Next, following \cite{FPT}, we let $\FF$ denote the category with set of
 objects $\nat$ and with set of morphisms
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.02.24.eq1}
 Mor(\FF)=\cup_{m,n}Fun(stn(m),stn(n)),
-\end{eq}%
+\end{equation}%
 %
 where $stn(m)=\{i\in\nat\,|\,i<m\}$ is our choice for the standard set with $m$
 elements, and where, for two sets $X$ and $Y$, $Fun(X,Y)$ is the set of functions
@@ -1139,10 +1138,10 @@ $$
 @@@
 the form of a list of ``inference rules'' that may look like, for example, this one:
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.03.02.eq1}
 \frac{\Gamma,x:A\vdash B\,type}{\Gamma\vdash \prod\,x:A,B\,type}
-\end{eq}%
+\end{equation}%
 %
 These inference rules are formulated in@@@
 
@@ -1160,10 +1159,10 @@ Elements of $sec(p)$ are called {\em sections} of $p$. To any C-system
 $CC$ one associates a pair of sets $(Ob(CC),\wt{Ob}(CC))$, where $Ob(CC)$ is the
 set of objects of the category underlying $CC$, and where
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.02.04.eq1}
 \wt{Ob}(CC):=\{s\in Mor(CC)\,|\,s\in sec(p_{codom(s)}), l(codom(s))>0\},
-\end{eq}%
+\end{equation}%
 %
 i.e., where $\wt{Ob}(CC)$ is the set of sections of the non-trivial
 p-morphisms of $CC$. When $CC$ is clear from the context we will abbreviate
@@ -1572,27 +1571,27 @@ We now outline the construction for Problem \ref{2017.01.04.prob1}
 \llabel{2017.01.04.constr1}
 To go from the monoidal form to the Kleisli form, one defines, for $X,Y\in Ob(\C)$ and $f:X\sr RR_{Ob}(Y)$
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq1}
 rr_{X,Y}(f)=RR_{Mor}(f)\circ \mu_Y
-\end{eq}%
+\end{equation}%
 %
 To go from the Kleisli form to the monoidal form one defines
 %
 \begin{enumerate}
 \item for $f:X\sr Y$ in $Mor(\C)$
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq2a}
 RR_{Mor}(f)=rr_{X,Y}(f\circ \eta_Y)
-\end{eq}%
+\end{equation}%
 %
 \item for $X\in Ob(\C)$
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq2b}
 \mu_X=rr_{RR_{Ob}(X),X}(Id_{RR_{Ob}(X)})
-\end{eq}%
+\end{equation}%
 %
 \end{enumerate}
 %
@@ -1648,9 +1647,9 @@ functor.
 \begin{construction}\rm\llabel{2016.01.15.constr1}\rm
 For $f:X\sr Y$ in $\C$ set
 %
-\begin{eq}\llabel{2017.04.05.eq3}
+\begin{equation}\llabel{2017.04.05.eq3}
 RR_{Mor}(f)=rr_{X,Y}(J(f)\circ \eta_{Y})
-\end{eq}%
+\end{equation}%
 %
 The proofs of the composition and the identity axioms of a functor are omitted. 
 \ec
@@ -1664,9 +1663,9 @@ form of functions $(-)^K$ and $(-)^M$ defined in Construction
 $\R^K=(R_{Ob},\eta,rr)$ and for $\RR=(RR_{Ob},\eta,rr)$ we have
 $\RR^M=(\RR^f,\eta,\mu)$. In particular, since $(\R^K)^M=\R$, we have
 %
-\begin{eq}\llabel{2017.04.05.eq2}
+\begin{equation}\llabel{2017.04.05.eq2}
 (\R^K)^f=R
-\end{eq}%
+\end{equation}%
 %
 
 The construction of the Kleisli category of a monad\footnote{Actually Kleisli,
@@ -1696,9 +1695,9 @@ For $X\in Ob(\C)$ we set $Id_{X,K(\RR)}=\eta_{X}$.
 
 For $f\in Mor_{\D}(J(X),RR(Y))$ and $g\in Mor_{\D}(J(Y),RR(Z))$ we set 
 %
-\begin{eq}\llabel{2017.04.05.eq1}
+\begin{equation}\llabel{2017.04.05.eq1}
 f\circ_{K(\RR)}g:=f\circ_{\D} rr_{Y,Z}(g)
-\end{eq}%
+\end{equation}%
 %
 \ec
 %
@@ -1713,10 +1712,10 @@ $$Et_{\RR}:\C\sr K(\RR)$$
 \begin{construction}\rm\llabel{2017.04.05.constr2}
 We omit the subscript $\RR$ on $Et$. We set $Et_{Ob}:=Id$. For a morphism $f:X\sr Y$ in $\C$ we set 
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.09.eq2}
 Et_{Mor}(f):=J(f)\circ \eta_Y
-\end{eq}%
+\end{equation}%
 %
 For $f=Id_X$ we have 
 %
@@ -1728,8 +1727,15 @@ $$Et(f\circ g)=J(f\circ g)\circ \eta_Z=J(f)\circ J(g)\circ \eta_Z$$
 %
 and
 %
-$$Et(f)\circ Et(g)=(J(f)\circ \eta_Y)\circ_{K(\RR)}(J(g)\circ \eta_Z)=
-$$$$J(f)\circ \eta_Y\circ rr_{Y,Z}(J(g)\circ \eta_Z)=J(f)\circ J(g)\circ \eta_Z,$$
+\begin{equation*}
+  \begin{split}
+    Et(f)\circ Et(g)&=(J(f)\circ \eta_Y)\circ_{K(\RR)}(J(g)\circ \eta_Z)
+    \\
+    &=J(f)\circ \eta_Y\circ rr_{Y,Z}(J(g)\circ \eta_Z)
+    \\
+    &=J(f)\circ J(g)\circ \eta_Z,
+  \end{split}
+\end{equation*}
 %
 where the second equality follows from (\ref{2017.04.05.eq1}), and the third follows from
 condition (2) of Definition \ref{2015.12.22.def1}. This proves the composition
@@ -1768,27 +1774,27 @@ to construct a $(F\circ J)$-relative monad $F^{\circ}(\RR)$.
 \begin{construction}\llabel{2017.02.24.constr1}\rm
 We omit the subscripts $Ob$ and $Mor$ on $F$ and $J$. Let $\RR=(RR_{Ob},\eta,rr)$. We set
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.11.eq3}
 F^{\circ}(\RR):=(F^{\circ}(RR_{Ob}), F^{\circ}(\eta), F^{\circ}(rr))
-\end{eq}%
+\end{equation}%
 %
 where, for for $X\in \C_0$
 %
-\begin{eq}
+\begin{equation}
   \llabel{2017.04.11.eq1}
   \begin{split}
     F^{\circ}(RR_{Ob})(X)&:=RR_{Ob}(F(X))\\
     F^{\circ}(\eta)_X&:=\eta_{F(X)}
   \end{split}
-\end{eq}%
+\end{equation}%
 %
 and for $X,Y\in\C_0$ and $f:J(F(X))\sr RR_{Ob}(F(Y))$,
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.11.eq2}
 F^{\circ}(rr)_{X,Y}(f):=rr_{F(X),F(Y)}(f)
-\end{eq}%
+\end{equation}%
 %
 Let us verify conditions (1)-(3) of Definition \ref{2015.12.22.def1}. We write
 $RR$ instead of $RR_{Ob}$ :
@@ -1820,10 +1826,10 @@ This completes Construction \ref{2017.02.24.constr1}.
 \llabel{2017.04.09.l1}
 In the context of Problem \ref{2017.02.24.prob1} one has
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq6}
 (F^{\circ}(\RR))^f=F\circ RR^f
-\end{eq}%
+\end{equation}%
 %
 \end{lemma}
 %
@@ -1834,10 +1840,10 @@ $\C_0\sr\D$. Let $\RR=(RR_{Ob},\eta,rr)$. Then both of these functors on
 objects are given, by construction, by $F\circ RR_{Ob}$. It remains to show
 that for $f:\sr Y$ in $\C_0$ we have
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.09.eq5}
 F^{\circ}(\RR)_{Mor}(f)=(F_{Mor}\circ RR_{Mor})(f)
-\end{eq}%
+\end{equation}%
 %
 We have
 %
@@ -1870,10 +1876,10 @@ K(\RR)$.
 \llabel{2017.03.12.constr2} We set $F_{\RR,Ob}=F_{Ob}$. For $X,Y\in\C_0$ and a
 morphism $f:J(F(X))\sr RR(F(Y))$ in $K(F^{\circ}(\RR))$ from $X$ to $Y$, we set
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.03.12.eq2}
 F_{\RR,X,Y}(f)=f
-\end{eq}%
+\end{equation}%
 %
 that is, $F_{\RR,Mor}$ is given by the function
 %
@@ -1885,10 +1891,10 @@ Let us show that $(F_{\RR,Ob},F_{\RR,Mor})$ is a functor.
 
 Note first that for $X\in\C_0$ one has
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.03.12.eq1}
 Id_{K(F^{\circ}(\RR)),X}=F^{\circ}(\eta)_{X}=\eta_{F(X)},
-\end{eq}%
+\end{equation}%
 %
 where the first equality is by Construction \ref{2017.03.12.constr3} and the
 second by Construction \ref{2017.02.24.constr1}. The data
@@ -1901,10 +1907,10 @@ where the first equality is by (\ref{2017.03.12.eq1}), the second by (\ref{2017.
 
 Next, for $X,Y,Z\in \C_0$ and $f:J(F(X))\sr RR(F(Y))$, $g:J(F(Y))\sr RR(F(Z))$ one has
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.03.12.eq3}
 f\circ_{KK(F^{\circ}(\RR))} g= f\circ_{\D} F^{\circ}(rr)_{Y,Z}(g)=f\circ_{\D} rr_{F(Y),F(Z)}(g)
-\end{eq}%
+\end{equation}%
 %
 where, again, the first equality is by Construction \ref{2017.03.12.constr3}
 and the second by Construction \ref{2017.02.24.constr1}. The data
@@ -1992,10 +1998,10 @@ satisfies conditions \ref{2017.04.19.eq4}, \ref{2017.04.19.eq5} and
 
 Let $X\in\C$. Then $\eta_X$ is a morphism from $J(X)$ to $RR(X)$. We set 
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.21.eq1}
 \eta^{\D}_X=pr_{\D}(\eta_X):J_{\D}(X)\sr RR_{\D}(X)
-\end{eq}%
+\end{equation}%
 %
 We will also consider $pr_{\D'}(\eta_X)$ that we will denote by $\eta^{\D'}_X$. 
 
@@ -2011,21 +2017,21 @@ $$rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)):RR(X)\sr RR(Y)$$
 %
 We set
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.21.eq2}
 rr^{\D}_{X,Y}(f)=pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))
-\end{eq}%
+\end{equation}%
 %
 
 Let $X\in\C$. Then
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.23.eq1}
 rr_{X,X}((\eta^{\D}_X,\nu_{X,X}\circ \eta^{\D'}_X))=
 rr_{X,X}((\eta^{\D}_X,\eta^{\D'}_X))=
 rr_{X,X}(\eta_X)=
 Id_{RR(X)},
-\end{eq}%
+\end{equation}%
 %
 where the first equality holds by Definition
 \ref{2017.04.21.def1}\ref{2017.04.21.eq3}, the second by definition of
@@ -2044,14 +2050,14 @@ proves the property \ref{2017.04.13.def1}\ref{2017.04.19.eq4} for $\RR_{\D}$.
 
 Let $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$. Then
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.23.eq2}
 \eta^{\D}_X\circ rr^{\D}_{X,Y}(f)=
 $$$$pr_{\D}(\eta_X)\circ pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
 pr_{\D}(\eta_X\circ rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))=
 $$$$pr_{\D}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))=
 f,
-\end{eq}%
+\end{equation}%
 %
 where the first equality holds by (\ref{2017.04.21.eq1}) and
 (\ref{2017.04.21.eq2}), the second since $pr_{\D}$ commutes with compositions,
@@ -2060,7 +2066,7 @@ and the fourth by definition of $pr_{\D}$. This proves the property
 \ref{2017.04.13.def1}\ref{2017.04.19.eq5} for $\RR_{\D}$.
 
 Let $X,Y,Z\in\C$, $f:J_{\D}(X)\sr RR_{\D}(Y)$, and $g:J_{\D}(Y)\sr RR_{\D}(Z)$.  Then
-\begin{eq}
+\begin{equation}
   \llabel{2017.04.21.eq5}
   \begin{split}
       &rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))\circ rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))=
@@ -2072,7 +2078,7 @@ Let $X,Y,Z\in\C$, $f:J_{\D}(X)\sr RR_{\D}(Y)$, and $g:J_{\D}(Y)\sr RR_{\D}(Z)$. 
     \\&rr_{X,Z}((f\circ pr_{\D}(rr_{Y,Z}((g,\nu_{Y,Z}\circ \eta^{\D'}_Z))),\nu_{X,Z}\circ\eta^{\D'}_Z) ))=
     \\&rr_{X,Z}((f\circ rr^{\D}_{Y,Z}(g),\nu_{X,Z}\circ\eta^{\D'}_Z)),
   \end{split}
-\end{eq}%
+\end{equation}%
 %
 where the first equality holds by the property
 \ref{2017.04.13.def1}\ref{2017.04.19.eq6} of $\RR$, the second by the
@@ -2209,15 +2215,15 @@ such that $(LM_{Ob},lm)$ is a left $\RR$-module in Kleisli form.
 In one direction, given $LM_{Mor}$, a family $\rho_X:LM(RR_{Ob}(X))\sr LM(X)$
 parametrized by $X\in Ob(\C)$, and $f:X\sr R(Y)$, one defines
 %
-\begin{eq}\llabel{2017.04.09.eq4}
+\begin{equation}\llabel{2017.04.09.eq4}
 lm_{X,Y}(f)=LM(f)\circ \rho_Y
-\end{eq}%
+\end{equation}%
 %
 In the other direction, given $LM_{Ob}$ and $lm$, one defines, for $f:X\sr Y$, 
 %
-\begin{eq}\llabel{2017.04.09.eq3}
+\begin{equation}\llabel{2017.04.09.eq3}
 LM_{Mor}(f)=lm_{X,Y}(f\circ \eta_Y)
-\end{eq}%
+\end{equation}%
 %
 and for $X$, 
 %
@@ -2286,9 +2292,9 @@ $$\LM^f_{Ob}=LM_{Ob}$$
 %
 which follows from $Et_{\RR,Ob}=Id_{Ob(\C)}$, and for $f:X\sr Y$ 
 %
-\begin{eq}\llabel{2017.04.11.eq5}
+\begin{equation}\llabel{2017.04.11.eq5}
 \LM^f_{Mor}(f)=lm(J(f)\circ \eta_{Y})
-\end{eq}%
+\end{equation}%
 %
 which follows from (\ref{2017.04.09.eq2}). 
 
@@ -2299,17 +2305,17 @@ preferential notation for the corresponding objects.
 If $\R$ and ${\bf L}=(L,\rho)$ are a monad on $\C$ and a left module over it
 with values in $\E$ given in monoidal form then we have
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq4}
 ({\bf L}^K)^f=L
-\end{eq}%
+\end{equation}%
 %
 On objects we have $({\bf L}^K)^f_{Ob}=L_{Ob}$ by construction. It remains to
 show that
 %
-\begin{eq}\llabel{2017.04.09.eq1}
+\begin{equation}\llabel{2017.04.09.eq1}
 ({\bf L}^K)^f_{Mor}=L_{Mor}
-\end{eq}%
+\end{equation}%
 %
 Indeed, for $f:X\sr Y$ in $Mor(\C)$ we have
 %
@@ -2369,27 +2375,27 @@ Construction \ref{2017.03.12.constr2}. Explicitly, for $\RR=(RR_{Ob},\eta,rr)$
 and $\LM=(LM_{Ob},lm)$, we let $F\crc(\LM)=(F\crc(LM_{Ob}),F\crc(lm))$. In this
 notation we have
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq7}
 F\crc(LM_{Ob})=F\circ LM_{Ob}
-\end{eq}%
+\end{equation}%
 %
 and 
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq8}
 F\crc(lm)_{X,Y}=lm_{F(X),F(Y)}
-\end{eq}%
+\end{equation}%
 \ec
 %
 \begin{lemma}
 \llabel{2017.04.17.l1}
 In the context of Problem \ref{2017.03.12.prob2} we have 
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.13.eq2}
 (F\crc(\LM))^f=F\circ \LM^f
-\end{eq}%
+\end{equation}%
 %
 \end{lemma}
 %
@@ -2400,10 +2406,10 @@ $$(F\crc(\LM))^f_{Ob}=(F\circ \LM^f)_{Ob}$$
 %
 is by construction and to prove the equality
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.13.eq1}
 (F\crc(\LM))^f_{Mor}=(F\circ \LM^f)_{Mor}
-\end{eq}%
+\end{equation}%
 %
 we have, for $f:X\sr Y$ in $\C_0$,
 %
@@ -2436,17 +2442,17 @@ We take $(J^{\circ}(\R^K),J^{\circ}({\bf L}^K))$.
 %
 Note that in the notation of Problem \ref{2017.04.05.prob1}, we have
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq9}
 J\crc(\R^K)^f=J\circ (\R^K)^f=J\circ R,
-\end{eq}%
+\end{equation}%
 %
 where the first equality is by (\ref{2017.04.17.eq6}) and the second by (\ref{2017.04.05.eq2}). Similarly,
 %
-\begin{eq}
+\begin{equation}
 \llabel{2017.04.17.eq10}
 J\crc(\L^K)^f=J\circ ({\bf L}^K)^f=J\circ L,
-\end{eq}%
+\end{equation}%
 %
 where the second equality is by (\ref{2017.04.13.eq2}) and the third by (\ref{2017.04.17.eq4}).
 
@@ -2581,9 +2587,9 @@ Let $a:\Gamma'\sr\Gamma''$ be a morphism over
 $\Gamma'''$ and $\Gamma'''$ an object over $\Delta$. Then $a$ is a morphism
 over $\Delta$ and for any $f:\Gamma\sr \Delta$ one has
 %
-\begin{eq}\llabel{2015.08.29.eq2}
+\begin{equation}\llabel{2015.08.29.eq2}
 f^*(a)=q(f,\Gamma''')^*(a)
-\end{eq}%
+\end{equation}%
 %
 \end{lemma}
 %
@@ -2650,10 +2656,10 @@ C0-system that will be denoted $CC[F]$ and called the {\em $F$-extension of $CC$
 \begin{construction}\rm\llabel{2016.01.19.constr1}
 We set 
 %
-\begin{eq}\llabel{2016.01.19.eq1}
+\begin{equation}\llabel{2016.01.19.eq1}
 Ob(CC[F])=\amalg_{X\in CC} F(ft^{l(X)}(X))\times\dots\times F(ft^2(X))\times
 F(ft(X)),
-\end{eq}%
+\end{equation}%
 %
 where the product of the empty sequence of factors is a 1-point set. We will
 write elements of $Ob(CC[F])$ as $(X,\Gamma)$, where $X\in CC$ and
@@ -2703,9 +2709,9 @@ $$p_{(X,\Gamma)}=((X,\Gamma),ft(X,\Gamma), p_X)$$
 
 For $(Y,\Gamma')$ such that $l((Y,\Gamma'))>0$ and $f:(X,\Gamma)\sr ft(Y,\Gamma')$, where $\Gamma=(T_0,\dots,T_{l(X)-1})$ and $\Gamma'=(T_0',\dots,T_{l(Y)-1}')$ we set
 %
-\begin{eq}\llabel{2016.01.31.eq1}
+\begin{equation}\llabel{2016.01.31.eq1}
 f^*((Y,\Gamma'))=(f^*(Y),(T_0,\dots,T_{l(X)-1},F(f)(T'_{l(Y)-1}))).
-\end{eq}%
+\end{equation}%
 %
 
 In the same context as above we define the q-morphism as
@@ -2875,9 +2881,9 @@ $$f^*((Y,\Gamma'),0)=(X,\Gamma)=(f^*(Y,0),(T_0,\dots,T_{lx-1}))$$
 %
 For the successor of $i$ we need to show that
 %
-\begin{eq}\llabel{2016.01.31.eq3}
+\begin{equation}\llabel{2016.01.31.eq3}
 f^*((Y,\Gamma'),i+1)=$$$$(f^*(Y,i+1),(T_0,\dots,T_{lx-1},F(q(f,ft^{i+1}(Y),0))(T'_{ly-i-1}),\dots,F(q(f,ft(Y),i))(T'_{ly-1}))
-\end{eq}%
+\end{equation}%
 %
 We have by (\ref{2016.01.31.eq2}),  
 %
@@ -3097,9 +3103,9 @@ The lemma is proved.
 \llabel{2015.08.30.l1}
 Let $f\in F(l,m)$, $g\in RR(m,n)$ and $i\in stn(l)$. Then one has
 %
-\begin{eq}\llabel{2015.08.26.eq4}
+\begin{equation}\llabel{2015.08.26.eq4}
 (L(f)\hc g)(i)=g(f(i))
-\end{eq}%
+\end{equation}%
 % 
 \end{lemma}
 %
@@ -3117,15 +3123,15 @@ $$x_i^n=\eta_{n}(i)\in RR(n)$$
 %
 Observe also that for $f\in RR(m,n)$ one has
 %
-\begin{eq}\llabel{2015.08.24.eq5}
+\begin{equation}\llabel{2015.08.24.eq5}
 \mbind{f}(x_i^m)=(\eta_{m}\circ\mbind{f})(i)=f(i)
-\end{eq}%
+\end{equation}%
 %
 and for $f\in F(m,n)$ one has
 %
-\begin{eq}\llabel{2016.01.15.eq1}
+\begin{equation}\llabel{2016.01.15.eq1}
 f(x_i^m)=RR(f)(\eta_{m}(i))=(\eta_{m}\circ \mbind{(f\circ \eta_{n}))}(i)=(f\circ \eta_{n})(i)=\eta_{n}(f(i))=x_{f(i)}^n
-\end{eq}%
+\end{equation}%
 %
 Let 
 %
@@ -3142,21 +3148,21 @@ $\Delta$ together with $\partial^0_0:stn(0)\sr stn(1)$.
 
 In our sequence notation we have
 %
-\begin{eq}\llabel{2015.08.24.eq7}
+\begin{equation}\llabel{2015.08.24.eq7}
 L(\partial^{i}_{n})=(x_0^{n+1},\dots,x_{i-1}^{n+1},x_{i+1}^{n+1},\dots,x_n^{n+1})
-\end{eq}%
+\end{equation}%
 %
 and
 %
-\begin{eq}\llabel{2015.08.24.eq8}
+\begin{equation}\llabel{2015.08.24.eq8}
 L(\sigma^{i}_{n})=(x_0^{n+1},\dots,x_{i-1}^{n+1},x_i^{n+1},x_i^{n+1},x_{i+1}^{n+1},\dots,x_n^{n+1})
-\end{eq}%
+\end{equation}%
 %
 in particular
 %
-\begin{eq}\llabel{2015.07.12.eq5}
+\begin{equation}\llabel{2015.07.12.eq5}
 L(\partial^{n}_n)=(x_0^{n+1},\dots,x_{n-1}^{n+1})
-\end{eq}%
+\end{equation}%
 %
 
 Let 
@@ -3165,25 +3171,25 @@ $${\iota}_n^{i}:stn(n)\sr stn(n+i)$$
 %
 be the function given by ${\iota}_n^i(j)=j$ for $j=0,\dots,n-1$. Then we have
 %
-\begin{eq}
+\begin{equation}
 \llabel{2015.08.22.eq7}
 {\iota}_n^{1}=\partial_{n}^{n}
-\end{eq}%
+\end{equation}%
 %
 and (\ref{2016.01.15.eq1}) implies that 
 %
-\begin{eq}
+\begin{equation}
 \llabel{2015.08.22.eq8}
 {\iota}_n^i(x^n_j)=x^{n+i}_j
-\end{eq}%
+\end{equation}%
 %
 \begin{lemma}
 \llabel{2015.08.26.l1}
 Let $f=(f(0),\dots,f(m))$ be a morphism from $m+1$ to $n$ in $T$. Then
 %
-\begin{eq}\llabel{2016.01.15.eq3}
+\begin{equation}\llabel{2016.01.15.eq3}
 L(\iota_m^1)\hc f=(f(0),\dots,f(m-1))
-\end{eq}%
+\end{equation}%
 %
 In particular, if $f\in RR(n+1,n)$, then $L(\iota_n^1)\hc f=Id_{T,n}$ if and only if $f(i)=x_n^i$ for $i=0,\dots,n-1$. 
 \end{lemma}
@@ -3199,9 +3205,9 @@ Since $Id_{T,n}=(x_0^n,\dots,x_{n-1}^n)$ the second assertion immediately follow
 %
 For $f\in RR(n,m)$, $f=(f(0),\dots,f(n-1))$ define an element $qq(f)\in RR(n+1,m+1)$ by the formula: 
 %
-\begin{eq}\llabel{2015.08.26.eq9}
+\begin{equation}\llabel{2015.08.26.eq9}
 qq(f)=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-1)),x_m^{m+1})
-\end{eq}%
+\end{equation}%
 %
 \begin{lemma}
 \llabel{2015.08.26.l2}
@@ -3292,9 +3298,9 @@ The $p$-morphisms are defined by setting $p_{\wh{0}}=Id_{\wh{0}}$ and
 $p_{\wh{n+1}}:\wh{n+1}\sr \wh{n}$ to be the morphism $L(\iota_n^1)$. In the
 sequence notation we have
 %
-\begin{eq}\llabel{2015.08.24.eq6}
+\begin{equation}\llabel{2015.08.24.eq6}
 p_{\wh{n+1}}=(x_0^{n+1},\dots,x_{n-1}^{n+1})
-\end{eq}%
+\end{equation}%
 %
 For a morphism $f:\wh{m}\sr \wh{n}$ in $C(\RR)$ we have $f^*(\wh{n+1})=\wh{m+1}$. 
 
@@ -3481,15 +3487,15 @@ $$(f(0),\dots,f(n-1))=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-2)),x_{m}^{m+1})\hc (
 %
 which is equivalent to, by Lemma \ref{2016.01.15.l4}, 
 %
-\begin{eq}\llabel{2016.01.15.eq6}
+\begin{equation}\llabel{2016.01.15.eq6}
 f(i)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))
-\end{eq}%
+\end{equation}%
 %
 for $i=0,\dots,n-2$ and 
 %
-\begin{eq}\llabel{2016.01.15.eq7}
+\begin{equation}\llabel{2016.01.15.eq7}
 f(n-1)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(x_{m}^{m+1})
-\end{eq}%
+\end{equation}%
 %
 For the first series of equalities we get, by inserting the coercion $RR$ and
 rewriting of the right hand side, the following
@@ -3537,9 +3543,9 @@ The lemma is proved.
 \llabel{2015.08.29.l1}
 Let $f:\wh{m}\sr\wh{n}$ and let $s:\wh{n+i}\sr\wh{n+i+1}$ be an element of $\wt{Ob}$. Then one has
 %
-\begin{eq}\llabel{2015.08.29.eq1}
+\begin{equation}\llabel{2015.08.29.eq1}
 f^*(s)=(x_0^{m+i},\dots,x_{m+i-1}^{m+i},\mbind{qq^i(f)}(s(n+i)))
-\end{eq}%
+\end{equation}%
 %
 \end{lemma}
 %
@@ -3589,9 +3595,9 @@ It follows from Lemma \ref{2015.09.09.l1} since $Id_{\wh{n}}=(x_0^{n},\dots,x_{n
 \begin{problem}
 To construct a bijection
 %
-\begin{eq}\llabel{2015.08.24.eq9}
+\begin{equation}\llabel{2015.08.24.eq9}
 mb_{\RR}:\wt{Ob}(C(\RR))\sr \amalg_{n\in\nat} RR(n)
-\end{eq}%
+\end{equation}%
 %
 \end{problem}
 %
@@ -3668,13 +3674,13 @@ Define, for any $Jf$-relative monad $\RR$, operations
 $\theta_{m,n}=\theta^{\RR}_{m,n}$ such that for $m,n\in\nat$, $n>m$ and $r\in
 RR(m)$, $s\in RR(n)$ one has
 %
-\begin{eq}
+\begin{equation}
   \llabel{2015.09.07.eq1}
   \begin{split}
     \theta_{m,n}(r,s)&=\mbind{(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))}(s) \\
     &=\mbind{(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_{m}^{n-m-1}(r),x_m^{n-1},\dots,x_{n-2}^{n-1})}(s)
   \end{split}
-\end{eq}%
+\end{equation}%
 %
 \begin{theorem}
 \llabel{2015.08.26.th1}
@@ -3937,9 +3943,9 @@ regular sub-quotients given in \cite{Csubsystems}.
 
 By construction,
 %
-\begin{eq}\llabel{2016.01.21.eq3}
+\begin{equation}\llabel{2016.01.21.eq3}
 Ob(C(\RR,\LM))=\amalg_{n\in\nat}Ob_n(\RR,\LM),
-\end{eq}%
+\end{equation}%
 %
 where 
 %
@@ -3960,9 +3966,9 @@ Let us also recall that for two objects $X=(m,(T_0,\dots,T_{m-1})))$ and
 $Y=(n+1,(T'_0,\dots,T'_{n}))$ and a morphism $f:X\sr ft(Y)$ the object $f^*(Y)$
 is given by the formula
 %
-\begin{eq}\llabel{2015.09.09.eq3old}
+\begin{equation}\llabel{2015.09.09.eq3old}
 f^*(Y)=(m+1,(T_0,\dots,T_{m-1},f(T'_{n})))
-\end{eq}%
+\end{equation}%
 %
 and the morphism $q(f,Y):f^*(Y)\sr Y$ by the formula $q(f,Y)=qq(f)$. 
 % 
@@ -4038,17 +4044,17 @@ $$z_{n,m}:F_m(Var)\times F_{n+1}(Var)\times R(n,m)\sr Var$$
 %
 such that $z_{n,m}(x',y,f)$ does not occur in $x'$ and such that
 %
-\begin{eq}
+\begin{equation}
 \llabel{2015.08.22.eq1b}
 z_{n,m}((x_0,\dots,x_{n-1}),(x_0,\dots,x_{n-1},x_n),\eta_n)=x_n
-\end{eq}%
+\end{equation}%
 %
 and for all $x'\in F_{m}$, $x''\in F_{k}$, $y\in F_{n+1}$, $f\in R(n,m)$ and $g\in R(m,k)$ one has
 %
-\begin{eq}
+\begin{equation}
 \llabel{2015.08.22.eq2b}
 z_{n,k}(x'',y,g\hc f)=z_{m,k}(x'',(x'_0,\dots,x'_{m-1},z_{m,n}(x',y,f)),g)
-\end{eq}%
+\end{equation}%
 %
 I do not know whether it is possible to construct a function $z$ satisfying
 these two equations for a general $R$.
@@ -4074,9 +4080,9 @@ provides us with the explicit form of the operation $f\mapsto s_f$.
 \llabel{2015.09.09.l2}
 Let $f:X\sr Y$, $f=(f(0),\dots,f(n-1))$, where $n>0$. Then $s_f:X\sr (ft(f))^*(Y)$,
 %
-\begin{eq}\llabel{2015.09.09.eq1}
+\begin{equation}\llabel{2015.09.09.eq1}
 s_f=(x_0^{m},\dots,x_{m-1}^{m},f(n-1)),
-\end{eq}%
+\end{equation}%
 %
 where $ft(f)=f\circ p_Y$ and $m=l(X)$. 
 \end{lemma}
@@ -4110,10 +4116,10 @@ C-systems, Lemma \ref{2015.09.03.l2}(4) and Lemma \ref{2015.08.29.l1}.
 \llabel{2015.08.22.prob1}
 To construct a bijection
 %
-\begin{eq}
+\begin{equation}
 \llabel{2009.10.15.eq2}
 mb_{\RR,\LM}:\wt{Ob}(C(\RR,\LM))\sr \coprod_{n\in\nat} Ob_{n+1}(\RR,\LM)\times R(n)
-\end{eq}%
+\end{equation}%
 %
 \end{problem}
 %
@@ -4174,12 +4180,12 @@ $$\theta^{\LM}_{m,n}:RR(m)\times LM(n)\sr LM(n-1)$$
 %
 by the formula
 %
-\begin{eq}\llabel{2015.09.07.eq2}
+\begin{equation}\llabel{2015.09.07.eq2}
   \begin{split}
     \theta^{\LM}_{m,n}(r,E)&=(qq^{n-m-1}(x_0^m,\dots,x_{m-1}^m,r))(E)\\
                           &=(x_0^{n-1},\dots,x_{m-1}^{n-1},\iota_m^{n-m-1}(r),x_m^{n-1},\dots, x_{n-2}^{n-1})(E),
   \end{split}
-\end{eq}%
+\end{equation}%
 %
 where the second equality is the equality of Lemma \ref{2015.08.28.l1}. As in
 the case of $\theta^{\RR}_{m,n}$ we will often write $\theta_{m,n}$ instead of
@@ -4274,9 +4280,9 @@ Definition \ref{2015.08.26.def1}(1).
   $\partial(mb^!(m,(\Gamma,r)))=(m+1,\Gamma)$ we obtained the required domain
   of definition. The operation itself is given by
 %
-\begin{eq}\llabel{2016.01.21.eq2}
+\begin{equation}\llabel{2016.01.21.eq2}
 S'((m,(\Gamma,r)),(n,\Gamma'))=(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))
-\end{eq}%
+\end{equation}%
 %
 Next we have 
 %
@@ -4299,9 +4305,9 @@ $$qq^j(rr)(T_{m+j+1}')=\theta_{m,m+j+1}(r,T_{m+j+1}').$$
 %
 \item The operation $\wt{S}'$ is defined on the set of pairs $(m,(\Gamma,r))\in \wt{Ob}'$, $(n,(\Gamma',s))\in \wt{Ob}'$ such that 
 %
-\begin{eq}\llabel{2016.01.21.eq1}
+\begin{equation}\llabel{2016.01.21.eq1}
 \partial(mb^!((n,(\Gamma',s))))>\partial(mb^!(m,(\Gamma,r)))
-\end{eq}%
+\end{equation}%
 %
 and takes values in $\wt{Ob}'$. The inequality (\ref{2016.01.21.eq1}) is equivalent to 
 %
