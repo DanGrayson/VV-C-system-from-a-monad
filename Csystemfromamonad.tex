@@ -334,7 +334,7 @@ units that have semantical meaning when an interpretation is chosen. Below we
 use the word ``sentence'' instead of the word ``sequent'' to avoid confusion
 with the meaning of the word ``sequent'' in logic. The five kinds of sentences
 considered by Martin-L\"{o}f are sequences of expressions of the following
-forms
+forms.
 %
 %
 \begin{flalign}
@@ -549,7 +549,7 @@ first in order to perform our construction.
 Let us now explain another important point. At the start of our
 explanation of how $Jf$-relative monads are related to expressions, we said
 that we will consider {\em algebraic} expressions. However, the expressions
-that appear in the sentences of type theories are often not algebraic, because
+that appear in the sentences of type theories are often not algebraic because
 they contain operations that bind some of the variables in their
 arguments. For example, the expression $\prod\,x:A,B$ that appears in
 (\ref{2017.03.02.eq1}) can be rewritten as $\prod(A,x.B)$, which makes it
@@ -672,7 +672,7 @@ $$Exp^{\alpha}(\{x\})=Exp^{\alpha}(\emptyset)\cup \{b_n(x)\,|\,n\in \nat\},$$
 %
 where $b_n(x)$ is the expression with $n$ $\lambda$-abstractions ending with
 $x$ and such that $x_i\ne x$ for all $n-1\ge i\ge 0$. We have to add
-$Exp^{\alpha}(\emptyset)$, because an expression without free variables is an
+$Exp^{\alpha}(\emptyset)$ because an expression without free variables is an
 expression with free variables from the set $\{x\}$.
 
 Finally, for a general $X\subset V$ we have
@@ -1371,7 +1371,7 @@ A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$
 connected by the operations of domain, codomain, identity and composition where
 composition is a partially defined operation. A functor $F:\C\sr \D$ is a pair
 of functions $F_{Ob}:Ob(\C)\sr Ob(\D)$, $F_{Mor}:Mor(\C)\sr Mor(\D)$ satisfying
-the well known conditions. We emphasize it here, because it is also possible to
+the well known conditions. We emphasize it here because it is also possible to
 define a category starting with a set $Ob(\C)$ and a {\em family} of sets
 $Mor_{\C}(X,Y)$ parametrized by $X,Y\in Ob(\C)$, where a {family} is understood
 in the sense of \cite[Remark 3.9]{fromunivwithPiI}. These two concepts are a
@@ -1461,7 +1461,7 @@ standard after MacLane's textbook \cite[p.~133]{MacLane}, which we will call
 the {\em monoidal} form. For a category $\C$ we often write $X\in\C$ instead of
 $X\in Ob(C)$. For a functor $F=(F_{Ob},F_{Mor})$ from $\C$ to $\D$ we often
 write $F(X)$ instead of $F_{Ob}(X)$ for $X\in Ob(\C)$ and $F(f)$ instead of
-$F_{Mor}(f)$ for $f\in Mor(\C)$.  We emphasize these standard conventions here,
+$F_{Mor}(f)$ for $f\in Mor(\C)$.  We emphasize these standard conventions here
 because below we will sometimes work with the object and morphism components of
 a functor separately, in which case the subscripts $Ob$ and $Mor$ will need to
 be used.
@@ -1566,7 +1566,7 @@ a structure, but as functions between sets of objects with a structure. In
 particular, it is not obvious from their definition that monads in Kleisli
 form can be transported along equivalences of categories.
 
-We devote so much attention to these two definitions, because they provide one
+We devote so much attention to these two definitions because they provide one
 of the clearest examples of how the same objects can have different and often
 mutually incomprehensible definitions in the parallel realities of mathematics
 and that part of theoretical computer science which is known as Theoretical
@@ -1930,8 +1930,8 @@ f\circ_{KK(F^{\circ}(\RR))} g= f\circ_{\D} F^{\circ}(rr)_{Y,Z}(g)=f\circ_{\D} rr
 %
 where, again, the first equality is by Construction \ref{2017.03.12.constr3}
 and the second by Construction \ref{2017.02.24.constr1}. The data
-$(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the composition axiom, because of the
-equalities
+$(F_{\RR,Ob},F_{\RR,Mor})$ satisfies the composition axiom because of the
+following equalities.
 %
 \begin{equation*}
   \begin{split}
@@ -2868,7 +2868,7 @@ $X$ and as a C-system $CC[F]$ is often very different from $CC$, for example,
 in that that it may have many more C-subsystems.
 \end{remark}
 %
-We provide the following lemma without a proof, because the proof is immediate
+We provide the following lemma without a proof because the proof is immediate
 from the definitions and \cite[Lemma 3.4]{Cfromauniverse} that asserts that a
 functor that satisfies all conditions of the definition of a homomorphism
 except possibly the s-morphisms condition is a homomorphism.
@@ -3160,7 +3160,7 @@ $Fun(RR(m),RR(n))$ is expected it has to be replaced by $RR(f)$.
 \begin{remark}\rm
 \llabel{2015.11.20.rem4} 
 We can not replace $\amalg$ by $\cup$ in our
-definition of the set of morphisms of $T$, because for a general $\RR$ the sets
+definition of the set of morphisms of $T$ because for a general $\RR$ the sets
 $RR(m,n)$ are not disjoint.  For example, if $RR(m)=pt$, where $pt$ is a fixed
 one element set, then $RR$ has a (unique) structure of a $Jf$-relative monad and
 $RR(m,n)=RR(m,n')$ for all $m,n,n'$. Therefore no function to $\nat$ from the
@@ -3373,11 +3373,11 @@ $\delta$ on the B-sets $$(Ob(C(\RR)),\wt{Ob}(C(\RR)))$$ of this C-system
 Recall that as a category $C(\RR)$ is the opposite category of $T$.  Its set of
 objects is the set of natural numbers $\nat$. To distinguish the positions in
 formulas where natural numbers are used as objects of $C(\RR)$ we will write in
-such places $\wh{m}$ instead of $m$, $\wh{n}$ instead of $n$ etc.
+such places $\wh{m}$ instead of $m$, $\wh{n}$ instead of $n$, etc.
 
 The sets of morphisms of $C(\RR)$ are given by the formula 
 %
-$$Mor_{C(\RR)}(\wh{m},\wh{n})=\{((n,m),f)\,|\,f\in Fun(stn(n),RR(m))\}$$
+$$Mor_{C(\RR)}(\wh{m},\wh{n})=\{((n,m),f)\,|\,f\in Fun(stn(n),RR(m))\},$$
 %
 and we apply to them the same convention as to morphisms of $T$, that is, we
 identify the sets $Mor_{C(\RR)}(\wh{m},\wh{n})$ with the sets
@@ -3528,8 +3528,8 @@ parts are proved by induction simultaneously. One has
 %
 \begin{enumerate}
 \item in the case $i=0$ the first assertion follows from the identity axiom of
-  the functor defined by $\RR$ as in Construction \ref{2016.01.15.constr1} and
-  second from the identity axiom of the category $C(\RR)$,
+  the functor defined by $\RR$ as in Construction \ref{2016.01.15.constr1}, and
+  the second assertion follows from the identity axiom of the category $C(\RR)$,
 \item for the successor of $i$ we have
 %
 $$p_{\wh{n+i+1},i+1}=p_{\wh{n+i+1}}\circ p_{\wh{n+i},i}=(x_0^{n+i+1},\dots,x_{n-1}^{n+i+1}),$$
@@ -3612,7 +3612,7 @@ f(n-1)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(x_{m}^{m+1})
 \end{equation}%
 %
 For the first series of equalities we get, by inserting the coercion $RR$ and
-rewriting of the right hand side, the following
+rewriting of the right hand side, the following equations:
 %
 \begin{equation*}
   \begin{split}
@@ -3685,7 +3685,7 @@ f^*(s)=(x_0^{m+i},\dots,x_{m+i-1}^{m+i},\mbind{qq^i(f)}(s(n+i)))
 \end{lemma}
 %
 \begin{proof}
-The morphisms involved in the proof can be seen on the following diagram
+The morphisms involved in the proof can be seen in the following diagram.
 %
 $$
 \begin{CD}
