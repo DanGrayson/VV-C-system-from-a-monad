@@ -768,7 +768,7 @@ theory is developed in \cite{MatthesUustalu}, \cite{AM2016}, and
 characterization of the monad structure itself can be found in
 \cite{HM2012}. Not all is understood yet, and it remains an active area of
 research. Much of the work being done today is being simultaneously
-formalized in {\em UniMath} \cite{}. The key question here is: what structure on $H$ has
+formalized in {\em UniMath}. The key question here is: what structure on $H$ has
 to be specified in order to obtain a monad structure on the initial algebra of
 $\uu{Id}+H$?  The main idea was introduced in \cite{MatthesUustalu}. In
 \cite{AM2016} a functor with this structure is called an (abstract)
@@ -778,7 +778,8 @@ of the existence of the right adjoints from the main theorem \cite[Th. 15,
   p.~170]{MatthesUustalu}, leading to \cite[Th. 48]{AMM2016}.
 
 The case that is most important for us, that of monads defined by
-binding signatures, has been fully formalized in {\em UniMath}. There remains the
+binding signatures, has been fully formalized in {\em UniMath}, as described
+in \cite{AMM2016}. There remains the
 problem of showing that the families of sets of $J_V$-relative monads
 corresponding to this monad are isomorphic to the sets of expressions modulo
 $\alpha$-equivalence and that the monad structure that one obtains
@@ -971,19 +972,19 @@ $$B(\RR,\LM)=\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq2}) is an element of
 %
-$$Bt(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times LM(\ff{n})$$
+$$Bt(\RR,\LM)=\left(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})\right)\times LM(\ff{n})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq3}) is an element of
 %
-$$\wt{B}(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times RR(\ff{n})\times LM(\ff{n})$$
+$$\wt{B}(\RR,\LM)=\left(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})\right)\times RR(\ff{n})\times LM(\ff{n})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq4}) is an element of
 %
-$$Beq(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times LM(\ff{n})\times LM(\ff{n})$$
+$$Beq(\RR,\LM)=\left(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})\right)\times LM(\ff{n})\times LM(\ff{n})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq5}) is an element of
 %
-$$\wt{Beq}(\RR,\LM)=(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}))\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})$$
+$$\wt{Beq}(\RR,\LM)=\left(\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})\right)\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})$$
 %
 \end{enumerate}
 %
@@ -1044,7 +1045,11 @@ is an expression and the sentence $0:\nat\rh ok$ is valid.
 One often uses the words ``type'', ``type expression'' and ``expression that
 describes a type'' interchangeably. The same applies to ``element'', ``element
 expression'' and ``expression that describes an element''.\footnote{Note from
-  editor: I'm considering inserting a warning about this.}
+  the editor: This is a sensible convention for a paper about type theory
+  written with ZFC as meta-theory, but in a paper on a general mathematical
+  topic with Univalent Foundations as the meta-theory, the convention would not
+  be used, for there, types are mathematical objects, not all of which can be
+  represented by expressions.}
 
 A sentence of the form $0:T_0,1:T\rh ok$ asserts that $T_0$ is a valid closed
 type expression, and that $T$ is an expression with the only possible free variable
