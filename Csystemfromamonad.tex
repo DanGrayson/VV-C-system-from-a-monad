@@ -1319,8 +1319,8 @@ considered in more detail in \cite{ACU2}. Then we focus our attention on
 relative monads over the functor $Jf$ that is defined as follows.
 
 For two sets $X$ and $Y$ let $Fun(X,Y)$ be the set of functions from $X$ to
-$Y$.  Let $stn(n)$ be the standard set with $n$ elements that we take to be the
-subset of $\nat$ that consists of numbers $<n$. Consider the category $F$ such
+$Y$.  Let $stn(n)$ be the standard set with $n$ elements, which we take to be the
+subset of $\nat$ that consists of the numbers less than $n$. Consider the category $F$ such
 that $Ob(F)=\nn$ and
 %
 $$Mor(F)=\cup_{m,n}Fun(stn(m),stn(n))$$
@@ -1751,7 +1751,7 @@ axiom.
 \ec
 %
 \begin{problem}\llabel{2017.04.11.prob1}
-Let $J:\C\sr\D$ be a functor and $\RR=(RR_{Ob},\eta,rr)$ a $J$-relative
+Let $J:\C\sr\D$ be a functor, and let $\RR=(RR_{Ob},\eta,rr)$ be a $J$-relative
 monad. To construct a functor $\RR^{lm}:K(\RR)\sr \D$.
 \end{problem}
 %
@@ -1997,8 +1997,8 @@ $F(X)=A$ for all $X\in\C$.
 %
 \begin{problem}
 \llabel{2017.04.21.prob1}
-Let $\C,\D,\D'$ be categories, $J:\C\sr \D\times\D'$ a functor and
-$\RR=(RR,\eta,rr)$ a $J$-relative monad. Assume in addition that we are given
+Let $\C$, $\D$, and $\D'$ be categories, $J:\C\sr \D\times\D'$ be a functor, and
+$\RR=(RR,\eta,rr)$ be a $J$-relative monad. Assume in addition that we are given
 an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$.
 
 To construct a structure of a $J_{\D}$-monad on $RR_{\D}$. This $J_{\D}$-monad will be denoted $\RR_{\D}$.
@@ -2140,7 +2140,7 @@ We want to emphasize the following case of Construction \ref{2017.04.21.constr1}
 %
 \begin{problem}
 \llabel{2017.04.23.prob1}
-Let $\C$,$\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. To construct an endo-monad $\RR_{1,A}$ on $\C$.
+Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. To construct an endo-monad $\RR_{1,A}$ on $\C$.
 \end{problem}
 %
 \begin{construction}
@@ -2176,8 +2176,8 @@ A left module in monoidal form over a monad in monoidal form is defined as follo
 %
 \begin{definition}
 \llabel{2017.04.01.def2} 
-Let $\C$,$\E$ be categories, $\R=(R,\eta,\mu)$ be a
-monad on $\C$, and $L:\C\sr \E$ a functor. A (left) $\R$-module structure on
+Let $\C$ and $\E$ be categories, $\R=(R,\eta,\mu)$ be a
+monad on $\C$, and $L:\C\sr \E$ be a functor. A (left) $\R$-module structure on
 $L$ is a natural transformation $\rho:R\circ L\sr L$ such that for all $X\in\C$
 one has:
 %
@@ -2201,7 +2201,7 @@ Left modules can also be defined in Kleisli form.
 \begin{definition}
 \llabel{2017.04.15.def1} 
 Let $\C$,$\E$ be categories and
-$\RR=(RR_{Ob},\eta,rr)$ a monad on $\C$. A (left) $\RR$-module with values in
+$\RR=(RR_{Ob},\eta,rr)$ be a monad on $\C$. A (left) $\RR$-module with values in
 $\E$ in Kleisli form is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
 Ob(\E)$ is a function and $lm$ is a family, parametrized by $X,Y\in Ob(\C)$ of
 functions
@@ -2280,7 +2280,7 @@ $K(\RR)$ to $\E$.
 \begin{definition}
 \llabel{2017.03.16.def1} 
 Let $J:\C\sr\D$ be a functor and
-$\RR=(RR_{Ob},\eta,rr)$ a $J$-monad. A left module over $\RR$ with values in a
+$\RR=(RR_{Ob},\eta,rr)$ be a $J$-monad. A left module over $\RR$ with values in a
 category $\E$ is a functor $\LM:K(\RR)\sr \E$, that is, a pair $(LM_{Ob},lm)$,
 where $LM_{Ob}:Ob(\C)\sr Ob(\E)$ is a function and $lm$ is a family,
 parametrized by $X,Y\in Ob(\C)$, of functions
@@ -2309,8 +2309,8 @@ ${\bf L}$ over $\R$ in monoidal form.
 %
 \begin{definition}
 \llabel{2017.04.05.def1} 
-Let $J:\C\sr\D$ be a functor, $\RR$ a $J$-monad and
-$\LM$ a left module over $\RR$ with values in a category $\E$. We define the
+Let $J:\C\sr\D$ be a functor, $\RR$ be a $J$-monad, and
+$\LM$ be a left module over $\RR$ with values in a category $\E$. We define the
 functor $\LM^f:\C\sr \E$ corresponding to $\LM$ as the composition
 $Et_{\RR}\circ \LM$.
 \end{definition}
@@ -2472,7 +2472,7 @@ that we find convenient to formulate for the future reference.
 %
 \begin{problem}\llabel{2017.04.05.prob1}
 Let $\C_0,\C_1,\E$ be categories. Let $\R=(R,\eta,\mu)$ be a monad on $\C_1$
-and $ {\bf L}=(L,\rho)$ a left $\R$-module with values in $\E$. Let further
+and $ {\bf L}=(L,\rho)$ be a left $\R$-module with values in $\E$. Let further
 $J:\C_0\sr \C_1$ be a functor. To construct a pair of a $J$-relative monad
 module with values in $\E$ over it.
 \end{problem}
@@ -2516,7 +2516,9 @@ There is an analog of Construction \ref{2017.04.21.constr1} for modules.
 %
 \begin{problem}
 \llabel{2017.04.23.prob2}
-Let $\C,\D,\D'$ be categories, $J:\C\sr \D\times\D'$ a functor and $\RR=(RR,\eta,rr)$ a $J$-relative monad. Assume in addition that we are given an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$. Let $\RR_{\D}$ be the $J_{\D}$-monad specified in Construction \ref{2017.04.21.constr1}.  
+Let $\C$, $\D$, $\D'$ be categories, $J:\C\sr \D\times\D'$ be a functor, and $\RR=(RR,\eta,rr)$ be a $J$-relative monad.
+Assume in addition that we are given an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$. 
+Let $\RR_{\D}$ be the $J_{\D}$-monad specified in Construction \ref{2017.04.21.constr1}.  
 
 To construct a structure of a $\RR_{\D}$-module with values in $\D\times\D'$ on $RR$. 
 \end{problem}
@@ -2538,14 +2540,14 @@ The proof of condition (1) of Definition \ref{2017.04.15.def1} is given by
 \ec
 %
 We also have an analog of the special case described in Construction
-\ref{2017.04.23.constr1}. Let $\C$,$\D$ be categories and $A\in Ob(\D)$. Let
+\ref{2017.04.23.constr1}. Let $\C$ and $\D$ be categories and let $A\in Ob(\D)$. Let
 $J_{1,A}:\C\sr\C\times\D$ be the functor given by $X\mapsto (X,A)$ on objects
 and $f\mapsto (f,Id_A)$ on morphisms. In Construction \ref{2017.04.23.constr1}
 we wrote $J$ instead of $J_{1,A}$.
 %
 \begin{problem}
 \llabel{2017.04.23.prob3} 
-Let $\C$,$\D$ be categories. Let $\RR=(RR,\eta,rr)$
+Let $\C$ and $\D$ be categories. Let $\RR=(RR,\eta,rr)$
 be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. To construct an
 $\RR_{1,A}$-module structure on $J_{1,A}\circ RR$.
 \end{problem}
@@ -2602,8 +2604,8 @@ Similarly we will write simply $q(f,\Gamma')$ for $q(f,\Gamma',n)$ since $n$ can
 %
 \begin{lemma}
 \llabel{2015.08.23.l1a} 
-Let $\Gamma',\Gamma''$ be objects over $\Delta$,
-$a:\Gamma'\sr \Gamma''$ a morphism over $\Delta$ and $f:\Gamma\sr\Delta$ a
+Let $\Gamma'$ and $\Gamma''$ be objects over $\Delta$,
+$a:\Gamma'\sr \Gamma''$ be a morphism over $\Delta$, and let $f:\Gamma\sr\Delta$ be a
 morphism. Then there is a unique morphism $f^*(a):f^*(\Gamma')\sr
 f^*(\Gamma'')$ over $\Gamma$ such that the square
 %
@@ -2625,7 +2627,7 @@ See \cite[Lemma 2.13]{fromunivwithPiI}.
 \begin{lemma}
 \llabel{2015.08.29.l2} 
 Let $a:\Gamma'\sr\Gamma''$ be a morphism over
-$\Gamma'''$ and $\Gamma'''$ an object over $\Delta$. Then $a$ is a morphism
+$\Gamma'''$, and let $\Gamma'''$ be an object over $\Delta$. Then $a$ is a morphism
 over $\Delta$ and for any $f:\Gamma\sr \Delta$ one has
 %
 \begin{equation}\llabel{2015.08.29.eq2}
@@ -2682,12 +2684,12 @@ This completes the proof of Lemma \ref{2015.09.03.l2}.
 \subsection{The presheaf extension of a C-system}
 \llabel{Fext}
 %
-Let $CC$ be a C-system and $F:CC^{op}\sr Sets$ a presheaf on the category
+Let $CC$ be a C-system and $F:CC^{op}\sr Sets$ be a presheaf on the category
 underlying $CC$. In this section we construct a new C-system $CC[F]$ which we
 call the {\em $F$-extension of $CC$}, we describe a unital pre-B-system $B(CC,F)$, and we introduce
 an isomorphism $B(CC[F])\sr B(CC,F)$.
 
-We will first construct a C0-system $CC[F]$ and then show that it is a
+We will construct first a C0-system $CC[F]$ and then show that it is a
 C-system. For the definition of a C0-system see \cite[Definition
   2.1]{Csubsystems}.
 %
@@ -2732,7 +2734,7 @@ category $CC[F]$.
 
 We define the length function as
 %
-$$l((X,\Gamma))=l(X)$$
+$$l((X,\Gamma)):=l(X)$$
 
 If $l((X,\Gamma))=0$, then $X=pt$ and $\Gamma=()$, where $()$ is the unique
 element of the one point set that is the product of the empty sequence. We will
@@ -2903,8 +2905,8 @@ $$(X,\Gamma)=ft^{l(Y)-l(X)}((Y,\Gamma')).$$
 %
 \begin{lemma}
 \llabel{2016.01.31.l1} 
-Let $i\ge 0$, $(Y,\Gamma')$ be such that $l(Y)\ge
-i$. Let $f:(X,\Gamma)\sr ft^i(Y,\Gamma')$. Let $lx=l(X)$, $ly=l(Y)$ and
+Let $i\ge 0$ and $(Y,\Gamma')$ be such that $l(Y)\ge i$. 
+Let $f:(X,\Gamma)\sr ft^i(Y,\Gamma')$. Let $lx=l(X)$, $ly=l(Y)$ and
 %
 \begin{equation*}
   \begin{split}
@@ -3117,17 +3119,17 @@ $\RR=(RR,\eta,\mbind{-})$ a Lawvere theory $(T,L)=RML(\RR)$. Most of this
 section is occupied by simple computations in $T$ that will be used in the
 later sections.
 
-Recall that the category $T$ has as the set of objects the set of natural numbers and as the set of morphisms the set 
+Recall that the category $T$ has as its set of objects the set of natural numbers and as its set of morphisms the set 
 %
-$$Mot_T=\amalg_{m,n} Fun(stn(m),RR(n))$$
+$$Mot_T=\amalg_{m,n} Fun(stn(m),RR(n)).$$
 %
 Therefore the set of morphisms in $T$ from $m$ to $n$ is the set of iterated
 pairs $((m,n),f)$, where $f\in Fun(stn(m),RR(n))$. We fix the obvious bijection
 between this set and $Fun(stn(m),RR(n))$ and use the corresponding functions in
 both directions as coercions. A coercion, in the terminology of the proof
-assistant {\em Coq}, is a function $f:X\sr Y$ such that when an expression denoting
+assistant {\em Coq}, is a function $f:X\sr Y$ designated so that when an expression denoting
 an element $x$ of the set $X$ occurs in a position where an element of $Y$
-should be it is assumed that $x$ is replaced by $f(x)$.
+should be, it is assumed that $x$ is replaced by $f(x)$.
 
 Let us introduce the following notation:
 %
@@ -3149,9 +3151,9 @@ We also obtain the extension of $RR$ to a functor $F\sr Sets$ according to
 Construction \ref{2016.01.15.constr1}. For a morphism $f\in F(m,n)$ we have
 $RR(f)=\mbind{(f\circ \eta_{n})}=\mbind{L(f)}$.
 
-We are going to use the functions $f\mapsto RR(f)$ as coercions so that when an
+We are going to use the functions $f\mapsto RR(f)$ as coercions, so that when an
 element $f$ of $F(m,n)$ occurs in a position where an element of
-$Fun(RR(m),RR(n))$ is expected it has to be replaced by $RR(f)$.
+$Fun(RR(m),RR(n))$ is expected, it has to be replaced by $RR(f)$.
 
 %% \comment{Similarly, we will use the functions $\mbind{m}$ as a coercions so
 %%   that when an element $g$ of $RR(m,n)$ occurs in a position where a function
@@ -3181,7 +3183,7 @@ $stn(1)\sr X$ that takes $0$ to $x$.
 \begin{lemma}
 \llabel{2016.01.15.l4} 
 Let $f=(f(0),\dots,f(l-1))$ be a morphism in $T$ from
-$l$ to $m$ and $g=(g(0),\dots,g(m-1))$ a morphism from $m$ to $n$. Then one has
+$l$ to $m$ and $g=(g(0),\dots,g(m-1))$ be a morphism from $m$ to $n$. Then one has
 %
 $$f\hc g=(\mbind{g}(f(0)),\dots,\mbind{g}(f(l-1)))$$
 %
@@ -3197,7 +3199,7 @@ The lemma is proved.
 %
 \begin{lemma}
 \llabel{2015.08.30.l1}
-Let $f\in F(l,m)$, $g\in RR(m,n)$ and $i\in stn(l)$. Then one has
+Let $f\in F(l,m)$, $g\in RR(m,n)$, and $i\in stn(l)$. Then one has
 %
 \begin{equation}\llabel{2015.08.26.eq4}
 (L(f)\hc g)(i)=g(f(i))
