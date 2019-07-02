@@ -1383,8 +1383,8 @@ category in the sense of the first definition has the property that
 $$Mor(X,Y)\cap Mor(X',Y')=\emptyset$$
 %
 if $X\ne X'$ or $Y\ne Y'$. This property makes it necessary sometimes to
-perform additional constructions such as ...
-%@@@
+perform additional constructions.\footnote{Note from the editor: Voevodsky
+  intended to give examples of such constructions.}
 
 Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form
 of saying ``a family $y$, parametrized by $x$ in $A$, such that $y(x)$ is in
@@ -1394,8 +1394,8 @@ set. However, families of sets with a given parameter set and such that all the
 sets of the family are subsets of given set do. A formulation in terms of
 iterated families can be used for ``for all'' expressions where there are
 several parameters, such as in Definition \ref{2015.12.22.def1}(3). Similarly, a
-``collection of data'', is understood as an $n$-tuple, which is understood as
-an iterated pair $(\dots(-,-),-)\dots,-)$.
+``collection of data'' is understood as an $n$-tuple, which in turn is understood as
+an iterated pair of the form $(\dots((-,-),-)\dots,-)$.
 
 We fix a universe $U$ without making precise what conditions on the set $U$ we
 require. It is clear that it is sufficient for all constructions of this paper
@@ -1481,7 +1481,7 @@ be used.
 We will omit the qualification ``in monoidal form'' when it is clear from the context. 
 
 The following definition specifies objects that we will call ``monads in
-Kleisli form''. To the best of my knowledge it explicitly appeared first
+Kleisli form''. To the best of my knowledge it appeared explicitly first
 in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
@@ -1572,7 +1572,7 @@ mutually incomprehensible definitions in the parallel realities of mathematics
 and that part of theoretical computer science which is known as Theoretical
 Computer Science B.
 
-We now outline the construction for Problem \ref{2017.01.04.prob1}
+We now outline the construction for Problem \ref{2017.01.04.prob1}.
 %
 \begin{construction}\rm
 \llabel{2017.01.04.constr1}
@@ -1668,7 +1668,7 @@ precisely a monad on the corresponding category given in Kleisli form. This
 permits us to call, sometimes, endo-monads simply monads.  The explicit
 form of functions $(-)^K$ and $(-)^M$ defined in Construction
 \ref{2017.01.04.constr1} shows that for $\R=(R,\eta,\mu)$ we have
-$\R^K=(R_{Ob},\eta,rr)$ and for $\RR=(RR_{Ob},\eta,rr)$ we have
+$\R^K=(R_{Ob},\eta,rr)$, and that for $\RR=(RR_{Ob},\eta,rr)$ we have
 $\RR^M=(\RR^f,\eta,\mu)$. In particular, since $(\R^K)^M=\R$, we have
 %
 \begin{equation}\llabel{2017.04.05.eq2}
@@ -1704,7 +1704,7 @@ For $X\in Ob(\C)$ we set $Id_{X,K(\RR)}=\eta_{X}$.
 For $f\in Mor_{\D}(J(X),RR(Y))$ and $g\in Mor_{\D}(J(Y),RR(Z))$ we set 
 %
 \begin{equation}\llabel{2017.04.05.eq1}
-f\circ_{K(\RR)}g:=f\circ_{\D} rr_{Y,Z}(g)
+f\circ_{K(\RR)}g:=f\circ_{\D} rr_{Y,Z}(g).
 \end{equation}%
 %
 \ec
@@ -1777,7 +1777,7 @@ following construction allows one to obtain a large class of relative monads
 that are not endo-monads.
 %
 \begin{problem}\llabel{2017.02.24.prob1}
-Given functors $F:\C_0\sr \C_1$, $J:\C_1\sr\D$ and a $J$-relative monad $\RR$
+Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr\D$ and a $J$-relative monad $\RR$,
 to construct a $(F\circ J)$-relative monad $F^{\circ}(\RR)$.
 \end{problem}
 %
@@ -1858,7 +1858,7 @@ that for $f:\sr Y$ in $\C_0$ we have
 %
 \begin{equation}
 \llabel{2017.04.09.eq5}
-F^{\circ}(\RR)_{Mor}(f)=(F_{Mor}\circ RR_{Mor})(f)
+F^{\circ}(\RR)_{Mor}(f)=(F_{Mor}\circ RR_{Mor})(f).
 \end{equation}%
 %
 We have
@@ -1884,7 +1884,7 @@ therefore $F_{Mor}$, participate in the definition of $F^{\circ}(\RR)_{Mor}$.
 %
 \begin{problem}
 \llabel{2017.03.12.prob1} Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr \D$,
-and a $J$-monad $\RR$ to construct a functor $F_{\RR}:K(F^{\circ}(\RR))\sr
+and given a $J$-monad $\RR$, to construct a functor $F_{\RR}:K(F^{\circ}(\RR))\sr
 K(\RR)$.
 \end{problem}
 %
@@ -2153,7 +2153,7 @@ corresponding to $A$. Therefore, Constructions \ref{2017.04.21.constr1} applies
 and we obtain a $J\circ pr_{\C}$-monad $(J^{\circ}(\RR))^{\D}$. Since $J\circ
 pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$ that we denote by
 $\RR_{1,A}$. Explicitly, for $\RR=(RR,\eta,rr)$, we have
-$\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$ where:
+$\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$, where:
 %
 \begin{enumerate}
 \item for $X\in \C$, $RR_{1,A}(X)=pr_{\C}(RR((X,A)))$,
@@ -2186,8 +2186,8 @@ one has:
 \item $L(\eta_X)\circ \rho_X=Id_{L(X)}$.
 \end{enumerate}
 %
-A left $\R$-module in monoidal form with values in $\E$ is a pair ${\bf
-  L}=(L,\rho)$, where $L:\C\sr \E$ is a functor and $\rho$ an $\R$-module
+A left $\R$-module in monoidal form with values in $\E$ is a pair 
+${\bf L}=(L,\rho)$, where $L:\C\sr \E$ is a functor and $\rho$ is an $\R$-module
 structure on $L$.
 \end{definition}
 %
@@ -2317,7 +2317,7 @@ $Et_{\RR}\circ \LM$.
 %
 Explicitly, for $\LM=(LM_{Ob},lm)$, we have
 %
-$$\LM^f_{Ob}=LM_{Ob}$$
+$$\LM^f_{Ob}=LM_{Ob},$$
 %
 which follows from $Et_{\RR,Ob}=Id_{Ob(\C)}$, and for $f:X\sr Y$ 
 %
@@ -2343,7 +2343,7 @@ On objects we have $({\bf L}^K)^f_{Ob}=L_{Ob}$ by construction. It remains to
 show that
 %
 \begin{equation}\llabel{2017.04.09.eq1}
-({\bf L}^K)^f_{Mor}=L_{Mor}
+({\bf L}^K)^f_{Mor}=L_{Mor}.
 \end{equation}%
 %
 Indeed, for $f:X\sr Y$ in $Mor(\C)$ we have
@@ -2397,8 +2397,8 @@ and $rr(R_{Mor},\mu)$ and $lm(R_{Mor},\mu)$ coincide by construction, because fo
 %
 \begin{problem}
 \llabel{2017.03.12.prob2}
-Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr \D$, a $J$-monad $\RR$ and an
-$\RR$-module $\LM$ with values in $\E$ to construct an $F^{\circ}(\RR)$-module
+Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr \D$, a $J$-monad $\RR$, and an
+$\RR$-module $\LM$ with values in $\E$, to construct an $F^{\circ}(\RR)$-module
 $F^{\circ}(\LM)$ with values in $\E$.
 \end{problem}
 %
@@ -2419,7 +2419,7 @@ and
 %
 \begin{equation}
 \llabel{2017.04.17.eq8}
-F\crc(lm)_{X,Y}=lm_{F(X),F(Y)}
+F\crc(lm)_{X,Y}=lm_{F(X),F(Y)}.
 \end{equation}%
 \ec
 %
@@ -2505,11 +2505,11 @@ $\LM:K(\RR)\sr \E$ we can post-compose it with any functor $F:\E\sr \E'$ and
 obtain a new module that we will denote $\LM\circ F$. Explicitly, for
 $\LM=(LM_{Ob},lm)$ one has
 %
-$$\LM\circ F=(LM_{Ob}\circ F, F(lm))$$
+$$\LM\circ F=(LM_{Ob}\circ F, F(lm)),$$
 %
 where, for $X,Y\in \C$ and $f:J(X)\sr RR_{Ob}(Y)$, one has
 %
-$$F(lm)_{X,Y}(f)=F(lm_{X,Y}(f))$$
+$$F(lm)_{X,Y}(f)=F(lm_{X,Y}(f)).$$
 %
 
 There is an analog of Construction \ref{2017.04.21.constr1} for modules.
@@ -2564,7 +2564,7 @@ $\RR_{1,A}=(J_{1,A}^{\circ}(\RR))_{\C}$, this provides a construction for
 Problem \ref{2017.04.23.prob3}. Explicitly, if we let $(J_{1,A}\circ RR,
 lm^{1,A})$ denote this module, we have, for $X,Y\in \C$ and $f:X\sr Y$
 %
-$$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A})))$$
+$$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A}))).$$
 %
 \ec
 
@@ -2573,7 +2573,7 @@ $$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A})))$$
 \subsection{Generalities}
 \llabel{onCsystems}
 %
-The definition of a C-system is given in \cite[Def. 2.1,
+The definition of ``C-system'' is given in \cite[Def. 2.1,
   2.3]{Csubsystems}. Homomorphisms of C-systems are defined in \cite[Def. 3.1,
   p 1188]{Cfromauniverse}. In \cite[Lemma 3.4, p.~1190]{Cfromauniverse} it is
 shown that for two C-systems $CC_1, CC_2$ a homomorphism between the underlying
@@ -2631,7 +2631,7 @@ $\Gamma'''$, and let $\Gamma'''$ be an object over $\Delta$. Then $a$ is a morph
 over $\Delta$ and for any $f:\Gamma\sr \Delta$ one has
 %
 \begin{equation}\llabel{2015.08.29.eq2}
-f^*(a)=q(f,\Gamma''')^*(a)
+f^*(a)=q(f,\Gamma''')^*(a).
 \end{equation}%
 %
 \end{lemma}
@@ -2664,7 +2664,7 @@ $$F(f^*(a))=(F(f))^*(F(a))$$
 %
 \item for $\Gamma$ such that $l(\Gamma)>0$ one has
 %
-$$F(\delta(\Gamma))=\delta(F(\Gamma))$$
+$$F(\delta(\Gamma))=\delta(F(\Gamma)).$$
 %
 \end{enumerate}
 \end{lemma}
@@ -2690,7 +2690,7 @@ call the {\em $F$-extension of $CC$}, we describe a unital pre-B-system $B(CC,F)
 an isomorphism $B(CC[F])\sr B(CC,F)$.
 
 We will construct first a C0-system $CC[F]$ and then show that it is a
-C-system. For the definition of a C0-system see \cite[Definition
+C-system. For the definition of ``C0-system'' see \cite[Definition
   2.1]{Csubsystems}.
 %
 \begin{problem}\llabel{2016.01.19.prob1}
@@ -2797,7 +2797,7 @@ $$q(g,f^*((Y,\Gamma')))\circ q(f,(Y,\Gamma'))=q((g\circ f),(Y,\Gamma'))$$
 %
 follows from the previous assertion and the corresponding fact for $CC$. 
 
-This completes Construction \ref{2016.01.19.constr1}
+This completes Construction \ref{2016.01.19.constr1}.
 \ec
 %
 \begin{lemma}
@@ -2871,9 +2871,9 @@ in that that it may have many more C-subsystems.
 \end{remark}
 %
 We provide the following lemma without a proof because the proof is immediate
-from the definitions and \cite[Lemma 3.4]{Cfromauniverse} that asserts that a
-functor that satisfies all conditions of the definition of a homomorphism
-except possibly the s-morphisms condition is a homomorphism.
+from the definitions and \cite[Lemma 3.4]{Cfromauniverse}, which asserts that a
+functor that satisfies all conditions in the definition of homomorphism,
+except possibly the s-morphisms condition, is a homomorphism.
 %
 \begin{lemma}
 \llabel{2015.08.22.l4}
@@ -3046,15 +3046,15 @@ which coincides with our goal (\ref{2016.01.31.eq3}).
 \llabel{Jfrel}
 %
 
-For two sets $X$ and $Y$ we let $Fun(X,Y)$ to denote the set of functions from
+For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from
 $X$ to $Y$.
 
-Next, following \cite{FPT} we let $\FF$ denote the category with the set of
-objects $\nat$ and the set of morphisms from $m$ to $n$ being
+Next, following \cite{FPT}, we let $\FF$ denote the category with set of
+objects $\nat$ and with the set of morphisms from $m$ to $n$ being
 $Fun(stn(m),stn(n))$, where $stn(m)=\{i\in\nat\,|\,i<m\}$ is our choice for the
-standard set with $m$ elements (cf.{} \cite{LandC}) and where for two sets $X$
-and $Y$, $Fun(X,Y)$ is the set of functions from $X$ to $Y$ defined as in
-\cite[p.~81]{Bourbaki.Sets} such that each function has a well defined domain
+standard set with $m$ elements (as done in \cite{LandC}), and where for two sets $X$
+and $Y$, $Fun(X,Y)$ is the set of functions from $X$ to $Y$, defined as in
+\cite[p.~81]{Bourbaki.Sets}, so that each function has a well defined domain
 and codomain.
 
 For any set $U$ there is a category $Sets(U)$ of the following form. The set of
@@ -3066,7 +3066,7 @@ Since a function from $X$ to $Y$ is defined as a triple $(X,Y,G)$, where $G$ is
 the graph of the function, the domain and codomain functions are well
 defined on $Mor(Sets(U))$, in such a way that
 %
-$$Mor_{Sets(U)}(X,Y)=Fun(X,Y)$$
+$$Mor_{Sets(U)}(X,Y)=Fun(X,Y),$$
 %
 and a composition function can be defined that restricts to the composition of
 functions function on each $Mor_{Sets(U)}(X,Y)$. Finally, one defines the identity function
@@ -3087,8 +3087,8 @@ monad. Combined with our construction of $C(\RR)$ this gives a construction of
 a C-system for any monad on sets.
 
 \begin{problem}\llabel{2016.01.13.prob1}
-Given a monad ${\bf R}=(R,\eta,\mu)$ (cf.{} \cite{MacLane}[p.~133]) on the
-category of sets to construct a $Jf$-relative monad $\RR$.
+Given a monad ${\bf R}=(R,\eta,\mu)$ (as defined in \cite[p.~133]{MacLane}) on the
+category of sets, to construct a $Jf$-relative monad $\RR$.
 \end{problem}
 %
 \begin{construction}\rm\llabel{2016.01.13.constr1}
@@ -3222,27 +3222,27 @@ $$x_i^n=\eta_{n}(i)\in RR(n)$$
 Observe also that for $f\in RR(m,n)$ one has
 %
 \begin{equation}\llabel{2015.08.24.eq5}
-\mbind{f}(x_i^m)=(\eta_{m}\circ\mbind{f})(i)=f(i)
+\mbind{f}(x_i^m)=(\eta_{m}\circ\mbind{f})(i)=f(i),
 \end{equation}%
 %
 and for $f\in F(m,n)$ one has
 %
 \begin{equation}\llabel{2016.01.15.eq1}
-f(x_i^m)=RR(f)(\eta_{m}(i))=(\eta_{m}\circ \mbind{(f\circ \eta_{n}))}(i)=(f\circ \eta_{n})(i)=\eta_{n}(f(i))=x_{f(i)}^n
+f(x_i^m)=RR(f)(\eta_{m}(i))=(\eta_{m}\circ \mbind{(f\circ \eta_{n}))}(i)=(f\circ \eta_{n})(i)=\eta_{n}(f(i))=x_{f(i)}^n.
 \end{equation}%
 %
 Let 
 %
 $$\partial^{i}_{n}:stn(n)\sr stn(n+1)$$
 %
-for $0\le i\le n$ be the increasing inclusion that does not take the value $i$ and
+for $0\le i\le n$ be the increasing inclusion that does not take the value $i$, and let
 %
-$$\sigma^{i}_{n}:stn(n+2)\sr stn(n+1)$$
+$$\sigma^{i}_{n}:stn(n+2)\sr stn(n+1),$$
 %
-for $0\le i\le n$ be the non-decreasing surjection that takes the value $i$
+for $0\le i\le n$, be the non-decreasing surjection that takes the value $i$
 twice. Taking into account that, in the notation of \cite{GabZis},
-$[n]=stn(n+1)$ these are the standard generators of the simplicial category
-$\Delta$ together with $\partial^0_0:stn(0)\sr stn(1)$.
+$[n]=stn(n+1)$, these maps, except for $\partial^0_0:stn(0)\sr stn(1)$, are the standard generators of the simplicial category
+$\Delta$.
 
 In our sequence notation we have
 %
@@ -3271,14 +3271,14 @@ be the function given by ${\iota}_n^i(j)=j$ for $j=0,\dots,n-1$. Then we have
 %
 \begin{equation}
 \llabel{2015.08.22.eq7}
-{\iota}_n^{1}=\partial_{n}^{n}
+{\iota}_n^{1}=\partial_{n}^{n},
 \end{equation}%
 %
 and (\ref{2016.01.15.eq1}) implies that 
 %
 \begin{equation}
 \llabel{2015.08.22.eq8}
-{\iota}_n^i(x^n_j)=x^{n+i}_j
+{\iota}_n^i(x^n_j)=x^{n+i}_j.
 \end{equation}%
 %
 \begin{lemma}
@@ -3298,7 +3298,7 @@ $Fun(stn(m),RR(n))$. Thus the equality holds if and only if for all
 $i=0,\dots,n-1$ we have $(L(\iota_m^1)\hc f)(i)=f(i)$. The assertion of the
 lemma follows now from Lemma \ref{2015.08.30.l1}.
 
-Since $Id_{T,n}=(x_0^n,\dots,x_{n-1}^n)$ the second assertion immediately follows from the first one.
+Since $Id_{T,n}=(x_0^n,\dots,x_{n-1}^n)$ the second assertion follows from the first one.
 \end{proof}
 %
 For $f\in RR(n,m)$, $f=(f(0),\dots,f(n-1))$ define an element $qq(f)\in RR(n+1,m+1)$ by the formula: 
@@ -3387,7 +3387,7 @@ $Fun(stn(n),RR(m))$ by means of the obvious bijection.
 
 We consider $L$ as a functor
 %
-$${L}:F^{op}\sr C(\RR)$$
+$${L}:F^{op}\sr C(\RR),$$
 %
 i.e., as a contravariant functor from $F$ to $C(\RR)$, and we keep the conventions
 introduced in the previous section, the most important of which is that for
@@ -3748,7 +3748,7 @@ To show that this is a bijection let us construct the inverse bijection. For $n\
 %
 $$mb_{\RR}^!(n,o)=(x_0^n,\dots,x_{n-1}^n,o)$$
 %
-The fact that these functions are mutually inverse follows easily from Lemma \ref{2015.08.22.l7}.
+The fact that these functions are mutually inverse follows easily from Lemma \ref{2015.08.22.l7}..
 \ec
 %
 
@@ -4072,7 +4072,7 @@ for $f:\wh{m}\sr \wh{n}$ and $s\in RR(n)$. We will denote this functor by the
 same symbol $\RR$ as the underlying $Jf$-relative monad.
 
 This functor is isomorphic to the (contravariant) functor represented by the
-object $\wh{1}$ but it is not equal to this functor since the set of elements
+object $\wh{1}$, but it is not equal to this functor since the set of elements
 of the form $((\wh{n},\wh{1}),r')$, where $r'\in RR(1,n)$ is isomorphic but not
 equal to the set $RR(n)$.
 \end{example}
@@ -4243,7 +4243,7 @@ where $ft(f)=f\circ p_Y$ and $m=l(X)$.
 \begin{proof}
 By definition $s_f$ is a morphism from $X$ to $(ft(f))^*(Y)$. Therefore it is
 sufficient to show that the left hand side of (\ref{2015.09.09.eq1}) agrees
-with the right hand side after application of the homomorphism $tr_{\LM}$ and
+with the right hand side after application of the homomorphism $tr_{\LM}$, and thus
 our goal follows from Lemma \ref{2015.09.09.l1}.
 \end{proof}
 %
@@ -4258,7 +4258,7 @@ where $m=l(\Gamma')$ and $n=l(\Gamma)$.
 %
 \begin{proof}
 Since $tr_{\LM}$ is fully faithful, it is sufficient, in order to verify the
-equality of two morphisms to verify that their domain and codomain are equal
+equality of two morphisms, to verify that their domain and codomain are equal
 and that their images under $tr_{\LM}$ are equal. For the domain and codomain
 it follows from the definition of $f^*$ on morphisms. For the images under
 $tr_{\LM}$ it follows from the fact that $tr_{\LM}$ is a homomorphism of
@@ -4577,8 +4577,8 @@ $mb_{\RR,\LM}$.
 \begin{remark}\rm
 \llabel{2015.09.13.rem1} 
 Given an $Jf$-relative monad $\RR$ in the form
-$l\RR=(lR,l,\eta,\partial,\theta)$ of Remark \ref{2015.08.29.rem1} we can
-define a left l-module $l\LM$ over $\RR$ as a quadruple:
+$l\RR=(lR,l,\eta,\partial,\theta)$ of Remark \ref{2015.08.29.rem1}, we can
+define a {\em left l-module} $l\LM$ over $\RR$ to be a quadruple:
 %
 \begin{enumerate}
 \item a set $lLM$,
@@ -4588,7 +4588,7 @@ define a left l-module $l\LM$ over $\RR$ as a quadruple:
 %
 \end{enumerate}
 %
-where operations $l,\partial$ and $\theta^{\LM}$ satisfy some conditions. 
+where the operations $l$, $\partial$, and $\theta^{\LM}$ satisfy some conditions. 
 
 Once these conditions are properly established, the category of such pairs
 $$(l\RR,l\LM)$$ should be equivalent to the Hirschowitz-Maggesi ``large module
