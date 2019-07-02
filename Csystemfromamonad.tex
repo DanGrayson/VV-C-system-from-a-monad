@@ -1240,7 +1240,7 @@ constructed from the subsets $(Beq,\wt{Beq})$ should be a congruence relation
 such that the quotients $(B/{\sim},\wt{B}/\approx)$ again carry a structure of a
 B-system. Finally, applying the inverse functor to this B-system we would
 obtain a C-system that will be the C-system corresponding to the quadruple of
-sets $B$,$\wt{B}$,$Beq$ and $\wt{Beq}$.
+sets $B$, $\wt{B}$, $Beq$, and $\wt{Beq}$.
 
 Such a direct construction would probably be more satisfying than the one that
 we provide. However, it would require a lot of non-trivial work, and, as far as
@@ -2042,13 +2042,13 @@ $$(f,\nu_{X,Y}\circ \eta^{\D'}_Y):(J_{\D}(X),J_{\D'}(X))=J(X)\sr RR(Y)=(RR_{\D}(
 %
 and applying to it $rr_{X,Y}$ we obtain 
 %
-$$rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)):RR(X)\sr RR(Y)$$
+$$rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)):RR(X)\sr RR(Y).$$
 %
 We set
 %
 \begin{equation}
 \llabel{2017.04.21.eq2}
-rr^{\D}_{X,Y}(f)=pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y)))
+rr^{\D}_{X,Y}(f)=pr_{\D}(rr_{X,Y}((f,\nu_{X,Y}\circ \eta^{\D'}_Y))).
 \end{equation}%
 %
 
@@ -2159,7 +2159,7 @@ $J$-monad $J^{\circ}(\RR)$. It satisfies the conditions of Problem
 \ref{2017.04.21.prob1} with respect to the identity object constancy structure
 corresponding to $A$. Therefore, Constructions \ref{2017.04.21.constr1} applies
 and we obtain a $J\circ pr_{\C}$-monad $(J^{\circ}(\RR))^{\D}$. Since $J\circ
-pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$ that we denote by
+pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$, which we denote by
 $\RR_{1,A}$. Explicitly, for $\RR=(RR,\eta,rr)$, we have
 $\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$, where:
 %
@@ -2185,13 +2185,13 @@ A left module in monoidal form over a monad in monoidal form is defined as follo
 \begin{definition}
 \llabel{2017.04.01.def2} 
 Let $\C$ and $\E$ be categories, $\R=(R,\eta,\mu)$ be a
-monad on $\C$, and $L:\C\sr \E$ be a functor. A (left) $\R$-module structure on
+monad on $\C$, and $L:\C\sr \E$ be a functor. A {\em (left) $\R$-module structure} on
 $L$ is a natural transformation $\rho:R\circ L\sr L$ such that for all $X\in\C$
-one has:
+one has the following equations.
 %
 \begin{enumerate}
-\item $L(\mu_X)\circ \rho_X=\rho_{R(X)}\circ \rho_X$,
-\item $L(\eta_X)\circ \rho_X=Id_{L(X)}$.
+\item $L(\mu_X)\circ \rho_X=\rho_{R(X)}\circ \rho_X$
+\item $L(\eta_X)\circ \rho_X=Id_{L(X)}$
 \end{enumerate}
 %
 A left $\R$-module in monoidal form with values in $\E$ is a pair 
@@ -2208,7 +2208,7 @@ Left modules can also be defined in Kleisli form.
 %
 \begin{definition}
 \llabel{2017.04.15.def1} 
-Let $\C$,$\E$ be categories and
+Let $\C$ and $\E$ be categories and
 $\RR=(RR_{Ob},\eta,rr)$ be a monad on $\C$. A (left) $\RR$-module with values in
 $\E$ in Kleisli form is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
 Ob(\E)$ is a function and $lm$ is a family, parametrized by $X,Y\in Ob(\C)$ of
@@ -2278,7 +2278,7 @@ Left modules over relative monads were introduced in \cite[Definition
 that there is a bijection between the set of modules over a relative monad
 $\RR$ with values in a category $\E$ and the set of functors from the Kleisli
 category $K(\RR)$ of $\RR$ to $\E$. Whether this bijection is the identity
-bijection or not depends on how the expressions, such as ``collection of data''
+bijection depends on how the expressions, such as ``collection of data''
 or ``family of functions'', are translated into the formal constructions of set
 theory. We assume that in this case they have been translated in a
 such a way that this bijection is the identity and left modules over $\RR$ with
@@ -2475,11 +2475,11 @@ the fourth by (\ref{2017.04.11.eq5}) and the fifth by the definition of $F\circ
 \LM^f_{Mor}$. This completes the proof of Lemma \ref{2017.04.17.l1}.
 \end{proof}
 %
-Combining the previous results we obtain a solution to the following problem
-that we find convenient to formulate for the future reference.
+Combining the previous results we obtain a solution to the following problem,
+which we find convenient to formulate for future reference.
 %
 \begin{problem}\llabel{2017.04.05.prob1}
-Let $\C_0,\C_1,\E$ be categories. Let $\R=(R,\eta,\mu)$ be a monad on $\C_1$
+Let $\C_0$, $\C_1$, and $\E$ be categories. Let $\R=(R,\eta,\mu)$ be a monad on $\C_1$
 and $ {\bf L}=(L,\rho)$ be a left $\R$-module with values in $\E$. Let further
 $J:\C_0\sr \C_1$ be a functor. To construct a pair of a $J$-relative monad
 module with values in $\E$ over it.
@@ -2524,7 +2524,7 @@ There is an analog of Construction \ref{2017.04.21.constr1} for modules.
 %
 \begin{problem}
 \llabel{2017.04.23.prob2}
-Let $\C$, $\D$, $\D'$ be categories, $J:\C\sr \D\times\D'$ be a functor, and $\RR=(RR,\eta,rr)$ be a $J$-relative monad.
+Let $\C$, $\D$, and $\D'$ be categories, $J:\C\sr \D\times\D'$ be a functor, and $\RR=(RR,\eta,rr)$ be a $J$-relative monad.
 Assume in addition that we are given an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$. 
 Let $\RR_{\D}$ be the $J_{\D}$-monad specified in Construction \ref{2017.04.21.constr1}.  
 
@@ -2727,11 +2727,11 @@ We will write elements of $Mor(CC[F])$ as $((X,\Gamma),(Y,\Gamma'),f)$. When
 the domain and the codomain of a morphism are clear from the context we may
 write $f$ instead of $((X,\Gamma),(Y,\Gamma'),f)$.
 
-We define the composition function by the rule
+We define the composition function by the following rule.
 %
 $$((X,\Gamma),(Y,\Gamma'),f))\circ ((Y,\Gamma'),(Z,\Gamma''),g)=((X,\Gamma),(Z,\Gamma''),f\circ g)$$
 
-We define the identity morphisms by the rule
+We define the identity morphisms by the following rule.
 %
 $$Id_{CC[F],(X,\Gamma)}=((X,\Gamma),(X,\Gamma),Id_{CC,X})$$
 %
@@ -2740,9 +2740,7 @@ The associativity and the identity conditions of a category follow easily from
 the corresponding properties of $CC$. This completes the construction of a
 category $CC[F]$.
 
-We define the length function as
-%
-$$l((X,\Gamma)):=l(X)$$
+We define the length function by $l((X,\Gamma)):=l(X)$.
 
 If $l((X,\Gamma))=0$, then $X=pt$ and $\Gamma=()$, where $()$ is the unique
 element of the one point set that is the product of the empty sequence. We will
@@ -3141,11 +3139,11 @@ should be, it is assumed that $x$ is replaced by $f(x)$.
 
 Let us introduce the following notation:
 %
-$$F(m,n)=Fun(stn(m),stn(n))$$
+$$F(m,n)=Fun(stn(m),stn(n)),$$
 %
 and, for a $Jf$-relative monad $\RR$,
 %
-$$RR(m,n)=Fun(stn(m),RR(n))$$
+$$RR(m,n)=Fun(stn(m),RR(n)).$$
 %
 Then for $f\in RR(l,m)$ and $g\in RR(m,n)$ the composition $f\hc g$ in $T$ is
 defined as $\mbind{f}\circ g$ and for $m\in\nat$ the identity morphism $Id_m$
@@ -4600,7 +4598,7 @@ where the operations $l$, $\partial$, and $\theta^{\LM}$ satisfy some conditions
 
 Once these conditions are properly established, the category of such pairs
 $$(l\RR,l\LM)$$ should be equivalent to the Hirschowitz-Maggesi ``large module
-category'' category (see \cite[Definition 2.9]{HM2008}) and in particular the
+category'' category (see \cite[Definition 2.9]{HM2008}), and in particular the
 systems of expressions associated with binding signatures can be described as
 universal objects carrying some additional operations in this category.
 
