@@ -551,8 +551,15 @@ explanation of how $Jf$-relative monads are related to expressions, we said
 that we will consider {\em algebraic} expressions. However, the expressions
 that appear in the sentences of type theories are often not algebraic because
 they contain operations that bind some of the variables in their
-arguments. For example, the expression $\prod\,x:A,B$ that appears in
-(\ref{2017.03.02.eq1}) can be rewritten as $\prod(A,x.B)$, which makes it
+arguments. For example, consider the expression $\prod\,x:A,B$, which appears in
+the following ``inference rule''.
+%
+\begin{equation}
+\llabel{2017.03.02.eq1}
+\frac{\Gamma,x:A\vdash B\,type}{\Gamma\vdash \prod\,x:A,B\,type}
+\end{equation}%
+%
+It can be rewritten as $\prod(A,x.B)$, which makes it
 visible that it is the result of an operation $\prod$ applied to two arguments
 $A$ and $B$, and that this operation binds one variable, here called $x$, in its
 second argument.
@@ -1141,22 +1148,23 @@ $$
 $$
 %
 
-
-@@@
-the form of a list of ``inference rules'' that may look like, for example, this one:
-%
-\begin{equation}
-\llabel{2017.03.02.eq1}
-\frac{\Gamma,x:A\vdash B\,type}{\Gamma\vdash \prod\,x:A,B\,type}
-\end{equation}%
-%
-These inference rules are formulated in@@@
-
+%%%%% I've commented this fragment out and moved the inference to the place it
+%%%%% was first referred to.  --DRG
+%% @@@
+%% the form of a list of ``inference rules'' that may look like, for example, this one:
+%% %
+%% \begin{equation}
+%% \llabel{2017.03.02.eq1}
+%% \frac{\Gamma,x:A\vdash B\,type}{\Gamma\vdash \prod\,x:A,B\,type}
+%% \end{equation}%
+%% %
+%% These inference rules are formulated in@@@
 
 To speak about the mathematical meaning of the conditions that the valid sentences should satisfy, we need to find a way to view the structure formed by the five kinds of sentences as a mathematical object and to describe and analyze a construction that generates a C-system from such an object.
 
-...  that were specified through their raw syntax and typing algorithms or,
-extensionally speaking, the subsets of well-typed context-judgment pairs.
+%%%%% I've commented this fragment out.  --DRG
+%% ...  that were specified through their raw syntax and typing algorithms or,
+%% extensionally speaking, the subsets of well-typed context-judgment pairs.
 %###
 
 %@@@
