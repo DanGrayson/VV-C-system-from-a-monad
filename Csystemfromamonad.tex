@@ -351,7 +351,7 @@ x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh& t\equiv t':T
 \end{flalign}
 %
 Here $x_0,\dots,x_{n-1}$ are names of variables, $T_i$ is an expression with
-free variables from the set $\{x_0,\dots,x_{i-1}\}$, and $T$ and $t$ are
+free variables from the set $\{x_0,\dots,x_{i-1}\}$, and $T$, $T'$, $t$, and $t'$ are
 expressions with free variables from the set $\{x_0,\dots,x_{n-1}\}$. If one
 wants to emphasize that a variable $x$ may appear as a free variable in the
 expression $T$ one writes $T(x)$, but {\em in most cases the set of allowed
@@ -484,16 +484,16 @@ objects $\nat$ and with set of morphisms
 %
 \begin{equation}
 \llabel{2017.02.24.eq1}
-Mor(\FF)=\cup_{m,n}Fun(stn(m),stn(n)),
+Mor(\FF):=\cup_{m,n}Fun(stn(m),stn(n)),
 \end{equation}%
 %
-where $stn(m)=\{i\in\nat\,|\,i<m\}$ is our choice for the standard set with $m$
+where $stn(m):=\{i\in\nat\,|\,i<m\}$ is our choice for the standard set with $m$
 elements, and where, for two sets $X$ and $Y$, $Fun(X,Y)$ is the set of functions
 from $X$ to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each
 function has a well defined domain and codomain. Then the union in
-(\ref{2017.02.24.eq1}) is disjoint and
+(\ref{2017.02.24.eq1}) is disjoint and we set
 %
-$$Mor_{\FF}(m,n)=Fun(stn(m),stn(n))$$
+$$Mor_{\FF}(m,n):=Fun(stn(m),stn(n)).$$
 %
 It is sometimes convenient to distinguish natural numbers used as objects of
 $\FF$ from their other uses. For this purpose we will write $\ff{n}$ for $n$
