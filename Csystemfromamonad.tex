@@ -1017,7 +1017,9 @@ formed using them, without regard to {\em validity}, as determined by the type
 theory under consideration, according to its {\em inference rules}.  The
 inference rules can be regarded as operations that assert various sentences are
 valid, provided certain prerequisite sentences are valid.  Thus we may introduce
-the four subsets consisting of the valid sentences, and denote them as follows.
+the following four\footnote{Four, instead of five, because we omit sentences of 
+the form (\ref{2017.02.06.eq2}), as explained above.}
+subsets consisting of the valid sentences.
 \begin{equation*}
   \begin{split}
     B        & \subseteq B(\RR,\LM) \\
@@ -1047,7 +1049,7 @@ table (\ref{2017.04.07.eq1}) are in $Beq$.
 Hofmann and some other authors suggest to directly construct the set of
 morphisms and all the required structures using the subsets $\wt{B}$ and
 $\wt{Beq}$. Already the first step, the definition from $\wt{B}$ of a set, which
-will later have to be factorized by an equivalence relation coming from
+will later have to be replaced by its quotient by an equivalence relation coming from
 $\wt{Beq}$ to produce the set of morphisms, is non-trivial, cf.{} \cite[Def. 2.11,
   p.~97]{Hofmann}. Constructing the composition and proving its properties, such
 as associativity, present additional difficulties.
@@ -1056,7 +1058,7 @@ We proceed in a different manner. Instead of starting with $B/{\sim}$ and
 building the C-system structure on it, we will construct a C-system
 $C(\RR,\LM)$ that knows nothing about the subsets
 $B$, $\wt{B}$, $Beq$, $\wt{Beq}$, and then we use the results of \cite{Csubsystems}
-to show how any quadruple of subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying
+to show that any quadruple of subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying
 certain properties defines a sub-quotient C-system of $C(\RR,\LM)$. This
 sub-quotient will be the term model C-system of our type theory.
 
