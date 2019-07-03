@@ -138,6 +138,8 @@
 \newcommand{\crc}{^{\circ}}
 \newcommand{\ec}{\hfill $\square$ \end{construction}}
 
+\newcommand{\editorfootnote}[1]{\footnote{Note from the editor: #1}}
+
 \begin{document}
 %
 \parskip = 2mm
@@ -1006,7 +1008,31 @@ $(\RR,\LM)$ corresponding to the $\alpha$-equivalence classes of expressions to
 all pairs $(\RR,\LM)$, where $\RR$ is a $Jf$-relative monad and $\LM$ a left
 module over $\RR$.
 
+%%%% Grayson has implemented this comment in the following text:
+
 %### Explain that we can now define subsets in ... of the derivable sentences as the smallest subsets closed under the operations defined by the inference rules. First, that we can interpret the inference rules as systems of operations on the sets of raw sentences, that is, sets ... . 
+
+So far we have considered only raw expessions and the sentences that can be
+formed using them, without regard to {\em validity}, as determined by the type
+theory under consideration, according to its {\em inference rules}.  The
+inference rules can be regarded as operations that assert various sentences are
+valid, provided certain prerequisite sentences are valid.  Thus we may introduce
+the four subsets consisting of the valid sentences, and denote them as follows.
+\begin{equation*}
+  \begin{split}
+    B        & \subseteq B(\RR,\LM) \\
+    \wt{B}   & \subseteq \wt{B}(\RR,\LM) \\
+    Beq      & \subseteq Beq(\RR,\LM) \\
+    \wt{Beq} & \subseteq \wt{Beq}(\RR,\LM)
+  \end{split}
+\end{equation*}
+Regarding the inference rules as operations on the various sorts of raw
+sentences, these subsets of valid sentences can be regarded as the subsets {\em
+  generated} by the operations, i.e., as the smallest subsets that are closed
+under the inference rules.\editorfootnote{This paragraph was written by the
+  editor, following instructions from the author in a comment in the source code.}
+
+%%%% End of Grayson's text.
 
 Next, we need to construct a C-system $CC$ from $(\RR,\LM)$, $B$, $\wt{B}$, $Beq$, and
 $\wt{Beq}$.  This construction should be compatible with the
@@ -1052,8 +1078,8 @@ is an expression and the sentence $0:\nat\rh ok$ is valid.
 
 One often uses the words ``type'', ``type expression'' and ``expression that
 describes a type'' interchangeably. The same applies to ``element'', ``element
-expression'' and ``expression that describes an element''.\footnote{Note from
-  the editor: This is a sensible convention for a paper about type theory
+expression'' and ``expression that describes an element''.\editorfootnote{
+  This is a sensible convention for a paper about type theory
   written with ZFC as meta-theory, but in a paper on a general mathematical
   topic with Univalent Foundations as the meta-theory, the convention would not
   be used, for there, types are mathematical objects, not all of which can be
@@ -1075,7 +1101,7 @@ $x_0$ and $x_1$ as free variables, is a type family with two parameters
 $x_0:T_0$ and $x_1:T_1(x_0)$.
 
 Let $\Gamma=(x_0:T_0,\dots,x_{n-1}:T_{n-1})$. If the sentence
-(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.\footnote{From the editor: why is this true?}  A
+(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.\editorfootnote{Why is this true?}  A
 sentence (\ref{2017.02.06.eq3}) with $n=0$, that is a sentence of the form $\rh
 t:T$, asserts that $T$ is a valid (closed) type expression and $t$ is a valid
 (closed) expression that describes an element of type $T$. For example, the
@@ -1089,7 +1115,7 @@ contain $x_0$, then the family of types is constant and the sentence
 to $T$.
 
 If the sentence (\ref{2017.02.06.eq4}) is valid than so are the sentences
-$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.\footnote{From the editor: why is this true?}  The validity of
+$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.\editorfootnote{Why is this true?}  The validity of
 (\ref{2017.02.06.eq4}) asserts that the type expressions $T$ and $T'$ are {\em
   definitionally equal} in the context $\Gamma$.  The analogous meaning is
 assigned to sentences of the form (\ref{2017.02.06.eq5}).
@@ -1139,7 +1165,7 @@ this paper.
 
 If we write $x\notin \Gamma$ for the condition that $x$ is the name of a free
 variable not contained in the set of names declared in $\Gamma$, then this
-assertion\footnote{From the editor: what assertion?} can be expressed in the form of a pair of inference rules:\footnote{From the editor: this paragraph seems to have been marked ``incomplete'' by the author.}
+assertion\editorfootnote{What assertion?} can be expressed in the form of a pair of inference rules:\editorfootnote{This paragraph seems to have been marked ``incomplete'' by the author.}
 %
 $$
 \frac{\Gamma\rh T\type \spc x\notin\Gamma\spc}{\Gamma, x:T\rh ok}
@@ -1252,7 +1278,7 @@ future papers. The approach that we take here, using the results of
 \cite{Csubsystems} instead, gives us a rigorous construction that can be
 completed today.
 
-To\footnote{From the editor: author's instruction just before this paragraph:
+To\editorfootnote{Author's instruction just before this paragraph:
   ``ignore the rest of the introduction''.  I didn't know what to make of this,
   so I left the rest of the introduction in.}
 construct the regular sub-quotient of $C(\RR,\LM)$ that corresponds to the
@@ -1391,7 +1417,7 @@ category in the sense of the first definition has the property that
 $$Mor(X,Y)\cap Mor(X',Y')=\emptyset$$
 %
 if $X\ne X'$ or $Y\ne Y'$. This property makes it necessary sometimes to
-perform additional constructions.\footnote{Note from the editor: Voevodsky
+perform additional constructions.\editorfootnote{Voevodsky
   intended to give examples of such constructions.}
 
 Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form
@@ -1441,8 +1467,8 @@ and the paper had been extensively revised and expanded in response to the
 referee's remarks.  Grayson has edited the paper, which was found
 to be in a rough state.  Much of the work was cosmetic, aimed at improving the
 use of the English language.  Where anything substantively mathematical is
-involved, a footnote from the editor has been appended.
-% remove that if there are no such footnotes.
+involved, a footnote from the editor has been appended.\editorfootnote{... such
+  as this one.}
 In order to make it possible and convenient for readers to review the editor's
 changes, all existing versions of the paper were entered into a {\em github}
 repository, and editing was done in an incremental fashion, with {\em commit
