@@ -123,7 +123,7 @@
 \newcommand{\RR}{{\bf RR}}
 \newcommand{\LM}{{\bf LM}}
 
-\newcommand{\rh}{{\,\rhd\,\,}}
+\DeclareMathOperator{\rh}{\,\rhd\,}
 \newcommand{\type}{\,\,type}
 
 \newcommand{\C}{{\mathcal C}}
@@ -549,7 +549,7 @@ first in order to perform our construction.
 Let us now explain another important point. At the start of our
 explanation of how $Jf$-relative monads are related to expressions, we said
 that we will consider {\em algebraic} expressions. However, the expressions
-that appear in the sentences of type theories are often not algebraic because
+that appear in the sentences of type theories are often not algebraic, because
 they contain operations that bind some of the variables in their
 arguments. For example, consider the expression $\prod\,x:A,B$, which appears in
 the following ``inference rule''.
@@ -966,7 +966,7 @@ themselves are also considered modulo $\alpha$-equivalence, that is, modulo
 the renaming of the variables $x_0,\dots,x_{n-1}$ introduced by the
 context. Using this $\alpha$-equivalence we may assume that
 $(x_0,\dots,x_{n-1})=(0,\dots,n-1)$. Then $T_i$ has free variables from
-$stn(i)$ and $T,T',t$ and $t'$ free variables from $stn(n)$. When we are given
+$stn(i)$, and $T$, $T'$, $t$, and $t'$ have free variables from $stn(n)$. When we are given
 all the necessary additional information for the construction of the pair
 $(\RR,\LM)$, where $RR(n)$ and $LM(n)$ are the $\alpha$-equivalence classes of
 type and element expressions with free variables from the sets $stn(n)$, then we
@@ -1098,13 +1098,13 @@ assigned to sentences of the form (\ref{2017.02.06.eq5}).
 Definitional equality of type expressions can be used to define definitional
 equality of contexts. Namely, one defines two contexts
 $\Gamma = (x_0:T_0,\dots,x_{n-1}:T_{n-1})$ and $\Gamma' = (x_0:T'_0,\dots,x_{n-1}:T'_{n-1})$ to be
-{\em definitionally equal} if the sentences in the following sequence are valid
+{\em definitionally equal} if the sentences in the following sequence are valid.
 %
 \begin{flalign}\llabel{2017.04.07.eq1}
-\rh &\,\, T_0\equiv T_0'\\
-x_0:T_0\rh &\,\, T_1\equiv T_1'\\
+& \rh T_0\equiv T_0'\\
+x_0:T_0& \rh T_1\equiv T_1'\\
 \dots\\
-x_0:T_0,\dots,x_{n-2}:T_{n-2}\rh &\,\, T_{n-1}\equiv T_{n-1}'
+x_0:T_0,\dots,x_{n-2}:T_{n-2}& \rh T_{n-1}\equiv T_{n-1}'
 \end{flalign}
 %
 We will use the notation $\Gamma \equiv \Gamma'$ to denote this condition.
@@ -1122,11 +1122,11 @@ definitional equality of element expressions defined by sentences of the form
 (\ref{2017.02.06.eq4}) and (\ref{2017.02.06.eq5}) to define definitional
 equality of sentences of the form (\ref{2017.02.06.eq3}). Two such sentences
 $\Gamma\rh t:T$ and $\Gamma'\rh t':T'$ are called {\em definitionally equal} if
-$\Gamma\equiv \Gamma'$ and the following two sentences are valid:
+$\Gamma\equiv \Gamma'$ and the following two sentences are valid.
 %
 \begin{flalign*}
-\Gamma\rh &\,\, T\equiv T'\\
-\Gamma\rh &\,\, t\equiv t':T
+\Gamma & \rh T\equiv T'\\
+\Gamma & \rh t\equiv t':T
 \end{flalign*}
 %
 It should be immediately clear from the asymmetry of these rules that in order
@@ -1202,8 +1202,8 @@ we define, in Construction \ref{}, a pre-B-system structure on the sets
 $(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Constrcution \ref{}, an isomorphism
 between this pre-B-system and the pre-B-system of $C(\RR,\LM)$.
 
-Using this isomorphism we formulate the conditions on subsets $B\subset
-B(\RR,\LM)$ and $\wt{B}\in \wt{B}(\RR,\LM)$ that are necessary and sufficient
+Using this isomorphism we formulate the conditions on subsets $B\subseteq B(\RR,\LM)$
+and $\wt{B}\subseteq \wt{B}(\RR,\LM)$ that are necessary and sufficient
 for such a pair to correspond to a sub-C-system of $C(\RR,\LM)$.
 
 Next, we construct, for any subsets $B$, $\wt{B}$, $Beq$, and $\wt{Beq}$, a pair
@@ -1280,7 +1280,7 @@ On the sets of objects of any C-system one can consider the partial ordering
 defined by the condition that $X\le Y$ if and only if $l(X)\le l(Y)$ and
 $X=ft^{l(Y)-l(X)}(Y)$. In the first section we re-introduce some of the objects
 and constructions defined in \cite{Csubsystems} using the length function using
-this partial ordering instead. This allows to avoid the use of natural numbers
+this partial ordering instead. This allows us to avoid the use of natural numbers
 in some of the arguments that significantly simplifies the proofs.
 
 In the second section we construct for any C-system $CC$ and a presheaf $F$ on
@@ -1289,7 +1289,7 @@ the category underlying $CC$ a new C-system $CC[F]$ that we call the
 spaces over schemes in algebraic geometry. While the geometry of affine spaces
 in itself is not very interesting their sub-spaces encompass all affine
 algebraic varieties of finite type . Similarly, while the C-systems $CC[F]$
-look to be not very different from $CC$ their sub-systems and more generally
+seem not very different from $CC$, their sub-systems and more generally their
 regular sub-quotients, even in the case of the simplest C-systems $CC=C(\RR)$
 corresponding to Lawvere theories (see Section \ref{CRR}), include all of the
 term C-systems of type theories.
