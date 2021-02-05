@@ -443,14 +443,15 @@ Let us go back to the concept of abstract expression. Let us consider the
 case of algebraic expressions first.  The modern mathematical theory of algebraic
 expressions has been developed at least as far back as the 1963 Ph.D.{} thesis of
 Bill Lawvere \cite{Lawvere}. However, our interest in having the theory
-extended to operations with bound variables, such as the $\forall$
-quantifier, together with the need to have our approach adapted for a
+extended to operations with bound variables, such as occur when the $\forall$
+quantifier or the $\exists$ quantifier is used,
+together with the need to have our approach adapted for a
 constructive meta-theory, bring forward aspects of this theory that are easy to
 miss otherwise.
 
 Systems of algebraic expressions are specified by {\em algebraic signatures}---pairs
 consisting of a set $Op$, called the set of {\em operations}, and a function
-$Ar:Op\sr \nat$, called {\em arity}.  Given a signature $Sig$ and a set $V$ such that
+$Ar:Op\sr \nat$, called the {\em arity}.  Given a signature $Sig$ and a set $V$ such that
 $V\cap Op=\emptyset$, one can define, for any $X\subset V$, the set $Exp(X)$ of
 expressions relative to $Sig$ with (free) variables from $X$. Note that when we
 write $Exp(X)$ we assume that the signature $Sig$ and the set $V$ have been
@@ -459,11 +460,14 @@ fixed.
 There are many families of sets $Exp(X)$ whose elements may be called
 expressions. For example, one can use a subset of the set of sequences (lists)
 of elements of $Op\cup X$. Alternatively, one can use some axiomatization of
-planar rooted trees with labels from $Op\cup X$ on the nodes. Translating from
-a representation of the first kind into a representation of the second is done,
-in the concrete world of computer programs, by programs called parsers, and there
-is a beautiful mathematical theory behind it that many of us are robbed of the
-joy of learning.
+planar rooted trees with labels from $Op\cup X$ on the nodes.\editorfootnote{\label{disjoint-labels}
+  If the labels were drawn from the disjoint union $Op \amalg X$ instead of
+  from the union $Op\cup X$, then the hypothesis that $V\cap Op=\emptyset$ would not be
+  needed, we could dispense with $V$, and we could let $X$ be any set.  }
+Translating from a representation of the first kind into a representation of
+the second is done, in the concrete world of computer programs, by programs
+called parsers, and there is a beautiful mathematical theory behind it that
+many of us are robbed of the joy of learning.
 
 Let $U$ be a universe that contains $Op$, $V$, and $Exp(X)$ for all $X\subset V$.
 Let $2^V$ denote the set of subsets of $V$,
@@ -473,11 +477,15 @@ $J_V:Sets(2^V)\sr Sets(U)$ be the inclusion functor.
 
 We may consider $Exp$ as a function $2^V\sr U$. In the chosen representation of
 expressions one can construct the {\em substitution} operation, which for any
-$X,Y\subset V$ and for any $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)\sr
-Exp(Y)$. In addition, for any $X\subset V$ one can define the function
+$X,Y\subset V$ and for any $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)\sr Exp(Y)$.
+In addition, for any $X\subset V$ one can define the function
 $\eta_{X}:X\sr Exp(X)$. The triple $(Exp,\eta,\mbind{-})$ satisfies the
 conditions of Definition \ref{2015.12.22.def1}, thereby making it into a $J_V$-relative
-monad.
+monad.\editorfootnote{
+  If labels were constructed as suggested in Footnote \ref{disjoint-labels}, then
+  we may regard $Exp$ as a function $U \sr U$ and make it into a monad,
+  rather than a $J_V$-relative monad.
+  }
 
 {\em This is how relative monads appear in the theory of expressions with variables.}
 
@@ -1477,7 +1485,8 @@ repository, and editing was done in an incremental fashion, with {\em commit
   messages} describing the work done at each step.  The repository is visible
 at
 \hfill\break\centerline{\tiny{\tt \href{https://github.com/DanGrayson/VV-C-system-from-a-monad}{https://github.com/DanGrayson/VV-C-system-from-a-monad}%
-  } .}
+  } ,}
+and the differences made from one version to the next can be displayed.
 The paper is visible as an entry in the archival record of Voevodsky's work at
 \hfill\break\centerline{\tiny{\tt \href{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}%
   } ,}
@@ -2592,7 +2601,7 @@ $\RR_{1,A}$-module structure on $J_{1,A}\circ RR$.
 \llabel{2017.04.23.constr3}\rm
 Consider the $J_{1,A}$-monad $J_{1,A}^{\circ}(\RR)$. It satisfies the
 conditions of Problem \ref{2017.04.23.prob2} with respect to the identity
-object constancy structure corresponding to $A$. Therefore, Constructions
+object constancy structure corresponding to $A$. Therefore, Construction
 \ref{2017.04.23.constr2} applies and we obtain a
 $(J_{1,A}^{\circ}(\RR))_{\C}$-module structure on $J_{1,A}\circ RR$. Since, by
 Construction \ref{2017.04.23.constr1}, we have
