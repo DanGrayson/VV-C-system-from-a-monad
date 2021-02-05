@@ -797,7 +797,7 @@ of the existence of the right adjoints from the main theorem \cite[Th. 15,
 
 The case that is most important for us, that of monads defined by
 binding signatures, has been fully formalized in {\em UniMath}, as described
-in \cite{AMM2016}. There remains the
+in \cite[{\tt BindingSigToMonad}]{AMM2016}. There remains the
 problem of showing that the families of sets of $J_V$-relative monads
 corresponding to this monad are isomorphic to the sets of expressions modulo
 $\alpha$-equivalence and that the monad structure that one obtains
@@ -1400,16 +1400,14 @@ In the next paper we will connect these computations to the conditions that the
 valid judgments of a type theory must satisfy in order for the term C-system
 of this type theory to be defined.
 
-\vspace{5mm}
+\subsection{Conventions}
 
 We use neither the axiom of excluded middle nor the axiom of choice. The paper
 is written in a formalization-ready style and should be easily formalizable
 both in {\em UniMath} and in ZFC.
 
-\vspace{5mm}
-
-We use the diagrammatic order of composition, i.e., for morphisms $f:X\sr Y$
-and $g:Y\sr Z$ we write their composition as $f\circ g$.
+In categories, we use the {\em diagrammatic} order of composition, i.e., for morphisms $f:X\sr Y$
+and $g:Y\sr Z$ we write their composition as $f\circ g$, instead of as $g \circ f$.
 
 A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$
 connected by the operations of domain, codomain, identity and composition where
@@ -1495,6 +1493,10 @@ If those links are ever broken, perhaps a search for the randomly chosen string
 \hfill\break\centerline{\tiny{\tt 808d59c861bd87b38873e2d2e288511453262b1e}}
 will allow the files to be located.
 
+References to formal results in the UniMath repository \cite{UniMath} may be
+taken to refer to the version after the submission of commit number
+\hfill\break\centerline{\tiny{\tt 8c09aea37fe46704df2a444a74bb5095c2f91a89}.}
+
 %###??? Make a note that we do not use dependent types in the paper which is why we can not simply write Hom(\wh{n},\wh{m})=R(stn(n))^{stn(m)}
 
 \section{Relative monads and left modules over relative monads}
@@ -1513,7 +1515,8 @@ be used.
 %
 \begin{definition}
   \llabel{2017.04.01.def1}
-  A monad in monoidal form on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
+  A {\em monad in monoidal form}\editorfootnote{formalized as the type {\tt Monad} in \cite{UniMath}.}
+  on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
   where $R:\C\sr \C$ is a functor, and where $\eta:Id_{\C}\sr R$ and $\mu:R\circ R\sr R$
   are natural transformations, such that for any $X\in\C$ one has
   %
@@ -1531,7 +1534,7 @@ in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \llabel{2017.04.13.def1}
-A monad in Kleisli form on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
+A {\em monad in Kleisli form}\editorfootnote{formalized as the type {\tt KleisliMonad} in \cite{UniMath}.} on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
 %
 \begin{enumerate}
 \item \llabel{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
@@ -1615,7 +1618,8 @@ We devote so much attention to these two definitions because they provide one
 of the clearest examples of how the same objects can have different and often
 mutually incomprehensible definitions in the parallel realities of mathematics
 and that part of theoretical computer science which is known as Theoretical
-Computer Science B.
+Computer Science B.\editorfootnote{Here he's referring to {\em Theory B}, which
+  encompasses formal models and semantics.}
 
 We now outline the construction for Problem \ref{2017.01.04.prob1}.
 %
@@ -1648,20 +1652,20 @@ RR_{Mor}(f)=rr_{X,Y}(f\circ \eta_Y)
 \end{enumerate}
 %
 We leave the verification of the conditions and the proof that these functions
-are mutually inverse to the formally verified version of the paper. 
+are mutually inverse to the formally verified version of the paper\editorfootnote{formalized as the equivalence {\tt weq\_Kleisli\_Monad} in \cite{UniMath}, sort of.}. 
 \ec
 %#### details, to M.
 For a monad $\RR$ in Kleisli form we let $\RR^M$ denote the corresponding
 monad in monoidal form, and for a monad $\R$ in monoidal form we let $\R^K$
 denote the corresponding monad in Kleisli form.
 
-The notion of relative monad arises naturally from the notion of monads in Kleisli
+The notion of relative monad arises naturally from the notion of monad in Kleisli
 form. It was introduced in \cite[Def.~1, p.~299]{ACU} and considered in more
 detail in \cite{ACU2}. Let us recall it here.
 %
 \begin{definition}
 \llabel{2015.12.22.def1}
-Let $J:\C\sr \D$ be a functor. A relative monad $\RR$ on $J$ (or a $J$-relative monad, or a $J$-monad) is a triple $(RR_{Ob},\eta,rr)$, where
+Let $J:\C\sr \D$ be a functor. A {\em relative monad}\editorfootnote{formalized as the type {\tt RelMonad} in \cite{UniMath}.} $\RR$ on $J$ (or a $J$-relative monad, or a $J$-monad) is a triple $(RR_{Ob},\eta,rr)$, where
 %
 \begin{enumerate}
 \item $RR_{Ob}:Ob(\C)\sr Ob(\D)$ is a function,
@@ -1704,7 +1708,7 @@ For $f:X\sr Y$ in $\C$ set
 RR_{Mor}(f)=rr_{X,Y}(J(f)\circ \eta_{Y})
 \end{equation}%
 %
-The proofs of the composition and the identity axioms of a functor are omitted. 
+The proofs of the composition and the identity axioms of a functor are omitted.\editorfootnote{formalized as the lemma {\tt is\_functor\_r\_lift} in \cite{UniMath}.}
 \ec
 %### details, to M. or J.?
 %
@@ -2008,7 +2012,7 @@ $FF_{\D}$ when $FF$ is (just) a function on objects.
 %
 \begin{definition}
   \llabel{2017.04.21.def1}
-  An object constancy structure on a functor $F:\C\sr\D$
+  An {\em object constancy structure} on a functor $F:\C\sr\D$
   is a family, parametrized by $X,Y\in\C$, of morphisms $\nu_{X,Y}:F(X)\sr F(Y)$
   such that:
 %
@@ -2246,8 +2250,8 @@ Left modules can also be defined in Kleisli form.
 \begin{definition}
 \llabel{2017.04.15.def1} 
 Let $\C$ and $\E$ be categories and
-$\RR=(RR_{Ob},\eta,rr)$ be a monad on $\C$. A (left) $\RR$-module with values in
-$\E$ in Kleisli form is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
+$\RR=(RR_{Ob},\eta,rr)$ be a monad on $\C$. A {\em (left) $\RR$-module with values in
+$\E$ in Kleisli form} is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
 Ob(\E)$ is a function and $lm$ is a family, parametrized by $X,Y\in Ob(\C)$ of
 functions
 %
@@ -2325,7 +2329,7 @@ $K(\RR)$ to $\E$.
 \begin{definition}
 \llabel{2017.03.16.def1} 
 Let $J:\C\sr\D$ be a functor and
-$\RR=(RR_{Ob},\eta,rr)$ be a $J$-monad. A left module over $\RR$ with values in a
+$\RR=(RR_{Ob},\eta,rr)$ be a $J$-monad. A {\em left module} over $\RR$ with values in a
 category $\E$ is a functor $\LM:K(\RR)\sr \E$, that is, a pair $(LM_{Ob},lm)$,
 where $LM_{Ob}:Ob(\C)\sr Ob(\E)$ is a function and $lm$ is a family,
 parametrized by $X,Y\in Ob(\C)$, of functions
