@@ -460,10 +460,10 @@ fixed.
 There are many families of sets $Exp(X)$ whose elements may be called
 expressions. For example, one can use a subset of the set of sequences (lists)
 of elements of $Op\cup X$. Alternatively, one can use some axiomatization of
-planar rooted trees with labels from $Op\cup X$ on the nodes.\editorfootnote{\label{disjoint-labels}
-  If the labels were drawn from the disjoint union $Op \amalg X$ instead of
-  from the union $Op\cup X$, then the hypothesis that $V\cap Op=\emptyset$ would not be
-  needed, we could dispense with $V$, and we could let $X$ be any set.  }
+planar rooted trees with labels from $Op\cup X$ on the nodes.\editorfootnote{
+  An alternative approach would be to draw the labels from the disjoint union
+  $Op \amalg X$ instead of from the union $Op\cup X$.  Then the hypothesis that
+  $V\cap Op=\emptyset$ would not be needed and we could let $X$ be any set.}
 Translating from a representation of the first kind into a representation of
 the second is done, in the concrete world of computer programs, by programs
 called parsers, and there is a beautiful mathematical theory behind it that
@@ -481,11 +481,7 @@ $X,Y\subset V$ and for any $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)
 In addition, for any $X\subset V$ one can define the function
 $\eta_{X}:X\sr Exp(X)$. The triple $(Exp,\eta,\mbind{-})$ satisfies the
 conditions of Definition \ref{2015.12.22.def1}, thereby making it into a $J_V$-relative
-monad.\editorfootnote{
-  If labels were constructed as suggested in Footnote \ref{disjoint-labels}, then
-  we may regard $Exp$ as a function $U \sr U$ and make it into a monad,
-  rather than a $J_V$-relative monad.
-  }
+monad.
 
 {\em This is how relative monads appear in the theory of expressions with variables.}
 
