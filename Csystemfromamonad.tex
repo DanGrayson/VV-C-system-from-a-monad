@@ -380,12 +380,12 @@ on allowed free variables. Therefore we may say:
 {\em The first step towards a mathematical theory of type theories is to find a
   way to view ``expressions'' as mathematical objects.}
 
-In practice, what ``expressions'' are, and how they are used to form the sentences of a type theory,
+In practice, what ``expressions'' are, as well as how they are used to form the sentences of a type theory,
 is most likely to be specified in detail when this type theory is
-used as a basis of a computer proof assistant. Depending on the programming
+used as the basis of a computer proof assistant. Depending on the programming
 language in which the proof assistant is written and on the personal tastes of
 the developers, ``expressions'' will be represented as elements of various
-datatypes. They may be represented as strings of characters, or as trees
+datatypes. They may be represented as strings of characters, as trees
 with labels at nodes and edges, or as something else entirely.  While
 each of these representations can be given a precise mathematical form, it would
 clearly be wrong to make the mathematical theory of type theories dependent on
@@ -1816,7 +1816,7 @@ formalized version of the paper.
 %
 %### details to M.?
 
-So far our only examples of relative monads have been provided by the ``usual''
+So far all our examples of relative monads have been provided by the ``usual''
 monads in Kleisli form, in particular, they have all been endo-monads.  The
 following construction allows one to obtain a large class of relative monads
 that are not endo-monads.
@@ -1923,7 +1923,7 @@ where the second equality is by (\ref{2017.04.05.eq3}). This completes the proof
 Note that the construction of $F^{\circ}(\RR)$ depends on
 $F_{Ob}$ but not on $F_{Mor}$.  On the other hand, we have
 (\ref{2017.04.09.eq5}). The explanation for this seeming contradiction is that
-$F^{\circ}(\RR)$ is a $(F\circ J)$-relative monad, and $(F\circ J)_{Mor}$, and
+$F^{\circ}(\RR)$ is an $(F\circ J)$-relative monad, and $(F\circ J)_{Mor}$, and
 therefore $F_{Mor}$, participate in the definition of $F^{\circ}(\RR)_{Mor}$.
 \end{remark}
 %
@@ -1992,7 +1992,7 @@ This completes Construction \ref{2017.03.12.constr2}.
 \ec
 %
 
-The following construction together with Construction \ref{} are used to
+The following construction, together with Construction \ref{}, is used to
 extract pairs $(\RR,\LM)$ consisting of a relative monad and a left module over it from
 two-sorted relative monads, such as the ones that arise from two-sorted
 second-order signatures, see \cite{AMM2017}.
@@ -2237,7 +2237,7 @@ structure on $L$.
 \end{definition}
 %
 \begin{example}\llabel{2017.04.15.ex1}\rm
-For a monad $\R=(R,\eta,\rho)$ the pair $\R^{lm}=(R,\rho)$ is a left module over $\R$.
+For a monad $\R=(R,\eta,\mu)$ the pair $\R^{lm}=(R,\mu)$ is a left module over $\R$.
 \end{example}
 %
 
@@ -2518,8 +2518,8 @@ which we find convenient to formulate for future reference.
 \begin{problem}\llabel{2017.04.05.prob1}
 Let $\C_0$, $\C_1$, and $\E$ be categories. Let $\R=(R,\eta,\mu)$ be a monad on $\C_1$
 and $ {\bf L}=(L,\rho)$ be a left $\R$-module with values in $\E$. Let further
-$J:\C_0\sr \C_1$ be a functor. To construct a pair of a $J$-relative monad
-module with values in $\E$ over it.  (EDITOR: the previous sentence is incomplete---figure out what it should have said.) 
+$J:\C_0\sr \C_1$ be a functor. The problem is to construct a pair consisting of a $J$-relative monad
+and a module with values in $\E$ over it.
 \end{problem}
 %
 \begin{construction}\rm\llabel{2017.04.05.constr1}
