@@ -933,18 +933,22 @@ To construct the pair $(\RR,\LM)$ by methods of category theory without a
 reference to expressions one can proceed as follows.
 
 A restricted 2-sorted binding signature defines a monad on the category
-$Sets(U)\times Sets(U)$. See \cite{Zsido} for the much more general case of multi
+$Sets(U)\times Sets(U)$.  See \cite{Zsido} for the much more general case of multi
 sorted signatures. For the formalization of this construction in {\em UniMath} see
 \cite{AMM2017}.
 %### Check with B. whether what is being formalized is what is described in \cite{Zsido}.
 
+We regard the first factor of $Sets(U)\times Sets(U)$ as corresponding to element expressions
+and the second factor as corresponding to type expressions.
 Choosing an object $PrTy$ of $Sets(U)$ and applying Construction
 \ref{2017.04.23.constr1} we obtain a monad on $Sets(U)$. Let us denote it by
 $\RR^*$. Applying Construction \ref{2017.04.23.constr3} we obtain a module
-$\LM^*$ over this monad with values in $Sets(U)$.  Precomposing with the
+$\LM^*$ over this monad with values in $Sets(U) \times Sets(U)$.  Precomposing with the
 functor $Jf:\FF\sr Sets(U)$ using Constructions \ref{2017.02.24.constr1} and
-\ref{2017.03.12.constr1} one obtains a pair $(\RR,\LM)$ consisting of a $Jf$-monad and a
-module over it.
+\ref{2017.03.12.constr1} and post-composing with the projection functor
+$Sets(U) \times Sets (U) \to Sets(U)$ to the second factor using Remark \ref{precomposition-and-postcomposition},
+one obtains a pair $(\RR,\LM)$ consisting of a $Jf$-monad and a
+module over it with values in $Sets(U)$.
 
 {\em This is how the pairs $(\RR,\LM)$ can be obtained from a restricted
   2-sorted binding signature by methods of category theory.}
@@ -2542,12 +2546,14 @@ J\crc(L^K)^f=J\circ ({\bf L}^K)^f=J\circ L,
 %
 where the second equality is by (\ref{2017.04.13.eq2}) and the third by (\ref{2017.04.17.eq4}).
 
+\begin{remark}
+  \label{precomposition-and-postcomposition}
 Constructions \ref{2017.02.24.constr1} and \ref{2017.03.12.prob2} show that
 both relative monads and left modules over them can be ``precomposed'' with any
 functor. The left modules can also be ``post-composed'' with any functor. It is
 done by literal post-composition. Since a left module is a functor
-$\LM:K(\RR)\sr \E$ we can post-compose it with any functor $F:\E\sr \E'$ and
-obtain a new module that we will denote $\LM\circ F$. Explicitly, for
+$\LM:K(\RR)\sr \E$, we can post-compose it with any functor $F:\E\sr \E'$ and
+obtain a new module, which we will be denoted by $\LM\circ F$. Explicitly, for
 $\LM=(LM_{Ob},lm)$ one has
 %
 $$\LM\circ F=(LM_{Ob}\circ F, F(lm)),$$
@@ -2556,6 +2562,7 @@ where, for $X,Y\in \C$ and $f:J(X)\sr RR_{Ob}(Y)$, one has
 %
 $$F(lm)_{X,Y}(f)=F(lm_{X,Y}(f)).$$
 %
+\end{remark}
 
 There is an analog of Construction \ref{2017.04.21.constr1} for modules.
 %
