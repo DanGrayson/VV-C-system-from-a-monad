@@ -479,7 +479,9 @@ We may consider $Exp$ as a function $2^V\sr U$. In the chosen representation of
 expressions one can construct the {\em substitution} operation, which for any
 $X,Y\subset V$ and for any $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)\sr Exp(Y)$.
 In addition, for any $X\subset V$ one can define the function
-$\eta_{X}:X\sr Exp(X)$. The triple $(Exp,\eta,\mbind{-})$ satisfies the
+$\eta_{X}:X\sr Exp(X)$, which sends a variable $x$ to the expression consisting of
+just that variable.
+The triple $(Exp,\eta,\mbind{-})$ satisfies the
 conditions of Definition \ref{2015.12.22.def1}, thereby making it into a $J_V$-relative
 monad.
 
@@ -496,8 +498,9 @@ Mor(\FF):=\cup_{m,n}Fun(stn(m),stn(n)),
 where $stn(m):=\{i\in\nat\,|\,i<m\}$ is our choice for the standard set with $m$
 elements, and where, for two sets $X$ and $Y$, $Fun(X,Y)$ is the set of functions
 from $X$ to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each
-function has a well defined domain and codomain. Then the union in
-(\ref{2017.02.24.eq1}) is disjoint and we set
+function has a well defined domain and codomain\editorfootnote{Thus a function is a triple
+  consisting of the domain, the codomain, and the graph of the function, as a set of pairs.}.
+Then the union in (\ref{2017.02.24.eq1}) is disjoint and we set
 %
 $$Mor_{\FF}(m,n):=Fun(stn(m),stn(n)).$$
 %
@@ -643,7 +646,7 @@ subset. Let us call it a {\em freshness operation}. Some approaches to
 $\alpha$-equivalence and further constructions discussed below, notably the
 approach through nominal sets \cite{Pitts}, may require only that for any
 finite subset of $V$ there exist an element in the complement of this
-subset. In the latter case we will say that $V$ has the freshness property. In
+subset. In the latter case we will say that $V$ has the \emph{freshness property}. In
 ZFC a set has the freshness property if and only if it is infinite. In
 constructive metatheories the situation may be more involved and it is
 convenient to have a special name for this property.
@@ -653,7 +656,7 @@ easy, simultaneous capture avoiding substitution of expressions
 $E_x\in Exp^{\cdot}(Y)$, $x\in X$, for the free variables of an expression 
 $E' \in Exp^{\cdot}(X)$, in a way that is compatible with $\alpha$-equivalence.
 After passage to $\alpha$-equivalence classes these constructions
-become equivalent and one obtains, for any function $X\sr Exp^{\alpha}(Y)$ and for
+become equivalent, and one obtains, for any function $X\sr Exp^{\alpha}(Y)$ and for
 any element of $Exp^{\alpha}(X)$, an element of $Exp^{\alpha}(Y)$. In addition
 one has, for any $X\subset V$, a function $X\sr Exp^{\alpha}(X)$.
 
@@ -676,15 +679,17 @@ expressions that we considered above. We have seen that
 %
 $$Exp^{\alpha}(\emptyset)=\{a_{n,k}\,|\,n\in\nat,k=0,\dots,n-1\},$$
 %
-where $a_{n,k}$ is (the equivalence class of) the expression with $n$
+where $a_{n,k}$ is (the equivalence class of) the expression
+$\lambda\,x_{n-1}.\lambda\,x_{n-2}.\dots.\lambda\,x_0.x$ with $n$
 $\lambda$-abstractions such that $k$ is the smallest index satisfying $x_k=x$.
 
 Next, we know that
 %
 $$Exp^{\alpha}(\{x\})=Exp^{\alpha}(\emptyset)\cup \{b_n(x)\,|\,n\in \nat\},$$
 %
-where $b_n(x)$ is the expression with $n$ $\lambda$-abstractions ending with
-$x$ and such that $x_i\ne x$ for all $n-1\ge i\ge 0$. We have to add
+where $b_n(x)$ is the expression with $n$ $\lambda$-abstractions
+$E=\lambda\,x_{n-1}.\lambda\,x_{n-2}.\dots.\lambda\,x_0.x$
+such that $x_i\ne x$ for all $n-1\ge i\ge 0$. We have to add
 $Exp^{\alpha}(\emptyset)$ because an expression without free variables is an
 expression with free variables from the set $\{x\}$.
 
@@ -891,7 +896,7 @@ $TyExp_{Sig_2}^{\alpha}(X,Y)$ be the corresponding sets of equivalence classes.
 
 Let us fix a set $PrTy\subset Z$ such that $V\cap PrTy=\emptyset$. This set
 will eventually play the role of the set of primitive types that we add to the
-base type theory. Consider $X$ as a variable, writing $RR_V(X)$ and $LM_V(X)$
+base type theory. Considering $X$ as a variable, we write $RR_V(X)$ and $LM_V(X)$
 instead of $ElExp^{\alpha}_{Sig_2}(X,PrTy)$ and
 $TyExp_{Sig_2}^{\alpha}(X,PrTy)$.
 
@@ -986,23 +991,23 @@ five main kinds.
 \begin{enumerate}
 \item a sentence of the form (\ref{2017.02.06.eq1}) is an element of
 %
-$$B(\RR,\LM)=\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})$$
+$$B(\RR,\LM):=\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i})$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq2}) is an element of
 %
-$$Bt(\RR,\LM)=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times LM(\ff{n})\right)$$
+$$Bt(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times LM(\ff{n})\right)$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq3}) is an element of
 %
-$$\wt{B}(\RR,\LM)=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR(\ff{n})\times LM(\ff{n})\right)$$
+$$\wt{B}(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR(\ff{n})\times LM(\ff{n})\right)$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq4}) is an element of
 %
-$$Beq(\RR,\LM)=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times LM(\ff{n})\times LM(\ff{n})\right)$$
+$$Beq(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times LM(\ff{n})\times LM(\ff{n})\right)$$
 %
 \item a sentence of the form (\ref{2017.02.06.eq5}) is an element of
 %
-$$\wt{Beq}(\RR,\LM)=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})\right)$$
+$$\wt{Beq}(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})\right)$$
 %
 \end{enumerate}
 %
@@ -1111,8 +1116,9 @@ $x_0$ and $x_1$ as free variables, is a type family with two parameters
 $x_0:T_0$ and $x_1:T_1(x_0)$.
 
 Let $\Gamma=(x_0:T_0,\dots,x_{n-1}:T_{n-1})$. If the sentence
-(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.\editorfootnote{Why is this true?}  A
-sentence (\ref{2017.02.06.eq3}) with $n=0$, that is a sentence of the form $\rh
+(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.%
+\editorfootnote{Why is this true? Doesn't it depend on the precise form of the set of inference rules?}
+A sentence (\ref{2017.02.06.eq3}) with $n=0$, that is a sentence of the form $\rh
 t:T$, asserts that $T$ is a valid (closed) type expression and $t$ is a valid
 (closed) expression that describes an element of type $T$. For example, the
 element $0$ of $\nat$ in the Martin-L\"{o}f type theories is denoted by $O$ so
@@ -1125,7 +1131,8 @@ contain $x_0$, then the family of types is constant and the sentence
 to $T$.
 
 If the sentence (\ref{2017.02.06.eq4}) is valid than so are the sentences
-$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.\editorfootnote{Why is this true?}  The validity of
+$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.\editorfootnote{Why is this true? Doesn't it depend
+on the precise form of the set of inference rules?}  The validity of
 (\ref{2017.02.06.eq4}) asserts that the type expressions $T$ and $T'$ are {\em
   definitionally equal} in the context $\Gamma$.  The analogous meaning is
 assigned to sentences of the form (\ref{2017.02.06.eq5}).
@@ -1175,7 +1182,9 @@ this paper.
 
 If we write $x\notin \Gamma$ for the condition that $x$ is the name of a free
 variable not contained in the set of names declared in $\Gamma$, then this
-assertion\editorfootnote{What assertion?} can be expressed in the form of a pair of inference rules:\editorfootnote{This paragraph seems to have been marked ``incomplete'' by the author.}
+assertion\editorfootnote{What assertion?} can be expressed in the form of a pair of inference rules:%
+\editorfootnote{This paragraph seems to have been marked ``incomplete'' by the author.
+  I'll remove it.}
 %
 $$
 \frac{\Gamma\rh T\type \spc x\notin\Gamma\spc}{\Gamma, x:T\rh ok}
@@ -1221,8 +1230,10 @@ $Ob(CC)$ and $\wt{Ob}(CC)$ to $Ob$ and $\wt{Ob}$ respectively.
 
 The sets $(Ob,\wt{Ob})$ are equipped with a system of operations
 $(l,ft,\partial,T,S,\wt{T},\wt{S},\delta)$. Pairs of sets equipped with
-operations of such form are called (unital) pre-B-systems
-(cf.{} \cite{Bsystemsnew}). The first main result of \cite{Csubsystems},
+operations of such form are called (unital) pre-B-systems%
+% I can't figure out what reference is intended here. -- DRG
+%(cf.{} \cite{Bsystemsnew})
+.  The first main result of \cite{Csubsystems},
 Proposition 4.2, shows how to construct from a sub-pre-B-system $(B,\wt{B})$ of
 $(Ob,\wt{Ob})$ a sub-C-system of $CC$ whose associated pre-B-system is
 $(B,\wt{B})$. The second main result of that paper, Proposition 5.4, shows how
