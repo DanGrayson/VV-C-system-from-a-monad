@@ -1115,9 +1115,8 @@ family parametrized by $T_0$ and $T_2$, which is an expression that may contain
 $x_0$ and $x_1$ as free variables, is a type family with two parameters
 $x_0:T_0$ and $x_1:T_1(x_0)$.
 
-Let $\Gamma=(x_0:T_0,\dots,x_{n-1}:T_{n-1})$. If the sentence
-(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.%
-\editorfootnote{Why is this true? Doesn't it depend on the precise form of the set of inference rules?}
+Let $\Gamma=(x_0:T_0,\dots,x_{n-1}:T_{n-1})$.  In the theories we consider, if the sentence
+(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.
 A sentence (\ref{2017.02.06.eq3}) with $n=0$, that is a sentence of the form $\rh
 t:T$, asserts that $T$ is a valid (closed) type expression and $t$ is a valid
 (closed) expression that describes an element of type $T$. For example, the
@@ -1130,9 +1129,8 @@ contain $x_0$, then the family of types is constant and the sentence
 (\ref{2017.02.06.eq3}) is a syntactic representation of a function from $T_0$
 to $T$.
 
-If the sentence (\ref{2017.02.06.eq4}) is valid than so are the sentences
-$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.\editorfootnote{Why is this true? Doesn't it depend
-on the precise form of the set of inference rules?}  The validity of
+In the theories we consider, if the sentence (\ref{2017.02.06.eq4}) is valid than so are the sentences
+$\Gamma\rh T\type$ and $\Gamma\rh T'\type$.  The validity of
 (\ref{2017.02.06.eq4}) asserts that the type expressions $T$ and $T'$ are {\em
   definitionally equal} in the context $\Gamma$.  The analogous meaning is
 assigned to sentences of the form (\ref{2017.02.06.eq5}).
@@ -1172,26 +1170,26 @@ $\Gamma\equiv \Gamma'$ and the following two sentences are valid.
 \Gamma & \rh t\equiv t':T
 \end{flalign*}
 %
-It should be immediately clear from the asymmetry of these rules that in order
-for the definitional equality relations on sentences of the form
+
+In order for the definitional equality relations on sentences of the form
 (\ref{2017.02.06.eq1}), (\ref{2017.02.06.eq2}), and (\ref{2017.02.06.eq3}) to be
-equivalence relations the sets of sentences of various kinds should satisfy
+equivalence relations, the sets of sentences of various kinds should satisfy
 more conditions than the ones that we have mentioned so far. These conditions
 are among the conditions whose mathematical meaning is established in
 this paper.
 
-If we write $x\notin \Gamma$ for the condition that $x$ is the name of a free
-variable not contained in the set of names declared in $\Gamma$, then this
-assertion\editorfootnote{What assertion?} can be expressed in the form of a pair of inference rules:%
-\editorfootnote{This paragraph seems to have been marked ``incomplete'' by the author.
-  I'll remove it.}
-%
-$$
-\frac{\Gamma\rh T\type \spc x\notin\Gamma\spc}{\Gamma, x:T\rh ok}
-\spc\spc\spc
-\frac{\Gamma, x:T\rh ok}{\Gamma\rh T\type}
-$$
-%
+%%%%%%% [DRG]: I've removed this paragraph, as it refers to an known assertion and seems incomplete:  %%%%%%
+%% If we write $x\notin \Gamma$ for the condition that $x$ is the name of a free
+%% variable not contained in the set of names declared in $\Gamma$, then this
+%% assertion can be expressed in the form of a pair of inference rules:
+%% %
+%% $$
+%% \frac{\Gamma\rh T\type \spc x\notin\Gamma\spc}{\Gamma, x:T\rh ok}
+%% \spc\spc\spc
+%% \frac{\Gamma, x:T\rh ok}{\Gamma\rh T\type}
+%% $$
+%% %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% I've commented this fragment out and moved the inference to the place it
 %%%%% was first referred to.  --DRG
