@@ -1413,104 +1413,104 @@ completed today.
 %% valid judgments of a type theory must satisfy in order for the term C-system
 %% of this type theory to be defined.
 
-%% \subsection{Conventions}
+\subsection{Conventions}
 
-%% We use neither the axiom of excluded middle nor the axiom of choice. The paper
-%% is written in a formalization-ready style and should be easily formalizable
-%% both in {\em UniMath} and in ZFC.
+We use neither the axiom of excluded middle nor the axiom of choice. The paper
+is written in a formalization-ready style and should be easily formalizable
+both in {\em UniMath} and in ZFC.
 
-%% In categories, we use the {\em diagrammatic} order of composition, i.e., for morphisms $f:X\sr Y$
-%% and $g:Y\sr Z$ we write their composition as $f\circ g$, instead of as $g \circ f$.
+In categories, we use the {\em diagrammatic} order of composition, i.e., for morphisms $f:X\sr Y$
+and $g:Y\sr Z$ we write their composition as $f\circ g$, instead of as $g \circ f$.
 
-%% A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$
-%% connected by the operations of domain, codomain, identity and composition where
-%% composition is a partially defined operation. A functor $F:\C\sr \D$ is a pair
-%% of functions $F_{Ob}:Ob(\C)\sr Ob(\D)$, $F_{Mor}:Mor(\C)\sr Mor(\D)$ satisfying
-%% the well known conditions. We emphasize it here because it is also possible to
-%% define a category starting with a set $Ob(\C)$ and a {\em family} of sets
-%% $Mor_{\C}(X,Y)$ parametrized by $X,Y\in Ob(\C)$, where a {family} is understood
-%% in the sense of \cite[Remark 3.9]{fromunivwithPiI}. These two concepts are a
-%% little different from each other. For example there exists a category with
-%% $Ob(\C)=\{0,1\}$ and $Mor_{\C}(a,b)=\{0\}$ for all $a,b\in Ob(\C)$, in the
-%% sense of the second definition, but not in the sense of the first. Indeed, any
-%% category in the sense of the first definition has the property that
-%% %
-%% $$Mor(X,Y)\cap Mor(X',Y')=\emptyset$$
-%% %
-%% if $X\ne X'$ or $Y\ne Y'$. This property makes it necessary sometimes to
-%% perform additional constructions.\editorfootnote{Voevodsky
-%%   intended to give examples of such constructions.}
+A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$
+connected by the operations of domain, codomain, identity and composition where
+composition is a partially defined operation. A functor $F:\C\sr \D$ is a pair
+of functions $F_{Ob}:Ob(\C)\sr Ob(\D)$, $F_{Mor}:Mor(\C)\sr Mor(\D)$ satisfying
+the well known conditions. We emphasize it here because it is also possible to
+define a category starting with a set $Ob(\C)$ and a {\em family} of sets
+$Mor_{\C}(X,Y)$ parametrized by $X,Y\in Ob(\C)$, where a {family} is understood
+in the sense of \cite[Remark 3.9]{fromunivwithPiI}. These two concepts are a
+little different from each other. For example there exists a category with
+$Ob(\C)=\{0,1\}$ and $Mor_{\C}(a,b)=\{0\}$ for all $a,b\in Ob(\C)$, in the
+sense of the second definition, but not in the sense of the first. Indeed, any
+category in the sense of the first definition has the property that
+%
+$$Mor(X,Y)\cap Mor(X',Y')=\emptyset$$
+%
+if $X\ne X'$ or $Y\ne Y'$. This property makes it necessary sometimes to
+perform additional constructions.\editorfootnote{Voevodsky
+  intended to give examples of such constructions.}
 
-%% Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form
-%% of saying ``a family $y$, parametrized by $x$ in $A$, such that $y(x)$ is in
-%% $B(x)$''. For a way to define a family of sets in ZFC without a universe
-%% see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a
-%% set. However, families of sets with a given parameter set and such that all the
-%% sets of the family are subsets of given set do. A formulation in terms of
-%% iterated families can be used for ``for all'' expressions where there are
-%% several parameters, such as in Definition \ref{2015.12.22.def1}(3). Similarly, a
-%% ``collection of data'' is understood as an $n$-tuple, which in turn is understood as
-%% an iterated pair of the form $(\dots((-,-),-)\dots,-)$.
+Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form
+of saying ``a family $y$, parametrized by $x$ in $A$, such that $y(x)$ is in
+$B(x)$''. For a way to define a family of sets in ZFC without a universe
+see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a
+set. However, families of sets with a given parameter set and such that all the
+sets of the family are subsets of given set do. A formulation in terms of
+iterated families can be used for ``for all'' expressions where there are
+several parameters, such as in Definition \ref{2015.12.22.def1}(3). Similarly, a
+``collection of data'' is understood as an $n$-tuple, which in turn is understood as
+an iterated pair of the form $(\dots((-,-),-)\dots,-)$.
 
-%% We fix a universe $U$ without making precise what conditions on the set $U$ we
-%% require. It is clear that it is sufficient for all constructions of this paper
-%% to require $U$ to be a Grothendieck universe. However, it is likely that a much
-%% weaker set of conditions on $U$ is sufficient for our purposes. In all that
-%% follows we write $Sets$ instead of $Sets(U)$.
+We fix a universe $U$ without making precise what conditions on the set $U$ we
+require. It is clear that it is sufficient for all constructions of this paper
+to require $U$ to be a Grothendieck universe. However, it is likely that a much
+weaker set of conditions on $U$ is sufficient for our purposes. In all that
+follows we write $Sets$ instead of $Sets(U)$.
 
-%% \subsection{Acknowledgements}
+\subsection{Acknowledgements}
 
-%% This is one the papers extending the material which I started to work on in
-%% \cite{NTS}. I would like to thank the Institute Henri Poincare in Paris and the
-%% organizers of the ``Proofs'' trimester for their hospitality during the
-%% preparation of the first version of this paper. The work on this paper was
-%% facilitated by discussions with Benedikt Ahrens, Richard Garner, and Egbert
-%% Rijke.
+This is one the papers extending the material which I started to work on in
+\cite{NTS}. I would like to thank the Institute Henri Poincar\'e in Paris and the
+organizers of the ``Proofs'' trimester for their hospitality during the
+preparation of the first version of this paper. The work on this paper was
+facilitated by discussions with Benedikt Ahrens, Richard Garner, and Egbert
+Rijke.
 
-%% Work on this paper was supported by NSF grant 1100938.
+Work on this paper was supported by NSF grant 1100938.
 
-%% This material is based on research sponsored by The United States Air
-%%   Force Research Laboratory under agreement number FA9550-15-1-0053. The US
-%%   Government is authorized to reproduce and distribute reprints for
-%%   Governmental purposes notwithstanding any copyright notation thereon.
-%% The views and conclusions contained herein are those of the author and should
-%% not be interpreted as necessarily representing the official policies or
-%% endorsements, either expressed or implied, of the United States Air Force
-%% Research Laboratory, the U.S. Government or Carnegie Mellon University.
+This material is based on research sponsored by The United States Air
+  Force Research Laboratory under agreement number FA9550-15-1-0053. The US
+  Government is authorized to reproduce and distribute reprints for
+  Governmental purposes notwithstanding any copyright notation thereon.
+The views and conclusions contained herein are those of the author and should
+not be interpreted as necessarily representing the official policies or
+endorsements, either expressed or implied, of the United States Air Force
+Research Laboratory, the U.S. Government or Carnegie Mellon University.
 
-%% \subsection{A note from the editor}
+\subsection{A note from the editor}
 
-%% After the death of Vladimir Voevodsky in
-%% September, 2017, Daniel Grayson was appointed as the {\em academic executor},
-%% in order to help arrange for the publication of his works.  This paper had been
-%% submitted for publication, comments had been received twice from the referee,
-%% and the paper had been extensively revised and expanded in response to the
-%% referee's remarks.  Grayson has edited the paper, which was found
-%% to be in a rough state.  Much of the work was cosmetic, aimed at improving the
-%% use of the English language.  Where anything substantively mathematical is
-%% involved, a footnote from the editor has been appended.\editorfootnote{... such
-%%   as this one.}
-%% In order to make it possible and convenient for readers to review the editor's
-%% changes, all existing versions of the paper were entered into a {\em github}
-%% repository, and editing was done in an incremental fashion, with {\em commit
-%%   messages} describing the work done at each step.  The repository is visible
-%% at
-%% \hfill\break\centerline{\tiny{\tt \href{https://github.com/DanGrayson/VV-C-system-from-a-monad}{https://github.com/DanGrayson/VV-C-system-from-a-monad}%
-%%   } ,}
-%% and the differences made from one version to the next can be displayed.
-%% The paper is visible as an entry in the archival record of Voevodsky's work at
-%% \hfill\break\centerline{\tiny{\tt \href{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}%
-%%   } ,}
-%% and a link there will allow the reader to view all existing drafts of the paper.
-%% If those links are ever broken, perhaps a search for the randomly chosen string
-%% \hfill\break\centerline{\tiny{\tt 808d59c861bd87b38873e2d2e288511453262b1e}}
-%% will allow the files to be located.
+After the death of Vladimir Voevodsky in
+September, 2017, Daniel Grayson was appointed as the {\em academic executor},
+in order to help arrange for the publication of his works.  This paper had been
+submitted for publication, comments had been received twice from the referee,
+and the paper had been extensively revised and expanded in response to the
+referee's remarks.  Grayson has edited the paper, which was found
+to be in a rough state.  Much of the work was cosmetic, aimed at improving the
+use of the English language.  Where anything substantively mathematical is
+involved, a footnote from the editor has been appended.\editorfootnote{... such
+  as this one.}
+In order to make it possible and convenient for readers to review the editor's
+changes, all existing versions of the paper were entered into a {\em github}
+repository, and editing was done in an incremental fashion, with {\em commit
+  messages} describing the work done at each step.  The repository is visible
+at
+\hfill\break\centerline{\tiny{\tt \href{https://github.com/DanGrayson/VV-C-system-from-a-monad}{https://github.com/DanGrayson/VV-C-system-from-a-monad}%
+  } ,}
+and the differences made from one version to the next can be displayed.
+The paper is visible as an entry in the archival record of Voevodsky's work at
+\hfill\break\centerline{\tiny{\tt \href{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}{http://www.math.ias.edu/Voevodsky/voevodsky-publications\_abstracts.html\#1602.00352}%
+  } ,}
+and a link there will allow the reader to view all existing drafts of the paper.
+If those links are ever broken, perhaps a search for the randomly chosen string
+\hfill\break\centerline{\tiny{\tt 808d59c861bd87b38873e2d2e288511453262b1e}}
+will allow the files to be located.
 
-%% References to formal results in the UniMath repository \cite{UniMath} may be
-%% taken to refer to the version after the submission of commit number
-%% \hfill\break\centerline{\tiny{\tt 8c09aea37fe46704df2a444a74bb5095c2f91a89}.}
+References to formal results in the UniMath repository \cite{UniMath} may be
+taken to refer to the version after the submission of commit number
+\hfill\break\centerline{\tiny{\tt 8c09aea37fe46704df2a444a74bb5095c2f91a89}.}
 
-%% %###??? Make a note that we do not use dependent types in the paper which is why we can not simply write Hom(\wh{n},\wh{m})=R(stn(n))^{stn(m)}
+%###??? Make a note that we do not use dependent types in the paper which is why we can not simply write Hom(\wh{n},\wh{m})=R(stn(n))^{stn(m)}
 
 \section{Relative monads and left modules over relative monads}
 
