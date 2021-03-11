@@ -320,7 +320,7 @@ judgments as the source for the construction and build from them a
 C-system. The term C-system of a type theory with a given raw syntax is then a
 sub-quotient of the raw syntax C-system. The raw syntax C-system can be either
 defined directly in a way that allows for a straightforward rigorous
-verification of all the axioms, see Remark \ref{}, or understood from the
+verification of all the axioms, or it can be understood from the
 perspective of the abstract mathematical theory of C-systems as a particular
 case of a more general construction of presheaf extensions of C-systems. In
 this paper we follow the second path, which also allows us to connect our
@@ -1093,12 +1093,7 @@ is an expression and the sentence $0:\nat\rh ok$ is valid.
 
 One often uses the words ``type'', ``type expression'' and ``expression that
 describes a type'' interchangeably. The same applies to ``element'', ``element
-expression'' and ``expression that describes an element''.\editorfootnote{
-  This is a sensible convention for a paper about type theory
-  written with ZFC as metatheory, but in a paper on a general mathematical
-  topic with Univalent Foundations as the metatheory, the convention would not
-  be used, for there, types are mathematical objects, not all of which can be
-  represented by expressions.}
+expression'' and ``expression that describes an element''.
 
 A sentence of the form $0:T_0,1:T\rh ok$ asserts that $T_0$ is a valid closed
 type expression, and that $T$ is an expression with the only possible free variable
@@ -1238,15 +1233,13 @@ $(B,\wt{B})$. The second main result of that paper, Proposition 5.4, shows how
 to construct, from a pair of equivalence relations $(\sim,\approx)$ on $Ob$ and
 $\wt{Ob}$ respectively that satisfies certain conditions, a quotient C-system
 of $CC$ whose associated pre-B-system is $(Ob/{\sim},\wt{Ob}/\approx)$. These
-conditions are shown in Proposition \ref{} of the present paper\editorfootnote{I can't find such a proposition.} to be
+conditions are shown in Proposition X.A\editorfootnote{Apparently this proposition was not added to the paper.} of the present paper to be
 compatible with isomorphisms of pre-B-systems.
 
 After defining $C(\RR,\LM)$ in section \ref{CRRLM}
 %### a little more words, functoriality
-we define, in Construction \ref{}, a pre-B-system structure on the sets%
-\editorfootnote{Where's the definition of $B(\RR,\LM)$, etc.?  Does it amount to a construction of a B-system directly from a relative monad?}
-$(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Construction \ref{}, an isomorphism%
-\editorfootnote{Did that part of the paper not get written?}
+we define, in Construction X.B\editorfootnote{Apparently this construction was not added to the paper.}, a pre-B-system structure on the sets
+$(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Construction X.C\editorfootnote{Apparently this construction was not added to the paper.}, an isomorphism
 between this pre-B-system and the pre-B-system of $C(\RR,\LM)$.
 
 Using this isomorphism we formulate the conditions on subsets $B\subseteq B(\RR,\LM)$
@@ -1260,10 +1253,9 @@ the subsets of $(Ob(C(\RR,\LM))$ and $\wt{Ob}(C(\RR,LM)))$ corresponding to $B$ 
 $\wt{B}$ satisfy the conditions of \cite[Prop. 5.4]{Csubsystems}, and therefore
 define a (regular) quotient of the C-system corresponding to $(B,\wt{B})$.
 
-Summing it up in Construction \ref{} we obtain a construction, for any four
+Summing it up in Construction X.D\editorfootnote{Apparently this construction was not added to the paper.} we obtain a construction, for any four
 subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying certain conditions, of a
-C-system. This is the final construction of the paper.%
-\editorfootnote{Did that construction not get written?  Probably not, as the symbol $Beq$ occurs only in the introduction.}
+C-system. This is the final construction of the paper.
 
 It should be possible to approach this construction in a more direct
 way. First, one would define the concept of a B-system as a pre-B-system whose
@@ -1489,7 +1481,9 @@ referee's remarks.  Grayson has edited the paper, which was found
 to be in a rough state.  Much of the work was cosmetic, aimed at improving the
 use of the English language.  Where anything substantively mathematical is
 involved, a footnote from the editor has been appended.\editorfootnote{... such
-  as this one.}
+  as this one.}  Some of the results mentioned at the end of the introduction above
+seem to be missing from the paper and have been flagged with such footnotes.
+
 In order to make it possible and convenient for readers to review the editor's
 changes, all existing versions of the paper were entered into a {\em github}
 repository, and editing was done in an incremental fashion, with {\em commit
@@ -1505,10 +1499,6 @@ and a link there will allow the reader to view all existing drafts of the paper.
 If those links are ever broken, perhaps a search for the randomly chosen string
 \hfill\break\centerline{\tiny{\tt 808d59c861bd87b38873e2d2e288511453262b1e}}
 will allow the files to be located.
-
-References to formal results in the UniMath repository \cite{UniMath} may be
-taken to refer to the version after the submission of commit number
-\hfill\break\centerline{\tiny{\tt 8c09aea37fe46704df2a444a74bb5095c2f91a89}.}
 
 %###??? Make a note that we do not use dependent types in the paper which is why we can not simply write Hom(\wh{n},\wh{m})=R(stn(n))^{stn(m)}
 
@@ -2009,7 +1999,7 @@ This completes Construction \ref{2017.03.12.constr2}.
 \ec
 %
 
-The following construction, together with Construction \ref{}, is used to
+The following construction is used to
 extract pairs $(\RR,\LM)$ consisting of a relative monad and a left module over it from
 two-sorted relative monads, such as the ones that arise from two-sorted
 second-order signatures, see \cite{AMM2017}.
@@ -4107,7 +4097,7 @@ $LM_{Mor}(f)(E)$ when needed.
 \llabel{2015.08.18.rem1} 
 If we think of $E\in LM(\wh{n})$ as of an expression
 in variables $0,\dots,n-1$, then the action of $RR(n,m)$ on $LM(\wh{n})$ can be
-thought of as the substitution. This analogy can be used to introduce the
+thought of as substitution. This analogy can be used to introduce the
 notation when for $f=(f(0),\dots,f(n-1))\in RR(n,m)$ and $E\in LM(\wh{n})$ one
 writes $f(E)$ as
 %
