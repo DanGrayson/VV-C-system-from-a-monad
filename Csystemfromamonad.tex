@@ -487,6 +487,29 @@ monad.
 
 {\em This is how relative monads appear in the theory of expressions with variables.}
 
+For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from $X$
+to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each function is a
+triple $(X,Y,G)$, where $G$ is the graph of the function, and thus each
+function has a well defined domain and codomain.
+
+For any set $U$ there is a category $Sets(U)$ of the following form. The set of
+objects of $Sets(U)$ is $U$. The set of morphisms is
+%
+$$Mor(Sets(U))=\cup_{X,Y\in U}Fun(X,Y).$$
+%
+The domain and codomain functions are well
+defined on $Mor(Sets(U))$, in such a way that
+%
+$$Mor_{Sets(U)}(X,Y)=Fun(X,Y),$$
+%
+and a composition function can be defined that restricts to composition of
+functions on each $Mor_{Sets(U)}(X,Y)$. Finally, one defines the identity function
+$U\sr Mor(Sets(U))$, and the collection of data that one obtains
+satisfies the axioms of a category.  This category is called the {\em category of
+sets in $U$} and is denoted by $Sets(U)$.
+
+We will consider only the case when $U$ is a universe.  We fix $U$ and will write simply $Sets$ for $Sets(U)$.
+
 Next, following \cite{FPT}, we let $\FF$ denote the category with set of
 objects $\nat$ and with set of morphisms
 %
@@ -496,11 +519,8 @@ Mor(\FF):=\cup_{m,n}Fun(stn(m),stn(n)),
 \end{equation}%
 %
 where $stn(m):=\{i\in\nat\,|\,i<m\}$ is our choice for the standard set with $m$
-elements, and where, for two sets $X$ and $Y$, $Fun(X,Y)$ is the set of functions
-from $X$ to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each
-function has a well defined domain and codomain\editorfootnote{Thus a function is a triple
-  consisting of the domain, the codomain, and the graph of the function, as a set of pairs.}.
-Then the union in (\ref{2017.02.24.eq1}) is disjoint and we set
+elements (as done in \cite{LandC}).
+The union in (\ref{2017.02.24.eq1}) is disjoint and we set
 %
 $$Mor_{\FF}(m,n):=Fun(stn(m),stn(n)).$$
 %
@@ -508,8 +528,10 @@ It is sometimes convenient to distinguish natural numbers used as objects of
 $\FF$ from their other uses. For this purpose we will write $\ff{n}$ for $n$
 used as an object of $\FF$.
 
-Let $Jf:\FF\sr Sets(U)$ be the functor given by $\ff{n}\mapsto stn(n)$ on
-objects and by inclusion of the sets of morphisms on morphisms.
+Following \cite{ACU} we let $Jf:F\sr Sets$ denote the functor that takes $\ff n$ to
+$stn(n)$ and that is the identity on morphisms between two objects.  (On the
+total sets of morphisms the morphism component of this functor is the inclusion
+of a subset).
 
 Assume that $\nat\cap Op=\emptyset$. Then our previous construction applies to
 $V=\nat$. Consider the functor $\Phi:\FF\sr Sets(2^{\nat})$ that takes $\ff{n}$
@@ -1430,8 +1452,7 @@ category in the sense of the first definition has the property that
 $$Mor(X,Y)\cap Mor(X',Y')=\emptyset$$
 %
 if $X\ne X'$ or $Y\ne Y'$. This property makes it necessary sometimes to
-perform additional constructions.\editorfootnote{Voevodsky
-  intended to give examples of such constructions.}
+perform additional constructions.
 
 Note that the expression ``for all $x$ in $A$, a $y(x)$ in $B(x)$'' is a form
 of saying ``a family $y$, parametrized by $x$ in $A$, such that $y(x)$ is in
@@ -1440,7 +1461,7 @@ see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a
 set. However, families of sets with a given parameter set and such that all the
 sets of the family are subsets of given set do. A formulation in terms of
 iterated families can be used for ``for all'' expressions where there are
-several parameters, such as in Definition \ref{2015.12.22.def1}(3). Similarly, a
+several parameters, such as in Definition \ref{2015.12.22.def1}, item (3). Similarly, a
 ``collection of data'' is understood as an $n$-tuple, which in turn is understood as
 an iterated pair of the form $(\dots((-,-),-)\dots,-)$.
 
@@ -2276,7 +2297,7 @@ equivalent in the following sense.
 \begin{problem}
 \llabel{2017.04.03.prob1} 
 Given categories $\C$, $\E$, a monad
-$\RR=(RR_{Ob},\eta,rr)$ on $\C$, and a function $LM_{Ob}:Ob(\C)\sr Ob(\E)$ to
+$\RR=(RR_{Ob},\eta,rr)$ on $\C$, and a function $LM_{Ob}:Ob(\C)\sr Ob(\E)$, to
 construct a bijection between the following two sets:
 %
 \begin{enumerate}
@@ -2628,10 +2649,10 @@ $$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A}))).$$
 \subsection{Generalities}
 \llabel{onCsystems}
 %
-The definition of ``C-system'' is given in \cite[Def. 2.1,
-  2.3]{Csubsystems}. Homomorphisms of C-systems are defined in \cite[Def. 3.1,
+The definition of \emph{C-system} is given in \cite[Def. 2.1,
+  2.3]{Csubsystems}.  \emph{Homomorphisms} of C-systems are defined in \cite[Def. 3.1,
   p 1188]{Cfromauniverse}. In \cite[Lemma 3.4, p.~1190]{Cfromauniverse} it is
-shown that for two C-systems $CC_1, CC_2$ a homomorphism between the underlying
+shown that for C-systems $CC_1$ and $CC_2$, a homomorphism between the underlying
 C0-systems is always a homomorphism of C-systems.
 
 Further study of C-systems can be found in \cite[Sec. 2, pp. 1048-1064]{fromunivwithPiI}. 
@@ -2920,7 +2941,7 @@ pair of mutually inverse equivalences of categories.
 
 However these equivalences are not isomorphisms unless $F(X)\cong unit$ for all
 $X$ and as a C-system $CC[F]$ is often very different from $CC$, for example,
-in that that it may have many more C-subsystems.
+in that it may have many more C-subsystems.
 \end{remark}
 %
 We provide the following lemma without a proof because the proof is immediate
@@ -3002,11 +3023,10 @@ For the successor of $i$ we need to show that
     F(q(f,ft(Y),i))(T'_{ly-1})))
   \end{split}
 \end{equation}%
-EDITOR: check parentheses in the equation above.
 %
 We have by (\ref{2016.01.31.eq2}),  
 %
-$$f^*((Y,\Gamma'),i+1)=q(f,ft((Y,\Gamma')),i)^*((Y,\Gamma'))$$
+$$f^*((Y,\Gamma'),i+1)=q(f,ft((Y,\Gamma')),i)^*((Y,\Gamma')).$$
 %
 By the inductive assumption, $q(f,ft((Y,\Gamma')),i)$ is a morphism with the domain
 %
@@ -3099,43 +3119,7 @@ which coincides with our goal (\ref{2016.01.31.eq3}).
 \llabel{Jfrel}
 %
 
-For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from
-$X$ to $Y$.
-
-Next, following \cite{FPT}, we let $\FF$ denote the category with set of
-objects $\nat$ and with the set of morphisms from $m$ to $n$ being
-$Fun(stn(m),stn(n))$, where $stn(m)=\{i\in\nat\,|\,i<m\}$ is our choice for the
-standard set with $m$ elements (as done in \cite{LandC}), and where for two sets $X$
-and $Y$, $Fun(X,Y)$ is the set of functions from $X$ to $Y$, defined as in
-\cite[p.~81]{Bourbaki.Sets}, so that each function has a well defined domain
-and codomain.
-
-For any set $U$ there is a category $Sets(U)$ of the following form. The set of
-objects of $Sets(U)$ is $U$. The set of morphisms is
-%
-$$Mor(Sets(U))=\cup_{X,Y\in U}Fun(X,Y).$$
-%
-Since a function from $X$ to $Y$ is defined as a triple $(X,Y,G)$, where $G$ is
-the graph of the function, the domain and codomain functions are well
-defined on $Mor(Sets(U))$, in such a way that
-%
-$$Mor_{Sets(U)}(X,Y)=Fun(X,Y),$$
-%
-and a composition function can be defined that restricts to the composition of
-functions function on each $Mor_{Sets(U)}(X,Y)$. Finally, one defines the identity function
-$U\sr Mor(Sets(U))$, and the collection of data that one obtains
-satisfies the axioms of a category.  This category is called the {\em category of
-sets in $U$} and is denoted by $Sets(U)$.
-
-We will consider only the case when $U$ is a universe. As was mentioned in the
-introduction we fix $U$ and omit it from our notations below.
-
-Following \cite{ACU} we let $Jf:F\sr Sets$ denote the functor that takes $n$ to
-$stn(n)$ and that is the identity on morphisms between two objects (on the
-total sets of morphisms the morphism component of this functor is the inclusion
-of a subset).
-
-As the following construction shows any monad on sets defines a $Jf$-relative
+As the following construction shows, any monad on sets defines a $Jf$-relative
 monad. Combined with our construction of $C(\RR)$ this gives a construction of
 a C-system for any monad on sets.
 
@@ -3801,7 +3785,7 @@ To show that this is a bijection let us construct the inverse bijection. For $n\
 %
 $$mb_{\RR}^!(n,o)=(x_0^n,\dots,x_{n-1}^n,o)$$
 %
-The fact that these functions are mutually inverse follows easily from Lemma \ref{2015.08.22.l7}..
+The fact that these functions are mutually inverse follows easily from Lemma \ref{2015.08.22.l7}.
 \ec
 %
 
