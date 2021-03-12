@@ -469,24 +469,6 @@ the second is done, in the concrete world of computer programs, by programs
 called parsers, and there is a beautiful mathematical theory behind it that
 many of us are robbed of the joy of learning.
 
-Let $U$ be a universe that contains $Op$, $V$, and $Exp(X)$ for all $X\subset V$.
-Let $2^V$ denote the set of subsets of $V$,
-let $Sets(2^V)$ be the category of sets whose set of objects is $2^V$, let
-$Sets(U)$ be the category of sets whose set of objects is $U$, and let
-$J_V:Sets(2^V)\sr Sets(U)$ be the inclusion functor.
-
-We may consider $Exp$ as a function $2^V\sr U$. In the chosen representation of
-expressions one can construct the {\em substitution} operation, which for any
-$X,Y\subset V$ and for any $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)\sr Exp(Y)$.
-In addition, for any $X\subset V$ one can define the function
-$\eta_{X}:X\sr Exp(X)$, which sends a variable $x$ to the expression consisting of
-just that variable.
-The triple $(Exp,\eta,\mbind{-})$ satisfies the
-conditions of Definition \ref{2015.12.22.def1}, thereby making it into a $J_V$-relative
-monad.
-
-{\em This is how relative monads appear in the theory of expressions with variables.}
-
 For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from $X$
 to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each function is a
 triple $(X,Y,G)$, where $G$ is the graph of the function, and thus each
@@ -507,8 +489,23 @@ functions on each $Mor_{Sets(U)}(X,Y)$. Finally, one defines the identity functi
 $U\sr Mor(Sets(U))$, and the collection of data that one obtains
 satisfies the axioms of a category.  This category is called the {\em category of
 sets in $U$} and is denoted by $Sets(U)$.
+We fix a universe $U$, and we will write simply $Sets$ for $Sets(U)$.
 
-We will consider only the case when $U$ is a universe.  We fix $U$ and will write simply $Sets$ for $Sets(U)$.
+Let $U$ be a universe that contains $Op$, $V$, and $Exp(X)$ for all $X\subset V$.
+Let $2^V$ denote the set of subsets of $V$, and let
+$J_V:Sets(2^V)\sr Sets(U)$ be the inclusion functor.
+
+We may consider $Exp$ as a function $2^V\sr U$. In the chosen representation of
+expressions one can construct the {\em substitution} operation, which for any
+$X,Y\subset V$ and for any $f:X\sr Exp(Y)$, defines a function $\mbind{f}:Exp(X)\sr Exp(Y)$.
+In addition, for any $X\subset V$ one can define the function
+$\eta_{X}:X\sr Exp(X)$, which sends a variable $x$ to the expression consisting of
+just that variable.
+The triple $(Exp,\eta,\mbind{-})$ satisfies the
+conditions of Definition \ref{2015.12.22.def1}, thereby making it into a $J_V$-relative
+monad.
+
+{\em This is how relative monads appear in the theory of expressions with variables.}
 
 Next, following \cite{FPT}, we let $\FF$ denote the category with set of
 objects $\nat$ and with set of morphisms
@@ -537,7 +534,7 @@ Assume that $\nat\cap Op=\emptyset$. Then our previous construction applies to
 $V=\nat$. Consider the functor $\Phi:\FF\sr Sets(2^{\nat})$ that takes $\ff{n}$
 to $stn(n)$ and that is the inclusion of the sets of morphisms.
 
-Relative monads on a functor $\C_1\sr \C_2$ can be precomposed with functors $\C_0\sr\C_1$; see Construction \ref{2017.02.24.constr1}. Precomposing the monad of expressions ${\bf Exp}^{\nat}$ with $\Phi$ and observing that $\Phi\circ J_{\nat}=Jf$, we obtain, for any algebraic signature $Sig$ such that $Op\cap \nat=\emptyset$, a $Jf$-relative monad, which we will denote by ${\bf Exp}_{Sig}$. 
+Relative monads on a functor $\C_1\sr \C_2$ can be precomposed with functors $\C_0\sr\C_1$; see Construction \ref{2017.02.24.constr1}. Precomposing the monad of expressions ${\bf Exp}^{\nat}$ with $\Phi$ and observing that $\Phi\circ J_{\nat}=Jf$, we obtain, for any algebraic signature $Sig$ such that $Op\cap \nat=\emptyset$, a $Jf$-relative monad, which we will let ${\bf Exp}_{Sig}$ denote. 
 
 {\em This is how $Jf$-relative monads appear in the theory of algebraic expressions.} 
 
@@ -643,7 +640,7 @@ there is an most one $k$ such that $x_k=x$. If such a $k$ exists, then $E$ has
 no free variables, and if it does not, then $E$ has one free variable, namely $x$.
 
 If $x$ is a free variable, then we can substitute another expression $E'$ of the
-same form for $x$, yielding an expression denoted $E[E'/x]$.  However, we can not do it directly. Instead we have to use
+same form for $x$, yielding an expression denoted by $E[E'/x]$.  However, we can not do it directly. Instead we have to use
 something called {\em capture avoiding substitution} to avoid the
 ``capture'' of variable names by binders. For example, let $E=\lambda\,x_0.x$,
 where $x$ is free, and let $E'=x'$ be a variable.  Then we have two cases---if $x_0\ne x'$, then we
@@ -968,8 +965,8 @@ sorted signatures. For the formalization of this construction in {\em UniMath} s
 We regard the first factor of $Sets(U)\times Sets(U)$ as corresponding to element expressions
 and the second factor as corresponding to type expressions.
 Choosing an object $PrTy$ of $Sets(U)$ and applying Construction
-\ref{2017.04.23.constr1} we obtain a monad on $Sets(U)$. Let us denote it by
-$\RR^*$. Applying Construction \ref{2017.04.23.constr3} we obtain a module
+\ref{2017.04.23.constr1} we obtain a monad on $Sets(U)$. Let
+$\RR^*$ denote it.  Applying Construction \ref{2017.04.23.constr3} we obtain a module
 $\LM^*$ over this monad with values in $Sets(U) \times Sets(U)$.  Precomposing with the
 functor $Jf:\FF\sr Sets(U)$ using Constructions \ref{2017.02.24.constr1} and
 \ref{2017.03.12.constr1} and post-composing with the projection functor
@@ -2074,7 +2071,7 @@ Let $\C$, $\D$, and $\D'$ be categories, $J:\C\sr \D\times\D'$ be a functor, and
 $\RR=(RR,\eta,rr)$ be a $J$-relative monad. Assume in addition that we are given
 an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$.
 
-The problem is to construct a structure of a $J_{\D}$-monad on $RR_{\D}$. This $J_{\D}$-monad will be denoted $\RR_{\D}$.
+The problem is to construct a structure of a $J_{\D}$-monad on $RR_{\D}$. This $J_{\D}$-monad will be denoted by $\RR_{\D}$.
 \end{problem}
 %
 \begin{construction}\rm
@@ -2097,7 +2094,7 @@ Let $X\in\C$. Then $\eta_X$ is a morphism from $J(X)$ to $RR(X)$. We set
 \eta^{\D}_X=pr_{\D}(\eta_X):J_{\D}(X)\sr RR_{\D}(X)
 \end{equation}%
 %
-We will also consider $pr_{\D'}(\eta_X)$ that we will denote by $\eta^{\D'}_X$. 
+We will also consider $pr_{\D'}(\eta_X)$, which will be denoted by $\eta^{\D'}_X$. 
 
 Let $X,Y\in\C$ and $f:J_{\D}(X)\sr RR_{\D}(Y)$. We need to construct a morphism
 $RR_{\D}(X)\sr RR_{\D}(Y)$. We have $\nu_{X,Y}:J_{\D'}(X)\sr J_{\D'}(Y)$ and
@@ -2224,7 +2221,7 @@ $J$-monad $J^{\circ}(\RR)$. It satisfies the conditions of Problem
 \ref{2017.04.21.prob1} with respect to the identity object constancy structure
 corresponding to $A$. Therefore, Constructions \ref{2017.04.21.constr1} applies
 and we obtain a $J\circ pr_{\C}$-monad $(J^{\circ}(\RR))^{\D}$. Since $J\circ
-pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$, which we denote by
+pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$, which will be denoted by
 $\RR_{1,A}$. Explicitly, for $\RR=(RR,\eta,rr)$, we have
 $\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$, where:
 %
@@ -2662,7 +2659,7 @@ that $\Gamma'$ is over $\Gamma$ if $l(\Gamma')\ge l(\Gamma)$ and
 $ft^{l(\Gamma')-l(\Gamma)}(\Gamma')=\Gamma$. We write $\Gamma'>\Gamma$ if
 $\Gamma'\ge \Gamma$ and $l(\Gamma')>l(\Gamma)$.
 
-If $\Gamma'$ is over $\Gamma$ we will denote by $p_{\Gamma',\Gamma}$ the
+If $\Gamma'$ is over $\Gamma$ we let $p_{\Gamma',\Gamma}$ denote the
 obvious composition of the $p$-morphisms starting with $\Gamma'$ and ending in
 $\Gamma$.
 
@@ -2672,7 +2669,7 @@ $f:\Gamma''\sr \Gamma'$ is over $\Gamma$ if
 $$f\circ p_{\Gamma',\Gamma}=p_{\Gamma'',\Gamma}$$
 %
 If $\Delta'$ is an object over $\Delta$ and $f:\Gamma\sr \Delta$ is a morphism
-then we denote simply by $f^*(\Delta')$ the object $f^*(\Gamma',n)$, where
+then we will let $f^*(\Delta')$ denote the object $f^*(\Gamma',n)$, where
 $n=l(\Gamma')-l(\Delta)$. Note that $n$ can always be inferred from $f$ and
 $\Gamma'$.
 
@@ -2771,7 +2768,7 @@ C-system. For the definition of ``C0-system'' see \cite[Definition
 %
 \begin{problem}\llabel{2016.01.19.prob1}
 Given a C-system $CC$ and a presheaf $F:CC^{op}\sr Sets$ to construct a
-C0-system that will be denoted $CC[F]$ and called the {\em $F$-extension of $CC$}.
+C0-system that will be denoted by $CC[F]$ and called the {\em $F$-extension of $CC$}.
 \end{problem}
 %
 \begin{construction}\rm\llabel{2016.01.19.constr1}
@@ -3403,7 +3400,7 @@ where the first equality is by Lemma \ref{2015.08.26.l2} and the second one by
 \llabel{CRR}
 
 In \cite{LandC} we constructed for any Lawvere theory $(T,L)$ a C-system
-$LC((T,L))$. For $(T,L)=RML(\RR)$ we denote the C-system $LC((T,L))$ by
+$LC((T,L))$. For $(T,L)=RML(\RR)$ we will let the C-system $LC((T,L))$ be denoted by
 $C(\RR)$. In this section we first provide a more explicit description of
 $C(\RR)$ and then compute the action of the operations $T,\wt{T},S,\wt{S}$ and
 $\delta$ on the B-sets $$(Ob(C(\RR)),\wt{Ob}(C(\RR)))$$ of this C-system
@@ -4105,7 +4102,7 @@ defined on objects by $\wh{n}\mapsto RR(n)$ and on morphisms by
 %
 $$f\mapsto (s\mapsto\mbind{f}(s))$$
 %
-for $f:\wh{m}\sr \wh{n}$ and $s\in RR(n)$. We will denote this functor by the
+for $f:\wh{m}\sr \wh{n}$ and $s\in RR(n)$.  This functor will be denoted by the
 same symbol $\RR$ as the underlying $Jf$-relative monad.
 
 This functor is isomorphic to the (contravariant) functor represented by the
