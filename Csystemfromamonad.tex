@@ -14,6 +14,30 @@
 %\usepackage{amscd, amssymb}
 %\usepackage{enumerate}
 %
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\UseOption{draft}  % Toggle this line to show/hide todo-notes, table of contents, etc.
+\usepackage[draft]{optional}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}%to do list and comments
+
+\newcommand{\plan}[1]{}
+\newcommand{\BA}[1]{}
+\newcommand{\DG}[1]{}
+\opt{draft}{
+   \renewcommand{\plan}[1]{\todo[color=blue!30]{Plan: #1}\PackageWarning{TODO}{Plan: #1}}
+   \renewcommand{\BA}[1]{\todo[color=orange!30]{BA: #1} \PackageWarning{TODO}{BA: #1}}
+   \renewcommand{\DG}[1]{\todo[color=green!30]{DG: #1}\PackageWarning{TODO}{DG: #1}}
+}
+
+\newcommand{\issue}[1]{\href{https://github.com/DanGrayson/VV-C-system-from-a-monad/issues/#1}{Issue #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Maybe we decide that this would be useful.
+%\usepackage{lineno}\linenumbers
+
+
 \usepackage{enumitem}
 \setlist[enumerate]{topsep=0pt,itemsep=.5ex,partopsep=1ex,parsep=1ex}
 \setenumerate[1]{label=(\arabic*)}
@@ -200,6 +224,7 @@ construction of the term C-systems of type theories.\end{abstract}
 \maketitle
 
 \tableofcontents
+
 
 \section{Introduction}
 
@@ -438,6 +463,7 @@ Having {\em UniMath} as a secondary metatheory imposes strong
 restrictions on the features of ZFC that we can use.  Most
 notably, we can not use the law of excluded middle and we can not use the axiom
 of choice.
+\DG{Fix this paragraph!}
 
 Let us go back to the concept of abstract expression. Let us consider the
 case of algebraic expressions first.  The modern mathematical theory of algebraic
@@ -4639,5 +4665,7 @@ formalize in systems such as {\em HOL}.
 
 \bibliography{alggeom}
 \bibliographystyle{plain}
+
+% \listoftodos  % does not work with amsart, see https://groups.google.com/g/comp.text.tex/c/jiA1XWJc3ck
 
 \end{document}
