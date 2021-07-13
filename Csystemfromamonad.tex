@@ -49,8 +49,8 @@
 %
 \textwidth = 6 in
 \textheight = 9 in
-\oddsidemargin = 0.0 in
-\evensidemargin = 0.0 in
+\oddsidemargin = 0 in
+\evensidemargin = .5 in
 %\topmargin = 0.0 in
 %\headheight = 0.0 in
 %\headsep = 0.0 in
@@ -664,7 +664,7 @@ particular, we can always rename the variables $x_i$ so that $x_i\ne x_j$ for $i
 there is at most one $k$ such that $x_k=x$. If such a $k$ exists, then $E$ has
 no free variables, and if it does not, then $E$ has one free variable, namely $x$.
 
-If $x$ is a free variable, then we can substitute another expression $E'$ of the
+If $x$ is a free variable in $E$, then we can substitute another expression $E'$ of the
 same form for $x$, yielding an expression denoted by $E[E'/x]$.  However, we can not do it directly. Instead we have to use
 something called {\em capture avoiding substitution} to avoid the
 ``capture'' of variable names by binders. For example, let $E=\lambda\,x_0.x$,
@@ -929,9 +929,10 @@ two smaller subsets $ElExp_{Sig_2}[V,Y]$ and $TyExp_{Sig_2}[V,Y]$, where the
 first one consists of expressions of sort ``element'', and the second one of
 expressions of sort ``type''.
 
-Next, for a subset $X$ of $V$ let $Exp^{\cdot}_{Sig_2}(X,Y)$ be the subset of
+Next, for a subset $X$ of $V$ let $Exp^{\cdot}_{Sig_2}(X,Y)$\DG{How does $Exp^{\cdot}_{Sig_2}(X,Y)$ differ from $Exp_{Sig_2}[X,Y]$?}
+be the subset of
 $Exp_{Sig_2}[V,Y]$ that consists of expressions where an element variable is
-free if and only if it belongs to $X$ with a similar notation for $ElExp$ and
+free if and only if it belongs to $X$, with a similar notation for $ElExp$ and
 $TyExp$. Let us assume in addition that $V$ has the freshness property. Then
 one can define the $\alpha$-equivalence relation on $Exp^{\cdot}_{Sig_2}[V,Y]$
 and therefore on $ElExp^{\cdot}_{Sig_2}(X,Y)$ and
@@ -1010,7 +1011,7 @@ easily expressed in terms of the structures of the relative monad and a module
 over it.  Namely, if $E_1,\dots,E_k\in RR(\ff{m})$, 
 $E\in RR(\ff{n})$ and $0\le i_1,\dots,i_k\le n-1$, then 
 $E[E_1/i_1,\dots,E_k/i_k]\in RR(\ff{m})$ is the element $rr(f)(E)$, where $f:stn(n)\sr RR(\ff{m})$ is given
-by $f(i)=\eta{i}$ for $i\ne i_1,\dots,i_k$ and $f(i_j)=E_j$. Exactly the same
+by $f(i)=\eta_{\ff n}(i)$ for $i\ne i_1,\dots,i_k$ and $f(i_j)=E_j$. Exactly the same
 formula with the replacement of $RR(n)$ by $LM(n)$ describes
 $T[E_1/i_1,\dots,E_k/i_k]$ for $T\in LM(n)$.
 
@@ -1123,7 +1124,8 @@ The conditions on the $B$-subsets will be seen to include many
 which have been long known as the ``structural properties'', which the valid
 sentences of all type theories must satisfy. By approaching them from the
 direction of \cite{Csubsystems} we will see why these conditions are
-necessary and sufficient for a type theory to ``make sense''.
+necessary and sufficient for a type theory to ``make sense''.\DG{
+  Mention where we see that in this paper, and state which properties are the structural properties.}
 
 The main property of a sentence is its validity. Validity of sentences is
 determined on the basis of the inference rules.
@@ -1168,7 +1170,7 @@ contain $x_0$, then the family of types is constant and the sentence
 (\ref{2017.02.06.eq3}) is a syntactic representation of a function from $T_0$
 to $T$.
 
-In the theories we consider, if the sentence (\ref{2017.02.06.eq4}) is valid than so are the sentences
+In the theories we consider, if the sentence (\ref{2017.02.06.eq4}) is valid, then so are the sentences
 $\Gamma\rh T\type$ and $\Gamma\rh T'\type$.  The validity of
 (\ref{2017.02.06.eq4}) asserts that the type expressions $T$ and $T'$ are {\em
   definitionally equal} in the context $\Gamma$.  The analogous meaning is
@@ -1277,13 +1279,13 @@ $(B,\wt{B})$. The second main result of that paper, Proposition 5.4, shows how
 to construct, from a pair of equivalence relations $(\sim,\approx)$ on $Ob$ and
 $\wt{Ob}$ respectively that satisfies certain conditions, a quotient C-system
 of $CC$ whose associated pre-B-system is $(Ob/{\sim},\wt{Ob}/\approx)$. These
-conditions are shown in Proposition X.A\editorfootnote{Apparently this proposition was not added to the paper.} of the present paper to be
+conditions are shown in Proposition X.A\DG{Apparently this proposition was not added to the paper.} of the present paper to be
 compatible with isomorphisms of pre-B-systems.
 
 After defining $C(\RR,\LM)$ in section \ref{CRRLM}
 %### a little more words, functoriality
-we define, in Construction X.B\editorfootnote{Apparently this construction was not added to the paper.}, a pre-B-system structure on the sets
-$(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Construction X.C\editorfootnote{Apparently this construction was not added to the paper.}, an isomorphism
+we define, in Construction X.B\DG{Apparently this construction was not added to the paper.}, a pre-B-system structure on the sets
+$(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Construction X.C\DG{Apparently this construction was not added to the paper.}, an isomorphism
 between this pre-B-system and the pre-B-system of $C(\RR,\LM)$.
 
 Using this isomorphism we formulate the conditions on subsets $B\subseteq B(\RR,\LM)$
@@ -1297,7 +1299,7 @@ the subsets of $(Ob(C(\RR,\LM))$ and $\wt{Ob}(C(\RR,LM)))$ corresponding to $B$ 
 $\wt{B}$ satisfy the conditions of \cite[Prop. 5.4]{Csubsystems}, and therefore
 define a (regular) quotient of the C-system corresponding to $(B,\wt{B})$.
 
-Summing it up in Construction X.D\editorfootnote{Apparently this construction was not added to the paper.} we obtain a construction, for any four
+Summing it up in Construction X.D\DG{Apparently this construction was not added to the paper.} we obtain a construction, for any four
 subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying certain conditions, of a
 C-system. This is the final construction of the paper.
 
@@ -1316,7 +1318,7 @@ to C-systems. Finally, one would construct two functor isomorphisms extending
 this pair of functors to an equivalence between the categories of C-systems and
 B-systems.
 
-Then one would prove that for any $\RR$, $\LM$ the pre-B-system structure that
+Then one would prove that for any $\RR$ and $\LM$, the pre-B-system structure that
 we define on $(B(\RR,\LM),\wt{B}(\RR,\LM))$ is a B-system structure. A
 sub-pre-B-system of a B-system is a B-system. Therefore the subsets
 $(B,\wt{B})$ should define a B-system and the relations $(\sim,\approx)$
@@ -2248,8 +2250,8 @@ $X\mapsto (X,A)$ on objects and $f\mapsto (f,Id_A)$ on morphisms. Consider the
 $J$-monad $J^{\circ}(\RR)$. It satisfies the conditions of Problem
 \ref{2017.04.21.prob1} with respect to the identity object constancy structure
 corresponding to $A$. Therefore, Constructions \ref{2017.04.21.constr1} applies
-and we obtain a $J\circ pr_{\C}$-monad $(J^{\circ}(\RR))^{\D}$. Since $J\circ
-pr_{\C}=Id_{\C}$ it is an endo-monad on $\C$, which will be denoted by
+and we obtain a $J\circ pr_{\C}$-monad $(J^{\circ}(\RR))^{\D}$. Since
+$J\circ pr_{\C}=Id_{\C}$, it is an endo-monad on $\C$, which will be denoted by
 $\RR_{1,A}$. Explicitly, for $\RR=(RR,\eta,rr)$, we have
 $\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$, where:
 %
@@ -4080,7 +4082,7 @@ In substitution notation this can be seen as follows:
 %
 \llabel{CRRLM}
 
-In this paper we are interested in the $Jf$-relative monads $\RR$. The
+In this paper we are interested in $Jf$-relative monads $\RR$. The
 corresponding Kleisli categories are the categories opposite to the categories
 $C(\RR)$ underlying the C-systems considered above. Therefore, left modules
 over a $Jf$-monad $\RR$ with values in $Sets$ are the presheaves on $C(RR)$,
