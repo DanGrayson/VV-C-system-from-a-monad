@@ -362,18 +362,13 @@ considered by Martin-L\"{o}f are sequences of expressions of the following
 forms.
 %
 %
-\begin{flalign}
-\label{2017.02.06.eq1}
-x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh& ok\\
-\label{2017.02.06.eq2}
-x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh& T\type\\
-\label{2017.02.06.eq3}
-x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh& t:T\\
-\label{2017.02.06.eq4}
-x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh& T\equiv T'\\
-\label{2017.02.06.eq5}
-x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh& t\equiv t':T
-\end{flalign}
+\begin{enumerate}[label={(\bfseries S\arabic*)}]
+\item \label{2017.02.06.eq1} \quad \quad $x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh ok$\\
+\item \label{2017.02.06.eq2} \quad \quad $x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh T\type$\\
+\item \label{2017.02.06.eq3} \quad \quad $x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh t:T$\\
+\item \label{2017.02.06.eq4} \quad \quad $x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh T\equiv T'$\\
+\item \label{2017.02.06.eq5} \quad \quad $x_0:T_0,\dots,x_{n-1}:T_{n-1}\rh t\equiv t':T$
+\end{enumerate}
 %
 Here $x_0,\dots,x_{n-1}$ are names of variables, $T_i$ is an expression with
 free variables from the set $\{x_0,\dots,x_{i-1}\}$, and $T$, $T'$, $t$, and $t'$ are
@@ -1032,23 +1027,23 @@ obtain the following description of the sets of all possible sentences of the
 five main kinds.
 %
 \begin{enumerate}
-\item A sentence of the form (\ref{2017.02.06.eq1}) is an element of
+\item A sentence of the form \ref{2017.02.06.eq1} is an element of
 %
 $$B(\RR,\LM):=\coprod_{n\ge 0} \prod_{i=0}^{n-1}LM(\ff{i}).$$
 %
-\item A sentence of the form (\ref{2017.02.06.eq2}) is an element of
+\item A sentence of the form \ref{2017.02.06.eq2} is an element of
 %
 $$Bt(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times LM(\ff{n})\right).$$
 %
-\item A sentence of the form (\ref{2017.02.06.eq3}) is an element of
+\item A sentence of the form \ref{2017.02.06.eq3} is an element of
 %
 $$\wt{B}(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR(\ff{n})\times LM(\ff{n})\right).$$
 %
-\item A sentence of the form (\ref{2017.02.06.eq4}) is an element of
+\item A sentence of the form \ref{2017.02.06.eq4} is an element of
 %
 $$Beq(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times LM(\ff{n})\times LM(\ff{n})\right).$$
 %
-\item A sentence of the form (\ref{2017.02.06.eq5}) is an element of
+\item A sentence of the form \ref{2017.02.06.eq5} is an element of
 %
 $$\wt{Beq}(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR(\ff{n})\times RR(\ff{n})\times LM(\ff{n})\right).$$
 %
@@ -1057,7 +1052,7 @@ $$\wt{Beq}(\RR,\LM):=\coprod_{n\ge 0} \left(\prod_{i=0}^{n-1}LM(\ff{i})\times RR
 In any approach to Martin-L\"of type theory a sentence of the form
 $0:T_0,\dots,n-1:T_{n-1}\rh T\type$ is equivalent to the sentence $0:T_0,\dots,
 n-1:T_{n-1},n:T\rh ok$. This allows one not to consider sentences of the form
-(\ref{2017.02.06.eq2}).
+\ref{2017.02.06.eq2}.
 
 This description of sentences immediately generalizes from the pairs
 $(\RR,\LM)$ corresponding to the $\alpha$-equivalence classes of expressions to
@@ -1074,7 +1069,7 @@ theory under consideration, according to its {\em inference rules}.  The
 inference rules can be regarded as operations that assert various sentences are
 valid, provided certain prerequisite sentences are valid.  Thus we may introduce
 the following four\footnote{Four, instead of five, because we omit sentences of 
-the form (\ref{2017.02.06.eq2}), as explained above.}
+the form \ref{2017.02.06.eq2}, as explained above.}
 subsets consisting of the valid sentences.
 \begin{equation*}
   \begin{split}
@@ -1148,31 +1143,31 @@ be thought of as constructions of equalities between $t$ and $t'$ in
 $T$. Correspondingly, the sentence $0:T, 1:Id\,T\,0\,0\rh ok$ is valid if and
 only if the sentence $0:T\rh ok$ is.
 
-Sentences of the form (\ref{2017.02.06.eq2}) with $n>1$ describe ``iterated
+Sentences of the form \ref{2017.02.06.eq2} with $n>1$ describe ``iterated
 type families''. For example, for $n=2$, $T_0$ is a type, $T_1$ is a type
 family parametrized by $T_0$ and $T_2$, which is an expression that may contain
 $x_0$ and $x_1$ as free variables, is a type family with two parameters
 $x_0:T_0$ and $x_1:T_1(x_0)$.
 
 Let $\Gamma=(x_0:T_0,\dots,x_{n-1}:T_{n-1})$.  In the theories we consider, if the sentence
-(\ref{2017.02.06.eq3}) is valid then so is the sentence $\Gamma\rh T\type$.
-A sentence (\ref{2017.02.06.eq3}) with $n=0$, that is a sentence of the form $\rh
+\ref{2017.02.06.eq3} is valid then so is the sentence $\Gamma\rh T\type$.
+A sentence \ref{2017.02.06.eq3} with $n=0$, that is a sentence of the form $\rh
 t:T$, asserts that $T$ is a valid (closed) type expression and $t$ is a valid
 (closed) expression that describes an element of type $T$. For example, the
 element $0$ of $\nat$ in the Martin-L\"{o}f type theories is denoted by $O$ so
 that the sentence $\rh O:\nat$ is valid in all these theories. A sentence of
-the form (\ref{2017.02.06.eq3}) with $n=1$ describes a family $T$ of types
+the form \ref{2017.02.06.eq3} with $n=1$ describes a family $T$ of types
 parametrized by $T_0$ together with a ``section'' of this family, that is, a
 family of elements $t(x_0)$ of types $T(x_0)$ for all $x_0$. If $T$ does not
 contain $x_0$, then the family of types is constant and the sentence
-(\ref{2017.02.06.eq3}) is a syntactic representation of a function from $T_0$
+\ref{2017.02.06.eq3} is a syntactic representation of a function from $T_0$
 to $T$.
 
-In the theories we consider, if the sentence (\ref{2017.02.06.eq4}) is valid, then so are the sentences
+In the theories we consider, if the sentence \ref{2017.02.06.eq4} is valid, then so are the sentences
 $\Gamma\rh T\type$ and $\Gamma\rh T'\type$.  The validity of
 (\ref{2017.02.06.eq4}) asserts that the type expressions $T$ and $T'$ are {\em
   definitionally equal} in the context $\Gamma$.  The analogous meaning is
-assigned to sentences of the form (\ref{2017.02.06.eq5}).
+assigned to sentences of the form \ref{2017.02.06.eq5}.
 %### want to say about "substitutional", but can not without a previous discussion of capture avoiding substitution...
 
 Definitional equality of type expressions can be used to define definitional
@@ -1211,7 +1206,7 @@ $\Gamma\equiv \Gamma'$ and the following two sentences are valid.
 %
 
 In order for the definitional equality relations on sentences of the form
-(\ref{2017.02.06.eq1}), (\ref{2017.02.06.eq2}), and (\ref{2017.02.06.eq3}) to be
+\ref{2017.02.06.eq1}, \ref{2017.02.06.eq2}, and \ref{2017.02.06.eq3} to be
 equivalence relations, the sets of sentences of various kinds should satisfy
 more conditions than the ones that we have mentioned so far. These conditions
 are among the conditions whose mathematical meaning is established in
