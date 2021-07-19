@@ -900,7 +900,7 @@ Define a {\em restricted 2-sorted binding signature} to be a signature where the
 operations are given by sequences
 $((n_0,\epsilon_0),\dots,(n_{d-1},\epsilon_{d-1}),\epsilon)$, where
 $\epsilon\in\{0,1\}$ with $0$ corresponding to elements and $1$ to types. Such
-two sorted arities of the six operations of CC-S are, correspondingly,
+2-sorted arities of the six operations of CC-S are, correspondingly,
 $((0,1),(1,1),1)$, $(1)$, $((0,0),1)$, $((0,1),(1,0),0)$,
 $((0,1),(1,1),(0,0),(0,0),0)$ and $((0,1),(1,0),0)$.
 
@@ -976,8 +976,8 @@ To construct the pair $(\RR,\LM)$ by methods of category theory without a
 reference to expressions one can proceed as follows.
 
 A restricted 2-sorted binding signature defines a monad on the category
-$Sets(U)\times Sets(U)$.  See \cite{Zsido} for the much more general case of multi
-sorted signatures. For the formalization of this construction in {\em UniMath} see
+$Sets(U)\times Sets(U)$.  See \cite{Zsido} for the much more general case of multi-sorted
+signatures. For the formalization of this construction in {\em UniMath} see
 \cite{AMM2017}.
 %### Check with B. whether what is being formalized is what is described in \cite{Zsido}.
 
@@ -2042,7 +2042,7 @@ This completes Construction \ref{2017.03.12.constr2}.
 
 The following construction is used to
 extract pairs $(\RR,\LM)$ consisting of a relative monad and a left module over it from
-two-sorted relative monads, such as the ones that arise from two-sorted
+2-sorted relative monads, such as the ones that arise from 2-sorted
 second-order signatures, see \cite{AMM2017}.
 
 For two functors $F:\C\sr\D$, $F':\C'\sr\D'$ we let $F\boxtimes F'$ denote the
