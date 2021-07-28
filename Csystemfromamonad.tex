@@ -147,6 +147,7 @@
 
 \DeclareMathOperator{\rh}{\,\rhd\,}
 \newcommand{\type}{\,\,type}
+\newcommand{\Id}{\ensuremath{\mathsf{Id}}}
 
 \newcommand{\C}{{\mathcal C}}
 \newcommand{\D}{{\mathcal D}}
@@ -1138,9 +1139,9 @@ A sentence of the form $0:T_0,1:T\rh ok$ asserts that $T_0$ is a valid closed
 type expression, and that $T$ is an expression with the only possible free variable
 being $0$, thereby describing {\em a family of types} parametrized by $T_0$. For
 example, in any of the Martin-L\"{o}f type theories, given a type $T$ and two
-elements $t,t':T$ of $T$, there is a type $Id\,T\,t\,t'$ whose elements are to
+elements $t,t':T$ of $T$, there is a type $\Id(T,t,t')$ whose elements are to
 be thought of as constructions of equalities between $t$ and $t'$ in
-$T$. Correspondingly, the sentence $0:T, 1:Id\,T\,0\,0\rh ok$ is valid if and
+$T$. Correspondingly, the sentence $0:T, 1:\Id(T,0,0) \rh ok$ is valid if and
 only if the sentence $0:T\rh ok$ is.
 
 Sentences of the form \ref{2017.02.06.eq2} with $n>1$ describe ``iterated
