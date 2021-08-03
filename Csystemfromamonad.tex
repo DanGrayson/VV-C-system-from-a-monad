@@ -9,6 +9,8 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{glossaries}
+  \makeglossaries
 \usepackage{graphicx}
 %\usepackage{eufrak}
 %\usepackage{amscd, amssymb}
@@ -162,6 +164,11 @@
 \newcommand{\ec}{\hfill $\square$ \end{construction}}
 
 \newcommand{\editorfootnote}[1]{\footnote{Note from the editor: #1}}
+
+%% glossary definitions go here:
+\newglossaryentry{RML}{name={\ensuremath{RML}},description={a functor from relative monads to Lawvere theories}}
+\newglossaryentry{LC}{name={\ensuremath{LC}},description={a functor from Lawvere theories to C-systems}}
+\newglossaryentry{C}{name={\ensuremath{C}},description={a functor from relative monads to C-systems}}
 
 \begin{document}
 %
@@ -1419,7 +1426,7 @@ The functor $Jf$ is the obvious functor from $F$ to the category of sets.
 
 In \cite{LandJf} we constructed an equivalence between the category of
 $Jf$-relative monads and the category of Lawvere theories whose component
-functor from the relative monads to Lawvere theories is denoted $RML$. A key
+functor from relative monads to Lawvere theories is denoted \gls{RML}. A key
 component of this equivalence is the construction of the Kleisli category
 $K(\RR)$ of a relative monad $\RR$ given in \cite{ACU2}.  Most of Section
 \ref{Jfrel} is occupied by simple computations in $K(\RR)$ for $Jf$-relative
@@ -3173,7 +3180,7 @@ set of abstract clones as defined in \cite[Section 3]{FPT}.
 \end{remark}
 
 In \cite{LandJf} we constructed for any $Jf$-relative monad
-$\RR=(RR,\eta,\mbind{-})$ a Lawvere theory $(T,L)=RML(\RR)$. Most of this
+$\RR=(RR,\eta,\mbind{-})$ a Lawvere theory $(T,L)=\gls{RML}(\RR)$. Most of this
 section is occupied by simple computations in $T$ that will be used in the
 later sections.
 
@@ -3424,8 +3431,8 @@ where the first equality is by Lemma \ref{2015.08.26.l2} and the second one by
 \label{CRR}
 
 In \cite{LandC} we constructed for any Lawvere theory $(T,L)$ a C-system
-$LC((T,L))$. For $(T,L)=RML(\RR)$ we will let the C-system $LC((T,L))$ be denoted by
-$C(\RR)$. In this section we first provide a more explicit description of
+$\gls{LC}((T,L))$. For $(T,L)=\gls{RML}(\RR)$ we will let the C-system $LC((T,L))$ be denoted by
+$\gls{C}(\RR)$. In this section we first provide a more explicit description of
 $C(\RR)$ and then compute the action of the operations $T,\wt{T},S,\wt{S}$ and
 $\delta$ on the B-sets $$(Ob(C(\RR)),\wt{Ob}(C(\RR)))$$ of this C-system
 (cf.{} Definition \ref{2015.08.26.def1}).
@@ -4658,6 +4665,8 @@ These l-versions of the relative monads and their modules should be easier to
 formalize in systems such as {\em HOL}.
 \end{remark} 
 %
+
+\printglossaries
 
 \bibliography{alggeom}
 \bibliographystyle{plain}
