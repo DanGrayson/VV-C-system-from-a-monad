@@ -1,4 +1,4 @@
-\documentclass[12pt]{amsart}
+\documentclass[onecolumn,12pt]{amsart}
 \usepackage[utf8]{inputenc}
 \usepackage{csquotes}
 \usepackage[pdf,all,2cell]{xy}\SelectTips{cm}{10}\SilentMatrices\UseAllTwocells
@@ -9,8 +9,8 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
-\usepackage{glossaries}
-  \makeglossaries
+\usepackage[symbols]{glossaries-extra}\makeglossaries % add option "nomain" if there are no regular glossary entries
+\makeindex
 \usepackage{graphicx}
 %\usepackage{eufrak}
 %\usepackage{amscd, amssymb}
@@ -166,9 +166,13 @@
 \newcommand{\editorfootnote}[1]{\footnote{Note from the editor: #1}}
 
 %% glossary definitions go here:
-\newglossaryentry{RML}{name={\ensuremath{RML}},description={a functor from relative monads to Lawvere theories}}
-\newglossaryentry{LC}{name={\ensuremath{LC}},description={a functor from Lawvere theories to C-systems}}
-\newglossaryentry{C}{name={\ensuremath{C}},description={a functor from relative monads to C-systems}}
+\newglossaryentry{monad in monoidal form}{name={monad in monoidal form},description={}}
+
+\glsxtrnewsymbol[description={a functor from relative monads to Lawvere theories}]{RML}{\ensuremath{RML}}
+\glsxtrnewsymbol[description={a functor from Lawvere theories to C-systems}]{LC}{\ensuremath{LC}}
+\glsxtrnewsymbol[description={a functor from relative monads to C-systems}]{C}{\ensuremath{C}}
+\glsxtrnewsymbol[description={the monad in monoidal form corresponding to a monad $\RR$ in Kleisli form}]{RRM}{\ensuremath{\RR^M}}
+\glsxtrnewsymbol[description={the monad in Kleisli form corresponding to a monad $\R$ in monoidal form}]{RK}{\ensuremath{\R^K}}
 
 \begin{document}
 %
@@ -1567,7 +1571,7 @@ be used.
 %
 \begin{definition}
   \label{2017.04.01.def1}
-  A {\em monad in monoidal form}\editorfootnote{formalized as the type {\tt Monad} in \cite{UniMath}.}
+  A {\em \gls{monad in monoidal form}}\index{monad!in monoidal form}\editorfootnote{formalized as the type {\tt Monad} in \cite{UniMath}.}
   on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
   where $R:\C\sr \C$ is a functor, and where $\eta:Id_{\C}\sr R$ and $\mu:R\circ R\sr R$
   are natural transformations, such that for any $X\in\C$ one has
@@ -1586,7 +1590,7 @@ in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \label{2017.04.13.def1}
-A {\em monad in Kleisli form}\editorfootnote{formalized as the type {\tt KleisliMonad} in \cite{UniMath}.} on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
+A {\em monad in Kleisli form}\index\index{monad!in Kleisli form}\editorfootnote{formalized as the type {\tt KleisliMonad} in \cite{UniMath}.} on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
 %
 \begin{enumerate}
 \item \label{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
@@ -1707,8 +1711,8 @@ We leave the verification of the conditions and the proof that these functions
 are mutually inverse to the formally verified version of the paper\editorfootnote{formalized as the equivalence {\tt weq\_Kleisli\_Monad} in \cite{UniMath}, sort of.}. 
 \ec
 %#### details, to M.
-For a monad $\RR$ in Kleisli form we let $\RR^M$ denote the corresponding
-monad in monoidal form, and for a monad $\R$ in monoidal form we let $\R^K$
+For a monad $\RR$ in Kleisli form we let \gls{RRM} denote the corresponding
+monad in monoidal form, and for a monad $\R$ in monoidal form we let \gls{RK}
 denote the corresponding monad in Kleisli form.
 
 The notion of relative monad arises naturally from the notion of monad in Kleisli
@@ -1717,7 +1721,7 @@ detail in \cite{ACU2}. Let us recall it here.
 %
 \begin{definition}
 \label{2015.12.22.def1}
-Let $J:\C\sr \D$ be a functor. A {\em relative monad}\editorfootnote{formalized as the type {\tt RelMonad} in \cite{UniMath}.} $\RR$ on $J$ (or a $J$-relative monad, or a $J$-monad) is a triple $(RR_{Ob},\eta,rr)$, where
+Let $J:\C\sr \D$ be a functor. A {\em relative monad}\index{monad!relative}\editorfootnote{formalized as the type {\tt RelMonad} in \cite{UniMath}.} $\RR$ on $J$ (or a $J$-relative monad, or a $J$-monad) is a triple $(RR_{Ob},\eta,rr)$, where
 %
 \begin{enumerate}
 \item $RR_{Ob}:Ob(\C)\sr Ob(\D)$ is a function,
@@ -4667,9 +4671,8 @@ formalize in systems such as {\em HOL}.
 %
 
 \printglossaries
-
-\bibliography{alggeom}
-\bibliographystyle{plain}
+\bibliography{alggeom}\bibliographystyle{plain}
+\printindex
 
 % \listoftodos  % does not work with amsart, see https://groups.google.com/g/comp.text.tex/c/jiA1XWJc3ck
 

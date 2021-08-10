@@ -11,3 +11,9 @@
 *.glo
 *.gls
 *.ist
+*.idx
+*.ilg
+*.slg
+*.slo
+*.sls
+*.ind
