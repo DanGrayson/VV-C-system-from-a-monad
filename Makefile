@@ -1,5 +1,5 @@
 all:
-	latexmk Csystemfromamonad
+	latexmk -pdf Csystemfromamonad
 
 stepwise:
 	pdflatex Csystemfromamonad

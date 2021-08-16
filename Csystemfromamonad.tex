@@ -166,13 +166,21 @@
 \newcommand{\editorfootnote}[1]{\footnote{Note from the editor: #1}}
 
 %% glossary definitions go here:
-\newglossaryentry{monad in monoidal form}{name={monad in monoidal form},description={}}
-
+%%%% the symbol section of the glossary
 \glsxtrnewsymbol[description={a functor from relative monads to Lawvere theories}]{RML}{\ensuremath{RML}}
 \glsxtrnewsymbol[description={a functor from Lawvere theories to C-systems}]{LC}{\ensuremath{LC}}
 \glsxtrnewsymbol[description={a functor from relative monads to C-systems}]{C}{\ensuremath{C}}
 \glsxtrnewsymbol[description={the monad in monoidal form corresponding to a monad $\RR$ in Kleisli form}]{RRM}{\ensuremath{\RR^M}}
 \glsxtrnewsymbol[description={the monad in Kleisli form corresponding to a monad $\R$ in monoidal form}]{RK}{\ensuremath{\R^K}}
+\glsxtrnewsymbol[description={the Kleisli category of a relative monad $\RR$}]{KRR}{\ensuremath{K(\RR)}}
+\glsxtrnewsymbol[description={a functor to the Kleisli category of a relative monad $\RR$}]{EtRR}{\ensuremath{Et_{\RR}}}
+\glsxtrnewsymbol[description={a functor from the Kleisli category of a relative monad $\RR$}]{RRlm}{\ensuremath{\RR^{lm}}}
+\glsxtrnewsymbol[description={restriction of a relative monad $\RR$ along a functor $F$}]{FoRR}{\ensuremath{F^{\circ}(\RR)}}
+\glsxtrnewsymbol[description={extension of a relative monad $\RR$ to a functor}]{RRf}{\ensuremath{\RR^f}}
+\glsxtrnewsymbol[description={the functor induced on Kleisli categories by restriction of a relative monad $\RR$}]{F_RR}{\ensuremath{F_{\RR}}}
+\glsxtrnewsymbol[description={the identity object constancy structure on $\C$ corresponding to $A$}]{AuC}{\ensuremath{{\protect \underline A}_{\C}}}
+
+% \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
 
 \begin{document}
 %
@@ -1571,7 +1579,7 @@ be used.
 %
 \begin{definition}
   \label{2017.04.01.def1}
-  A {\em \gls{monad in monoidal form}}\index{monad!in monoidal form}\editorfootnote{formalized as the type {\tt Monad} in \cite{UniMath}.}
+  A {\em monad in monoidal form}\index{monad!in monoidal form}\editorfootnote{formalized as the type {\tt Monad} in \cite{UniMath}.}
   on a category $\C$ is a triple $\R=(R,\eta,\mu)$,
   where $R:\C\sr \C$ is a functor, and where $\eta:Id_{\C}\sr R$ and $\mu:R\circ R\sr R$
   are natural transformations, such that for any $X\in\C$ one has
@@ -1753,7 +1761,7 @@ possible that, for example, $RR_{Ob}(Y_1)=RR_{Ob}(Y_2)$ while $Y_1\ne Y_2$.
 %
 \begin{problem}\label{2016.01.15.prob1}
 Given a $J$-relative monad $\RR=(RR_{Ob},\eta,rr)$ to construct a function
-$RR_{Mor}:Mor(\C)\sr Mor(\D)$ such that $\RR^f=(RR_{Ob},RR_{Mor})$ is a
+$RR_{Mor}:Mor(\C)\sr Mor(\D)$ such that $\gls{RRf} := (RR_{Ob},RR_{Mor})$ is a
 functor.
 \end{problem}
 %
@@ -1768,7 +1776,7 @@ The proofs of the composition and the identity axioms of a functor are omitted.\
 \ec
 %### details, to M. or J.?
 %
-An $Id_{\C}$-relative monad will be called an {\em endo-monad}. An endo-monad is
+An $Id_{\C}$-relative monad will be called an {\em endo-monad}\index{monad!endo-}. An endo-monad is
 precisely a monad on the corresponding category given in Kleisli form. This
 permits us to call, sometimes, endo-monads simply monads.  The explicit
 form of functions $(-)^K$ and $(-)^M$ defined in Construction
@@ -1792,7 +1800,7 @@ category.
 \begin{problem}
   \label{2017.03.12.prob3}
   Given a functor $J:\C\sr\D$ and a $J$-monad $\RR=(RR,\eta,rr)$ to construct a
-  category $K(\RR)$ that will be called the {\em Kleisli category} of $\RR$.
+  category $\gls{KRR}$ that will be called the {\em Kleisli category}\index{Kleisli category} of $\RR$.
 \end{problem}
 %
 \begin{construction}\rm
@@ -1818,7 +1826,7 @@ f\circ_{K(\RR)}g:=f\circ_{\D} rr_{Y,Z}(g).
 \label{2017.04.05.prob2}
 In the context of Problem \ref{2017.03.12.prob3}, to construct a functor 
 %
-$$Et_{\RR}:\C\sr K(\RR)$$
+$$\gls{EtRR}:\C\sr K(\RR)$$
 %
 \end{problem}
 %
@@ -1857,7 +1865,7 @@ axiom.
 %
 \begin{problem}\label{2017.04.11.prob1}
 Let $J:\C\sr\D$ be a functor, and let $\RR=(RR_{Ob},\eta,rr)$ be a $J$-relative
-monad. The problem is to construct a functor $\RR^{lm}:K(\RR)\sr \D$.
+monad. The problem is to construct a functor $\gls{RRlm}:K(\RR)\sr \D$.
 \end{problem}
 %
 \begin{construction}\rm\label{2017.04.09.constr1}
@@ -1883,7 +1891,7 @@ that are not endo-monads.
 %
 \begin{problem}\label{2017.02.24.prob1}
 Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr\D$ and a $J$-relative monad $\RR$,
-to construct a $(F\circ J)$-relative monad $F^{\circ}(\RR)$.
+to construct an $(F\circ J)$-relative monad $\gls{FoRR}$.
 \end{problem}
 %
 \begin{construction}\label{2017.02.24.constr1}\rm
@@ -1989,7 +1997,7 @@ therefore $F_{Mor}$, participate in the definition of $F^{\circ}(\RR)_{Mor}$.
 %
 \begin{problem}
 \label{2017.03.12.prob1} Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr \D$,
-and given a $J$-monad $\RR$, to construct a functor $F_{\RR}:K(F^{\circ}(\RR))\sr
+and given a $J$-monad $\RR$, to construct a functor $\gls{F_RR}:K(F^{\circ}(\RR))\sr
 K(\RR)$.
 \end{problem}
 %
@@ -2068,7 +2076,7 @@ $FF_{\D}$ when $FF$ is (just) a function on objects.
 %
 \begin{definition}
   \label{2017.04.21.def1}
-  An {\em object constancy structure} on a functor $F:\C\sr\D$
+  An {\em object constancy structure}\index{object constancy structure} on a functor $F:\C\sr\D$
   is a family, parametrized by $X,Y\in\C$, of morphisms $\nu_{X,Y}:F(X)\sr F(Y)$
   such that:
 %
@@ -2089,10 +2097,10 @@ $$
 %
 that is, $\nu_{X,Y}$ and $\nu_{Y,X}$ are mutually inverse and, in particular, $\nu_{X,Y}$ is an isomorphism. 
 
-For any object $A$ of $\D$ the functor $\uu{A}_{\C}:\C\sr \D$ given on objects
+For any object $A$ of $\D$ the functor $\gls{AuC} : \C \sr \D$ given on objects
 by $\uu{A}_{\C}(X)=A$ and on morphisms by $\uu{A}_{\C}(f)=Id_A$ has an obvious
 object constancy structure with $\nu_{X,Y}=Id_A$ for all $X,Y$. We will call it
-the {\em identity object constancy structure corresponding to $A$}.
+the {\em identity object constancy structure corresponding to $A$}\index{identity object constancy structure}.
 
 Since the object constancy structure does not impose any condition on $\nu$
 with respect to morphisms of $\C$ or $\D$, there are many other
@@ -4670,9 +4678,9 @@ formalize in systems such as {\em HOL}.
 \end{remark} 
 %
 
-\printglossaries
 \bibliography{alggeom}\bibliographystyle{plain}
 \printindex
+\printglossaries
 
 % \listoftodos  % does not work with amsart, see https://groups.google.com/g/comp.text.tex/c/jiA1XWJc3ck
 
