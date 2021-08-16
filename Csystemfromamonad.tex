@@ -202,6 +202,7 @@
 \glsxtrnewsymbol[description={projection functor for an extension by a presheaf $F$}]{trF}{\ensuremath{tr_F}}
 \glsxtrnewsymbol[description={canonical isomorphism in a presheaf extension of a C-system}]{canGG}{\ensuremath{can_{X,\Gamma,\Gamma'}}}
 \glsxtrnewsymbol[description={inverse of the projection functor for an extension by a presheaf $F$}]{trFy!}{\ensuremath{tr_{F,y}^!}}
+\glsxtrnewsymbol[description={notation for a function on a standard finite set}]{f...f}{\ensuremath{(f_0,\dots,f_{n-1})}}
 
 % \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
 
@@ -3224,7 +3225,7 @@ should be, it is assumed that $x$ is replaced by $f(x)$.
 
 Let us introduce the following notation:
 %
-$$F(m,n)=Fun(stn(m),stn(n)),$$
+$$\FF(m,n)=Fun(stn(m),stn(n)),$$
 %
 and, for a $Jf$-relative monad $\RR$,
 %
@@ -3234,16 +3235,16 @@ Then for $f\in RR(l,m)$ and $g\in RR(m,n)$ the composition $f\hc g$ in $T$ is
 defined as $\mbind{f}\circ g$ and for $m\in\nat$ the identity morphism $Id_m$
 in $T$ is defined as $\eta_{m}$.
 
-The functor $L:F\sr T$ is defined as the identity on objects and as the
+The functor $L:\FF\sr T$ is defined as the identity on objects and as the
 function on morphisms corresponding to the functions $f\mapsto f\circ \eta_{n}$
-from $F(m,n)$ to $RR(m,n)$.
+from $\FF(m,n)$ to $RR(m,n)$.
 
-We also obtain the extension of $RR$ to a functor $F\sr Sets$ according to
-Construction \ref{2016.01.15.constr1}. For a morphism $f\in F(m,n)$ we have
+We also obtain the extension of $RR$ to a functor $\FF\sr Sets$ according to
+Construction \ref{2016.01.15.constr1}. For a morphism $f\in \FF(m,n)$ we have
 $RR(f)=\mbind{(f\circ \eta_{n})}=\mbind{L(f)}$.
 
 We are going to use the functions $f\mapsto RR(f)$ as coercions, so that when an
-element $f$ of $F(m,n)$ occurs in a position where an element of
+element $f$ of $\FF(m,n)$ occurs in a position where an element of
 $Fun(RR(m),RR(n))$ is expected, it has to be replaced by $RR(f)$.
 
 %% \comment{Similarly, we will use the functions $\mbind{m}$ as a coercions so
@@ -3267,7 +3268,7 @@ $Fun(stn(m),RR(n))$ and of similar sets, such as the sets $Ob_n(C(\RR,\LM))$
 introduced later, we need to choose some way to represent them. For the purpose
 of the present paper we will write such elements as sequences, i.e., to denote
 the function, which in the notation of $\lambda$-calculus is written as
-$\lambda\,i:stn(n), f_i$, we will write $(f_0,\dots,f_{n-1})$. In particular,
+$\lambda\,i:stn(n), f_i$, we will write $\gls{f...f}$. In particular,
 for an element $x$ of a set $X$, the expression $(x)$ denotes the function
 $stn(1)\sr X$ that takes $0$ to $x$.
 %
@@ -3290,7 +3291,7 @@ The lemma is proved.
 %
 \begin{lemma}
 \label{2015.08.30.l1}
-Let $f\in F(l,m)$, $g\in RR(m,n)$, and $i\in stn(l)$. Then one has
+Let $f\in \FF(l,m)$, $g\in RR(m,n)$, and $i\in stn(l)$. Then one has
 %
 \begin{equation}\label{2015.08.26.eq4}
 (L(f)\hc g)(i)=g(f(i))
@@ -3316,7 +3317,7 @@ Observe also that for $f\in RR(m,n)$ one has
 \mbind{f}(x_i^m)=(\eta_{m}\circ\mbind{f})(i)=f(i),
 \end{equation}%
 %
-and for $f\in F(m,n)$ one has
+and for $f\in \FF(m,n)$ one has
 %
 \begin{equation}\label{2016.01.15.eq1}
 f(x_i^m)=RR(f)(\eta_{m}(i))=(\eta_{m}\circ \mbind{(f\circ \eta_{n}))}(i)=(f\circ \eta_{n})(i)=\eta_{n}(f(i))=x_{f(i)}^n.
@@ -3482,7 +3483,7 @@ $${L}:F^{op}\sr C(\RR),$$
 %
 i.e., as a contravariant functor from $F$ to $C(\RR)$, and we keep the conventions
 introduced in the previous section, the most important of which is that for
-$f\in F(m,n)$ and $x\in RR(m)$ we may write $f(x)$ for 
+$f\in \FF(m,n)$ and $x\in RR(m)$ we may write $f(x)$ for 
 $RR(f)(x)=\mbind{(f\circ \eta_{n})}(x)$.
 
 The $ft$ function on $C(\RR)$ is defined by the formula $ft(\wh{n+1})=\wh{n}$
