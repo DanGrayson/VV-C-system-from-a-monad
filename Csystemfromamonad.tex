@@ -167,6 +167,12 @@
 
 %% glossary definitions go here:
 %%%% the symbol section of the glossary
+% \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
+\glsxtrnewsymbol[description={the category of sets in a set $U$}]{SetsU}{\ensuremath{Sets(U)}}
+\glsxtrnewsymbol[description={the category of standard finite sets}]{FF}{\ensuremath{\FF}}
+\glsxtrnewsymbol[description={the functor from standard finite sets to sets}]{Jf}{\ensuremath{Jf}}
+\glsxtrnewsymbol[description={the set of functions from $X$ to $Y$}]{FunXY}{\ensuremath{Fun(X,Y)}}
+
 \glsxtrnewsymbol[description={a functor from relative monads to Lawvere theories}]{RML}{\ensuremath{RML}}
 \glsxtrnewsymbol[description={a functor from Lawvere theories to C-systems}]{LC}{\ensuremath{LC}}
 \glsxtrnewsymbol[description={a functor from relative monads to C-systems}]{C}{\ensuremath{C}}
@@ -196,7 +202,6 @@
 \glsxtrnewsymbol[description={projection functor for an extension by a presheaf $F$}]{trF}{\ensuremath{tr_F}}
 \glsxtrnewsymbol[description={canonical isomorphism in a presheaf extension of a C-system}]{canGG}{\ensuremath{can_{X,\Gamma,\Gamma'}}}
 \glsxtrnewsymbol[description={inverse of the projection functor for an extension by a presheaf $F$}]{trFy!}{\ensuremath{tr_{F,y}^!}}
-\glsxtrnewsymbol[description={the functor from standard finite sets to sets}]{Jf}{\ensuremath{Jf}}
 
 % \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
 
@@ -517,21 +522,18 @@ fixed.
 There are many families of sets $Exp(X)$ whose elements may be called
 expressions. For example, one can use a subset of the set of sequences (lists)
 of elements of $Op\cup X$. Alternatively, one can use some axiomatization of
-planar rooted trees with labels from $Op\cup X$ on the nodes.\editorfootnote{
-  An alternative approach would be to draw the labels from the disjoint union
-  $Op \amalg X$ instead of from the union $Op\cup X$.  Then the hypothesis that
-  $V\cap Op=\emptyset$ would not be needed and we could let $X$ be any set.}
+planar rooted trees with labels from $Op\cup X$ on the nodes.
 Translating from a representation of the first kind into a representation of
 the second is done, in the concrete world of computer programs, by programs
 called parsers, and there is a beautiful mathematical theory behind it that
 many of us are robbed of the joy of learning.
 
-For two sets $X$ and $Y$ we let $Fun(X,Y)$ denote the set of functions from $X$
+For two sets $X$ and $Y$ we let $\gls{FunXY}$ denote the set of functions from $X$
 to $Y$, defined as in \cite[p.~81]{Bourbaki.Sets}, so that each function is a
 triple $(X,Y,G)$, where $G$ is the graph of the function, and thus each
 function has a well defined domain and codomain.
 
-For any set $U$ there is a category $Sets(U)$ of the following form. The set of
+For any set $U$ there is a category $\gls{SetsU}$ of the following form. The set of
 objects of $Sets(U)$ is $U$. The set of morphisms is
 %
 $$Mor(Sets(U))=\cup_{X,Y\in U}Fun(X,Y).$$
@@ -563,7 +565,7 @@ monad.
 
 {\em This is how relative monads appear in the theory of expressions with variables.}
 
-Next, following \cite{FPT}, we let $\FF$ denote the category with set of
+Next, following \cite{FPT}, we let $\gls{FF}$ denote the category with set of
 objects $\nat$ and with set of morphisms
 %
 \begin{equation}
@@ -581,7 +583,7 @@ It is sometimes convenient to distinguish natural numbers used as objects of
 $\FF$ from their other uses. For this purpose we will write $\ff{n}$ for $n$
 used as an object of $\FF$.
 
-Following \cite{ACU} we let $\gls{Jf}:F\sr Sets$ denote the functor that takes $\ff n$ to
+Following \cite{ACU} we let $\gls{Jf}:\FF\sr Sets$ denote the functor that takes $\ff n$ to
 $stn(n)$ and that is the identity on morphisms between two objects.  (On the
 total sets of morphisms the morphism component of this functor is the inclusion
 of a subset).
