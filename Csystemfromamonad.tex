@@ -178,7 +178,25 @@
 \glsxtrnewsymbol[description={restriction of a relative monad $\RR$ along a functor $F$}]{FoRR}{\ensuremath{F^{\circ}(\RR)}}
 \glsxtrnewsymbol[description={extension of a relative monad $\RR$ to a functor}]{RRf}{\ensuremath{\RR^f}}
 \glsxtrnewsymbol[description={the functor induced on Kleisli categories by restriction of a relative monad $\RR$}]{F_RR}{\ensuremath{F_{\RR}}}
-\glsxtrnewsymbol[description={the identity object constancy structure on $\C$ corresponding to $A$}]{AuC}{\ensuremath{{\protect \underline A}_{\C}}}
+\glsxtrnewsymbol[description={the identity object constancy structure on $\C$ corresponding to an object $A$}]{AuC}{\ensuremath{{\protect \underline A}_{\C}}}
+\glsxtrnewsymbol[description={the functor (or function on objects) induced by $FF$ on a factor $\D$}]{FF_D}{\ensuremath{FF_\D}}
+\glsxtrnewsymbol[description={external product of two functors}]{FtbF}{\ensuremath{F \boxtimes F'}}
+\glsxtrnewsymbol[description={product of two functors}]{FtF}{\ensuremath{F \times F'}}
+\glsxtrnewsymbol[description={the relative monad induced on a factor $\D$ from a relative monad $\RR$}]{RR_D}{\ensuremath{\RR_{\D}}}
+\glsxtrnewsymbol[description={the monad induced on a factor from a monad $\RR$}]{RR1A}{\ensuremath{\RR_{1,A}}}
+\glsxtrnewsymbol[description={the left module in Kleisli form corresponding to a left module $\bf L$ in monoidal form}]{LK}{\ensuremath{{\bf L}^K}}
+\glsxtrnewsymbol[description={a functor associated to a left module $\LM$ over a relative monad}]{LMf}{\ensuremath{\LM^f}}
+\glsxtrnewsymbol[description={restriction of a module over a relative monad $\LM$ along a functor $F$}]{FoLM}{\ensuremath{F^{\circ}(\LM)}}
+\glsxtrnewsymbol[description={partial ordering on objects of a C-system}]{GgeG}{\ensuremath{\Gamma'\ge \Gamma}}
+\glsxtrnewsymbol[description={composition of $p$-morphisms}]{pGG}{\ensuremath{p_{\Gamma',\Gamma}}}
+\glsxtrnewsymbol[description={pullback of an object in a C-system}]{f*D}{\ensuremath{f^*(\Delta')}}
+\glsxtrnewsymbol[description={pullback of an arrow in a C-system}]{f*a}{\ensuremath{f^*(a)}}
+\glsxtrnewsymbol[description={canonical projection in a C-system}]{qFG}{\ensuremath{q(f,\Gamma')}}
+\glsxtrnewsymbol[description={extension of a C-system $CC$ by a presheaf $F$}]{CCF}{\ensuremath{CC[F]}}
+\glsxtrnewsymbol[description={projection functor for an extension by a presheaf $F$}]{trF}{\ensuremath{tr_F}}
+\glsxtrnewsymbol[description={canonical isomorphism in a presheaf extension of a C-system}]{canGG}{\ensuremath{can_{X,\Gamma,\Gamma'}}}
+\glsxtrnewsymbol[description={inverse of the projection functor for an extension by a presheaf $F$}]{trFy!}{\ensuremath{tr_{F,y}^!}}
+\glsxtrnewsymbol[description={the functor from standard finite sets to sets}]{Jf}{\ensuremath{Jf}}
 
 % \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
 
@@ -563,7 +581,7 @@ It is sometimes convenient to distinguish natural numbers used as objects of
 $\FF$ from their other uses. For this purpose we will write $\ff{n}$ for $n$
 used as an object of $\FF$.
 
-Following \cite{ACU} we let $Jf:F\sr Sets$ denote the functor that takes $\ff n$ to
+Following \cite{ACU} we let $\gls{Jf}:F\sr Sets$ denote the functor that takes $\ff n$ to
 $stn(n)$ and that is the identity on morphisms between two objects.  (On the
 total sets of morphisms the morphism component of this functor is the inclusion
 of a subset).
@@ -1598,7 +1616,7 @@ in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
 \label{2017.04.13.def1}
-A {\em monad in Kleisli form}\index\index{monad!in Kleisli form}\editorfootnote{formalized as the type {\tt KleisliMonad} in \cite{UniMath}.} on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
+A {\em monad in Kleisli form}\index{monad!in Kleisli form}\editorfootnote{formalized as the type {\tt KleisliMonad} in \cite{UniMath}.} on a category $\C$ is a triple $$\RR=(RR_{Ob},\eta,rr),$$ where 
 %
 \begin{enumerate}
 \item \label{2017.04.19.eq1} $RR_{Ob}:Ob(\C)\sr Ob(\C)$ is a function,
@@ -2065,11 +2083,11 @@ extract pairs $(\RR,\LM)$ consisting of a relative monad and a left module over 
 2-sorted relative monads, such as the ones that arise from 2-sorted
 second-order signatures, see \cite{AMM2017}.
 
-For two functors $F:\C\sr\D$, $F':\C'\sr\D'$ we let $F\boxtimes F'$ denote the
+For two functors $F:\C\sr\D$, $F':\C'\sr\D'$ we let $\gls{FtbF}$ denote the
 corresponding functor from $\C\times\C'$ to $\D\times\D'$. If $\C=\C'$ we let
-$F\times F'$ denote the composition of $F\boxtimes F'$ with the diagonal $\C\sr
-\C\times\C$, that is, the functor given on objects by $X\mapsto
-(F(X),F'(X))$. For a functor $FF:\C\sr \D\times\D'$ we let $FF_{\D}$ and
+$\gls{FtF}$ denote the composition of $F\boxtimes F'$ with the diagonal $\C\sr \C\times\C$,
+that is, the functor given on objects by $X\mapsto (F(X),F'(X))$. 
+For a functor $FF:\C\sr \D\times\D'$ we let $\gls{FF_D}$ and
 $FF_{\D'}$ denote the compositions of $FF$ with the projections from
 $\D\times\D'$ to $\D$ and $\D'$ respectively. We will also use the notation
 $FF_{\D}$ when $FF$ is (just) a function on objects.
@@ -2114,7 +2132,7 @@ Let $\C$, $\D$, and $\D'$ be categories, $J:\C\sr \D\times\D'$ be a functor, and
 $\RR=(RR,\eta,rr)$ be a $J$-relative monad. Assume in addition that we are given
 an object constancy structure $\nu$ on $J_{\D'}:\C\sr\D'$.
 
-The problem is to construct a structure of a $J_{\D}$-monad on $RR_{\D}$. This $J_{\D}$-monad will be denoted by $\RR_{\D}$.
+The problem is to construct a structure of a $J_{\D}$-monad on $RR_{\D}$. This $J_{\D}$-monad will be denoted by $\gls{RR_D}$.
 \end{problem}
 %
 \begin{construction}\rm
@@ -2253,7 +2271,7 @@ We want to emphasize the following case of Construction \ref{2017.04.21.constr1}
 %
 \begin{problem}
 \label{2017.04.23.prob1}
-Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. The problem is to construct an endo-monad $\RR_{1,A}$ on $\C$.
+Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. The problem is to construct an endo-monad $\gls{RR1A}$ on $\C$.
 \end{problem}
 %
 \begin{construction}
@@ -2290,7 +2308,7 @@ A left module in monoidal form over a monad in monoidal form is defined as follo
 \begin{definition}
 \label{2017.04.01.def2} 
 Let $\C$ and $\E$ be categories, $\R=(R,\eta,\mu)$ be a
-monad on $\C$, and $L:\C\sr \E$ be a functor. A {\em (left) $\R$-module structure} on
+monad on $\C$, and $L:\C\sr \E$ be a functor. A {\em (left) $\R$-module structure}\index{module!left module in monoidal form over a monad} on
 $L$ is a natural transformation $\rho:R\circ L\sr L$ such that for all $X\in\C$
 one has the following equations.
 %
@@ -2315,7 +2333,7 @@ Left modules can also be defined in Kleisli form.
 \label{2017.04.15.def1} 
 Let $\C$ and $\E$ be categories and
 $\RR=(RR_{Ob},\eta,rr)$ be a monad on $\C$. A {\em (left) $\RR$-module with values in
-$\E$ in Kleisli form} is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
+$\E$ in Kleisli form}\index{module!left module in Kleisli form over a monad} is a pair $(LM_{Ob},lm)$, where $LM_{Ob}:Ob(\C)\sr
 Ob(\E)$ is a function and $lm$ is a family, parametrized by $X,Y\in Ob(\C)$ of
 functions
 %
@@ -2394,7 +2412,9 @@ $K(\RR)$ to $\E$.
 \label{2017.03.16.def1} 
 Let $J:\C\sr\D$ be a functor and
 $\RR=(RR_{Ob},\eta,rr)$ be a $J$-monad. A {\em left module} over $\RR$ with values in a
-category $\E$ is a functor $\LM:K(\RR)\sr \E$, that is, a pair $(LM_{Ob},lm)$,
+category $\E$
+\index{module!left module over a relative monad with values in a category}
+is a functor $\LM:K(\RR)\sr \E$, that is, a pair $(LM_{Ob},lm)$,
 where $LM_{Ob}:Ob(\C)\sr Ob(\E)$ is a function and $lm$ is a family,
 parametrized by $X,Y\in Ob(\C)$, of functions
 %
@@ -2416,7 +2436,7 @@ say that $\LM$ is a module over $\RR$ without specifying $\E$ if $\E=\D$.
 From the unfolded definition we see that the left modules over an $Id$-relative
 monad are exactly the same as the left modules in Kleisli form over the
 corresponding monad. Following the notation $\R^K$ for the monad in Kleisli
-form corresponding to a monad $\R$ in monoidal form, we let ${\bf L}^K$
+form corresponding to a monad $\R$ in monoidal form, we let $\gls{LK}$
 denote the module over $\R^K$ in Kleisli form corresponding to a module
 ${\bf L}$ over $\R$ in monoidal form.
 %
@@ -2424,7 +2444,7 @@ ${\bf L}$ over $\R$ in monoidal form.
 \label{2017.04.05.def1} 
 Let $J:\C\sr\D$ be a functor, $\RR$ be a $J$-monad, and
 $\LM$ be a left module over $\RR$ with values in a category $\E$. We define the
-functor $\LM^f:\C\sr \E$ corresponding to $\LM$ as the composition
+functor $\gls{LMf}:\C\sr \E$ corresponding to $\LM$ as the composition
 $Et_{\RR}\circ \LM$.
 \end{definition}
 %
@@ -2512,7 +2532,7 @@ and $rr(R_{Mor},\mu)$ and $lm(R_{Mor},\mu)$ coincide by construction, because fo
 \label{2017.03.12.prob2}
 Given functors $F:\C_0\sr \C_1$ and $J:\C_1\sr \D$, a $J$-monad $\RR$, and an
 $\RR$-module $\LM$ with values in $\E$, to construct an $F^{\circ}(\RR)$-module
-$F^{\circ}(\LM)$ with values in $\E$.
+$\gls{FoLM}$ with values in $\E$.
 \end{problem}
 %
 \begin{construction}\rm
@@ -2617,7 +2637,7 @@ both relative monads and left modules over them can be ``precomposed'' with any
 functor. The left modules can also be ``post-composed'' with any functor. It is
 done by literal post-composition. Since a left module is a functor
 $\LM:K(\RR)\sr \E$, we can post-compose it with any functor $F:\E\sr \E'$ and
-obtain a new module, which we will be denoted by $\LM\circ F$. Explicitly, for
+obtain a new module, which will be denoted by $\LM\circ F$. Explicitly, for
 $\LM=(LM_{Ob},lm)$ one has
 %
 $$\LM\circ F=(LM_{Ob}\circ F, F(lm)),$$
@@ -2689,7 +2709,7 @@ $$lm^{1,A}_{X,Y}(f)=rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A}))).$$
 \subsection{Generalities}
 \label{onCsystems}
 %
-The definition of \emph{C-system} is given in \cite[Def. 2.1,
+The definition of \emph{C-system}\index{C-system} is given in \cite[Def. 2.1,
   2.3]{Csubsystems}.  \emph{Homomorphisms} of C-systems are defined in \cite[Def. 3.1,
   p 1188]{Cfromauniverse}. In \cite[Lemma 3.4, p.~1190]{Cfromauniverse} it is
 shown that for C-systems $CC_1$ and $CC_2$, a homomorphism between the underlying
@@ -2697,32 +2717,32 @@ C0-systems is always a homomorphism of C-systems.
 
 Further study of C-systems can be found in \cite[Sec. 2, pp. 1048-1064]{fromunivwithPiI}. 
 
-For $\Gamma',\Gamma$ in a C-system let us write $\Gamma'\ge \Gamma'$ and say
-that $\Gamma'$ is over $\Gamma$ if $l(\Gamma')\ge l(\Gamma)$ and
+For $\Gamma',\Gamma$ in a C-system let us write $\gls{GgeG}$ and say
+that $\Gamma'$ is \emph{over}\index{over!for objects of a C-system} $\Gamma$ if $l(\Gamma')\ge l(\Gamma)$ and
 $ft^{l(\Gamma')-l(\Gamma)}(\Gamma')=\Gamma$. We write $\Gamma'>\Gamma$ if
 $\Gamma'\ge \Gamma$ and $l(\Gamma')>l(\Gamma)$.
 
-If $\Gamma'$ is over $\Gamma$ we let $p_{\Gamma',\Gamma}$ denote the
+If $\Gamma'$ is over $\Gamma$ we let $\gls{pGG}$ denote the
 obvious composition of the $p$-morphisms starting with $\Gamma'$ and ending in
 $\Gamma$.
 
 If $\Gamma'',\Gamma'$ are over $\Gamma$, then we say that a morphism
-$f:\Gamma''\sr \Gamma'$ is over $\Gamma$ if
+$f:\Gamma''\sr \Gamma'$ is \emph{over} $\Gamma$ \index{over!for arrows of a C-system} if
 %
 $$f\circ p_{\Gamma',\Gamma}=p_{\Gamma'',\Gamma}$$
 %
 If $\Delta'$ is an object over $\Delta$ and $f:\Gamma\sr \Delta$ is a morphism
-then we will let $f^*(\Delta')$ denote the object $f^*(\Gamma',n)$, where
+then we will let $\gls{f*D}$ denote the object $f^*(\Gamma',n)$, where
 $n=l(\Gamma')-l(\Delta)$. Note that $n$ can always be inferred from $f$ and
 $\Gamma'$.
 
-Similarly we will write simply $q(f,\Gamma')$ for $q(f,\Gamma',n)$ since $n$ can be inferred as $l(\Gamma')-l(codom(f))$. 
+Similarly we will write simply $\gls{qFG}$ for $q(f,\Gamma',n)$ since $n$ can be inferred as $l(\Gamma')-l(codom(f))$. 
 %
 \begin{lemma}
 \label{2015.08.23.l1a} 
 Let $\Gamma'$ and $\Gamma''$ be objects over $\Delta$,
 $a:\Gamma'\sr \Gamma''$ be a morphism over $\Delta$, and let $f:\Gamma\sr\Delta$ be a
-morphism. Then there is a unique morphism $f^*(a):f^*(\Gamma')\sr
+morphism. Then there is a unique morphism $\gls{f*a}:f^*(\Gamma')\sr
 f^*(\Gamma'')$ over $\Gamma$ such that the square
 %
 $$
@@ -2811,7 +2831,7 @@ C-system. For the definition of ``C0-system'' see \cite[Definition
 %
 \begin{problem}\label{2016.01.19.prob1}
 Given a C-system $CC$ and a presheaf $F:CC^{op}\sr Sets$ to construct a
-C0-system that will be denoted by $CC[F]$ and called the {\em $F$-extension of $CC$}.
+C0-system that will be denoted by $\gls{CCF}$ and called the {\em $F$-extension of $CC$}.\index{presheaf extension of a C-system}
 \end{problem}
 %
 \begin{construction}\rm\label{2016.01.19.constr1}
@@ -2924,7 +2944,7 @@ and
 %
 $$((X,\Gamma),(Y,\Gamma'),f)\mapsto f$$
 %
-form a functor $tr_F:CC[F]\sr CC$ and this functor is fully faithful.
+form a functor $\gls{trF}:CC[F]\sr CC$, and this functor is fully faithful.
 \end{lemma}
 %
 \begin{proof}
@@ -2951,7 +2971,7 @@ This completes the construction of the presheaf extension of a C-system.
 \label{2015.09.01.rem1}
 For any two objects of $C[F]$ of the form $(X,\Gamma),(X,\Gamma')$ the formula
 %
-$$can_{X,\Gamma,\Gamma'}=((X,\Gamma),(X,\Gamma'),Id_X)$$
+$$\gls{canGG}=((X,\Gamma),(X,\Gamma'),Id_X)$$
 %
 defines a morphism, which is clearly an isomorphism, with
 $can_{X,\Gamma',\Gamma}$ being a canonical inverse. Therefore, all objects of
@@ -2968,7 +2988,7 @@ object component of $tr_{F}$ over all $X$.
 
 Mapping $X$ to $(X,\Gamma_{X,y})$ and $f:X\sr Y$ to
 $((X,\Gamma_{X,y}),(Y,\Gamma_{Y,y}),f)$ defines, as one can immediately prove
-from the definitions, a functor $tr_{F,y}^!:CC\sr CC[F]$.
+from the definitions, a functor $\gls{trFy!}:CC\sr CC[F]$.
 
 This functor clearly satisfies the conditions $tr^!_{F,y}\circ tr_F=Id_{CC}$.
 
@@ -2981,13 +3001,13 @@ pair of mutually inverse equivalences of categories.
 
 However these equivalences are not isomorphisms unless $F(X)\cong unit$ for all
 $X$, and, as a C-system, $CC[F]$ is often very different from $CC$, for example,
-in that it may have many more C-subsystems.
+in that it may have many more C-subsystems.\editorfootnote{Here $unit$ denotes a set with 1 element.}
 \end{remark}
 %
-We provide the following lemma without a proof because the proof is immediate
+We provide the following lemma without a proof, because the proof is immediate
 from the definitions and \cite[Lemma 3.4]{Cfromauniverse}, which asserts that a
 functor that satisfies all conditions in the definition of homomorphism,
-except possibly the s-morphisms condition, is a homomorphism.
+except possibly the s-morphism condition\DG{Is it clear what this condition is?}, is a homomorphism.
 %
 \begin{lemma}
 \label{2015.08.22.l4}
