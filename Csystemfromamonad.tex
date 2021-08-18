@@ -1520,7 +1520,7 @@ of saying ``a family $y$, parametrized by $x$ in $A$, such that $y(x)$ is in
 $B(x)$''. For a way to define a family of sets in ZFC without a universe
 see \cite[Remark 3.9]{fromunivwithPiI}. Families of sets do not form a
 set. However, families of sets with a given parameter set and such that all the
-sets of the family are subsets of given set do. A formulation in terms of
+sets of the family are subsets of a given set do. A formulation in terms of
 iterated families can be used for ``for all'' expressions where there are
 several parameters, such as in Definition \ref{2015.12.22.def1}, item (3). Similarly, a
 ``collection of data'' is understood as an $n$-tuple, which in turn is understood as
@@ -1616,7 +1616,7 @@ be used.
 We will omit the qualification ``in monoidal form'' when it is clear from the context. 
 
 The following definition specifies objects that we will call ``monads in
-Kleisli form''. To the best of my knowledge it appeared explicitly first
+Kleisli form''. To the best of our knowledge it appeared explicitly first
 in the groundbreaking paper by Eugenio Moggi \cite{Moggi}.
 %
 \begin{definition}
@@ -1716,24 +1716,24 @@ To go from the monoidal form to the Kleisli form, one defines, for $X,Y\in Ob(\C
 %
 \begin{equation}
 \label{2017.04.17.eq1}
-rr_{X,Y}(f)=RR_{Mor}(f)\circ \mu_Y
+rr_{X,Y}(f)=RR_{Mor}(f)\circ \mu_Y.
 \end{equation}%
 %
-To go from the Kleisli form to the monoidal form one defines
+To go from the Kleisli form to the monoidal form one defines,
 %
 \begin{enumerate}
-\item for $f:X\sr Y$ in $Mor(\C)$
+\item for $f:X\sr Y$ in $Mor(\C)$,
 %
 \begin{equation}
 \label{2017.04.17.eq2a}
-RR_{Mor}(f)=rr_{X,Y}(f\circ \eta_Y)
+RR_{Mor}(f)=rr_{X,Y}(f\circ \eta_Y),
 \end{equation}%
 %
-\item for $X\in Ob(\C)$
+\item for $X\in Ob(\C)$,
 %
 \begin{equation}
 \label{2017.04.17.eq2b}
-\mu_X=rr_{RR_{Ob}(X),X}(Id_{RR_{Ob}(X)})
+\mu_X=rr_{RR_{Ob}(X),X}(Id_{RR_{Ob}(X)}).
 \end{equation}%
 %
 \end{enumerate}
@@ -1939,7 +1939,7 @@ and for $X,Y\in\C_0$ and $f:J(F(X))\sr RR_{Ob}(F(Y))$,
 %
 \begin{equation}
 \label{2017.04.11.eq2}
-F^{\circ}(rr)_{X,Y}(f):=rr_{F(X),F(Y)}(f)
+F^{\circ}(rr)_{X,Y}(f):=rr_{F(X),F(Y)}(f).
 \end{equation}%
 %
 Let us verify conditions (1)-(3) of Definition \ref{2015.12.22.def1}. We write
@@ -1949,11 +1949,11 @@ $RR$ instead of $RR_{Ob}$ :
 \item Let $X\in\C_0$. Then 
 %
 $$F^{\circ}(rr)_{X,X}(F^{\circ}(\eta)_X)=rr_{F(X),F(X)}(\eta_{F(X)})=
-Id_{RR(F(X))}=Id_{F^{\circ}(RR)(X)}$$
+Id_{RR(F(X))}=Id_{F^{\circ}(RR)(X)}.$$
 %
 \item Let $X,Y\in \C_0$ and $f:J(F(X))\sr RR(F(Y))$. Then
 %
-$$F^{\circ}(\eta)_X\circ F^{\circ}(rr)_{X,Y}(f)=\eta_{F(X)}\circ rr_{F(X),F(Y)}(f)=f$$
+$$F^{\circ}(\eta)_X\circ F^{\circ}(rr)_{X,Y}(f)=\eta_{F(X)}\circ rr_{F(X),F(Y)}(f)=f.$$
 %
 \item Let $X,Y,Z\in \C_0$ and 
 %
@@ -1966,7 +1966,7 @@ are morphisms in $\D$. Then
     F^{\circ}(rr)_{X,Y}(f)\circ F^{\circ}(rr)_{Y,Z}(g)
       &= rr_{F(X),F(Y)}(f)\circ rr_{F(Y),F(Z)}(g)
     \\&= rr_{F(X),F(Z)}(f\circ rr_{F(Y),F(Z)}(g))
-    \\&= F^{\circ}(rr)_{X,Z}(f\circ F^{\circ}(rr)_{Y,Z}(g))
+    \\&= F^{\circ}(rr)_{X,Z}(f\circ F^{\circ}(rr)_{Y,Z}(g)).
   \end{split}
 \end{equation*}
 \end{enumerate}
@@ -1980,7 +1980,7 @@ In the context of Problem \ref{2017.02.24.prob1} one has
 %
 \begin{equation}
 \label{2017.04.17.eq6}
-(F^{\circ}(\RR))^f=F\circ RR^f
+(F^{\circ}(\RR))^f=F\circ RR^f.
 \end{equation}%
 %
 \end{lemma}
@@ -2030,7 +2030,7 @@ morphism $f:J(F(X))\sr RR(F(Y))$ in $K(F^{\circ}(\RR))$ from $X$ to $Y$, we set
 %
 \begin{equation}
 \label{2017.03.12.eq2}
-F_{\RR,X,Y}(f)=f
+F_{\RR,X,Y}(f)=f,
 \end{equation}%
 %
 that is, $F_{\RR,Mor}$ is given by the function
