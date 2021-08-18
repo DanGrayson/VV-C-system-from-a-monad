@@ -169,6 +169,7 @@
 %%%% the symbol section of the glossary
 % \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
 \glsxtrnewsymbol[description={the category of sets in a set $U$}]{SetsU}{\ensuremath{Sets(U)}}
+\glsxtrnewsymbol[description={the category of sets in a fixed universe}]{Sets}{\ensuremath{Sets}}
 \glsxtrnewsymbol[description={the category of standard finite sets}]{FF}{\ensuremath{\FF}}
 \glsxtrnewsymbol[description={the functor from standard finite sets to sets}]{Jf}{\ensuremath{Jf}}
 \glsxtrnewsymbol[description={the set of functions from $X$ to $Y$}]{FunXY}{\ensuremath{Fun(X,Y)}}
@@ -183,14 +184,14 @@
 \glsxtrnewsymbol[description={a functor from the Kleisli category of a relative monad $\RR$}]{RRlm}{\ensuremath{\RR^{lm}}}
 \glsxtrnewsymbol[description={restriction of a relative monad $\RR$ along a functor $F$}]{FoRR}{\ensuremath{F^{\circ}(\RR)}}
 \glsxtrnewsymbol[description={extension of a relative monad $\RR$ to a functor}]{RRf}{\ensuremath{\RR^f}}
-\glsxtrnewsymbol[description={the functor induced on Kleisli categories by restriction of a relative monad $\RR$}]{F_RR}{\ensuremath{F_{\RR}}}
+\glsxtrnewsymbol[description={the functor $K(F^{\circ}(\RR))\sr K(\RR)$ on Kleisli categories induced by restriction of a relative monad $\RR$}]{F_RR}{\ensuremath{F_{\RR}}}
 \glsxtrnewsymbol[description={the identity object constancy structure on $\C$ corresponding to an object $A$}]{AuC}{\ensuremath{{\protect \underline A}_{\C}}}
 \glsxtrnewsymbol[description={the functor (or function on objects) induced by $FF$ on a factor $\D$}]{FF_D}{\ensuremath{FF_\D}}
 \glsxtrnewsymbol[description={external product of two functors}]{FtbF}{\ensuremath{F \boxtimes F'}}
 \glsxtrnewsymbol[description={product of two functors}]{FtF}{\ensuremath{F \times F'}}
-\glsxtrnewsymbol[description={the relative monad induced on a factor $\D$ from a relative monad $\RR$}]{RR_D}{\ensuremath{\RR_{\D}}}
-\glsxtrnewsymbol[description={the monad induced on the first factor of a product by a monad $\RR$}]{RR1A}{\ensuremath{\RR_{1,A}}}
-\glsxtrnewsymbol[description={the monad induced on the second factor of a product by a monad $\RR$}]{RR2A}{\ensuremath{\RR_{2,A}}}
+\glsxtrnewsymbol[description={the relative monad on a factor $\D$ induced by a relative monad $\RR$}]{RR_D}{\ensuremath{\RR_{\D}}}
+\glsxtrnewsymbol[description={the monad on the first factor of a product induced by a monad $\RR$}]{RR1A}{\ensuremath{\RR_{1,A}}}
+\glsxtrnewsymbol[description={the monad on the second factor of a product induced by a monad $\RR$}]{RR2A}{\ensuremath{\RR_{2,A}}}
 \glsxtrnewsymbol[description={the left module in Kleisli form corresponding to a left module $\bf L$ in monoidal form}]{LK}{\ensuremath{{\bf L}^K}}
 \glsxtrnewsymbol[description={a functor associated to a left module $\LM$ over a relative monad}]{LMf}{\ensuremath{\LM^f}}
 \glsxtrnewsymbol[description={restriction of a module over a relative monad $\LM$ along a functor $F$}]{FoLM}{\ensuremath{F^{\circ}(\LM)}}
@@ -206,8 +207,13 @@
 \glsxtrnewsymbol[description={notation for a function on a standard finite set}]{f...f}{\ensuremath{(f_0,\dots,f_{n-1})}}
 \glsxtrnewsymbol[description={a monad $\R$ as a left module over itself}]{Rlm}{\ensuremath{\R^{lm}}}
 \glsxtrnewsymbol[description={the C-system associated to a left module $\LM$ over a $Jf$-relative monad $\RR$}]{CRRLM}{\ensuremath{C(\RR,\LM)}}
-\glsxtrnewsymbol[description={the object of $C(\RR)$ associated to the natural number $m$}]{whm}{\ensuremath{\wh{m}}}
+\glsxtrnewsymbol[description={the object of $C(\RR)$ associated to the natural number $m$}]{mhat}{\ensuremath{\wh{m}}}
+\glsxtrnewsymbol[description={the set of sections of $p$-morphisms in a C-system $CC$}]{ObtildeCC}{\ensuremath{\wt{Ob}(CC)}}
+\glsxtrnewsymbol[description={the set of objects of a category $\C$}]{ObC}{\ensuremath{Ob(\C)}}
+\glsxtrnewsymbol[description={the set of morphisms of a category $\C$}]{MorC}{\ensuremath{Mor(\C)}}
+\glsxtrnewsymbol[description={composition of morphisms (in diagrammatic order)}]{fog}{\ensuremath{f\circ g}}
 
+%% glossary template:
 % \glsxtrnewsymbol[description={}]{}{\ensuremath{}}
 
 \begin{document}
@@ -1298,7 +1304,7 @@ set of objects of the category underlying $CC$, and where
 %
 \begin{equation}
 \label{2017.02.04.eq1}
-\wt{Ob}(CC):=\{s\in Mor(CC)\,|\,s\in sec(p_{codom(s)}), l(codom(s))>0\},
+\gls{ObtildeCC}:=\{s\in Mor(CC)\,|\,s\in sec(p_{codom(s)}), l(codom(s))>0\},
 \end{equation}%
 %
 i.e., where $\wt{Ob}(CC)$ is the set of sections of the non-trivial
@@ -1307,10 +1313,8 @@ $Ob(CC)$ and $\wt{Ob}(CC)$ to $Ob$ and $\wt{Ob}$ respectively.
 
 The sets $(Ob,\wt{Ob})$ are equipped with a system of operations
 $(l,ft,\partial,T,S,\wt{T},\wt{S},\delta)$. Pairs of sets equipped with
-operations of such form are called (unital) pre-B-systems%
-% I can't figure out what reference is intended here. -- DRG
-%(cf.{} \cite{Bsystemsnew})
-.  The first main result of \cite{Csubsystems},
+operations of such form are called (unital) pre-B-systems (cf.{} \cite{Bsystemsnew}\DG{What reference to B-systems is intended here?}).\index{pre-B-systems}
+The first main result of \cite{Csubsystems},
 Proposition 4.2, shows how to construct from a sub-pre-B-system $(B,\wt{B})$ of
 $(Ob,\wt{Ob})$ a sub-C-system of $CC$ whose associated pre-B-system is
 $(B,\wt{B})$. The second main result of that paper, Proposition 5.4, shows how
@@ -1489,9 +1493,9 @@ is written in a formalization-ready style and should be easily formalizable
 both in {\em UniMath} and in ZFC.
 
 In categories, we use the {\em diagrammatic} order of composition, i.e., for morphisms $f:X\sr Y$
-and $g:Y\sr Z$ we write their composition as $f\circ g$, instead of as $g \circ f$.
+and $g:Y\sr Z$ we write their composition as $\gls{fog}$, instead of as $g \circ f$.
 
-A category $\C$ is always understood as a pair of sets $Ob(\C)$, $Mor(\C)$
+A category $\C$ is always understood as a pair of sets $\gls{ObC}$, $\gls{MorC}$
 connected by the operations of domain, codomain, identity and composition where
 composition is a partially defined operation. A functor $F:\C\sr \D$ is a pair
 of functions $F_{Ob}:Ob(\C)\sr Ob(\D)$, $F_{Mor}:Mor(\C)\sr Mor(\D)$ satisfying
@@ -1524,7 +1528,7 @@ We fix a universe $U$ without making precise what conditions on the set $U$ we
 require. It is clear that it is sufficient for all constructions of this paper
 to require $U$ to be a Grothendieck universe. However, it is likely that a much
 weaker set of conditions on $U$ is sufficient for our purposes. In all that
-follows we write $Sets$ instead of $Sets(U)$.
+follows we write $\gls{Sets}$ instead of $Sets(U)$.
 
 \subsection{Acknowledgements}
 
@@ -3471,7 +3475,7 @@ $\delta$ on the B-sets $$(Ob(C(\RR)),\wt{Ob}(C(\RR)))$$ of this C-system
 Recall that as a category $C(\RR)$ is the opposite category of $T$.  Its set of
 objects is the set of natural numbers $\nat$. To distinguish the positions in
 formulas where natural numbers are used as objects of $C(\RR)$ we will write in
-such places $\gls{whm}$ instead of $m$, $\wh{n}$ instead of $n$, etc.
+such places $\gls{mhat}$ instead of $m$, $\wh{n}$ instead of $n$, etc.
 
 The sets of morphisms of $C(\RR)$ are given by the formula 
 %
