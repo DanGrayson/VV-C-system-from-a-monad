@@ -2292,7 +2292,7 @@ We want to emphasize the following case of Construction \ref{2017.04.21.constr1}
 %
 \begin{problem}
 \label{2017.04.23.prob1}
-Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. The problem is to construct an endo-monad $\gls{RR1A}$ on $\C$.
+Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(\D)$. The problem is to construct an endo-monad $\gls{RR1A}$ on $\C$.
 \end{problem}
 %
 \begin{construction}
@@ -2310,13 +2310,13 @@ $\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$, where:
 \begin{enumerate}
 \item for $X\in \C$, $RR_{1,A}(X)=pr_{\C}(RR((X,A)))$,
 \item for $X\in \C$, $\eta^{1,A}_X=pr_{\C}(\eta_{(X,A)})$,
-\item for $X,Y\in \C$, $f:X\sr Y$, $rr^{1,A}_{X,Y}(f)=pr_{\C}(rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A}))))$.
+\item for $X,Y\in \C$, $f:X\sr Y$, $rr^{1,A}_{X,Y}(f)=pr_{\C}(rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A)})))$.
 \end{enumerate}
 \ec
 %
 \begin{remark}\rm
 The notation $\RR_{1,A}$ emphasizes that the monad is on the first projection
-of the product $\C\times\D$. We can also construct, for $A\in Ob(C)$, an
+of the product $\C\times\D$. We can also construct, for $A\in Ob(\C)$, an
 endo-monad $\gls{RR2A}$ on $\D$.
 \end{remark}
 %
@@ -2705,7 +2705,7 @@ we wrote $J$ instead of $J_{1,A}$.
 \begin{problem}
 \label{2017.04.23.prob3} 
 Let $\C$ and $\D$ be categories. Let $\RR=(RR,\eta,rr)$
-be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. The problem is to construct an
+be an endo-monad on $\C\times\D$. Let $A\in Ob(\D)$. The problem is to construct an
 $\RR_{1,A}$-module structure on $J_{1,A}\circ RR$.
 \end{problem}
 %
