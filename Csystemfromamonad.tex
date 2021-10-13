@@ -2294,7 +2294,7 @@ We want to emphasize the following case of Construction \ref{2017.04.21.constr1}
 %
 \begin{problem}
 \label{2017.04.23.prob1}
-Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. The problem is to construct an endo-monad $\gls{RR1A}$ on $\C$.
+Let $\C$ and $\D$ be categories. Let $\RR$ be an endo-monad on $\C\times\D$. Let $A\in Ob(\D)$. The problem is to construct an endo-monad $\gls{RR1A}$ on $\C$.
 \end{problem}
 %
 \begin{construction}
@@ -2312,13 +2312,13 @@ $\RR_{1,A}=(RR_{1,A},\eta^{1,A},rr^{1,A})$, where:
 \begin{enumerate}
 \item for $X\in \C$, $RR_{1,A}(X)=pr_{\C}(RR((X,A)))$,
 \item for $X\in \C$, $\eta^{1,A}_X=pr_{\C}(\eta_{(X,A)})$,
-\item for $X,Y\in \C$, $f:X\sr Y$, $rr^{1,A}_{X,Y}(f)=pr_{\C}(rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A}))))$.
+\item for $X,Y\in \C$, $f:X\sr Y$, $rr^{1,A}_{X,Y}(f)=pr_{\C}(rr_{(X,A),(Y,A)}(f,pr_{\D}(\eta_{(Y,A)})))$.
 \end{enumerate}
 \ec
 %
 \begin{remark}\rm
 The notation $\RR_{1,A}$ emphasizes that the monad is on the first projection
-of the product $\C\times\D$. We can also construct, for $A\in Ob(C)$, an
+of the product $\C\times\D$. We can also construct, for $A\in Ob(\C)$, an
 endo-monad $\gls{RR2A}$ on $\D$.
 \end{remark}
 %
@@ -2707,7 +2707,7 @@ we wrote $J$ instead of $J_{1,A}$.
 \begin{problem}
 \label{2017.04.23.prob3} 
 Let $\C$ and $\D$ be categories. Let $\RR=(RR,\eta,rr)$
-be an endo-monad on $\C\times\D$. Let $A\in Ob(D)$. The problem is to construct an
+be an endo-monad on $\C\times\D$. Let $A\in Ob(\D)$. The problem is to construct an
 $\RR_{1,A}$-module structure on $J_{1,A}\circ RR$.
 \end{problem}
 %
@@ -3645,7 +3645,7 @@ $$q(f,\wh{n+i},i)=qq^i(f)$$
 \end{lemma}
 %
 \begin{proof}
-All three assertions a proved by induction on $i$. For the first assertion both
+All three assertions are proved by induction on $i$. For the first assertion both
 parts are proved by induction simultaneously. One has
 %
 \begin{enumerate}
@@ -3699,14 +3699,14 @@ It follows immediately from Lemma \ref{2015.08.26.l1}.
 \label{2015.09.09.l1}
 Let $f=(f(0),\dots,f(n-1))$ be a morphism from $\wh{m}$ to $\wh{n}$, where $n>0$. Then one has
 %
-$$s_f=(x_0^{m},\dots,x_{m-1}^{m},f(n-1))$$
+\[s_f=(x_0^{m},\dots,x_{m-1}^{m},f(n-1)).\]
 %
 \end{lemma}
 %
 \begin{proof}
 By \cite[Definition 2.3(2)]{Csubsystems} we have that 
 %
-$$s_f\circ p_{\wh{m+1}}=Id_{\wh{m}}$$
+\[s_f\circ p_{\wh{m+1}}=Id_{\wh{m}}.\]
 %
 Therefore, by Lemma \ref{2015.08.22.l7}, $s_f$ is of the form
 $(x_0^m,\dots,x_{m-1}^m,sf)$ for some $sf\in RR(m)$. By \cite[Definition
@@ -3715,13 +3715,13 @@ p_{\wh{n}}$. By Lemma \ref{2015.07.24.l1}(1) we have
 $ft(f)=(f(0),\dots,f(n-2))$ and by Lemma \ref{2016.01.15.l3} and
 (\ref{2015.08.26.eq9}) we have
 %
-$$q(ft(f),\wh{n})=qq(ft(f))=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-2)),x_{m}^{m+1})$$
+\[q(ft(f),\wh{n})=qq(ft(f))=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-2)),x_{m}^{m+1}).\]
 %
 Therefore we should have
 %
 $$(f(0),\dots,f(n-1))=(\iota_m^1(f(0)),\dots,\iota_m^1(f(n-2)),x_{m}^{m+1})\hc (x_0^m,\dots,x_{m-1}^m,sf)$$
 %
-which is equivalent to, by Lemma \ref{2016.01.15.l4}, 
+which is equivalent, by Lemma \ref{2016.01.15.l4}, to
 %
 \begin{equation}\label{2016.01.15.eq6}
 f(i)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))
@@ -3730,7 +3730,7 @@ f(i)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(\iota_m^1(f(i)))
 for $i=0,\dots,n-2$ and 
 %
 \begin{equation}\label{2016.01.15.eq7}
-f(n-1)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(x_{m}^{m+1})
+f(n-1)=\mbind{(x_0^m,\dots,x_{m-1}^m,sf)}(x_{m}^{m+1}).
 \end{equation}%
 %
 For the first series of equalities we get, by inserting the coercion $RR$ and
@@ -3801,7 +3801,7 @@ The lemma is proved.
 Let $f:\wh{m}\sr\wh{n}$ and let $s:\wh{n+i}\sr\wh{n+i+1}$ be an element of $\wt{Ob}$. Then one has
 %
 \begin{equation}\label{2015.08.29.eq1}
-f^*(s)=(x_0^{m+i},\dots,x_{m+i-1}^{m+i},\mbind{qq^i(f)}(s(n+i)))
+f^*(s)=(x_0^{m+i},\dots,x_{m+i-1}^{m+i},\mbind{qq^i(f)}(s(n+i))).
 \end{equation}%
 %
 \end{lemma}
@@ -3888,39 +3888,39 @@ Let $CC$ be a C-system. We will write $Ob$ for $Ob(CC)$ and $\wt{Ob}$ for $\wt{O
 \begin{enumerate}
 \item The operation $T$ is defined on the set
 %
-$$T_{dom}=\{\Gamma,\Gamma'\in Ob\,|\,l(\Gamma)>0\,\,and\,\, \Gamma'>ft(\Gamma)\}$$
+\[T_{dom}=\{\Gamma,\Gamma'\in Ob\,|\,l(\Gamma)>0\,\,and\,\, \Gamma'>ft(\Gamma)\}\]
 %
 and takes values in $Ob$. For $(\Gamma,\Gamma')\in T_{dom}$ one defines
 %
-$$T(\Gamma,\Gamma')=p_{\Gamma}^*(\Gamma')$$
+\[T(\Gamma,\Gamma')=p_{\Gamma}^*(\Gamma').\]
 %
 \item The operation $\wt{T}$ is defined on the set
 %
-$$\wt{T}_{dom}=\{\Gamma\in Ob, s\in \wt{Ob}\,|\,l(\Gamma)>0\,\,and\,\, \partial(s)>ft(\Gamma)\}$$
+\[\wt{T}_{dom}=\{\Gamma\in Ob, s\in \wt{Ob}\,|\,l(\Gamma)>0\,\,and\,\, \partial(s)>ft(\Gamma)\}\]
 %
 and takes values in $\wt{Ob}$. For $(\Gamma,s)\in \wt{T}_{dom}$ one defines
 %
-$$\wt{T}(\Gamma,s)=p_{\Gamma}^*(s)$$
+\[\wt{T}(\Gamma,s)=p_{\Gamma}^*(s).\]
 %
 \item The operation $S$ is defined on the set
 %
-$$S_{dom}=\{r\in \wt{Ob}, \Gamma\in Ob\,|\,\Gamma>\partial(r)\}$$
+\[S_{dom}=\{r\in \wt{Ob}, \Gamma\in Ob\,|\,\Gamma>\partial(r)\}\]
 %
 and takes values in $Ob$. For $(r,\Gamma)\in S_{dom}$ one defines
 %
-$$S(r,\Gamma)=r^*(\Gamma)$$
+\[S(r,\Gamma)=r^*(\Gamma).\]
 %
 \item The operation $\wt{S}$ is defined on the set 
 %
-$$\wt{S}_{dom}=\{r,s\in \wt{Ob}\,|\,\partial(s)>\partial(r)\}$$
+\[\wt{S}_{dom}=\{r,s\in \wt{Ob}\,|\,\partial(s)>\partial(r)\}\]
 %
 and takes values in $\wt{Ob}$. For $(r,s)\in \wt{S}_{dom}$ one defines
 %
-$$S(r,s)=r^*(s)$$
+\[S(r,s)=r^*(s).\]
 %
 \item The operation $\delta$ is defined on the set 
 %
-$$\delta_{dom}=\{\Gamma\in Ob\,|\,l(\Gamma)>0\}$$
+\[\delta_{dom}=\{\Gamma\in Ob\,|\,l(\Gamma)>0\}\]
 %
 and takes values in $\wt{Ob}$. For $\Gamma\in \delta_{dom}$ one defines $\delta(\Gamma)$ as $s_{Id_{\Gamma}}$. 
 \end{enumerate}
@@ -3946,43 +3946,43 @@ Let $Ob=Ob(C(\RR))$ and let $\wt{Ob}'$ be the right hand side of (\ref{2015.08.2
 \begin{enumerate}
 \item The operation $T'$ is defined on the set
 %
-$$T'_{dom}=\{\wh{m},\wh{n}\in Ob\,|\,m>0\,\,and\,\,n>m-1\}$$
+\[T'_{dom}=\{\wh{m},\wh{n}\in Ob\,|\,m>0\,\,and\,\,n>m-1\}\]
 %
 and is given by 
 %
-$$T'(\wh{m},\wh{n})=\wh{n+1}$$
+\[T'(\wh{m},\wh{n})=\wh{n+1}.\]
 %
 \item The operation $\wt{T}'$ is defined on the set 
 %
-$$\wt{T}'_{dom}=\{\wh{m}\in Ob, (n,s)\in \wt{Ob}'\,|\,m>0\,\,and\,\,n+1>m-1\}$$
+\[\wt{T}'_{dom}=\{\wh{m}\in Ob, (n,s)\in \wt{Ob}'\,|\,m>0\,\,and\,\,n+1>m-1\}\]
 %
 and is given by
 %
-$$\wt{T}'(\wh{m},(n,s))=(n+1,\partial_n^{m-1}(s))$$
+\[\wt{T}'(\wh{m},(n,s))=(n+1,\partial_n^{m-1}(s))\]
 %
 \item The operation $S'$ is defined on the set
 %
-$$S'_{dom}=\{(m,r)\in \wt{Ob}',\wh{n}\in Ob\,|\,n>m+1\}$$
+\[S'_{dom}=\{(m,r)\in \wt{Ob}',\wh{n}\in Ob\,|\,n>m+1\}\]
 %
 and is given by
 %
-$$S'((m,r),\wh{n})=\wh{n-1}$$
+\[S'((m,r),\wh{n})=\wh{n-1}.\]
 %
 \item The operation $\wt{S}'$ is defined on the set 
 %
-$$\wt{S}'_{dom}=\{(m,r)\in\wt{Ob}',(n,s)\in \wt{Ob}'\,|\,n>m\}$$
+\[\wt{S}'_{dom}=\{(m,r)\in\wt{Ob}',(n,s)\in \wt{Ob}'\,|\,n>m\}\]
 %
 and is given by
 %
-$$\wt{S}'((m,r),(n,s))=\theta_{m,n}(r,s)$$
+\[\wt{S}'((m,r),(n,s))=\theta_{m,n}(r,s).\]
 %
 \item The operation $\delta'$ is defined on the subset
 %
-$$\delta'_{dom}=\{\wh{n}\in Ob\,|\,n>0\}$$
+\[\delta'_{dom}=\{\wh{n}\in Ob\,|\,n>0\}\]
 %
 and is given by
 %
-$$\delta'(\wh{n})=(n,x_{n-1}^n)$$
+\[\delta'(\wh{n})=(n,x_{n-1}^n).\]
 %
 \end{enumerate}
 \end{theorem}
@@ -4011,7 +4011,7 @@ We have:
   \begin{equation*}
     \begin{split}
       S'((m,r),n)&=(mb_{\RR}^!(m,r))^*(\wh{n})
-      \\&=(x_0^m,\dots,x_{m-1}^m,r)^*(\wh{n})=\wh{n+m-(m+1)}=\wh{n-1}
+      \\&=(x_0^m,\dots,x_{m-1}^m,r)^*(\wh{n})=\wh{n+m-(m+1)}=\wh{n-1}.
     \end{split}
   \end{equation*}
 \item The operation $\wt{S}'$ is defined on the set of pairs $(m,r),(n,s)\in
@@ -4023,7 +4023,7 @@ We have:
 \item The operation $\delta'$ is defined on the subset $\wh{n}\in Ob$ such that
   $n>0$ and is given by
 %
-$$\delta'(\wh{n})=mb_{\RR}(\delta(\wh{n}))=mb_{\RR}((x_0^n,\dots,x_{n-1}^n,x_{n-1}^n))=(n,x_{n-1}^n)$$
+\[\delta'(\wh{n})=mb_{\RR}(\delta(\wh{n}))=mb_{\RR}((x_0^n,\dots,x_{n-1}^n,x_{n-1}^n))=(n,x_{n-1}^n).\]
 %
 \end{enumerate}
 %
@@ -4119,7 +4119,7 @@ such that, in particular, $x^{n+1}_{n}=x_n$.
 
 Define now a function $\psi:RR(2)\sr RR(2)$ by the formula
 %
-$$\psi=\partial^0_2\circ \partial^0_3\circ \theta_{3,4}(x_0^3,-)\circ \theta_{2,3}(x_1^2,-)$$
+\[\psi=\partial^0_2\circ \partial^0_3\circ \theta_{3,4}(x_0^3,-)\circ \theta_{2,3}(x_1^2,-).\]
 %
 One can verify that for any $Jf$-relative monad $RR$, $\psi=\sigma$, where
 $\sigma$ is the permutation of $0$ and $1$ in $stn(2)$.
@@ -4128,7 +4128,7 @@ In substitution notation this can be seen as follows:
 \begin{equation*}
   \begin{split}
     \psi(E(x^2_0,x_1^2))&=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,\partial^0_3(\partial^0_2(E(x^2_0,x_1^2)))))=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,\partial^0_3(E(x^3_1,x^3_2))))
-    \\&=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,E(x^4_2,x^4_3)))=\theta_{2,3}(x_1^2,E(x^3_2,x^3_0))=E(x^2_1,x^2_0)
+    \\&=\theta_{2,3}(x_1^2,\theta_{3,4}(x_0^3,E(x^4_2,x^4_3)))=\theta_{2,3}(x_1^2,E(x^3_2,x^3_0))=E(x^2_1,x^2_0).
   \end{split}
 \end{equation*}
 \end{remark}
