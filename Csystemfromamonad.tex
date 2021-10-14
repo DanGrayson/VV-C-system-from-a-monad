@@ -4246,7 +4246,7 @@ $$p_{Y}^*(X)=(m+1,(T_0,\dots,T_{n-2},T,\partial_{n-1}^{n-1}(T_{n-1}),\dots,\part
 \end{lemma}
 %
 \begin{proof}
-We want to apply Lemma \ref{2016.01.31.l1}. We have $lx=n$, $ly=m$. The morphism $p_Y$ is of the form
+We want to apply Lemma \ref{2016.01.31.l1}. We have $l(X)=m$, $l(Y)=n$. The morphism $p_Y$ is of the form
 %
 $$p_Y=p_{\wh{n}}:(n,(T_0,\dots,T_{n-2},T))\sr (n-1,(T_0,\dots,T_{n-2}))$$
 %
@@ -4477,7 +4477,7 @@ by the formula
 %
 where the second equality is the equality of Lemma \ref{2015.08.28.l1}. As in
 the case of $\theta^{\RR}_{m,n}$ we will often write $\theta_{m,n}$ instead of
-$\theta^{\LM}_{m,n}$ since the whether we consider $\theta^{\RR}$ or
+$\theta^{\LM}_{m,n}$ since whether we consider $\theta^{\RR}$ or
 $\theta^{\LM}$ can be inferred from the type of the arguments.
 
   
@@ -4494,7 +4494,7 @@ Let $Ob=Ob(C(\RR,\LM))$ and let $\wt{Ob}'=\wt{Ob}'(\RR,\LM)$ be the right hand s
 \begin{equation*}
   \begin{split}
     T((m,\Gamma),&(n,\Gamma'))
-    \\:= &(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots,\partial_{n-1}^{m-1}(T'_{n-1})))
+    \\:= &(n+1,(T'_0,\dots,T'_{m-2},T_{m-1},\partial_{m-1}^{m-1}(T'_{m-1}),\dots,\partial_{n-1}^{m-1}(T'_{n-1}))).
   \end{split}
 \end{equation*}
 %
@@ -4504,7 +4504,7 @@ Let $Ob=Ob(C(\RR,\LM))$ and let $\wt{Ob}'=\wt{Ob}'(\RR,\LM)$ be the right hand s
   $m>0$, $n+1>m-1$ and $T_i=T_i'$ for $i=0,\dots,m-2$. It takes values in
   $\wt{Ob'}$ and is given by
 %
-$$\wt{T}'((m,\Gamma),(n,(\Gamma',s))):=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_{n}^{m-1}(s)))$$
+\[\wt{T}'((m,\Gamma),(n,(\Gamma',s))):=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_{n}^{m-1}(s))).\]
 %
 \item The operation $S'$ is defined on the set of pairs $(m,(\Gamma,r))\in
   \wt{Ob}'$, $(n,\Gamma')\in Ob$, where $\Gamma=(T_0,\dots,T_{m})$,
@@ -4516,7 +4516,7 @@ $$\wt{T}'((m,\Gamma),(n,(\Gamma',s))):=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_
     S'((m,(\Gamma,r)),&(n,\Gamma'))
     \\ :=& (n-1,(T_0',\dots,T_{m-1}',\theta_{m,m+1}(r,T_{m+1}'),\theta_{m,m+2}(r,T_{m+2}'),\dots,
     \\  & \spc\spc\spc\spc\spc
-    \theta_{m,n-1}(r,T_{n-1}')))
+    \theta_{m,n-1}(r,T_{n-1}'))).
   \end{split}
 \end{equation*}
 %
@@ -4525,12 +4525,12 @@ $$\wt{T}'((m,\Gamma),(n,(\Gamma',s))):=(n+1,(T((m,\Gamma),(n,\Gamma')),\partial_
   $\Gamma'=(T_0',\dots,T_{n}')$ such that $n>m$ and $T_i=T_i'$ for
   $i=0,\dots,m$. It takes values in $\wt{Ob}'$ and is given by
 %
-$$\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s))):=(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s))$$
+\[\wt{S}'((m,(\Gamma,r)),(n,(\Gamma',s))):=(n-1,(S'((m,(\Gamma,r)),(n+1,\Gamma'))),\theta_{m,n}(r,s)).\]
 %
 \item The operation $\delta'$ is defined on the subset of $(m,\Gamma)$ in $Ob$ such
   that $m>0$. It takes values in $\wt{Ob}'$ and is given by
 %
-$$\delta'((m,\Gamma)):=(m,(T((m,\Gamma),(m,\Gamma)),x_{m-1}^m))$$
+\[\delta'((m,\Gamma)):=(m,(T((m,\Gamma),(m,\Gamma)),x_{m-1}^m)).\]
 %
 \end{enumerate}
 \end{theorem}
@@ -4590,7 +4590,7 @@ Definition \ref{2015.08.26.def1}(1).
   of definition. The operation itself is given by
 %
 \begin{equation}\label{2016.01.21.eq2}
-S'((m,(\Gamma,r)),(n,\Gamma'))=(mb^!((m,(\Gamma,r))))^*((n,\Gamma'))
+S'((m,(\Gamma,r)),(n,\Gamma'))=(mb^!((m,(\Gamma,r))))^*((n,\Gamma')).
 \end{equation}%
 %
 Next we have 
@@ -4606,7 +4606,7 @@ Next we have
 \end{equation*}
 %##
 where $A=(m+1,\Gamma)$, $B=(n,\Gamma')$ and $i=n-m-1$. To apply Lemma
-\ref{2016.01.31.l1} we should take $X=\wh{m}$, $lx=m$ and $Y=\wh{n}$, $ly=n$,
+\ref{2016.01.31.l1} we should take $X=\wh{m}$, $l(X)=m$ and $Y=\wh{n}$, $l(Y)=n$,
 and $$f=((ft(A),A),(x^{m}_0,\dots,x^{m}_{m-1},r)).$$  Let further
 $rr=(x^{m}_0,\dots,x^{m}_{m-1},r)$. Then we can extend these equalities as
 follows.
@@ -4648,8 +4648,8 @@ which is, in turn, equivalent to the conditions in the theorem. In the computati
 %
 \begin{equation*}
   \begin{split}
-    rr&:=(x_0^m,\dots,x_{m-1}^m,r)\\
-    ss&:=(x_0^n,\dots,x_{n-1}^n,s)
+    rr&:=(x_0^m,\dots,x_{m-1}^m,r),\\
+    ss&:=(x_0^n,\dots,x_{n-1}^n,s).
   \end{split}
 \end{equation*}
 %
@@ -4666,17 +4666,17 @@ where the third equality is by Lemma \ref{2015.09.03.l1} and the fifth by
 %
 \item The operation $\delta'$ is defined on the subset $(m,\Gamma)\in Ob$ such that $m>0$ and is given by
 %
-$$\delta'((m,\Gamma))=mb(\delta((m,\Gamma)))$$
+\[\delta'((m,\Gamma))=mb(\delta((m,\Gamma))).\]
 %
 Therefore it is sufficient to show that
 %
-$$\delta((m,\Gamma))=(((m,\Gamma),p_{(m,\Gamma)}^*((m,\Gamma))),(x_0^m,\dots,x_{m-1}^m,x_{m-1}^m))$$
+\[\delta((m,\Gamma))=(((m,\Gamma),p_{(m,\Gamma)}^*((m,\Gamma))),(x_0^m,\dots,x_{m-1}^m,x_{m-1}^m)).\]
 %
 By Definition \ref{2015.08.26.def1}(5), $\delta((m,\Gamma))$ is a morphism from
 $(m,\Gamma)$ to $p_{(m,\Gamma)}^*((m,\Gamma))$. Therefore, since $tr_{\LM}$ is
 a fully faithful functor it is sufficient to show that
 %
-$$tr_{\LM}(\delta((m,\Gamma)))=((\wh{m},\wh{m+1}),(x_0^m,\dots,x_{m-1}^m,x_{m-1}^m))$$
+\[tr_{\LM}(\delta((m,\Gamma)))=((\wh{m},\wh{m+1}),(x_0^m,\dots,x_{m-1}^m,x_{m-1}^m))\]
 %
 which follows from Lemma \ref{2015.09.03.l2}(5) and Lemma \ref{2015.08.24.l5}.
 %
