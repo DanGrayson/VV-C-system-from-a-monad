@@ -1174,6 +1174,7 @@ sentences of all type theories must satisfy. By approaching them from the
 direction of \cite{Csubsystems} we will see why these conditions are
 necessary and sufficient for a type theory to ``make sense''.\DG{
   Mention where we see that in this paper, and state which properties are the structural properties.}
+\BA{Vladimir describes the B-system \textbf{operations} on the B-system obtained from a C-system, but not the properties that these operations satisfy. Maybe he ran out of time/energy?}
 
 The main property of a sentence is its validity. Validity of sentences is
 determined on the basis of the inference rules.
@@ -1303,6 +1304,8 @@ To speak about the mathematical meaning of the conditions that the valid sentenc
 
 %@@@
 
+
+\BA{This paragraph introducing notation would be more suitable at the beginning of the section on C-systems, Section~\ref{C-systems}. (Check for duplication!)}
 For $p:X\sr Y$ in a category, let $sec(p)=\{s:Y\sr X\,|\,s\circ p=Id_X\}$. 
 Elements of $sec(p)$ are called {\em sections} of $p$. To any C-system
 $CC$ one associates a pair of sets $(Ob(CC),\wt{Ob}(CC))$, where $Ob(CC)$ is the
@@ -1317,6 +1320,10 @@ i.e., where $\wt{Ob}(CC)$ is the set of sections of the non-trivial
 p-morphisms of $CC$. When $CC$ is clear from the context we will abbreviate
 $Ob(CC)$ and $\wt{Ob}(CC)$ to $Ob$ and $\wt{Ob}$ respectively.
 
+
+
+\BA{I think the part starting here could be under the section title ``Future work''. Vladimir gives a roadmap with quite precise specifications of constructions that build upon this paper.}
+
 The sets $(Ob,\wt{Ob})$ are equipped with a system of operations
 $(l,ft,\partial,T,S,\wt{T},\wt{S},\delta)$. Pairs of sets equipped with
 operations of such form are called (unital) pre-B-systems (cf.{} \cite{Bsystemsnew}\DG{What reference to B-systems is intended here?}).\index{pre-B-systems}
@@ -1327,13 +1334,13 @@ $(B,\wt{B})$. The second main result of that paper, Proposition 5.4, shows how
 to construct, from a pair of equivalence relations $(\sim,\approx)$ on $Ob$ and
 $\wt{Ob}$ respectively that satisfies certain conditions, a quotient C-system
 of $CC$ whose associated pre-B-system is $(Ob/{\sim},\wt{Ob}/\approx)$. These
-conditions are shown in Proposition X.A\DG{Apparently this proposition was not added to the paper.} of the present paper to be
+conditions are shown in Proposition X.A\DG{Apparently this proposition was not added to the paper.}\BA{Indeed, it is missing.} of the present paper to be
 compatible with isomorphisms of pre-B-systems.
 
 After defining $C(\RR,\LM)$ in section \ref{CRRLM}
 %### a little more words, functoriality
-we define, in Construction X.B\DG{Apparently this construction was not added to the paper.}, a pre-B-system structure on the sets
-$(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Construction X.C\DG{Apparently this construction was not added to the paper.}, an isomorphism
+we define, in Construction X.B\DG{Apparently this construction was not added to the paper.}\BA{Yes.}, a pre-B-system structure on the sets
+$(B(\RR,\LM),\wt{B}(\RR,\LM))$ and, in Construction X.C\DG{Apparently this construction was not added to the paper.}\BA{Yes.}, an isomorphism
 between this pre-B-system and the pre-B-system of $C(\RR,\LM)$.
 
 Using this isomorphism we formulate the conditions on subsets $B\subseteq B(\RR,\LM)$
@@ -1347,7 +1354,7 @@ the subsets of $(Ob(C(\RR,\LM))$ and $\wt{Ob}(C(\RR,LM)))$ corresponding to $B$ 
 $\wt{B}$ satisfy the conditions of \cite[Prop. 5.4]{Csubsystems}, and therefore
 define a (regular) quotient of the C-system corresponding to $(B,\wt{B})$.
 
-Summing it up in Construction X.D\DG{Apparently this construction was not added to the paper.} we obtain a construction, for any four
+Summing it up in Construction X.D\DG{Apparently this construction was not added to the paper.}\BA{Yes.} we obtain a construction, for any four
 subsets $B$, $\wt{B}$, $Beq$, $\wt{Beq}$ satisfying certain conditions, of a
 C-system. This is the final construction of the paper.
 
