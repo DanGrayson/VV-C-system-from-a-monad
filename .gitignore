@@ -18,3 +18,5 @@
 *.sls
 *.ind
 *.dvi
+*.tgz
+*.zip
