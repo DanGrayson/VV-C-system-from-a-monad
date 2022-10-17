@@ -11,7 +11,7 @@ stepwise:
 	makeindex Csystemfromamonad.idx
 	pdflatex Csystemfromamonad
 clean:
-	rm -f *.aux *.bbl *.blg *.log *.out *.pdf *.toc *.fls *.glo *.fdb_latexmk *.ist *.dvi *.glg *.gls
+	rm -f *.aux *.bbl *.blg *.log *.out *.pdf *.toc *.fls *.glo *.fdb_latexmk *.ist *.dvi *.glg *.gls *.idx *.slo *.ilg *.ind *.slg *.sls
 
 %.log %.pdf %.toc %.idx %.slo %.glo %.out %.aux %.ist : %.tex %.bbl
 	pdflatex $*
